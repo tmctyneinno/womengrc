@@ -17,9 +17,9 @@
 
             <div class="col-lg-5 col-xl-6">
                 <div class="user-section text-center">
-                    <div class="user-content">
+                    <div class="user-conten ">
                         <img src="assets/img/logo/logo3.png" alt="">
-                        <h2>Welcome <b>To Downtown</b></h2>
+                        <h2>Welcome <b>To Women GRC</b></h2>
                     </div>
                     <div class="tab user-tab">
                         <div class="row justify-content-center">
@@ -40,19 +40,30 @@
                                     <div class="tabs_item current">
                                         <div class="user-all-form">
                                             <div class="contact-form">
-                                                <form id="contactForm" novalidate="true">
+                                                <form  method="POST" action="{{ route('login') }}"  >
+                                                    @csrf
                                                     <div class="row justify-content-center">
                                                         <div class="col-lg-12 ">
                                                             <div class="form-group">
                                                                 <i class="bx bx-user"></i>
-                                                                <input type="text" name="name" id="name" class="form-control" required="" data-error="Please enter your Username or Email" placeholder="Username or Email">
+                                                                <input type="text" name="name" id="name" class="form-control" required="" data-error="Please enter your Email" placeholder="Email" required autocomplete="email" autofocu>
+                                                                @error('email')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
                                                         </div>
                 
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <i class="bx bx-lock-alt"></i>
-                                                                <input class="form-control" type="password" name="password" placeholder="Password">
+                                                                <input class="form-control" type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                                                                @error('password')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
                                                         </div>
 
@@ -64,26 +75,23 @@
                 
                                                         <div class="col-lg-6 col-sm-6 form-condition">
                                                             <div class="agree-label">
-                                                                <input type="checkbox" id="chb1">
-                                                                <label for="chb1">
+                                                                <input type="checkbox"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                                <label for="remember">
                                                                     Remember Me
                                                                 </label>
                                                             </div>
                                                         </div>
                             
                                                         <div class="col-lg-6 col-sm-6">
-                                                            <a class="forget" href="recover-password.html">Forgot my password?</a>
+                                                            @if (Route::has('password.request'))
+                                                                <a class="forget" href="{{ route('password.request') }}">
+                                                                    {{ __('Forgot Your Password?') }}
+                                                                </a>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <div class="social-option">
-                                                    <h3>Or Login With</h3>
-                                                    <ul>
-                                                        <li><a href="#">Facebook</a></li>
-                                                        <li><a href="#">Twitter</a></li>
-                                                        <li><a href="#">Linkedin</a></li>
-                                                    </ul>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -128,14 +136,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <div class="social-option">
-                                                    <h3>Or Register With</h3>
-                                                    <ul>
-                                                        <li><a href="#">Facebook</a></li>
-                                                        <li><a href="#">Twitter</a></li>
-                                                        <li><a href="#">Linkdin</a></li>
-                                                    </ul>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

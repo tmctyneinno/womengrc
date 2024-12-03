@@ -1,85 +1,66 @@
 @extends('layouts.app')
-
+<style>
+    .navbar-custom{
+        background-color: #2a2a2a !important;
+    }
+</style>
 
 
 @section('content')
 
-  <!-- Search Overlay -->
-  <div class="search-overlay">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="search-layer"></div>
-            <div class="search-layer"></div>
-            <div class="search-layer"></div>
-            
-            <div class="search-close">
-                <span class="search-close-line"></span>
-                <span class="search-close-line"></span>
-            </div>
-
-            <div class="search-form">
-                <form>
-                    <input type="text" class="input-search" placeholder="Search here...">
-                    <button type="submit"><i class="flaticon-loupe"></i></button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Search Overlay -->
 
 <!-- Slider Area -->
 <div class="slider-area owl-carousel owl-theme">
-    <div class="slider-item item-bg1">
+    <div class="slider-item " style="background-image: url(../assets/img/home-one/slider2.jpg);">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
                     <div class="slider-content">
-                        <h1>Explore Places In Suburb
-                            <b>Keep Choose Best</b> 
-                        </h1>
+                        <h1>Empowering Women in GRC  </h1>
+                        <p><b>Fostering Leadership and Innovation in Governance, Risk, and Compliance</b></p>
+                      
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="slider-item item-bg2">
+    <div class="slider-item" style="background-image: url(../assets/img/home-one/slider1.jpg);">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
                     <div class="slider-content">
-                        <h1>Find Best The Restaurants
-                            <b>In Your Choose</b> 
-                        </h1>
+                        <h1>Breaking Barriers in Financial Crime Prevention</h1>
+                        <p> <b>Shaping a Future of Diversity, Excellence, and Inclusion</b> </p>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="slider-item item-bg3">
+    <div class="slider-item " style="background-image: url(../assets/img/home-one/slider3.jpg);">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
                     <div class="slider-content">
-                        <h1>Discover The Exact Event 
-                            <b>In Your Choose</b> 
-                        </h1>
+                        <h1>Collaborate. Lead. Inspire. </h1>
+                        <p> <b>Building a Global Network for Women in Governance and Compliance</b> </p>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="slider-item item-bg4">
+    <div class="slider-item " style="background-image: url(../assets/img/home-one/slider4.jpg);">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
                     <div class="slider-content">
-                        <h1>Find The Amazing Hotel 
-                            <b>Keep Your Choose</b> 
-                        </h1>
+                        <h1>Join the Movement</h1> 
+                        <p><b>Creating Opportunities for Women in GRC and Financial Crime Prevention</b> </p>
+                      
                     </div>
                 </div>
             </div>
@@ -88,15 +69,42 @@
 </div>
 <!-- Slider Area End -->
 
+<div class="application-area-two pt-100" >
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-7">
+                <div class="application-content">
+                    <div class="section-title">
+                        <h2>
+                            About us
+                        </h2>
+                        <p style="text-align: justify" class="pb-3">
+                            <snap style="font-weight: bold">Women in Governance, Risk, Compliance, Financial Crime, and Fraud Prevention </snap>
+                            is a pioneering initiative founded by Dr. Foluso Amusa, PhD, dedicated to empowering women professionals in these critical fields. Our mission is to foster leadership, inspire innovation, and create a collaborative platform for women to thrive, lead, and make a lasting impact across industries.
+                        </p>
+                        <a href="{{ route('about')}}" class="default-btn border-radius ">
+                            Read more
+                        </a>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="application-img-two">
+                    <img src="assets/img/mobile2.png" alt="Images">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <!-- Category Area -->
 <section class="category-area pt-100 pb-70">
     <div class="container">
-        <div class="section-title text-center">
-            <span>The Categories</span>
-            <h2>Use Quick Search By Category</h2>
-        </div>
+        
         
         <div class="row category-bg">
             <div class="col-lg-4 col-sm-6">
@@ -180,8 +188,8 @@
 <section class="place-list-area pb-70">
     <div class="container-fluid">
         <div class="section-title text-center">
-            <span>Places Lists</span>
-            <h2>The Latest Listings Added</h2>
+            <span>Events Lists</span>
+            <h2>The Latest Events Added</h2>
             <p>Porem ipsum dolor sit ame consectetur adipisicing eli sed usmod tempor </p>
         </div>
         <div class="place-slider owl-carousel owl-theme pt-45">
@@ -489,151 +497,17 @@
 </section>
 <!-- Place List Area End -->
 
-<!-- Process Area -->
-<section class="process-area process-bg pt-100 pb-70">
-    <div class="container">
-        <div class="section-title text-center">
-            <span>Process</span>
-            <h2>See How It Works</h2>
-            <p>Porem ipsum dolor sit ame consectetur adipisicing incididunt </p>
-        </div>
-        <div class="row pt-45">
-            <div class="col-lg-4 col-sm-6">
-                <div class="process-card">
-                    <i class="flaticon-position icon-bg"></i>
-                    <h3>Find Interesting Place</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur adipisicing elit, sed do eiusmod tempor  quam voluptatem.</p>
-                    <div class="process-number">
-                        1
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-sm-6">
-                <div class="process-card">
-                    <i class="flaticon-to-do-list icon-bg"></i>
-                    <h3>Choose What To Do</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur adipisicing elit, sed do eiusmod tempor  quam voluptatem.</p>
-                    <div class="process-number active">
-                        2
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-sm-6  ">
-                <div class="process-card">
-                    <i class="flaticon-box icon-bg"></i>
-                    <h3>Find What You Want</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur adipisicing elit, sed do eiusmod tempor  quam voluptatem.</p>
-                    <div class="process-number">
-                        3
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Process Area End -->
-
-<!-- City Area -->
-<section class="city-area ptb-100"> 
-    <div class="container">
-        <div class="section-title text-center">
-            <span>Cities</span>
-            <h2>Explore Best Cities In Area</h2>
-            <p>Porem ipsum dolor sit ame consectetur adipisicing eli sed usmod tempor incididunt </p>
-        </div>
-
-        <div class="row pt-45">
-            <div class="col-lg-7 col-md-7">
-                <div class="city-item">
-                    <a href="blog-details.html" class="city-img">
-                        <img src="assets/img/city-area/city-area1.jpg" alt="Images">
-                    </a>
-                    <div class="city-content">
-                        <i class="flaticon-buildings"></i>
-                        <div class="city-text">
-                            <a href="blog-details.html">
-                                <h3>New York</h3>
-                            </a>
-                            <p>Porem ipsum dolor sit ame consectetur adipisicing consectetused </p>
-                        </div>
-                    </div>
-                    <h3 class="city-location">22 Locations</h3>
-                </div>
-            </div>
-
-            <div class="col-lg-5 col-md-5">
-                <div class="city-item">
-                    <a href="blog-details.html" class="city-img">
-                        <img src="assets/img/city-area/city-area2.jpg" alt="Images">
-                    </a>
-                    <div class="city-content">
-                        <i class="flaticon-buildings"></i>
-                        <div class="city-text">
-                            <a href="blog-details.html">
-                                <h3>San Antonio</h3>
-                            </a>
-                            <p>Porem ipsum dolor sit ame consecte</p>
-                        </div>
-                    </div>
-                    <h3 class="city-location">13 Locations</h3>
-                </div>
-            </div>
-
-            <div class="col-lg-5 col-md-5">
-                <div class="city-item">
-                    <a href="blog-details.html" class="city-img">
-                        <img src="assets/img/city-area/city-area3.jpg" alt="Images">
-                    </a>
-                    <div class="city-content">
-                        <i class="flaticon-buildings"></i>
-                        <div class="city-text">
-                            <a href="blog-details.html">
-                                <h3>Fort Worth</h3>
-                            </a>
-                            <p>Porem ipsum dolor sit ame consecte</p>
-                        </div>
-                    </div>
-                    <h3 class="city-location">17 Locations</h3>
-                </div>
-            </div>
-
-            <div class="col-lg-7 col-md-7">
-                <div class="city-item">
-                    <a href="blog-details.html" class="city-img">
-                        <img src="assets/img/city-area/city-area4.jpg" alt="Images">
-                    </a>
-                    <div class="city-content">
-                        <i class="flaticon-buildings"></i>
-                        <div class="city-text">
-                            <a href="blog-details.html">
-                                <h3>Milwaukee</h3>
-                            </a>
-                            <p>Porem ipsum dolor sit ame consectetur adipisicing consectetused </p>
-                        </div>
-                    </div>
-                    <h3 class="city-location">20 Locations</h3>
-                </div>
-            </div>
-            <div class="col-lg-12 text-center mt-3"> 
-                <a href="blog.html" class="default-btn border-radius">
-                    View all places 
-                    <i class='bx bx-plus'></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- City Area End -->
 
 <!-- Video Area -->
 <div class="video-area video-area-bg">
     <div class="container">
         <div class="video-content">
             <h2>Are You  Ready To Start Your Journey?</h2>
-            <a href="https://www.youtube.com/watch?v=07d2dXHYb94&amp;t=6s" class="play-btn">
-                <i class='bx bx-play' ></i>
+            <a href="{{ route('register') }}" class="default-btn border-radius">
+                Sign up
+                <i class='bx bx-plus'></i>
             </a>
         </div>
     </div>
@@ -648,28 +522,28 @@
                 <div class="col-lg-3 col-sm-6 col-md-3">
                     <div class="single-counter">
                         <h3>1254</h3>
-                        <span>New Visiters Every Week</span>
+                        <span>Women Empowered Globally</span>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6 col-md-3">
                     <div class="single-counter">
                         <h3>23165</h3>
-                        <span>New Visiters Every Day</span>
+                        <span>Resources Accessed by Members</span>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6 col-md-3">
                     <div class="single-counter">
                         <h3>4563</h3>
-                        <span>Won Amazing Awards</span>
+                        <span>Awards Celebrating Excellence</span>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6 col-md-3">
                     <div class="single-counter">
                         <h3>880</h3>
-                        <span>New Listing Every Week</span>
+                        <span>Successful Mentorship Connections</span>
                     </div>
                 </div>
             </div>

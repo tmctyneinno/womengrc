@@ -854,7 +854,7 @@ Home Banner Area
   z-index: 1;
 }
 .slider-item .slider-content h1 {
-  font-size: 60px;
+  font-size: 55px;
   color: var(--whiteColor);
   max-width: 790px;
   margin: 0 auto;
@@ -863,8 +863,17 @@ Home Banner Area
   font-weight: 300;
 }
 
+.slider-item .slider-content p {
+  font-size: 45px;
+  color: var(--whiteColor);
+  max-width: 790px;
+  margin: 0 auto;
+}
+.slider-item .slider-content p b {
+  font-weight: 300;
+}
+
 .item-bg1 {
-  background-image: url(../img/home-one/home1.jpg);
 }
 
 .item-bg2 {

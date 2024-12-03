@@ -9,7 +9,7 @@
 
 
 <!-- Start Navbar Area -->
-<div class="navbar-area navbar-custom">
+<div class="navbar-area ">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
         <a href="index.html" class="logo">
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Menu For Desktop Device -->
-    <div class="main-nav">
+    <div class="main-nav navbar-custom">
         <div class="container-fluid">
             <nav class="container-max navbar navbar-expand-md navbar-light ">
                 <a class="navbar-brand" href="index.html">
