@@ -25,7 +25,7 @@ class FrontendController extends Controller
     public function mission(){
         return view('home.pages.mission'); 
     }
-
+ 
     public function event(){
         return view('home.pages.event'); 
     }

@@ -57,66 +57,10 @@
         </div>
 
         
-        <!-- Client Area -->
-        <div class="client-area pt-100">
-            <div class="container">
-                <div class="client-bg">
-                    <div class="client-slider owl-carousel owl-theme">
-                        <div class="client-item">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="client-img">
-                                        <img src="assets/img/testimonial/testimonial1.png" alt="Images">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="client-content">
-                                        <h3>Oli Rubion</h3>
-                                        <span>Rubion Inc</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing  sit ut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Testimonial Area -->
+    @include('home.pages.testimonial')
+    <!-- Testimonial Area End -->
 
-                        <div class="client-item">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="client-img">
-                                        <img src="assets/img/testimonial/testimonial2.png" alt="Images">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="client-content">
-                                        <h3>Sanaik Tubi</h3>
-                                        <span>Arbon Restaurant</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing  sit ut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="client-item">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="client-img">
-                                        <img src="assets/img/testimonial/testimonial3.png" alt="Images">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="client-content">
-                                        <h3>Mashrof Ruin</h3>
-                                        <span>Pice Cafe</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing  sit ut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Client Area End -->
 
        
      

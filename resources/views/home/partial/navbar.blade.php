@@ -12,8 +12,12 @@
 <div class="navbar-area ">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
-        <a href="index.html" class="logo">
-            <img src="assets/img/logo/logo1.png" alt="Logo">
+        <a href="#" class="logo" style="background-color: #fff; padding:8px">
+            {{-- <img src="assets/img/logo/logo1.png" alt="Logo"> --}}
+            <img  
+            style="max-width: 100%; max-height:100%; object-fit:cover; width:60px; height:30px "
+            src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
+        
         </a>
     </div>
 
@@ -21,88 +25,43 @@
     <div class="main-nav navbar-custom">
         <div class="container-fluid">
             <nav class="container-max navbar navbar-expand-md navbar-light ">
-                <a class="navbar-brand" href="index.html">
-                    <img src="assets/img/logo/logo1.png" alt="Logo">
+                <a class="navbar-brand" href="#" style="background-color: #fff; padding-left:8px; padding-right:8px">
+                    {{-- <img src="assets/img/logo/logo1.png" alt="Logo"> --}}
+                    
+                    <img 
+                    style="max-width: 100%; max-height:100%; object-fit:cover; width:100px; height:50px "
+                    src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
+ 
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                Home 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('about')}}" class="nav-link">
-                                About 
-                                <i class="bx bx-plus"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="{{ route('vision')}}" class="nav-link">
-                                        Vision 
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('purpose')}}" class="nav-link">
-                                        Purpose
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('mission')}}" class="nav-link">
-                                        Mission
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('event')}}" class="nav-link">
-                                Membership 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('about')}}" class="nav-link">
-                                Resource 
-                                <i class="bx bx-plus"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="{{ route('event')}}" class="nav-link">
-                                        Event 
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a href="{{ route('purpose')}}" class="nav-link">
-                                        Mentorship
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('mission')}}" class="nav-link">
-                                        Community Forum
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('blog')}} " class="nav-link">
-                                Blog 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('contact')}}" class="nav-link">
-                                Recognition
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('contact')}}" class="nav-link">
-                                Contact
-                            </a>
-                        </li>
+                        @forelse ($menuItems as $item)
+                            <li class="nav-item">
+                                <a href="{{ route('home.pages', $item->slug) }}" class="nav-link">
+                                    {{ $item->name }}
+                                    @if($item->dropdownItems->count())
+                                        <i class="bx bx-plus"></i>
+                                    @endif
+                                </a>
+                                @if($item->dropdownItems->count())
+                                    <ul class="dropdown-menu">
+                                        @foreach ($item->dropdownItems as $dropdown)
+                                            <li class="nav-item">
+                                                <a href="{{ route('home.pages', $dropdown->slug) }}" class="nav-link">
+                                                    {{ $dropdown->name }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @empty
+                            <p>No data found</p>
+                        @endforelse
                     </ul>
-
+                
                     <div class="side-nav d-in-line align-items-center">
-                        
                         <div class="side-item">
                             <div class="cart-btn">
                                 <a href="{{ route('login')}}" style="color: #fff">
@@ -112,15 +71,16 @@
                         </div>
                         <div class="side-item">
                             <div class="nav-add-btn">
-                               <a href="listing-details.html" class="default-btn border-radius">
+                                <a href="listing-details.html" class="default-btn border-radius">
                                     Get Involved
                                     <i class='bx bx-plus'></i>
                                 </a>
                             </div>
                         </div>
-
                     </div>
                 </div>
+
+                
             </nav>
         </div>
     </div>

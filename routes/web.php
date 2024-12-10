@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,12 @@ use App\Http\Controllers\FrontendController;
 | contains the "web" middleware group. Now create something great!
 |
 */ 
-
+require __DIR__.'/admin.php';
+ 
 Route::get('/', [FrontendController::class, 'index'])->name('home'); 
+Route::get('/{page}', [PagesController::class, 'index'])->name('home.pages');
+
+
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/vision', [FrontendController::class, 'vision'])->name('vision');
 Route::get('/purpose', [FrontendController::class, 'purpose'])->name('purpose');

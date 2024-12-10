@@ -30,13 +30,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css')}}">
     <!-- Theme Dark CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/theme-dark.css')}}">
-    @viteReactRefresh
+    @viteReactRefresh 
     @vite('resources/js/app.jsx')
+ 
+    <title>{{ $contactUs ? $contactUs->company_name : '' }}</title>
+    <meta property="og:title" content="{{ $contactUs ? asset($contactUs->company_name) : '' }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $contactUs ? asset($contactUs->favicon) : ''}}">
+    <style>
+        .navbar-custom{
+            background-color: #2a2a2a !important;
+        }
+    </style>
 </head>
 <body>
 

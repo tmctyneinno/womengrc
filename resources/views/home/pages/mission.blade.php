@@ -24,7 +24,7 @@
                         <li>Mission</li>
                     </ul>
                 </div>
-            </div>
+            </div> 
         </div>
         <!-- Inner Banner End -->
 
@@ -39,33 +39,10 @@
                                     Mission statement
                                 </h2>
                                 <p>
-                                    To advance the role of women in GRC and financial crime prevention by:
+                                    {!! $visionMission->mission  !!}
                                 </p>
 
-                                <ul class="footer-contact-list">
-                                    <li>
-                                        <span>Promoting Leadership:</span> 
-                                        Providing mentorship, training, and networking opportunities to prepare women for leadership roles.
-                                    </li> 
-                                    <li>
-                                        <span>Advancing Expertise:</span> 
-                                        Offering access to cutting-edge knowledge, resources, and best practices in governance, compliance, and fraud prevention.
-                                    </li> 
-                                    <li>
-                                        <span>Fostering Inclusion:</span> 
-                                        Advocating for diversity and equity in all sectors, driving systemic change to create a more balanced workforce.
-                                    </li> 
-                                    <li>
-                                        <span>Upholding Integrity:</span> 
-                                        Encouraging ethical practices and professional excellence to combat financial crime and build trust in organizations.
-                                    </li> 
-                                    <li>
-                                        <span>Driving Collaboration:</span> 
-                                        Connecting professionals across industries to share insights, develop solutions, and shape the future of GRC and financial crime prevention.
-                                    </li> 
-                                </ul>
-                                <p>This initiative will serve as a beacon of excellence, nurturing a community of empowered women who make meaningful contributions to their organizations, industries, and societies.</p>
-
+                               
                             </div>
                            
                         </div>

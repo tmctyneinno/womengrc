@@ -163,7 +163,7 @@
                                     <i class="flaticon-position"></i>
                                     <h3>2nd Floor, 1 Adeola Adeoye Street, Toyin Street, Ikeja, Lagos, Nigeria.</h3>
                                 </div>
-                            </div>
+                            </div> 
 
                             <div class="col-lg-12 col-md-6">
                                 <div class="contact-card">

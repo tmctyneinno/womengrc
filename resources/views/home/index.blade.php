@@ -1,9 +1,5 @@
 @extends('layouts.app')
-<style>
-    .navbar-custom{
-        background-color: #2a2a2a !important;
-    }
-</style>
+
 
 
 @section('content')
@@ -11,88 +7,47 @@
 
 <!-- Slider Area -->
 <div class="slider-area owl-carousel owl-theme">
-    <div class="slider-item " style="background-image: url(../assets/img/home-one/slider2.jpg);">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="container">
-                    <div class="slider-content">
-                        <h1>Empowering Women in GRC  </h1>
-                        <p><b>Fostering Leadership and Innovation in Governance, Risk, and Compliance</b></p>
-                      
+    @foreach ($sliders as $slider)
+        <div class="slider-item" style="background-image: url({{ asset($slider->image) }})">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="slider-content">
+                            <h1>{{ $slider->title }}</h1>
+                            <p><b>{{ $slider->caption }}</b></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="slider-item" style="background-image: url(../assets/img/home-one/slider1.jpg);">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="container">
-                    <div class="slider-content">
-                        <h1>Breaking Barriers in Financial Crime Prevention</h1>
-                        <p> <b>Shaping a Future of Diversity, Excellence, and Inclusion</b> </p>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slider-item " style="background-image: url(../assets/img/home-one/slider3.jpg);">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="container">
-                    <div class="slider-content">
-                        <h1>Collaborate. Lead. Inspire. </h1>
-                        <p> <b>Building a Global Network for Women in Governance and Compliance</b> </p>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slider-item " style="background-image: url(../assets/img/home-one/slider4.jpg);">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="container">
-                    <div class="slider-content">
-                        <h1>Join the Movement</h1> 
-                        <p><b>Creating Opportunities for Women in GRC and Financial Crime Prevention</b> </p>
-                      
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 <!-- Slider Area End -->
+
 
 <div class="application-area-two pt-100" >
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-7">
                 <div class="application-content">
-                    <div class="section-title">
+                    <div class="section-title" style="text-align: justify">
                         <h2>
                             About us
                         </h2>
                         <p style="text-align: justify" class="pb-3">
-                            <snap style="font-weight: bold">Women in Governance, Risk, Compliance, Financial Crime, and Fraud Prevention </snap>
-                            is a pioneering initiative founded by Dr. Foluso Amusa, PhD, dedicated to empowering women professionals in these critical fields. Our mission is to foster leadership, inspire innovation, and create a collaborative platform for women to thrive, lead, and make a lasting impact across industries.
+                            {!! Str::limit($aboutUs->content, 500) !!}
                         </p>
                         <a href="{{ route('about')}}" class="default-btn border-radius ">
                             Read more
                         </a>
                     </div>
-                   
+                    
                 </div>
             </div>
 
             <div class="col-lg-5">
                 <div class="application-img-two">
-                    <img src="assets/img/mobile2.png" alt="Images">
+                    <img src="{{ asset($aboutUs->image) }}" alt="Images">
                 </div>
             </div>
         </div>
@@ -102,7 +57,7 @@
 
 
 <!-- Category Area -->
-<section class="category-area pt-100 pb-70">
+{{-- <section class="category-area pt-100 pb-70">
     <div class="container">
         
         
@@ -181,16 +136,15 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Category Area End -->
 
 <!-- Place List Area -->
-<section class="place-list-area pb-70">
+<section class="place-list-area pt-100 pb-70">
     <div class="container-fluid">
         <div class="section-title text-center">
             <span>Events Lists</span>
             <h2>The Latest Events Added</h2>
-            <p>Porem ipsum dolor sit ame consectetur adipisicing eli sed usmod tempor </p>
         </div>
         <div class="place-slider owl-carousel owl-theme pt-45">
             <div class="place-list-item">
@@ -502,7 +456,7 @@
 
 <!-- Video Area -->
 <div class="video-area video-area-bg">
-    <div class="container">
+    <div class="container"> 
         <div class="video-content">
             <h2>Are You  Ready To Start Your Journey?</h2>
             <a href="{{ route('register') }}" class="default-btn border-radius">
@@ -926,154 +880,7 @@
 <!-- Place Area End -->
 
 
-<!-- Testimonial Area -->
-<section class="testimonial-area pb-70">
-    <div class="container-fluid">
-        <div class="section-title text-center">
-            <span>Testimonials</span>
-            <h2>What Our Clients Say</h2>
-        </div>
-
-        <div class="testimonial-slider owl-carousel owl-theme">
-            <div class="testimonial-item testimonial-item-bg">
-                <h3>Sanaik Tubi</h3>
-                <span>Arbon Restaurant</span>
-                <p>Roinin ipsum dolor sit amet, consectetur adipisicing  sit ut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                <ul class="rating">
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                </ul>
-
-                <div class="testimonial-top">
-                    <i class='bx bxs-quote-left'></i>
-                </div>
-            </div>
-
-            <div class="testimonial-item testimonial-item-bg">
-                <h3>Oli Rubion</h3>
-                <span>Rubion Inc</span>
-                <p>Roinin ipsum dolor sit amet, consectetur adipisicing  sit ut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                <ul class="rating">
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                </ul>
-
-                <div class="testimonial-top">
-                    <i class='bx bxs-quote-left'></i>
-                </div>
-            </div>
-
-            <div class="testimonial-item testimonial-item-bg">
-                <h3>Mashrof Ruin</h3>
-                <span>Pice Cafe<span>
-                <p>Roinin ipsum dolor sit amet, consectetur adipisicing  sit ut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                <ul class="rating">
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                </ul>
-
-                <div class="testimonial-top">
-                    <i class='bx bxs-quote-left'></i>
-                </div>
-            </div>
-
-            <div class="testimonial-item testimonial-item-bg">
-                <h3>Sanaik Tubi</h3>
-                <span>Arbon Restaurant</span>
-                <p>Roinin ipsum dolor sit amet, consectetur adipisicing  sit ut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                <ul class="rating">
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                </ul>
-
-                <div class="testimonial-top">
-                    <i class='bx bxs-quote-left'></i>
-                </div>
-            </div>
-
-            <div class="testimonial-item testimonial-item-bg">
-                <h3>Sanaik Tubi</h3>
-                <span>Arbon Restaurant</span>
-                <p>Roinin ipsum dolor sit amet, consectetur adipisicing  sit ut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                <ul class="rating">
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                    <li>
-                        <i class='bx bxs-star'></i>
-                    </li>
-                </ul>
-
-                <div class="testimonial-top">
-                    <i class='bx bxs-quote-left'></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Testimonial Area End -->
-
+@include('home.pages.testimonial')
 
     
 @endsection

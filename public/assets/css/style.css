@@ -226,7 +226,7 @@ Section Title Style
   font-weight: 300;
 }
 .section-title p {
-  padding-top: 10px;
+  padding-top: 5px;
   margin-bottom: 0;
 }
 
@@ -3979,7 +3979,7 @@ Application Area
   z-index: 1;
 }
 .application-img-two img {
-  margin-left: 75px;
+  margin-left: 0px;
 }
 .application-img-two::before {
   content: "";

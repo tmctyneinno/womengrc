@@ -4,9 +4,9 @@
 
 @section('content')
 
-
+ 
         <!-- Inner Banner -->
-        <div class="inner-banner inner-bg6">
+        <div class="inner-banner" style="background-image: url({{ asset($aboutUs->header_image) }});">
             <div class="container">
                 <div class="inner-title text-center">
                     <h3>About Us</h3>
@@ -35,26 +35,19 @@
                     <div class="col-lg-6">
                         <div class="about-content">
                             <div class="section-title pb-3" style="text-align: justify">
-                                <span>About us</span>
+                                <h2>About us</h2>
                                 <p>
-                                    <snap style="font-weight: bold">Women in Governance, Risk, Compliance, Financial Crime, and Fraud Prevention </snap>
-                                    is a pioneering initiative founded by Dr. Foluso Amusa, PhD, dedicated to empowering women professionals in these critical fields. Our mission is to foster leadership, inspire innovation, and create a collaborative platform for women to thrive, lead, and make a lasting impact across industries.
-                                </p>
-                                <p>
-                                    We believe in the power of diversity and inclusion to drive ethical practices, enhance professional excellence, and tackle the complex challenges of today's global landscape. Our community is committed to shaping the future of Governance, Risk, Compliance (GRC), and Financial Crime Prevention by supporting women at all career stages, from emerging leaders to seasoned professionals.
+                                    {!! ($aboutUs->content) !!}
                                 </p>
                             </div>
                             
-                            <a href="team.html" class="default-btn border-radius">
-                                Our Team 
-                                <i class='bx bx-plus'></i>
-                            </a>
+                           
                         </div>
                     </div>
 
                     <div class="col-lg-6">
                         <div class="about-img">
-                            <img src="assets/img/about-img.jpg" alt="image">
+                            <img src="{{ asset($aboutUs->image) }}" alt="image">
                         </div>
                     </div>
                 </div>
@@ -174,219 +167,15 @@
         </div>
         <!-- Counter Area End -->
 
-        <!-- Process Area -->
-        <section class="process-area">
-            <div class="process-into process-into-2  pt-100 pb-70">
-                <div class="container">
-                    <div class="section-title text-center">
-                        <span>Process</span>
-                        <h2>See <b>How It Works</b></h2>
-                        <p>Porem ipsum dolor sit ame consectetur adipisicing incididunt </p>
-                    </div>
-                    <div class="row pt-45">
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="process-item">
-                                <div class="process-item-number number1">1</div>
-                                <i class="flaticon-position"></i>
-                                <div class="content">
-                                    <h3>Find Interesting Place</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur adipisicing elit, sed do eiusmod tempor  quam voluptatem.</p>
-                                </div>
-                            </div>
-                        </div>
+      
 
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="process-item">
-                                <div class="process-item-number number2 active">2</div>
-                                <i class="flaticon-to-do-list"></i>
-                                <div class="content">
-                                    <h3>Choose What To Do</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur adipisicing elit, sed do eiusmod tempor  quam voluptatem.</p>
-                                </div>
-                            </div>
-                        </div>
+        
 
-                        <div class="col-lg-4 col-sm-6  ">
-                            <div class="process-item">
-                                <div class="process-item-number number3">3</div>
-                                <i class="flaticon-box"></i>
-                                <div class="content">
-                                    <h3>Find What You Want</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur adipisicing elit, sed do eiusmod tempor  quam voluptatem.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="process-line-2">
-                    <img src="assets/img/shape/process-line2.png" alt="Images">
-                </div>
-            </div>
-        </section>
-        <!-- Process Area End -->
+    
+<!-- Testimonial Area -->
+@include('home.pages.testimonial')
+<!-- Testimonial Area End -->
 
-        <!-- Team Area -->
-        <div class="team-area pt-100 pb-70">
-            <div class="container">
-                <div class="section-title text-center">
-                    <span>Team</span>
-                    <h2>Our Skilled Team</h2>
-                </div>
-                <div class="row pt-45">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-card">
-                            <a href="team.html">
-                                <img src="assets/img/team/team1.jpg" alt="Team Images">
-                            </a>
-                            <div class="content">
-                                <h3><a href="#">Austin Evon</a></h3>
-                                <span>Co-manager associated</span>
-                                <p>Lorem ipsum dolor sit ame consectur adipisicingsedo eiusmod tempor</p>
-                                <ul class="social-link">
-                                    <li>
-                                        <a href="https://www.facebook.com/login/" target="_blank"><i class='bx bxl-facebook'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://twitter.com/i/flow/login" target="_blank"><i class='bx bxl-twitter'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.instagram.com/accounts/login/" target="_blank"><i class='bx bxl-instagram'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.pinterest.com/" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.youtube.com/" target="_blank"><i class='bx bxl-youtube'></i></a>
-                                    </li> 
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-card">
-                            <a href="team.html">
-                                <img src="assets/img/team/team2.jpg" alt="Team Images">
-                            </a>
-                            <div class="content">
-                                <h3><a href="#">Taylor Anderson</a></h3>
-                                <span>Business consultant</span>
-                                <p>Lorem ipsum dolor sit ame consectur adipisicingsedo eiusmod tempor</p>
-                                <ul class="social-link">
-                                    <li>
-                                        <a href="https://www.facebook.com/login/" target="_blank"><i class='bx bxl-facebook'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://twitter.com/i/flow/login" target="_blank"><i class='bx bxl-twitter'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.instagram.com/accounts/login/" target="_blank"><i class='bx bxl-instagram'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.pinterest.com/" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.youtube.com/" target="_blank"><i class='bx bxl-youtube'></i></a>
-                                    </li> 
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6  ">
-                        <div class="team-card">
-                            <a href="team.html">
-                                <img src="assets/img/team/team3.jpg" alt="Team Images">
-                            </a>
-                            <div class="content">
-                                <h3><a href="#">Jorgia Klev</a></h3>
-                                <span>Business Manger</span>
-                                <p>Lorem ipsum dolor sit ame consectur adipisicingsedo eiusmod tempor</p>
-                                <ul class="social-link">
-                                    <li>
-                                        <a href="https://www.facebook.com/login/" target="_blank"><i class='bx bxl-facebook'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://twitter.com/i/flow/login" target="_blank"><i class='bx bxl-twitter'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.instagram.com/accounts/login/" target="_blank"><i class='bx bxl-instagram'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.pinterest.com/" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
-                                    </li> 
-                                    <li>
-                                        <a href="https://www.youtube.com/" target="_blank"><i class='bx bxl-youtube'></i></a>
-                                    </li> 
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Team Area End -->
-
-        <!-- Client Area -->
-        <div class="client-area pt-100">
-            <div class="container">
-                <div class="client-bg">
-                    <div class="client-slider owl-carousel owl-theme">
-                        <div class="client-item">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="client-img">
-                                        <img src="assets/img/testimonial/testimonial1.png" alt="Images">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="client-content">
-                                        <h3>Oli Rubion</h3>
-                                        <span>Rubion Inc</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing  sit ut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="client-item">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="client-img">
-                                        <img src="assets/img/testimonial/testimonial2.png" alt="Images">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="client-content">
-                                        <h3>Sanaik Tubi</h3>
-                                        <span>Arbon Restaurant</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing  sit ut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="client-item">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="client-img">
-                                        <img src="assets/img/testimonial/testimonial3.png" alt="Images">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="client-content">
-                                        <h3>Mashrof Ruin</h3>
-                                        <span>Pice Cafe</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing  sit ut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Client Area End -->
 
        
      
