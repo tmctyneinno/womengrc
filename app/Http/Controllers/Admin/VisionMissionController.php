@@ -13,17 +13,20 @@ class VisionMissionController extends Controller
     }
 
     public function store(Request $request)
-    {
+    { 
         try {
             $validatedData = $request->validate([
                 'mission' => 'required|string',
                 'mission_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
                 'vision' => 'required|string',
                 'vision_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
+                'purpose' => 'required|string',
+                'purpose_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
             ]);
 
             $missionName = null;
             $visionName = null;
+            $purposeName = null;
 
             if ($request->hasFile('mission_img')) {
                 $image = $request->file('mission_img');
@@ -35,15 +38,23 @@ class VisionMissionController extends Controller
                 $visionName = uniqid() . '.' . $image->extension();
                 $image->move(public_path('assets/images/vision'), $visionName);
             }
+            if ($request->hasFile('purpose_img')) {
+                $image = $request->file('purpose_img');
+                $visionName = uniqid() . '.' . $image->extension();
+                $image->move(public_path('assets/images/purpose'), $purposeName);
+            }
            
             $missionImage = 'assets/images/mission/' . $missionName;
             $visionImage = 'assets/images/vision/' . $visionName;
+            $purposeImage = 'assets/images/purpose/' . $purposeName;
                 
             VisionMission::create([
                 'mission' => $validatedData['mission'],
                 'mission_img' => $missionImage,
                 'vision' => $validatedData['vision'],
                 'vision_img' => $visionImage,
+                'purpose' => $validatedData['purpose'],
+                'purpose_img' => $purposeImage,
             ]);
 
             // Redirect back with success message
@@ -68,6 +79,8 @@ class VisionMissionController extends Controller
                 'mission_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
                 'vision' => 'required|string',
                 'vision_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
+                'purpose' => 'required|string',
+                'purpose_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
             ]);
 
             $visionMission = VisionMission::findOrFail($id);
@@ -88,9 +101,18 @@ class VisionMissionController extends Controller
                 
                 $visionMission->vision_img = 'assets/images/vision/' . $visionImage;
             } 
+
+            if ($request->hasFile('purpose_img')) {
+                $image = $request->file('purpose_img');
+                $purposeImage = uniqid() . '.' . $image->extension(); 
+                $image->move(public_path('assets/images/purpose'), $purposeImage); 
+                
+                $visionMission->purpose_img = 'assets/images/purpose/' . $purposeImage;
+            } 
             
             $visionMission->mission = $validatedData['mission'];
             $visionMission->vision = $validatedData['vision'];
+            $visionMission->purpose = $validatedData['purpose'];
 
             $visionMission->save(); 
 

@@ -5,8 +5,11 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
-                        <a href="index-4.html" class="logo">
-                            <img src="assets/img/logo/logo1.png" alt="Logo">
+                        <a href="index-4.html" class="logo" style="background-color: #fff; padding:8px;">
+                            <img 
+                            style="max-width: 100%; max-height:100%; object-fit:cover; width:350px; height:50px "
+                    
+                            src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
                         </a>
                         <p>
                             2nd Floor, 1 Adeola Adeoye Street, Toyin Street, Ikeja, Lagos, Nigeria.
@@ -20,23 +23,7 @@
                             </li> 
                         </ul>
 
-                        <ul class="social-link">
-                            <li>
-                                <a href="https://www.facebook.com/login/" target="_blank"><i class="bx bxl-facebook"></i></a>
-                            </li> 
-                            <li>
-                                <a href="https://twitter.com/i/flow/login" target="_blank"><i class="bx bxl-twitter"></i></a>
-                            </li> 
-                            <li>
-                                <a href="https://www.instagram.com/accounts/login/" target="_blank"><i class="bx bxl-instagram"></i></a>
-                            </li> 
-                            <li>
-                                <a href="https://www.pinterest.com/" target="_blank"><i class="bx bxl-pinterest-alt"></i></a>
-                            </li> 
-                            <li>
-                                <a href="https://www.youtube.com/" target="_blank"><i class="bx bxl-youtube"></i></a>
-                            </li> 
-                        </ul>
+                        @include('home.pages.social_link')
                     </div>
                 </div>
 
@@ -48,19 +35,13 @@
                                  <a href="login-register.html">My Account</a>
                             </li>
                             <li>
-                                <a href="checkout.html">Checkout</a>
+                                <a href="f{{ route('home.pages','mentorship')}}">Mentorship</a>
                             </li>
                             <li>
-                                <a href="cart.html">Cart</a>
+                                <a href="f{{ route('home.pages','membership')}}">Membership</a>
                             </li>
                             <li>
-                                <a href="faq.html">FAQ's</a>
-                            </li>
-                            <li>
-                                <a href="login-register.html">Register</a>
-                            </li>
-                            <li>
-                                <a href="terms-condition.html">Help &amp; Support</a>
+                                <a href="{{ route('register')}}">Register</a>
                             </li>
                         </ul>
                     </div>
@@ -71,22 +52,16 @@
                         <h3>QUICK LINKS</h3>
                         <ul class="footer-list">
                             <li>
-                                <a href="about.html">About Us</a>
+                                <a href="{{ route('home.pages','about') }}">About Us</a>
                             </li>
                             <li>
-                                <a href="listing.html">Listing</a>
+                                <a href="{{ route('home.pages','event') }}">FAQ's</a>
                             </li>
                             <li>
-                                <a href="about.html">How It Works</a>
+                                <a href="{{ route('home.pages','contact') }}">Contact Us</a>
                             </li>
                             <li>
-                                <a href="faq.html">FAQ's</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact Us</a>
-                            </li>
-                            <li>
-                                <a href="login-register.html">Register</a>
+                                <a href="{{ route('register') }}">Register</a>
                             </li>
                         </ul>
                     </div>

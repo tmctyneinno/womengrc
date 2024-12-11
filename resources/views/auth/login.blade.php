@@ -11,7 +11,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-7 col-xl-6  p-0">
                 <div class="user-img">
-                    <img src="assets/img/login-img.jpg" alt="Images">
+                    <img src="{{ asset('assets/img/login-img.jpg')}}" alt="Images">
                 </div>
             </div>
 
@@ -34,54 +34,76 @@
                                     </li>
                                 </ul>
                             </div>
-                            
+                             
                             <div class="col-lg-12 col-md-12">
                                 <div class="tab_content current active">
                                     <div class="tabs_item current">
                                         <div class="user-all-form">
                                             <div class="contact-form">
-                                                <form  method="POST" action="{{ route('login') }}"  >
+                                                <form method="POST" action="{{ route('login.post') }}">
                                                     @csrf
                                                     <div class="row justify-content-center">
-                                                        <div class="col-lg-12 ">
+                                                        <!-- Email Input -->
+                                                        <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <i class="bx bx-user"></i>
-                                                                <input type="text" name="name" id="name" class="form-control" required="" data-error="Please enter your Email" placeholder="Email" required autocomplete="email" autofocu>
-                                                                @error('email')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
+                                                                <input type="email" 
+                                                                       name="email" 
+                                                                       id="email" 
+                                                                       class="form-control @error('email') is-invalid @enderror" 
+                                                                       placeholder="Email" 
+                                                                       value="{{ old('email') }}" 
+                                                                       required 
+                                                                       autocomplete="email" 
+                                                                       autofocus>
+                                                                       @error('email')
+                                                                       <span style="text-align: left" class=" invalid-feedback text-danger" role="alert">
+                                                                           <strong>{{ $message }}</strong>
+                                                                       </span>
+                                                                       @enderror
                                                             </div>
+                                                           
                                                         </div>
-                
+                                                
+                                                        <!-- Password Input -->
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <i class="bx bx-lock-alt"></i>
-                                                                <input class="form-control" type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                                                                <input type="password" 
+                                                                       name="password" 
+                                                                       class="form-control @error('password') is-invalid @enderror" 
+                                                                       placeholder="Password" 
+                                                                       required 
+                                                                       autocomplete="current-password">
                                                                 @error('password')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
                                                                 @enderror
                                                             </div>
                                                         </div>
-
+                                                
+                                                        <!-- Submit Button -->
                                                         <div class="col-lg-12 col-md-12 text-center">
-                                                            <button type="submit" class="default-btn user-all-btn disabled">
+                                                            <button type="submit" class="default-btn user-all-btn">
                                                                 Login
                                                             </button>
                                                         </div>
-                
+                                                
+                                                        <!-- Remember Me Checkbox -->
                                                         <div class="col-lg-6 col-sm-6 form-condition">
                                                             <div class="agree-label">
-                                                                <input type="checkbox"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                                <input type="checkbox" 
+                                                                       name="remember" 
+                                                                       id="remember" 
+                                                                       {{ old('remember') ? 'checked' : '' }}>
                                                                 <label for="remember">
                                                                     Remember Me
                                                                 </label>
                                                             </div>
                                                         </div>
-                            
+                                                
+                                                        <!-- Forgot Password Link -->
                                                         <div class="col-lg-6 col-sm-6">
                                                             @if (Route::has('password.request'))
                                                                 <a class="forget" href="{{ route('password.request') }}">
@@ -91,6 +113,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
+                                                
                                                 
                                             </div>
                                         </div>

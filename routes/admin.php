@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\GoogleCalendarController;
 use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\RecognitionController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BlogController;
@@ -26,6 +27,8 @@ use App\Http\Controllers\Admin\AdovacyPolicyController;
 use App\Http\Controllers\Admin\AdvisoryBoardMemberController;
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\CertificationController;
+use App\Http\Controllers\Admin\PrivacyController;
+use App\Http\Controllers\Admin\TermsConditionController;
 
 
 
@@ -39,7 +42,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/settings/show-password', [AdminLoginController::class, 'showChangePasswordForm'])->name('admin.show.password');
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
         // Menu
-       
         Route::get('/menu/create', [MenuController::class, 'creatMenu'])->name('admin.menu.create');
         Route::get('/manage/menu/index', [MenuController::class, 'indexMenu'])->name('admin.menu.index');
         Route::post('/menu', [MenuController::class, 'storeMenu'])->name('admin.menu.store');
@@ -61,13 +63,16 @@ Route::prefix('admin')->group(function () {
         //User
         Route::name('admin.')->group(function () {
             Route::resource('users', UserController::class);
-        });
+        }); 
         //Application
         Route::name('admin.')->group(function () {
             Route::resource('application', ApplicationController::class);
         });
-        Route::get('/transaction', [AdminController::class, 'transaction'])->name('admin.transaction.index');
-     
+        Route::name('admin.')->group(function () {
+            Route::resource('recognition', RecognitionController::class);
+        });
+        
+       
         //About us
         Route::get('/settings/about-us', [SettingsController::class, 'getAboutUs'])->name('admin.settings.aboutUs');
        
@@ -85,6 +90,7 @@ Route::prefix('admin')->group(function () {
         // Route::get('/members-benefit', [AdovacyPolicyController::class, 'membersBenefit'])->name('admin.members.membersBenefit');
         Route::post('/policies-governance/post', [AdovacyPolicyController::class, 'policiesGovernanceStore'])->name('admin.policiesGovernanceFramework.store');
         Route::put('/policies-governance/update/{id}', [AdovacyPolicyController::class, 'policiesGovernanceUpate'])->name('admin.policiesGovernanceFramework.update');
+       
         // advisoryBoardMember
         Route::get('/advisory-board-member', [AdvisoryBoardMemberController::class, 'index'])->name('admin.advisoryBoardMember.index');
         Route::get('/advisory-board-member/create', [AdvisoryBoardMemberController::class, 'create'])->name('admin.advisoryBoardMember.create');
@@ -159,12 +165,16 @@ Route::prefix('admin')->group(function () {
         Route::put('career/update/{id}', [CareerController::class, 'update'])->name('admin.career.update');
        
 
-         //Privacy
-        // Route::get('/index/privacypolicy', [PrivacyController::class, 'index'])->name('admin.privacyPolicy.index');
-        // Route::post('/store/privacypolicy', [PrivacyController::class, 'store'])->name('admin.privacy.store');
-        // Route::put('/update/privacypolicy/{id}', [PrivacyController::class, 'update'])->name('admin.privacy.update');
+        //  Privacy
+        Route::get('/index/privacypolicy', [PrivacyController::class, 'index'])->name('admin.privacyPolicy.index');
+        Route::post('/store/privacypolicy', [PrivacyController::class, 'store'])->name('admin.privacy.store');
+        Route::put('/update/privacypolicy/{id}', [PrivacyController::class, 'update'])->name('admin.privacy.update');
         
-        
+        //Terms Conditions
+        Route::get('/terms/conditions', [TermsConditionController::class, 'index'])->name('admin.termsCondition.index');
+        Route::post('/terms/conditions/store/', [TermsConditionController::class, 'store'])->name('admin.termsCondition.store');
+        Route::put('/terms/conditions/update/{id}', [TermsConditionController::class, 'update'])->name('admin.termsCondition.update');
+          
         //Events
         Route::get('events/index', [EventController::class, 'index'])->name('admin.events.index');
         Route::get('events/create', [EventController::class, 'create'])->name('admin.events.create');
@@ -189,7 +199,6 @@ Route::prefix('admin')->group(function () {
         Route::get('blog/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
         Route::put('blog/{id}', [BlogController::class, 'update'])->name('admin.blog.update');
         Route::get('blog/{id}', [BlogController::class, 'destroy'])->name('admin.blog.destroy');
-        Route::get('blog/{id}/details', [BlogController::class, 'details'])->name('blog.details');
         
         //Event
         Route::get('event/index', [EventController::class, 'index'])->name('admin.event.index');

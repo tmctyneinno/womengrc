@@ -1623,7 +1623,7 @@ Team Area
   margin-bottom: 30px;
   transition: 0.7s;
 }
-.team-card:hover {
+.team-card {
   transform: translateY(-10px);
 }
 .team-card a {
@@ -4140,7 +4140,6 @@ Blog Area End
   position: relative;
 }
 .blog-article .article-content .content-text::before {
-  content: "D";
   position: absolute;
   font-size: 100px;
   color: var(--titleColor);
@@ -4149,7 +4148,7 @@ Blog Area End
   font-weight: 500;
 }
 .blog-article .article-content .content-text p {
-  margin-left: 75px;
+  text-align: justify;
   margin-bottom: 10px;
 }
 .blog-article .article-content .blockquote {

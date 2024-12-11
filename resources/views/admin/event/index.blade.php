@@ -7,7 +7,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Event</a></li>
-                
+                 
             </ol>
         </div>
         <!-- row -->
@@ -42,7 +42,7 @@
                         </div>
                     </div>
 
-                    
+                     
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-responsive-md">
@@ -84,25 +84,25 @@
 
                              <div class="d-flex align-items-center justify-content-between flex-wrap">
                                 <p class="mb-2 me-3">
-                                    Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}, showing {{ $posts->count() }} records out of {{ $posts->total() }} total, starting on record {{ $posts->firstItem() }}, ending on record {{ $posts->lastItem() }}
+                                    Page {{ $blogs->currentPage() }} of {{ $blogs->lastPage() }}, showing {{ $blogs->count() }} records out of {{ $blogs->total() }} total, starting on record {{ $blogs->firstItem() }}, ending on record {{ $blogs->lastItem() }}
                                 </p>  
                                 <nav aria-label="Page navigation example mb-2">
                                   <ul class="pagination mb-2 mb-sm-0">
                                  
-                                    <li class="page-item {{ $posts->onFirstPage() ? 'disabled' : '' }}">
-                                      <a class="page-link" href="{{ $posts->previousPageUrl() }}">
+                                    <li class="page-item {{ $blogs->onFirstPage() ? 'disabled' : '' }}">
+                                      <a class="page-link" href="{{ $blogs->previousPageUrl() }}">
                                        
                                         <i>Previous</i>
                                       </a>
                                     </li>
-                                    @for ($i = 1; $i <= $posts->lastPage(); $i++)
-                                      <li class="page-item {{ $posts->currentPage() == $i ? 'active' : '' }}">
-                                        <a class="page-link" href="{{ $posts->url($i) }}">{{ $i }}</a>
+                                    @for ($i = 1; $i <= $blogs->lastPage(); $i++)
+                                      <li class="page-item {{ $blogs->currentPage() == $i ? 'active' : '' }}">
+                                        <a class="page-link" href="{{ $blogs->url($i) }}">{{ $i }}</a>
                                       </li>
                                     @endfor
                           
-                                    <li class="page-item {{ $posts->hasMorePages() ? '' : 'disabled' }}">
-                                      <a class="page-link" href="{{ $posts->nextPageUrl() }}">
+                                    <li class="page-item {{ $blogs->hasMorePages() ? '' : 'disabled' }}">
+                                      <a class="page-link" href="{{ $blogs->nextPageUrl() }}">
                                         <i>Next</i>
                                       </a>
                                     </li>

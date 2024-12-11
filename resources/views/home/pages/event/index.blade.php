@@ -8,7 +8,7 @@
  <div class="inner-banner inner-bg5">
     <div class="container">
         <div class="inner-banner-title text-center">
-            <h3>Iconic Cafe in Ontario</h3>
+            <h3>Events</h3>
             <p>Empowering Women, Transforming Leadership, Driving Innovation</p>
         </div>
         
@@ -26,28 +26,12 @@
                         <li>
                             <i class='bx bx-chevron-right'></i>
                         </li>
-                        <li class="active">Blog</li>
+                        <li class="active">Event</li>
                     </ul>
                 </div>
 
                 <div class="col-lg-6 col-md-5">
-                    <ul class="social-link">
-                        <li>
-                            <a href="https://www.facebook.com/login/" target="_blank"><i class='bx bxl-facebook'></i></a>
-                        </li> 
-                        <li>
-                            <a href="https://twitter.com/i/flow/login" target="_blank"><i class='bx bxl-twitter'></i></a>
-                        </li> 
-                        <li>
-                            <a href="https://www.instagram.com/accounts/login/" target="_blank"><i class='bx bxl-instagram'></i></a>
-                        </li> 
-                        <li>
-                            <a href="https://www.pinterest.com/" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
-                        </li> 
-                        <li>
-                            <a href="https://www.youtube.com/" target="_blank"><i class='bx bxl-youtube'></i></a>
-                        </li> 
-                    </ul>
+                    @include('home.pages.social_link')
                 </div>
             </div>
         </div>
@@ -55,123 +39,69 @@
 </div>
 <!-- Inner Banner End -->
 
-<!-- Blog Area -->
-<div class="blog-area pt-100 pb-70">
-   <div class="container">
-        <div class="section-title text-center">
-            <span>Blog</span>
-            <h2>Latest Blog <b>Post</b></h2>
+
+
+<!-- Listing Widget Section -->
+<div class="listing-widget-section pt-100 pb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="listing-widget-into">
+                    <div class="section-title text-center">
+                        <span>Events</span>
+                        <h2>Latest Events </h2>
+                    </div>
+
+                    <div class="row pt-45 justify-content-center">
+                        @forelse ($events as $event)
+                            <div class="col-lg-4 col-md-6">
+                                <div class="place-list-item">
+                                    <div class="images">
+                                        <a href="{{ route('events.show', $event->slug) }}" class="images-list">
+                                            <img src="{{ asset($event->image) }}" alt="{{ $event->title }}">
+                                        </a>
+                                        
+                                        <div class="place-tag">
+                                            
+                                            <h3 class="title"><a href="{{ route('events.show', $event->slug) }}">{{ $event->title }}</a></h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="content">
+                                        <a href="{{ route('events.show', $event->slug) }}">
+                                            <h3>{{ $event->title }}</h3>
+                                        </a> 
+                                        <p>
+                                            {!! Str::limit($event->content, 60) !!}
+                                        </p>
+
+                                        <ul class="place-rating">
+                                            
+                                        </ul>
+                                    </div>
+                                </div>                
+                            </div>
+                        @empty
+                            <p>No data available</p>    
+                        @endforelse
+
+                       
+
+
+                        <div class="col-lg-12 text-center"> 
+                            <a href="{{ route('home.pages', 'event') }}" class="default-btn border-radius">
+                                Load More  
+                                <i class='bx bx-plus'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-       <div class="row pt-45">
-           <div class="col-lg-4 col-md-6">
-               <div class="blog-card">
-                   <a href="blog-details.html">
-                       <img src="assets/img/blog/blog1.jpg" alt="Images">
-                   </a>
-                   <div class="content">
-                        <span>April 19, 2024 / <a href="#">Restaurant</a></span>
-                        <h3>
-                            <a href="blog-details.html">Denisto Centin Restaurant, Canada</a>
-                        </h3>  
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-               </div>
-           </div>
-
-           <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <a href="blog-details.html">
-                        <img src="assets/img/blog/blog2.jpg" alt="Images">
-                    </a>
-                    <div class="content">
-                        <span>June 29, 2024 / <a href="#">PLATFORM</a></span>
-                        <h3>
-                            <a href="blog-details.html">Top 10 Business Location in Usa</a>
-                        </h3>  
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <a href="blog-details.html">
-                        <img src="assets/img/blog/blog3.jpg" alt="Images">
-                    </a>
-                    <div class="content">
-                        <span>July 15, 2024 / <a href="#">ADVICE</a></span>
-                        <h3>
-                            <a href="blog-details.html">Top 10 Visiting Place in Turkey</a>
-                        </h3>  
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <a href="blog-details.html">
-                        <img src="assets/img/blog/blog4.jpg" alt="Images">
-                    </a>
-                    <div class="content">
-                        <span>May 14, 2024 / <a href="#">CLUB</a></span>
-                        <h3>
-                            <a href="blog-details.html">Top 10 Fitness Club in Canada</a>
-                        </h3>  
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <a href="blog-details.html">
-                        <img src="assets/img/blog/blog5.jpg" alt="Images">
-                    </a>
-                    <div class="content">
-                        <span>March 14, 2024 / <a href="#">SHOPS</a></span>
-                        <h3>
-                            <a href="blog-details.html">The Best Coffee Shops In London</a>
-                        </h3>  
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <a href="blog-details.html">
-                        <img src="assets/img/blog/blog6.jpg" alt="Images">
-                    </a>
-                    <div class="content">
-                        <span>January 22, 2024 / <a href="#">ADVICE</a></span>
-                        <h3>
-                            <a href="blog-details.html">Top 10 Visiting Place in England</a>
-                        </h3>  
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-12 col-md-12">
-                <div class="pagination-area text-center">
-                    <a href="#" class="prev page-numbers">
-                        <i class="bx bx-chevron-left"></i>
-                    </a>
-                    
-                    <span class="page-numbers current" aria-current="page">1</span>
-                    <a href="#" class="page-numbers">2</a>
-                    <a href="#" class="page-numbers">3</a>
-                    <a href="#" class="page-numbers">4</a>
-                    
-                    <a href="#" class="next page-numbers">
-                        <i class="bx bx-chevron-right"></i>
-                    </a>
-                </div>
-            </div>
-       </div>
-   </div>
+    </div>
 </div>
-<!-- Blog Area End -->
-    
+<!-- Listing Widget Section End -->
+
+
+
 @endsection

@@ -12,6 +12,8 @@ class VisionMission extends Model
         'mission', 
         'mission_img', 
         'vision',  
-        'vision_img' 
+        'vision_img',
+        'purpose',
+        'purpose_img',
     ];
 } 

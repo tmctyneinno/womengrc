@@ -42,7 +42,7 @@
                                 <a href="#">
                                     <img class="logo-auth"src="{{ $contactUs ? asset($contactUs->site_logo) : ''}}" width="20" alt="">
                                 </a> 
-                            </div>
+                            </div> 
 
                             @if(session('success'))
                                 <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">

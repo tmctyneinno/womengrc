@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('mission_img');
             $table->text('vision');
             $table->text('vision_img');
+            $table->text('purpose');
+            $table->text('purpose_img');
             $table->timestamps();
         });
     }

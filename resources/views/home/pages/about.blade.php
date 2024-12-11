@@ -6,7 +6,7 @@
 
  
         <!-- Inner Banner -->
-        <div class="inner-banner" style="background-image: url({{ asset($aboutUs->header_image) }});">
+        <div class="inner-banner"  style="background-image: url({{ asset($aboutUs->header_image) }});">
             <div class="container">
                 <div class="inner-title text-center">
                     <h3>About Us</h3>

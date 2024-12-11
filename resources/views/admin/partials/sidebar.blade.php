@@ -20,9 +20,9 @@
                 </a>
             </li> 
             <li> 
-                <a class="has-arrow ai-icon" href="{{ route('admin.transaction.index') }}" aria-expanded="false">
+                <a class="has-arrow ai-icon" href="{{ route('admin.recognition.index') }}" aria-expanded="false">
                 <i class="flaticon-381-layer-1"></i>
-                <span class="nav-text">Transaction</span>
+                <span class="nav-text">Recognition</span>
                 </a>
             </li> 
             
@@ -57,7 +57,7 @@
                     <li>
                         <a  href="{{route('admin.testimonials.index')}}" aria-expanded="false">Testimonials</a>
                     </li>
-                    <li>
+                    <li> 
                         <a  href="{{ route('admin.members') }}" aria-expanded="false">
                             Membership
                         </a>

@@ -29,14 +29,14 @@
                     {{-- <img src="assets/img/logo/logo1.png" alt="Logo"> --}}
                     
                     <img 
-                    style="max-width: 100%; max-height:100%; object-fit:cover; width:100px; height:50px "
+                    style="max-width: 100%; max-height:100%; object-fit:cover; width:300px; height:50px "
                     src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
  
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
-                        @forelse ($menuItems as $item)
+                        @forelse ($menuItems as $item) 
                             <li class="nav-item">
                                 <a href="{{ route('home.pages', $item->slug) }}" class="nav-link">
                                     {{ $item->name }}
@@ -62,18 +62,17 @@
                     </ul>
                 
                     <div class="side-nav d-in-line align-items-center">
-                        <div class="side-item">
+                        {{-- <div class="side-item">
                             <div class="cart-btn">
                                 <a href="{{ route('login')}}" style="color: #fff">
                                     Login/Register
                                 </a>
                             </div>
-                        </div>
+                        </div> --}} 
                         <div class="side-item">
                             <div class="nav-add-btn">
-                                <a href="listing-details.html" class="default-btn border-radius">
-                                    Get Involved
-                                    <i class='bx bx-plus'></i>
+                                <a href="{{ route('home.login')}}" class="default-btn border-radius">
+                                    Login/Register
                                 </a>
                             </div>
                         </div>

@@ -10,7 +10,7 @@
                     @csrf
                     @if(isset($visionMission))
                         @method('PUT')
-                    @endif  
+                    @endif   
                     <div class="row">
                          
                         
@@ -45,6 +45,22 @@
                                 <img src="{{ asset($visionMission->mission_img) }}" alt="Current Mission Image" class="img-thumbnail mt-2" width="200">
                             @endif
                             <img id="mission_img" src="" alt="Image Preview" class="img-thumbnail mt-2" style="display:none; max-width: 200px;">
+                        </div>
+
+                        <div class="mb-3 col-md-10">
+                            <label class="form-label">Purpose statement</label>
+                            <textarea id="purpose" class="form-control"  name="purpose" rows="8" spellcheck="false" required> {{ isset($visionMission) ? $visionMission->purpose : '' }} </textarea>
+                        </div>
+                        <div class="mb-3 col-md-10">
+                            <label class="form-label">Purpose Statement Image</label>
+                            <input type="file" class="form-control @error('purpose_img') is-invalid @enderror" name="purpose_img" onchange="purposeImage(event, 'purpose_img')">
+                            @error('purpose_img')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                            @if(isset($visionMission) && $visionMission->purpose_img)
+                                <img src="{{ asset($visionMission->purpose_img) }}" alt="Current Mission Image" class="img-thumbnail mt-2" width="200">
+                            @endif
+                            <img id="purpose_img" src="" alt="Image Preview" class="img-thumbnail mt-2" style="display:none; max-width: 200px;">
                         </div>
                         
                     </div>
@@ -90,6 +106,21 @@
 <script>
      CKEDITOR.replace('ckeditor');
     function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('image-preview');
+        
+        if (input.files && input.files[0]) { 
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function purposeImage(event) {
         const input = event.target;
         const preview = document.getElementById('image-preview');
         

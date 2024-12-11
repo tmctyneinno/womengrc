@@ -146,306 +146,32 @@
             <span>Events Lists</span>
             <h2>The Latest Events Added</h2>
         </div>
-        <div class="place-slider owl-carousel owl-theme pt-45">
-            <div class="place-list-item">
-                <div class="images">
-                    <a href="listing-details.html" class="images-list">
-                        <img src="assets/img/place-list/place-list1.jpg" alt="Images">
-                    </a>
-                    
-                    <div class="place-profile">
-                        <img src="assets/img/place-list/place-profile.png" alt="Images">
-                        <h3>By, Alfred</h3>
+        <div class="row  pt-45">
+            @forelse ($recentEvent as $event)
+                <div class="col-lg-4 place-list-item">
+                    <div class="images">
+                        <a href="{{ route('events.show', $event->slug) }}" class="images-list">
+                            <img src="{{ asset($event->image) }}" alt="{{ $event->title }}">
+                        </a>
+                        <div class="place-tag"> 
+                            <h3 class="title"><a href="{{ route('events.show', $event->slug) }}">{{ $event->title }}</a></h3>
+                        </div>
                     </div>
-                    <div class="place-status bg-dark-orange">
-                        <a href="listing-details.html"><h3>Open Now</h3></a>
-                    </div>
-                    <div class="place-tag">
-                        <ul>
-                            <li>
-                                <a href="https://www.google.com/maps">
-                                    <i class="flaticon-place"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-like"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-workflow"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <span><a href="shop-details.html">$$$</a></span>
-                        <h3 class="title"><a href="listing-details.html">Restaurant</a></h3>
+
+                    <div class="content">
+                        <a href="{{ route('events.show', $event->slug) }}">
+                            <h3>{{ $event->title }}</h3>
+                        </a> 
+                        <p>
+                            {!! Str::limit($event->content, 60) !!}
+                        </p>
+
                     </div>
                 </div>
 
-                <div class="content">
-                    <a href="listing-details.html">
-                        <h3>The Billiard Restaurant</h3>
-                    </a> 
-                    <p>
-                        <i class="flaticon-cursor"></i>
-                        Dorente rio, 104, 00184 Crono, Canada
-                    </p>
-
-                    <ul class="place-rating">
-                        <li>
-                            <a href="#">4.9</a>
-                        </li>
-                        <li>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star icon-color'></i>
-                            <i class='bx bxs-star icon-color'></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="place-list-item">
-                <div class="images">
-                    <a href="listing-details.html" class="images-list">
-                        <img src="assets/img/place-list/place-list2.jpg" alt="Images">
-                    </a>
-                    
-                    <div class="place-profile">
-                        <img src="assets/img/place-list/place-profile2.png" alt="Images">
-                        <h3>By, Jaein</h3>
-                    </div>
-                    <div class="place-status bg-dark-orange">
-                        <a href="listing-details.html"><h3>Closed Now</h3></a>
-                    </div>
-                    <div class="place-tag">
-                        <ul>
-                            <li>
-                                <a href="https://www.google.com/maps">
-                                    <i class="flaticon-place"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-like"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-workflow"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <span><a href="shop-details.html">$$$</a></span>
-                        <h3 class="title"> <a href="#">Beauty Shop</a></h3>
-                    </div>
-                </div>
-
-                <div class="content">
-                    <a href="listing-details.html">
-                        <h3>The Beauty Shop</h3>
-                    </a> 
-                    <p>
-                        <i class="flaticon-cursor"></i>
-                        Davisto Laterani, 104, 00184 Roma, Italy
-                    </p>
-
-                    <ul class="place-rating">
-                        <li>
-                            <a href="#">5.0</a>
-                        </li>
-                        <li>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="place-list-item">
-                <div class="images">
-                    <a href="listing-details.html" class="images-list">
-                        <img src="assets/img/place-list/place-list3.jpg" alt="Images">
-                    </a>
-                    
-                    <div class="place-profile">
-                        <img src="assets/img/place-list/place-profile3.png" alt="Images">
-                        <h3>By, Normand</h3>
-                    </div>
-                    <div class="place-status bg-color-blue">
-                        <a href="listing-details.html"><h3>Open Now</h3></a> 
-                    </div>
-                    <div class="place-tag">
-                        <ul>
-                            <li>
-                                <a href="listing-details.html">
-                                    <i class="flaticon-place"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="listing-details.html">
-                                    <i class="flaticon-like"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-workflow"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <span><a href="shop-details.html">$$$</a></span>
-                        <h3 class="title"><a href="#">Fitness Club</a></h3>
-                    </div>
-                </div>
-
-                <div class="content">
-                    <a href="listing-details.html">
-                        <h3>Ridge Fitness Club</h3>
-                    </a> 
-                    <p>
-                        <i class="flaticon-cursor"></i>
-                        Ke visto Onterio, 104, 6789 Rcona, usa
-                    </p>
-
-                    <ul class="place-rating">
-                        <li>
-                            <a href="#">4.5</a>
-                        </li>
-                        <li>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star icon-color'></i>
-                            <i class='bx bxs-star icon-color'></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="place-list-item">
-                <div class="images">
-                    <a href="listing-details.html" class="images-list">
-                        <img src="assets/img/place-list/place-list4.jpg" alt="Images">
-                    </a>
-                    
-                    <div class="place-profile">
-                        <img src="assets/img/place-list/place-profile4.png" alt="Images">
-                        <h3>By, Olfred</h3>
-                    </div>
-                    <div class="place-status bg-color-blue">
-                        <a href="listing-details.html"><h3>Open Now</h3></a>
-                    </div>
-                    <div class="place-tag">
-                        <ul>
-                            <li>
-                                <a href="https://www.google.com/maps">
-                                    <i class="flaticon-place"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-like"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-workflow"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <span><a href="shop-details.html">$$$</a></span>
-                        <h3 class="title"><a href="#">Hotel</a></h3>
-                    </div>
-                </div>
-
-                <div class="content">
-                    <a href="listing-details.html">
-                        <h3>The Hotel</h3>
-                    </a> 
-                    <p>
-                        <i class="flaticon-cursor"></i>
-                        Ostapin, 134, 00184 Coventry, London 
-                    </p>
-
-                    <ul class="place-rating">
-                        <li>
-                            <a href="#">4.7</a>
-                        </li>
-                        <li>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star icon-color'></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="place-list-item">
-                <div class="images">
-                    <a href="listing-details.html" class="images-list">
-                        <img src="assets/img/place-list/place-list1.jpg" alt="Images">
-                    </a>
-                    
-                    <div class="place-profile">
-                        <img src="assets/img/place-list/place-profile.png" alt="Images">
-                        <h3>By, Alfred</h3>
-                    </div>
-                    <div class="place-status bg-dark-orange">
-                        <a href="listing-details.html"><h3>Open Now</h3></a>
-                    </div>
-                    <div class="place-tag">
-                        <ul>
-                            <li>
-                                <a href="https://www.google.com/maps">
-                                    <i class="flaticon-place"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-like"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="shop-details.html">
-                                    <i class="flaticon-workflow"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <span><a href="shop-details.html">$$$</a></span>
-                        <h3 class="title"><a href="listing-details.html">Restaurant</a></h3>
-                    </div>
-                </div>
-
-                <div class="content">
-                    <a href="listing-details.html">
-                        <h3>The Billiard Restaurant</h3>
-                    </a> 
-                    <p>
-                        <i class="flaticon-cursor"></i>
-                        Dorente rio, 104, 00184 Crono, Canada
-                    </p>
-
-                    <ul class="place-rating">
-                        <li>
-                            <a href="#">4.9</a>
-                        </li>
-                        <li>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star icon-color'></i>
-                            <i class='bx bxs-star icon-color'></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            @empty
+                <p>No data available</p>    
+            @endforelse
         </div>
     </div>
 </section>
@@ -512,369 +238,77 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-7 col-md-6">
                 <div class="section-title mb-45">
-                    <span>Desire Places</span>
-                    <h2>Most Popular Places</h2>
+                    <span>Blog</span>
+                    <h2>Most Popular Blog</h2>
                 </div>
             </div>
             <div class="col-lg-5 col-md-6">
                 <div class="place-btn">
-                    <a href="listing.html" class="default-btn border-radius">
-                        Check out all places
+                    <a href="{{ route('home.pages', 'blog') }}" class="default-btn border-radius">
+                        Check out all Blog
                         <i class='bx bx-plus'></i>
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6">
-                <div class="place-card">
-                    <a href="listing-details.html" class="place-images">
-                        <img src="assets/img/place-area/place-area1.jpg" alt="Images">
-                    </a>
-                    <div class="rating">
-                        <ul>
-                            <li>
-                                <a href="#">4.9</a>
-                            </li>
-                            <li>
-                                <span>23 Review</span>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star i-color'></i>
-                                <i class='bx bxs-star i-color'></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="status-tag bg-dark-orange">
-                        <a href="listing-details.html"><h3>Closed Now</h3></a>
-                    </div>
-                    <div class="content">
-                        <div class="content-profile">
-                            <img src="assets/img/place-area/place-area-profile.png" alt="Images">
-                            <h3>By, Lowis Jelda</h3>
-                        </div>
-                        <span>
-                            <i class="flaticon-cursor"></i>
-                            Dongo 184 Crono, Canada
-                        </span>
-                        <a href="listing-details.html"><h3>Denisto Centin Restaurant </h3></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur  quam quaerat voluptatem.</p>
-                        <div class="content-tag">
-                            <ul>
-                                <li>
-                                    <a href="https://www.google.com/maps">
-                                        <i class="flaticon-place"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop-details.html">
-                                        <i class="flaticon-like"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <i class="flaticon-workflow"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <h3 class="price"> <a href="#">$560-890</a></h3>
+        <div class="row pt-45">
+            @forelse ($recentBlog as $blog)
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <a href="{{ route('blog.detail', $blog->slug) }}">
+                            <img src="{{ asset($blog->image) }}" alt="Images">
+                        </a> 
+                        <div class="content" >
+                            <span>{{ $blog->created_at->format('F d, Y') }}</a></span>
+                            <h3 >
+                                <a href="{{ route('blog.detail', $blog->slug) }}">{{ $blog->title }}</a>
+                            </h3>  
+                            <p>{!! Str::limit($blog->content, 100) !!}</p>
+                            <a href="{{ route('blog.detail', $blog->slug) }}" class="read-more">Read More</a>
                         </div>
                     </div>
+                </div>
+            @empty
+                <p>No data available</p>    
+            @endforelse
+ 
+            <div class="col-lg-12 col-md-12">
+                <div class="pagination-area text-center">
+                    <!-- Previous Page Link -->
+                    @if ($blogs->onFirstPage())
+                        <a href="#" class="prev page-numbers disabled">
+                            <i class="bx bx-chevron-left"></i>
+                        </a>
+                    @else
+                        <a href="{{ $blogs->previousPageUrl() }}" class="prev page-numbers">
+                            <i class="bx bx-chevron-left"></i>
+                        </a>
+                    @endif
+
+                    <!-- Pagination Numbers -->
+                    @foreach ($blogs->getUrlRange(1, $blogs->lastPage()) as $page => $url)
+                        <a href="{{ $url }}" class="page-numbers {{ $page == $blogs->currentPage() ? 'current' : '' }}">
+                            {{ $page }}
+                        </a>
+                    @endforeach
+
+                    <!-- Next Page Link -->
+                    @if ($blogs->hasMorePages())
+                        <a href="{{ $blogs->nextPageUrl() }}" class="next page-numbers">
+                            <i class="bx bx-chevron-right"></i>
+                        </a>
+                    @else
+                        <a href="#" class="next page-numbers disabled">
+                            <i class="bx bx-chevron-right"></i>
+                        </a>
+                    @endif
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="place-card">
-                    <a href="listing-details.html" class="place-images">
-                        <img src="assets/img/place-area/place-area2.jpg" alt="Images">
-                    </a>
-                    <div class="rating">
-                        <ul>
-                            <li>
-                                <a href="#">5.0</a>
-                            </li>
-                            <li>
-                                <span>30 Review</span>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="status-tag bg-color-blue">
-                        <a href="listing-details.html"><h3>Open Now</h3></a>
-                    </div>
-                    <div class="content">
-                        <div class="content-profile">
-                            <img src="assets/img/place-area/place-area-profile2.png" alt="Images">
-                            <h3>By, Austin Deli</h3>
-                        </div>
-                        <span>
-                            <i class="flaticon-cursor"></i>
-                            40 Square Plaza, NJ, USA
-                        </span>
-                        <a href="listing-details.html"><h3>Iconic Cafe in Ontario</h3></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur  quam quaerat voluptatem.</p>
-                        <div class="content-tag">
-                            <ul>
-                                <li>
-                                    <a href="https://www.google.com/maps">
-                                        <i class="flaticon-place"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop-details.html">
-                                        <i class="flaticon-like"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                  <a href="shop.html">
-                                        <i class="flaticon-workflow"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <h3 class="price"><a href="#">$500-700</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="place-card">
-                    <a href="listing-details.html" class="place-images">
-                        <img src="assets/img/place-area/place-area3.jpg" alt="Images">
-                    </a>
-                    <div class="rating">
-                        <ul>
-                            <li>
-                                <a href="#">4.9</a>
-                            </li>
-                            <li>
-                                <span>23 Review</span>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star i-color'></i>
-                                <i class='bx bxs-star i-color'></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="status-tag bg-color-heliotrope">
-                        <a href="listing-details.html"><h3>Open Now</h3></a>
-                    </div>
-                    <div class="content">
-                        <div class="content-profile">
-                            <img src="assets/img/place-area/place-area-profile3.png" alt="Images">
-                            <h3>By, Polin Osto</h3>
-                        </div>
-                        <span>
-                            <i class="flaticon-cursor"></i>
-                            34-42 Montgomery St , NY, USA
-                        </span>
-                        <a href="listing-details.html"><h3>Strong body Gym</h3></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur  quam quaerat voluptatem.</p>
-                        <div class="content-tag">
-                            <ul>
-                                <li>
-                                    <a href="https://www.google.com/maps">
-                                        <i class="flaticon-place"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop-details.html">
-                                        <i class="flaticon-like"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                  <a href="shop.html">
-                                        <i class="flaticon-workflow"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <h3 class="price"><a href="listing-details.html">$400-800</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="place-card">
-                    <a href="listing-details.html" class="place-images">
-                        <img src="assets/img/place-area/place-area4.jpg" alt="Images">
-                    </a>
-                    <div class="rating">
-                        <ul>
-                            <li>
-                                <a href="#">4.8</a>
-                            </li>
-                            <li>
-                                <span>16 Review</span>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star i-color'></i>
-                                <i class='bx bxs-star i-color'></i>
-                                <i class='bx bxs-star i-color'></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="status-tag bg-dark-orange">
-                        <a href="listing-details.html"><h3>Closed Now</h3></a> 
-                    </div>
-                    <div class="content">
-                        <div class="content-profile">
-                            <img src="assets/img/place-area/place-area-profile4.png" alt="Images">
-                            <h3>By, Debit Jhon</h3>
-                        </div>
-                        <span>
-                            <i class="flaticon-cursor"></i>
-                            27th Brooklyn New York, USA
-                        </span>
-                        <a href="listing-details.html"><h3>Family Convenience Store</h3></a> 
-                        <p>Lorem ipsum dolor sit amet, consectetur  quam quaerat voluptatem.</p>
-                        <div class="content-tag">
-                            <ul>
-                                <li>
-                                    <a href="https://www.google.com/maps">
-                                        <i class="flaticon-place"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop-details.html">
-                                        <i class="flaticon-like"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                  <a href="shop.html">
-                                        <i class="flaticon-workflow"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <h3 class="price"><a href="#">$560-890</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="place-card">
-                    <a href="listing-details.html" class="place-images">
-                        <img src="assets/img/place-area/place-area5.jpg" alt="Images">
-                    </a>
-                    <div class="rating">
-                        <ul>
-                            <li>
-                                <a href="#">5.0</a>
-                            </li>
-                            <li>
-                                <span>16 Review</span>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="status-tag bg-color-blue">
-                        <a href="listing-details.html"><h3>Closed Now</h3></a>
-                    </div>
-                    <div class="content">
-                        <div class="content-profile">
-                            <img src="assets/img/place-area/place-area-profile5.png" alt="Images">
-                            <h3>By, Kelvin Sasi</h3>
-                        </div>
-                        <span>
-                            <i class="flaticon-cursor"></i>
-                            56 Street Square Plaza, NJ, USA
-                        </span>
-                        <a href="listing-details.html"><h3>Iconic Cafe in Onterio</h3></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur  quam quaerat voluptatem.</p>
-                        <div class="content-tag">
-                            <ul>
-                                <li>
-                                    <a href="https://www.google.com/maps">
-                                        <i class="flaticon-place"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop-details.html">
-                                        <i class="flaticon-like"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                  <a href="shop.html">
-                                        <i class="flaticon-workflow"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <h3 class="price"><a href="#">$300-600</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="place-card">
-                    <a href="listing-details.html" class="place-images">
-                        <img src="assets/img/place-area/place-area6.jpg" alt="Images">
-                    </a>
-                    <div class="rating">
-                        <ul>
-                            <li>
-                                <a href="#">5.0</a>
-                            </li>
-                            <li>
-                                <span>39 Review</span>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="status-tag bg-color-green">
-                        <a href="listing-details.html"><h3>Open Now</h3></a>
-                    </div>
-                    <div class="content">
-                        <div class="content-profile">
-                            <img src="assets/img/place-area/place-area-profile6.png" alt="Images">
-                            <h3>By, Creiun Hitler</h3>
-                        </div>
-                        <span>
-                            <i class="flaticon-cursor"></i>
-                            34-42 Montgomery St , NY, USA
-                        </span>
-                        <a href="listing-details.html"><h3>Kentorin Hotel</h3></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur  quam quaerat voluptatem.</p>
-                        <div class="content-tag">
-                            <ul>
-                                <li>
-                                    <a href="https://www.google.com/maps">
-                                        <i class="flaticon-place"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop-details.html">
-                                        <i class="flaticon-like"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                  <a href="shop.html">
-                                        <i class="flaticon-workflow"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <h3 class="price"><a href="#">$400-800</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+
     </div>
 </div>
 <!-- Place Area End -->

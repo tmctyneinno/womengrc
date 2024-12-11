@@ -56,7 +56,7 @@
 <!-- Inner Banner End -->
 
 <!-- Blog Area -->
-<div class="blog-area pt-100 pb-70">
+{{-- <div class="blog-area pt-100 pb-70">
    <div class="container">
         <div class="section-title text-center">
             <span>Blog</span>
@@ -171,7 +171,10 @@
             </div>
        </div>
    </div>
-</div>
+</div> --}}
 <!-- Blog Area End -->
+ <div class="blog-area pt-100 pb-70">
+    Coming soon
+ </div>
     
 @endsection

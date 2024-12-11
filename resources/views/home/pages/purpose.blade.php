@@ -6,7 +6,7 @@
 
 
         <!-- Inner Banner -->
-        <div class="inner-banner inner-bg6">
+        <div class="inner-banner " style="background-image: url({{ asset($aboutUs->header_image) }});">
             <div class="container">
                 <div class="inner-title text-center">
                     <h3>Purpose</h3>
@@ -40,7 +40,7 @@
                                     Purpose statement
                                 </h2>
                                 <p>
-                                    To create a supportive platform that champions the advancement of women in GRC, financial crime, and fraud prevention by fostering leadership, professional growth, and collaboration across industries and sectors.
+                                    {!! $visionMission->purpose  !!}
                                 </p>
                             </div>
                            
@@ -49,7 +49,7 @@
 
                     <div class="col-lg-5">
                         <div class="application-img-two">
-                            <img src="assets/img/mobile2.png" alt="Images">
+                            <img src="{{ asset($visionMission->purpose_img)}}" alt="Images">
                         </div>
                     </div>
                 </div>

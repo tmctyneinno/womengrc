@@ -33,106 +33,27 @@
             <div class="container">
                 <div class="section-title text-center">
                     <span>FAQ</span>
-                    <h2>Listing <b>FAQ</b></h2>
+                    <h2>Frequently Asked Questions</h2>
                 </div>
                 <div class="row pt-45">
-                    <div class="col-lg-6">
-                        <div class="faq-item">
-                            <h3>Q: How Can I Create a Free Listing?</h3>
-                            <p>
-                                <strong>A:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat, metus ut tincidunt vestibulum,
-                                nunc tellus fringilla lorem, ut auctor metus felis vel est. Mauris tristique leo nulla, id blandit sem malesuada ac. 
-                                Orci varius natoque penatibus et magnis dis parturient montes.
-                            </p>
+                    @forelse ($faqs as $faq)
+                        <div class="col-lg-6">
+                            <div class="faq-item">
+                                <h3>Q: {{ $faq->question }}</h3>
+                                <p>
+                                    {!! $faq->answer !!}
+                                </p>
+                            </div>
                         </div>
+                    @empty
+                        <p>No data found</p>
+                    @endforelse
+
+                    <div class="pagination-area text-center pt-45">
+                        {{ $faqs->links() }}
                     </div>
 
-                    <div class="col-lg-6">
-                        <div class="faq-item">
-                            <h3>Q: How Much Time Take It Get a Approval?</h3>
-                            <p>
-                                <strong>A:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat, metus ut tincidunt vestibulum,
-                                nunc tellus fringilla lorem, ut auctor metus felis vel est. Mauris tristique leo nulla, id blandit sem malesuada ac. 
-                                Orci varius natoque penatibus et magnis dis parturient montes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="faq-item">
-                            <h3>Q: Is It My Listing?</h3>
-                            <p>
-                                <strong>A:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat, metus ut tincidunt vestibulum,
-                                nunc tellus fringilla lorem, ut auctor metus felis vel est. Mauris tristique leo nulla, id blandit sem malesuada ac. 
-                                Orci varius natoque penatibus et magnis dis parturient montes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="faq-item">
-                            <h3>Q: Is My Listing Secure?</h3>
-                            <p>
-                                <strong>A:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat, metus ut tincidunt vestibulum,
-                                nunc tellus fringilla lorem, ut auctor metus felis vel est. Mauris tristique leo nulla, id blandit sem malesuada ac. 
-                                Orci varius natoque penatibus et magnis dis parturient montes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="faq-item">
-                            <h3>Q:  How To Make It Use Easily?</h3>
-                            <p>
-                                <strong>A:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat, metus ut tincidunt vestibulum,
-                                nunc tellus fringilla lorem, ut auctor metus felis vel est. Mauris tristique leo nulla, id blandit sem malesuada ac. 
-                                Orci varius natoque penatibus et magnis dis parturient montes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="faq-item">
-                            <h3>Q: What is The Premium Listing?</h3>
-                            <p>
-                                <strong>A:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat, metus ut tincidunt vestibulum,
-                                nunc tellus fringilla lorem, ut auctor metus felis vel est. Mauris tristique leo nulla, id blandit sem malesuada ac. 
-                                Orci varius natoque penatibus et magnis dis parturient montes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="faq-item">
-                            <h3>Q: Who Operates the Directory?</h3>
-                            <p>
-                                <strong>A:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat, metus ut tincidunt vestibulum,
-                                nunc tellus fringilla lorem, ut auctor metus felis vel est. Mauris tristique leo nulla, id blandit sem malesuada ac. 
-                                Orci varius natoque penatibus et magnis dis parturient montes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="faq-item">
-                            <h3>Q: How Do I Check or Update My Company Listing?</h3>
-                            <p>
-                                <strong>A:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat, metus ut tincidunt vestibulum,
-                                nunc tellus fringilla lorem, ut auctor metus felis vel est. Mauris tristique leo nulla, id blandit sem malesuada ac. 
-                                Orci varius natoque penatibus et magnis dis parturient montes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12 col-md-12">
+                    {{-- <div class="col-lg-12 col-md-12">
                         <div class="pagination-area text-center">
                             <a href="#" class="prev page-numbers">
 								<i class="bx bx-chevron-left"></i>
@@ -147,7 +68,8 @@
 								<i class="bx bx-chevron-right"></i>
 							</a>
                         </div>
-                    </div>
+                    </div> --}}
+                    
                 </div>
             </div>
         </div>
