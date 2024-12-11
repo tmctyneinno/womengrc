@@ -125,7 +125,9 @@
                             @forelse ($recentBlog as $relatedPost)
                                 <article class="item">
                                     <a href="{{ route('blog.detail', $relatedPost->slug) }}" class="thumb">
-                                        <span class="full-image cover bg3" role="img"></span>
+                                        <span 
+                                        style="background-image: url({{ asset($relatedPost->image)}});"
+                                        class="full-image cover "  role="img"></span>
                                     </a>
                                     <div class="info">
                                         <span>
@@ -153,7 +155,9 @@
                             @forelse ($relatedEvent as $relatedEvent)
                                 <article class="item">
                                     <a href="{{ route('events.show', $relatedEvent->slug) }}" class="thumb">
-                                        <span class="full-image cover bg3" role="img"></span>
+                                        <span 
+                                        style="background-image: url({{ asset($relatedEvent->image)}});"
+                                        class="full-image cover" role="img"></span>
                                     </a>
                                     <div class="info">
                                         <span>

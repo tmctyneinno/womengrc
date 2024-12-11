@@ -48,7 +48,6 @@ class LoginController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        // Attempt to authenticate the user
         if (Auth::attempt($request->only('email', 'password'))) {
             // If successful, redirect to the intended route or dashboard
             return redirect()->intended('/dashboard')->with('success', 'Login successful!');

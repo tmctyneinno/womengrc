@@ -1,77 +1,179 @@
 @extends('layouts.app')
-
+<style>
+    .navbar-custom{
+        background-color: #2a2a2a !important;
+    }
+</style>
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<div class="user-area">
+    <div class="container-fluid m-0">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-7 col-xl-6  p-0">
+                <div class="user-img">
+                    <img src="{{ asset('assets/img/login-img.jpg')}}" alt="Images">
+                </div>
+            </div>
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+            <div class="col-lg-5 col-xl-6">
+                <div class="user-section text-center">
+                    <div class="user-conten ">
+                        <img src="assets/img/logo/logo3.png" alt="">
+                        <h2>Welcome <b>To Women GRC</b></h2>
+                    </div>
+                    <div class="tab user-tab">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12 col-md-12">
+                                <ul class="tabs active">
+                                    <li class="current">
+                                        <a href="#"> <i class="flaticon-contact"></i> Register </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#"> <i class="flaticon-verify"></i> Login</a>
+                                    </li>
+                                </ul>
+                            </div>
+                             
+                            <div class="col-lg-12 col-md-12">
+                                <div class="tab_content current active">
+                                    <div class="tabs_item current">
+                                        <div class="user-all-form">
+                                            <div class="contact-form">
+                                               
+                                                <form id="contactForm">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-lg-12 ">
+                                                            <div class="form-group">
+                                                                <i class="bx bx-user"></i>
+                                                                <input type="text" name="name" id="name" class="form-control" required="" data-error="Please enter your Username" placeholder="Username">
+                                                            </div>
+                                                        </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                                <i class="flaticon-email-2"></i>
+                                                                <input type="email" name="email" id="email" class="form-control" required="" data-error="Please enter email" placeholder="Email">
+                                                            </div>
+                                                        </div>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <i class="bx bx-lock-alt"></i>
+                                                                <input class="form-control" type="password" name="password" placeholder="Password">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12 col-md-12 text-center">
+                                                            <button type="submit" class="default-btn  user-all-btn">
+                                                                Register 
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="col-12">
+                                                            <p class="account-desc">
+                                                                Already have an account? 
+                                                                <a href="#">Login</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tabs_item">
+                                        <div class="user-all-form">
+                                            <div class="contact-form">
+                                               
+
+                                                <form method="POST" action="{{ route('login.post') }}">
+                                                    @csrf
+                                                    <div class="row justify-content-center">
+                                                        <!-- Email Input -->
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                                <i class="bx bx-user"></i>
+                                                                <input type="email" 
+                                                                       name="email" 
+                                                                       id="email" 
+                                                                       class="form-control @error('email') is-invalid @enderror" 
+                                                                       placeholder="Email" 
+                                                                       value="{{ old('email') }}" 
+                                                                       required 
+                                                                       autocomplete="email" 
+                                                                       autofocus>
+                                                                       @error('email')
+                                                                       <span style="text-align: left" class=" invalid-feedback text-danger" role="alert">
+                                                                           <strong>{{ $message }}</strong>
+                                                                       </span>
+                                                                       @enderror
+                                                            </div>
+                                                           
+                                                        </div>
+                                                
+                                                        <!-- Password Input -->
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <i class="bx bx-lock-alt"></i>
+                                                                <input type="password" 
+                                                                       name="password" 
+                                                                       class="form-control @error('password') is-invalid @enderror" 
+                                                                       placeholder="Password" 
+                                                                       required 
+                                                                       autocomplete="current-password">
+                                                                @error('password')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                
+                                                        <!-- Submit Button -->
+                                                        <div class="col-lg-12 col-md-12 text-center">
+                                                            <button type="submit" class="default-btn user-all-btn">
+                                                                Login
+                                                            </button>
+                                                        </div>
+                                                
+                                                        <!-- Remember Me Checkbox -->
+                                                        <div class="col-lg-6 col-sm-6 form-condition">
+                                                            <div class="agree-label">
+                                                                <input type="checkbox" 
+                                                                       name="remember" 
+                                                                       id="remember" 
+                                                                       {{ old('remember') ? 'checked' : '' }}>
+                                                                <label for="remember">
+                                                                    Remember Me
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                
+                                                        <!-- Forgot Password Link -->
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            @if (Route::has('password.request'))
+                                                                <a class="forget" href="{{ route('password.request') }}">
+                                                                    {{ __('Forgot Your Password?') }}
+                                                                </a>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 @endsection

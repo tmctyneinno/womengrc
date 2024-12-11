@@ -6,6 +6,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,6 @@ Auth::routes();
 
 Route::get('/home/login', [LoginController::class, 'showLoginForm'])->name('home.login');
 Route::post('login', [LoginController::class, 'login'])->name('login.post');
+
+Route::get('/home/register', [RegisterController::class, 'showRegister'])->name('home.register');
+Route::post('register', [RegisterController::class, 'register'])->name('register.post');

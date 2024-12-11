@@ -185,7 +185,7 @@
     <div class="container"> 
         <div class="video-content">
             <h2>Are You  Ready To Start Your Journey?</h2>
-            <a href="{{ route('register') }}" class="default-btn border-radius">
+            <a href="{{ route('home.register') }}" class="default-btn border-radius">
                 Sign up
                 <i class='bx bx-plus'></i>
             </a>

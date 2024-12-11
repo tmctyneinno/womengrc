@@ -218,7 +218,9 @@
                             @forelse ($relatedPost as $relatedPost)
                                 <article class="item">
                                     <a href="{{ route('blog.detail', ['slug' => $relatedPost->slug] ) }}" class="thumb">
-                                        <span class="full-image cover bg3" role="img"></span>
+                                        <span 
+                                        style="background-image: url({{ asset($relatedPost->image)}});"
+                                        class="full-image cover" role="img"></span>
                                     </a>
                                     <div class="info">
                                         <span>
@@ -243,18 +245,20 @@
                     <div class="blog-widget">
                         <h3 class="title">Related Events</h3>
                         <div class="widget-popular-post">
-                            @forelse ($relatedPost as $relatedPost)
+                            @forelse ($recentEvent as $relatedEvent)
                                 <article class="item">
-                                    <a href="{{ route('blog.detail', ['slug' => $relatedPost->slug] ) }}" class="thumb">
-                                        <span class="full-image cover bg3" role="img"></span>
+                                    <a href="{{ route('events.show', $relatedEvent->slug) }}" class="thumb">
+                                        <span 
+                                        style="background-image: url({{ asset($relatedEvent->image)}});"
+                                        class="full-image cover" role="img"></span>
                                     </a>
                                     <div class="info">
                                         <span>
-                                            {{ $relatedPost->created_at->format('F d, Y') }}
+                                            {{ $relatedEvent->created_at->format('F d, Y') }}
                                         </span>
                                         <h4 class="title-text">
-                                            <a href="{{ route('blog.detail', $relatedPost->slug) }}">
-                                                {{ $relatedPost->title }}
+                                            <a href="{{ route('events.show', $relatedEvent->slug) }}">
+                                                {{ $relatedEvent->title }}
                                             </a> 
                                         </h4>
                                     </div>

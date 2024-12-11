@@ -157,3 +157,23 @@
 <script src="{{ asset('assets/js/contact-form-script.js')}}"></script>
 <!-- Custom JS -->
 <script src="{{ asset('assets/js/custom.js')}}"></script>
+
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "5000"
+    };
+</script>
+<script>
+    @if (session('success'))
+        toastr.success("{{ session('success') }}");
+    @endif
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error("{{ $error }}");
+        @endforeach
+    @endif
+</script>
