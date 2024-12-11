@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 { 
     public function index(){
-       
+        
         return view('admin.event.index');
     }
 
@@ -87,8 +88,11 @@ class EventController extends Controller
                                      ->inRandomOrder()
                                      ->take(6) 
                                      ->get();
+        $relatedPost = Blog::inRandomOrder()
+                                     ->take(6) 
+                                     ->get();
 
-        return view('home.pages.event.event-details', compact('eventItem', 'relatedEvent'));
+        return view('home.pages.event.event-details', compact('eventItem', 'relatedEvent','relatedPost'));
     }
 
     public function details($slug){

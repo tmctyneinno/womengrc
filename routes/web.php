@@ -28,7 +28,7 @@ Route::get('/vision', [FrontendController::class, 'vision'])->name('vision');
 Route::get('/purpose', [FrontendController::class, 'purpose'])->name('purpose');
 Route::get('/mission', [FrontendController::class, 'mission'])->name('mission');
 Route::get('/events', [FrontendController::class, 'event'])->name('event');
-Route::get('event/{id}/details', [EventController::class, 'detail'])->name('events.show');
+Route::get('event/{id}/details', [EventController::class, 'show'])->name('events.show');
 
 
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog'); 
