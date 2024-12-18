@@ -13,18 +13,18 @@
                             src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
                         </a>
                         <p>
-                            {{ $contactUs ? asset($contactUs->first_address) : '' }}
+                            {{ $contactUs ? ($contactUs->first_address) : '' }}
                         </p>
                         <p>
-                            {{ $contactUs ? asset($contactUs->second_address) : '' }}
+                            {{ $contactUs ? ($contactUs->second_address) : '' }}
                         </p>
                         <ul class="footer-contact-list">
                             {{-- <li>
                                 <span>Phone :</span> <a href="tel:+234 (0) 915-341-4314"> +234 (0) 915-341-4314</a>
                             </li>  --}}
                             <li>
-                                <span>Email :</span> <a href={{ $contactUs ? asset($contactUs->first_email) : '' }}"> 
-                                    {{ $contactUs ? asset($contactUs->first_email) : '' }}
+                                <span>Email :</span> <a href={{ $contactUs ? ($contactUs->first_email) : '' }}"> 
+                                    {{ $contactUs ? ($contactUs->first_email) : '' }}
                                 </a>
                             </li> 
                         </ul>
