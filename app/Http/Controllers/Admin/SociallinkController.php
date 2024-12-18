@@ -14,12 +14,12 @@ class SociallinkController extends Controller
 
     public function storeSocialLinks(Request $request){ 
         $data = $request->validate([
-            'facebook' => 'required|string|max:50',
-            'twitter' => 'string|max:50',
-            'whatsapp' => 'max:50',
-            'instagram' => 'max:50',
-            'linkedin' => 'max:50',
-            'youtube' => 'max:50',
+            'facebook' => 'required|string',
+            'twitter' => 'string',
+            'whatsapp' => 'nullable',
+            'instagram' => 'nullable',
+            'linkedin' => 'nullable',
+            'youtube' => 'nullable',
         ]);
 
         Sociallink::create($data);
@@ -29,12 +29,12 @@ class SociallinkController extends Controller
     public function updateSocialLinks(Request $request, $id)
     {
         $data = $request->validate([
-            'facebook' => 'required|string|max:50',
-            'twitter' => 'string|max:50',
-            'whatsapp' => 'max:50',
-            'instagram' => 'max:50',
-            'linkedin' => 'max:50',
-            'youtube' => 'max:50',
+            'facebook' => 'required|string',
+            'twitter' => 'string',
+            'whatsapp' => 'nullable',
+            'instagram' => 'nullable',
+            'linkedin' => 'nullable',
+            'youtube' => 'nullable',
         ]);
         $socialLink = Sociallink::findOrFail($id);
         $socialLink->update($data);

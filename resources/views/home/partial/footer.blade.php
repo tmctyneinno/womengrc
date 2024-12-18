@@ -9,18 +9,23 @@
                             <img 
                             style="max-width: 100%; max-height:100%; object-fit:cover; 
                             width:200px; height:100px "
-                    
+                     
                             src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
                         </a>
                         <p>
-                            2nd Floor, 1 Adeola Adeoye Street, Toyin Street, Ikeja, Lagos, Nigeria.
+                            {{ $contactUs ? asset($contactUs->first_address) : '' }}
+                        </p>
+                        <p>
+                            {{ $contactUs ? asset($contactUs->second_address) : '' }}
                         </p>
                         <ul class="footer-contact-list">
-                            <li>
+                            {{-- <li>
                                 <span>Phone :</span> <a href="tel:+234 (0) 915-341-4314"> +234 (0) 915-341-4314</a>
-                            </li> 
+                            </li>  --}}
                             <li>
-                                <span>Email :</span> <a href="mailto:info@downtown.com">  info@womeningrc.com</a>
+                                <span>Email :</span> <a href={{ $contactUs ? asset($contactUs->first_email) : '' }}"> 
+                                    {{ $contactUs ? asset($contactUs->first_email) : '' }}
+                                </a>
                             </li> 
                         </ul>
 
