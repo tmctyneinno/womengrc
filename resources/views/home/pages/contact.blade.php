@@ -41,22 +41,31 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="contact-card">
                         <i class="flaticon-position"></i>
-                        <h3>2nd Floor, 1 Adeola Adeoye Street, Toyin Street, Ikeja, Lagos, Nigeria.</h3>
+                        <h3>
+                            {{ $contactUs ? ($contactUs->first_address) : '' }}
+                        </h3>
+                        <h3>
+                            {{ $contactUs ? ($contactUs->second_address) : '' }}
+                        </h3>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="contact-card">
                         <i class="flaticon-email"></i>
-                        <h3><a href="#">Email:<span class="__cf_email__" > info@womeningrc.com</span></a></h3>
+                        <h3>
+                            <a href="#">Email:<span class="__cf_email__" >
+                                {{ $contactUs ? ($contactUs->first_email) : '' }}
+                            </span></a></h3>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6  ">
-                    <div class="contact-card">
+                    {{-- <div class="contact-card">
                         <i class="flaticon-to-do-list"></i>
-                        <h3><a href="tel:+234 (0) 915-341-4314">+234 (0) 915-341-4314</a></h3>
-                    </div>
+                        <h3><a href="tel:{{ $contactUs ? ($contactUs->first_phone) : '' }}">
+                            {{ $contactUs ? ($contactUs->first_phone) : '' }}</a></h3>
+                    </div> --}}
                 </div>
             </div>
         </div>

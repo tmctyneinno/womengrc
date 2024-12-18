@@ -23,7 +23,7 @@
                                 <span>Phone :</span> <a href="tel:+234 (0) 915-341-4314"> +234 (0) 915-341-4314</a>
                             </li>  --}}
                             <li>
-                                <span>Email :</span> <a href={{ $contactUs ? ($contactUs->first_email) : '' }}"> 
+                                <span>Email :</span> <a href="{{ $contactUs ? ($contactUs->first_email) : '' }}"> 
                                     {{ $contactUs ? ($contactUs->first_email) : '' }}
                                 </a>
                             </li> 
@@ -69,6 +69,7 @@
                             <li>
                                 <a href="{{ route('register') }}">Register</a>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>

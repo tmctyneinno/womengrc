@@ -31,7 +31,7 @@
                     
                     <img 
                     style="max-width: 100%; max-height:100%; object-fit:cover; 
-                    width:150px;"
+                    width:90px;"
                     src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
  
                 </a>

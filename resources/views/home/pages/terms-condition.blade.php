@@ -19,7 +19,7 @@
                 <li>
                     <i class="bx bx-chevron-right"></i>
                 </li>
-                <li>Terms &amp; Conditions</li>
+                <li>Terms &amp; Condition</li>
             </ul>
         </div>
     </div>
@@ -30,7 +30,7 @@
        
 
         <div class="single-content">
-            <h3>Welcome to Women GRC Terms and Conditions</h3>
+            <h3>Welcome to Women GRC Terms and Condition</h3>
             <p>
                 {!! $termsCondition ? $termsCondition->content : 'Coming soon' !!}
             </p>
