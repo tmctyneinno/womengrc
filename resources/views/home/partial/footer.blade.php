@@ -8,7 +8,7 @@
                         <a href="index-4.html" class="logo" style="background-color: #fff; padding:5px;">
                             <img 
                             style="max-width: 100%; max-height:100%; object-fit:cover; 
-                            width:200px; height:100px "
+                            width:210px; height:100px "
                      
                             src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
                         </a>
