@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="inner-banner inner-bg8">
+<div class="inner-banner" style="background-image: url({{ asset('assets/images/banner/membership.jpg') }});">
     <div class="container">
         <div class="inner-title text-center">
             <h3>Membership</h3>

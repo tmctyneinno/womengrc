@@ -155,7 +155,7 @@ Default Btn Style
   overflow: hidden;
   z-index: 1;
   text-transform: capitalize;
-  background-color: var(--mainColor);
+  background-color: #B03436;
   border: none;
   outline: none;
 }
@@ -5833,7 +5833,7 @@ Footer Area
 }
 
 .footer-bg2 {
-  background-color: #2a2a2a;
+  background-color: #283566;
 }
 
 .footer-top {

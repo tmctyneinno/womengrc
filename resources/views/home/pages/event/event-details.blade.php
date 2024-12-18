@@ -179,6 +179,16 @@
                         </div>
                     </div>
 
+                    <div class="blog-widget">
+                        <h3 class="title">Join us</h3>
+                        <div class="widget-popular-post">
+                            <div class="content">
+                                <script src="https://static.elfsight.com/platform/platform.js" async></script>
+                                <div class="elfsight-app-0955ada4-fab8-4640-ad23-4ee8e059e624" data-elfsight-app-lazy></div>
+                            </div>
+                        </div>
+                    </div>
+
                   
 
 

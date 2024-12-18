@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */ 
 require __DIR__.'/admin.php';
+require __DIR__.'/user.php';
  
 Route::get('/', [FrontendController::class, 'index'])->name('home'); 
 Route::get('/{page}', [PagesController::class, 'index'])->name('home.pages');
@@ -32,7 +34,7 @@ Route::get('/events', [FrontendController::class, 'event'])->name('event');
 Route::get('event/{id}/details', [EventController::class, 'show'])->name('events.show');
 
 
-Route::get('/blog', [FrontendController::class, 'blog'])->name('blog'); 
+Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');  
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq'); 
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact'); 
 Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacyPolicy'); 
@@ -45,7 +47,10 @@ Route::post('/post/comment', [BlogController::class, 'storeComment'])->name('com
 Auth::routes();
 
 Route::get('/home/login', [LoginController::class, 'showLoginForm'])->name('home.login');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
 Route::post('login', [LoginController::class, 'login'])->name('login.post');
 
 Route::get('/home/register', [RegisterController::class, 'showRegister'])->name('home.register');
-Route::post('register', [RegisterController::class, 'register'])->name('register.post');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');

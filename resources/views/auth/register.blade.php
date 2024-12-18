@@ -12,7 +12,7 @@
             <div class="col-lg-7 col-xl-6  p-0">
                 <div class="user-img">
                     <img src="{{ asset('assets/img/login-img.jpg')}}" alt="Images">
-                </div>
+                </div> 
             </div>
 
             <div class="col-lg-5 col-xl-6">
@@ -41,12 +41,14 @@
                                         <div class="user-all-form">
                                             <div class="contact-form">
                                                
-                                                <form id="contactForm">
+                                                <form  method="POST" action="{{ route('register.post') }}">
+                                                    @csrf
                                                     <div class="row justify-content-center">
                                                         <div class="col-lg-12 ">
                                                             <div class="form-group">
                                                                 <i class="bx bx-user"></i>
-                                                                <input type="text" name="name" id="name" class="form-control" required="" data-error="Please enter your Username" placeholder="Username">
+                                                                <input type="text" name="name" id="name" class="form-control" required="" 
+                                                                data-error="Please enter your Username" placeholder="Username" autocomplete="off">
                                                             </div>
                                                         </div>
 
@@ -61,6 +63,12 @@
                                                             <div class="form-group">
                                                                 <i class="bx bx-lock-alt"></i>
                                                                 <input class="form-control" type="password" name="password" placeholder="Password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <i class="bx bx-lock-alt"></i>
+                                                                <input class="form-control" type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                                                             </div>
                                                         </div>
 
@@ -104,11 +112,7 @@
                                                                        required 
                                                                        autocomplete="email" 
                                                                        autofocus>
-                                                                       @error('email')
-                                                                       <span style="text-align: left" class=" invalid-feedback text-danger" role="alert">
-                                                                           <strong>{{ $message }}</strong>
-                                                                       </span>
-                                                                       @enderror
+                                                                     
                                                             </div>
                                                            
                                                         </div>

@@ -4,7 +4,7 @@
 
 
 <!-- Inner Banner -->
-<div class="inner-banner" style="background-image: url({{ asset('assets/images/banner/contact.jpg') }});"> 
+<div class="inner-banner" style="background-image: url({{ asset('assets/images/banner/conference.jpg') }});">
     <div class="container">
         <div class="inner-title text-center">
             <h3>Contact Us</h3>
@@ -25,6 +25,13 @@
     </div>
 </div>
 <!-- Inner Banner End -->
+
+<div class="contact-area">
+    <div class="container">
+        @include('home.pages.social-media')
+
+    </div>
+</div>
 
 <!-- Contact Area -->
 <div class="contact-area">

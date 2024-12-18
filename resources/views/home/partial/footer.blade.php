@@ -5,9 +5,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
-                        <a href="index-4.html" class="logo" style="background-color: #fff; padding:8px;">
+                        <a href="index-4.html" class="logo" style="background-color: #fff; padding:5px;">
                             <img 
-                            style="max-width: 100%; max-height:100%; object-fit:cover; width:350px; height:50px "
+                            style="max-width: 100%; max-height:100%; object-fit:cover; 
+                            width:200px; height:100px "
                     
                             src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
                         </a>

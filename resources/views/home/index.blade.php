@@ -189,7 +189,7 @@
                 Sign up
                 <i class='bx bx-plus'></i>
             </a>
-        </div>
+        </div> 
     </div>
 </div>
 <!-- Video Area End -->
@@ -201,28 +201,28 @@
             <div class="row justify-content-center">
                 <div class="col-lg-3 col-sm-6 col-md-3">
                     <div class="single-counter">
-                        <h3>1254</h3>
+                        <h3>300</h3>
                         <span>Women Empowered Globally</span>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6 col-md-3">
                     <div class="single-counter">
-                        <h3>23165</h3>
+                        <h3>50</h3>
                         <span>Resources Accessed by Members</span>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6 col-md-3">
                     <div class="single-counter">
-                        <h3>4563</h3>
+                        <h3>30</h3>
                         <span>Awards Celebrating Excellence</span>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6 col-md-3">
                     <div class="single-counter">
-                        <h3>880</h3>
+                        <h3>9</h3>
                         <span>Successful Mentorship Connections</span>
                     </div>
                 </div>
@@ -315,6 +315,8 @@
 
 
 @include('home.pages.testimonial')
+
+@include('home.pages.social-media')
 
     
 @endsection

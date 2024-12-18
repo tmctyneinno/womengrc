@@ -30,8 +30,9 @@ class PagesController extends Controller
             'recognition' => 'home.pages.recognition',
             'contact' => 'home.pages.contact',
             'faqs' => 'home.pages.faq',
+            'login' => 'auth.login',
 
-
+ 
             'careers' => 'home.pages.careers',
             'appointment' => 'home.pages.appointment',
             'testimonials' => 'home.pages.testimonials',

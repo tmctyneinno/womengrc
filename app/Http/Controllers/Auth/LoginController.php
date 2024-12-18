@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -28,7 +28,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-
+ 
     /**
      * Create a new controller instance.
      *
@@ -42,33 +42,29 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validate the login credentials
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string|min:6',
-        ]);
+        $this->validateLogin($request);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            // If successful, redirect to the intended route or dashboard
-            return redirect()->intended('/dashboard')->with('success', 'Login successful!');
+        $credentials = $this->credentials($request);
+
+        // Attempt to log in with credentials
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->hasVerifiedEmail()) {
+                return redirect()->route('user.dashboard');
+            }
+            Auth::logout();
+            return $this->sendFailedLoginResponse($request);
         }
 
-        // If authentication fails, redirect back with an error
-        return redirect()->back()->withErrors([
-            'email' => 'Invalid credentials. Please try again.',
-        ])->withInput($request->only('email'));
+        return back()->withErrors([
+            'email' => 'Invalid email or password.',
+        ])->onlyInput('email'); 
     }
 
-    public function logout(Request $request)
+    
+    protected function sendFailedLoginResponse(Request $request)
     {
-        Auth::logout();
-
-        // Invalidate session and regenerate token
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/')->with('success', 'Logged out successfully.');
+        throw ValidationException::withMessages([
+            $this->username() => 'Your account has not been verified. Please check your email to verify your account.',
+        ]);
     }
-
-
-} 
+}

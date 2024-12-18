@@ -7,7 +7,7 @@
     </div>
 </div> --}}
 
-
+ 
 <!-- Start Navbar Area -->
 <div class="navbar-area ">
     <!-- Menu For Mobile Device -->
@@ -15,7 +15,8 @@
         <a href="#" class="logo" style="background-color: #fff; padding:8px">
             {{-- <img src="assets/img/logo/logo1.png" alt="Logo"> --}}
             <img  
-            style="max-width: 100%; max-height:100%; object-fit:cover; width:60px; height:30px "
+            style="max-width: 100%; max-height:100%; object-fit:cover; 
+            width:20px; height:20px "
             src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
         
         </a>
@@ -29,7 +30,8 @@
                     {{-- <img src="assets/img/logo/logo1.png" alt="Logo"> --}}
                     
                     <img 
-                    style="max-width: 100%; max-height:100%; object-fit:cover; width:300px; height:50px "
+                    style="max-width: 100%; max-height:100%; object-fit:cover; 
+                    width:150px;"
                     src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
  
                 </a>

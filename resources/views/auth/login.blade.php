@@ -37,7 +37,7 @@
                              
                             <div class="col-lg-12 col-md-12">
                                 <div class="tab_content current active">
-                                    <div class="tabs_item current">
+                                    <div class="tabs_item current"> 
                                         <div class="user-all-form">
                                             <div class="contact-form">
                                                 <form method="POST" action="{{ route('login.post') }}">
@@ -56,11 +56,7 @@
                                                                        required 
                                                                        autocomplete="email" 
                                                                        autofocus>
-                                                                       @error('email')
-                                                                       <span style="text-align: left" class=" invalid-feedback text-danger" role="alert">
-                                                                           <strong>{{ $message }}</strong>
-                                                                       </span>
-                                                                       @enderror
+                                                                      
                                                             </div>
                                                            
                                                         </div>
@@ -122,12 +118,14 @@
                                     <div class="tabs_item">
                                         <div class="user-all-form">
                                             <div class="contact-form">
-                                                <form id="contactForm">
+                                                <form  method="POST" action="{{ route('register.post') }}">
+                                                    @csrf
                                                     <div class="row justify-content-center">
                                                         <div class="col-lg-12 ">
                                                             <div class="form-group">
                                                                 <i class="bx bx-user"></i>
-                                                                <input type="text" name="name" id="name" class="form-control" required="" data-error="Please enter your Username" placeholder="Username">
+                                                                <input type="text" name="name" id="name" class="form-control" required="" 
+                                                                data-error="Please enter your Username" placeholder="Username" autocomplete="off">
                                                             </div>
                                                         </div>
 
@@ -142,6 +140,12 @@
                                                             <div class="form-group">
                                                                 <i class="bx bx-lock-alt"></i>
                                                                 <input class="form-control" type="password" name="password" placeholder="Password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <i class="bx bx-lock-alt"></i>
+                                                                <input class="form-control" type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                                                             </div>
                                                         </div>
 

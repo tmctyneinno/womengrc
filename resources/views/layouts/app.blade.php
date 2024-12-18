@@ -49,7 +49,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ $contactUs ? asset($contactUs->favicon) : ''}}">
     <style>
         .navbar-custom{
-            background-color: #2a2a2a !important;
+            background-color: #283566 !important;
         }
     </style>
   

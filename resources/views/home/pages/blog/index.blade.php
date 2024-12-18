@@ -5,7 +5,7 @@
 @section('content')
 
  <!-- Inner Banner -->
- <div class="inner-banner inner-bg5">
+ <div class="inner-banner" style="background-image: url({{ asset('assets/images/banner/conference.jpg') }});">
     <div class="container">
         <div class="inner-banner-title text-center">
             <h3>Blog</h3>
