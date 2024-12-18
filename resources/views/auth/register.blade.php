@@ -18,7 +18,7 @@
             <div class="col-lg-5 col-xl-6">
                 <div class="user-section text-center">
                     <div class="user-conten ">
-                        <img src="assets/img/logo/logo3.png" alt="">
+                        <img src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}" alt="">
                         <h2>Welcome <b>To Women GRC</b></h2>
                     </div>
                     <div class="tab user-tab">
