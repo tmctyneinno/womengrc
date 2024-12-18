@@ -1,5 +1,5 @@
 <!-- Place List Area -->
-<section class="place-list-area pt-100 pb-70">
+<section class="place-list-area pt-50 pb-70">
     <div class="container-fluid">
         <div class="section-title text-center">
             <span>Join the Conversation</span>
