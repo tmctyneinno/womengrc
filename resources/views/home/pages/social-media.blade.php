@@ -17,8 +17,9 @@
             <div class="col-lg-4 place-list-item">
                 <div class="content">
                     <script src="https://static.elfsight.com/platform/platform.js" async></script>
-                    <div class="elfsight-app-3983c061-cc2b-4840-91b6-aa47033fc61b" data-elfsight-app-lazy></div>
+                    <div class="elfsight-app-a4f8d829-59f3-49f0-9f85-91d2248da1cd" data-elfsight-app-lazy></div>
                 </div>
+                
             </div>
 
             <div class="col-lg-4 place-list-item">
