@@ -288,17 +288,17 @@ Navbar Area
   font-size: 18px;
 }
 .main-nav nav .navbar-nav .nav-item a:hover, .main-nav nav .navbar-nav .nav-item a :focus {
-  color: var(--mainColor) !important;
+  color: #B03436 !important;
 }
 .main-nav nav .navbar-nav .nav-item a.active {
-  color: var(--mainColor) !important;
+  color: #B03436 !important;
 }
 .main-nav nav .navbar-nav .nav-item a .active::before {
   transform: scale(1);
 }
 .main-nav nav .navbar-nav .nav-item .dropdown-menu {
   border: none;
-  border-top: 3px solid var(--mainColor);
+  border-top: 3px solid #B03436;
   padding: 0;
   border-radius: 0;
   background-color: var(--whiteColor) !important;

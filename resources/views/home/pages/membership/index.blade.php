@@ -30,7 +30,7 @@
        
 
         <div class="single-content">
-            {{-- <h3>Welcome to Women GRC Terms and Conditions</h3> --}}
+            <h3 class="text-center">Welcome to Women GRC Membership</h3>
             <p>
                 Coming soon
             </p>

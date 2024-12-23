@@ -130,47 +130,12 @@
         <!-- Video Area End -->
 
         <!-- Counter Area -->
-        <div class="counter-area">
-            <div class="container">
-                <div class="counter-bg">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-3 col-sm-6 col-md-3">
-                            <div class="single-counter">
-                                <h3>1254</h3>
-                                <span>New Visiters Every Week</span>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-sm-6 col-md-3">
-                            <div class="single-counter">
-                                <h3>23165</h3>
-                                <span>New Visiters Every Week</span>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-sm-6 col-md-3">
-                            <div class="single-counter">
-                                <h3>4563</h3>
-                                <span>Won Amazing Awards</span>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-sm-6 col-md-3">
-                            <div class="single-counter">
-                                <h3>880</h3>
-                                <span>New Listing Every Week</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('home.pages.counter')
         <!-- Counter Area End -->
 
       
 
-        
-
+    
     
 <!-- Testimonial Area -->
 @include('home.pages.testimonial')

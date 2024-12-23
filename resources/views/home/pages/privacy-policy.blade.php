@@ -5,13 +5,13 @@
 @section('content')
 
 
-<div class="inner-banner inner-bg7">
+<div class="inner-banner" style="background-image: url({{ asset('assets/images/banner/conference.jpg') }});">
     <div class="container">
         <div class="inner-title text-center">
             <h3>Privacy &amp; Policy</h3>
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('home')}}">Home</a>
                 </li>
                 <li>
                     <i class="bx bx-chevron-right"></i>
@@ -30,7 +30,7 @@
     <div class="container">
        
         <div class="single-content">
-            <h3>Welcome to Women GRC Privacy Policy</h3>
+            <h3 class="text-center">Welcome to Women GRC Privacy Policy</h3>
             
             <p>
                 

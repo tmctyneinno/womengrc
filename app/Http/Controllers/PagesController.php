@@ -43,7 +43,6 @@ class PagesController extends Controller
             'membership-overview' => 'home.pages.membership.membership-overview',
             'membership-subscription-fees' => 'home.pages.membership.membership-subscription-fees',
             'membership-tiers' => 'home.pages.membership.membership-tiers',
-            'mentorship-programme' => 'home.pages.membership.mentorship-programme',
             'membership-login' => 'home.pages.membership.membership-login',
             'membership-signup' => 'home.pages.membership.membership-signup',
             'membership-application' => 'home.pages.membership.membership-application',

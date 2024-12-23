@@ -27,7 +27,7 @@
 <div class="privacy-policy-area ptb-100">
     <div class="container">
         <div class="single-content">
-            <h3>Welcome to Mentorship</h3>
+            <h3 class="text-center">Welcome to Mentorship</h3>
            
 
             <p>

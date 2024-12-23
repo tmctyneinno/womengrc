@@ -11,7 +11,7 @@
                             width:210px; height:100px "
                      
                             src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
-                        </a>
+                        </a> 
                         <p>
                             {{ $contactUs ? ($contactUs->first_address) : '' }}
                         </p>
@@ -117,17 +117,17 @@
                 <div class="copy-right-list">
                     <ul>
                         <li>
-                            <a href="{{ route('termsCondition') }}" target="_blank">
+                            <a href="{{ route('termsCondition') }}" >
                                 Terms of Use
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ route('privacyPolicy') }}" target="_blank">
+                            <a href="{{ route('privacyPolicy') }}">
                                 Privacy Policy
                             </a>
                         </li> 
                         <li>
-                            <a href="{{'blog'}}" target="_blank">
+                            <a href="{{'blog'}}">
                                 Blog
                             </a>
                         </li> 
