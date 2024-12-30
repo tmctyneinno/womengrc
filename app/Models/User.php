@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_picture',
+        'role',
+        'phone',
+        // 'mentor'
     ];
 
     /**
@@ -41,4 +46,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+ 
+    public function mentors(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'mentor_invitations', 'user_id', 'mentor_id');
+    }
+
+    public function mentees()
+    {
+        return $this->belongsToMany(User::class, 'mentor_invitations', 'mentor_id', 'user_id');
+    }
+  
+    public function mentorInvitations()
+    {
+        return $this->hasMany(MentorInvitations::class, 'user_id');
+    } 
+
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
+
 }

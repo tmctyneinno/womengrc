@@ -19,8 +19,13 @@ class DashboardController extends Controller
     }
  
     public function index(){
-        return view('user.dashboard'); 
-    }
+        $data['mentorCount'] = auth()->user()->mentors()->count();
+        $data['menteeCount'] = auth()->user()->mentees()->count();
+        $data['pendingInvitationsCount'] = auth()->user()->mentorInvitations()->where('status', 'pending')->count();
+
+
+        return view('user.dashboard', $data); 
+    } 
 
     
     

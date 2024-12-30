@@ -17,10 +17,10 @@
 
             <div class="col-lg-5 col-xl-6">
                 <div class="user-section text-center">
-                    <div class="user-conten ">
+                    <div class="user-conten pt-5">
                         <img 
                         style="max-width: 100%; max-height:100%; object-fit:cover; 
-                            width:180px; height:70px "
+                            width:100px; height:70px "
                         src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}" alt="">
                         <h2>Welcome <b>To Women GRC</b></h2> 
                     </div> 

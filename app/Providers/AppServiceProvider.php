@@ -4,12 +4,13 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-
+use Auth;
 use App\Models\Recognition;
 use App\Models\TermsConditions;
 use App\Models\PrivacyPolicy;
+use App\Models\Notification;
 use App\Models\MenuItem;
-use App\Models\Blog; 
+use App\Models\Blog;  
 use App\Models\Event;
 use App\Models\VisionMission;
 use App\Models\Testimonial;
@@ -52,11 +53,62 @@ class AppServiceProvider extends ServiceProvider
         View::share('faqs', Faq::latest()->paginate(5));
         View::share('blogs', Blog::latest()->paginate(20));
         View::share('recentBlog', Blog::inRandomOrder()->take(6)->get());
-
+  
         View::share('events', Event::latest()->paginate(20)); 
         View::share('recentEvent', Event::inRandomOrder()->take(6)->get());
         View::share('policies', PrivacyPolicy::first()); 
         View::share('termsCondition', TermsConditions::first());
+
+        View::composer('*', function ($view) {
+            if (Auth::check()) {
+                $user = Auth::user();
+                $notificationCount = $user->unreadNotifications->count();
+                
+                // $unreadCount = auth()->check() ? auth()->user()->unreadNotifications->count() : 0;
+           
+                // dd($unreadCount);
+                $view->with('notificationCount', $notificationCount);
+            } else {
+                $view->with('notificationCount', 0);
+            }
+        });
+
+        // View::composer('*', function ($view) {
+        //     if (Auth::check()) {
+        //         $user = Auth::user();
+        //         $userId = (string) $user->id; 
+        //         $recipientId = $user->recipient_id;
+
+                
+         
+        //         // $sender = $user->notifications()->whereJsonContains('data->recipient_id', $recipientId)->first();
+                
+        //         // $sender_id = $sender ? $sender->data['sender_id'] : null;
+        
+        //         // $notifications = $user->notifications()
+        //         //     ->where('notifiable_id', $sender_id)  
+        //         //     ->orWhereJsonContains('data->recipient_id', $recipientId) 
+        //         //     ->take(4) 
+        //         //     ->get();
+        
+        //         $view->with('notificationsBar', $notifications);
+        //     } else {
+        //         $view->with('notificationsBar', 0);
+        //     }
+        // });
+
+        View::composer('*', function ($view) {
+            if (Auth::check()) {
+                $user = Auth::user();
+                // dd($user->id);
+                $notifications = Notification::where('notifiable_id', $user->id)
+                ->where('notifiable_type', \App\Models\User::class)
+                ->get();
+                // dd($notifications);
+
+                $view->with('notificationsBar', $notifications);
+            }
+        });
        
 
 
