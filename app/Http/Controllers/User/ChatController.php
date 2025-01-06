@@ -21,13 +21,13 @@ class ChatController extends Controller
     }
     public function show($mentorId = null){
 
-        if (!decrypt($mentorId) ) {
+        if (!($mentorId) ) {
             session()->flash('error', 'No mentor has been added. Please select a mentor to proceed.');
             return redirect()->back();
         }
        
         
-        $mentor = User::findOrFail(decrypt($mentorId));
+        $mentor = User::findOrFail(($mentorId));
         if (!$mentor) {
             session()->flash('error', 'The specified mentor does not exist.');
             return redirect()->back();

@@ -21,13 +21,22 @@ class MessageSent implements ShouldBroadcast
         $this->message = $message;
     }
 
+    // public function broadcastOn()
+    // {
+    //     return new Channel('chat'); 
+    // }
     public function broadcastOn()
     {
-        return new Channel('chat'); // The name of the channel
+        return new Channel('chat.' . $this->message->receiver_id); // Broadcast to a channel named for the receiver
     }
+
+    // public function broadcastAs() 
+    // {
+    //     return 'new-message'; 
+    // }
 
     public function broadcastAs()
     {
-        return 'newmessage'; // Optional: Event alias
+        return 'message.sent';
     }
 }

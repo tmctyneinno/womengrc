@@ -20,6 +20,7 @@ class Chat extends Component
     // This will fetch accepted mentors and mentees
     public function mount()
     {
+        session()->reflash();
         $this->messages = Message::all();
         $this->mentorId = request()->route('mentorId');
         $this->loadAcceptedUsers();
@@ -46,22 +47,29 @@ class Chat extends Component
         logger('Message submitted');
         // log('dd');
         // dd('message');
+        try {
+            $receiverId = decrypt($this->mentorId);
+            
+            // Check if the decrypted receiverId is valid
+            if (!is_numeric($receiverId)) {
+                throw new \Exception("Invalid mentor ID.");
+            }
+        } catch (\Exception $e) {
+            logger('Decryption failed or invalid mentor ID: ' . $e->getMessage());
+            return;
+        }
 
-        // $this->validate([
-        //     'message' => 'required|string|max:255',
-        // ]);
-        // dd($this->mentorId);
-        // $receiverId = decrypt($this->mentorId);
         $message = Message::create([
             'user_id' => Auth::id(),
-            'receiver_id' => $this->mentorId,
+            'receiver_id' =>  $receiverId,
             'message' => $this->message,
         ]);
-        // Broadcast the message to all users in the chat room
-        // MessageSentRoute::dispatch($message);
-        // broadcast(new MessageSent($message));
-        $this->message = ''; // Reset the message field
-        $this->loadMessages(); // Reload messages
+        $this->loadMessages();
+
+        // broadcast(new MessageSent($message)); 
+
+        $this->message = ''; 
+        $this->loadMessages(); 
     }
 
     // Load messages between the current user and the selected mentor/mentee
