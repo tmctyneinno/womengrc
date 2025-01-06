@@ -34,7 +34,7 @@
                                         <li class="chat__inbox--menu__list"><span class="chat__inbox--menu__title">Recent Chats</span></li>
                                         @forelse($acceptedUsers as $user)
                                             <li class="chat__inbox--menu__list">
-                                                <a class="chat__inbox--menu__link" href="{{ route('user.chat.show', ['mentorId' => $user->id]) }}">
+                                                <a class="chat__inbox--menu__link" href="{{ route('user.chat.show', ['mentorId' => encrypt($user->id) ]) }}">
                                                     <div class="chat__inbox--menu__wrapper d-flex justify-content-between">
                                                         <div class="chat__inbox--author d-flex align-items-center">
                                                             <div class="chat__inbox--author__thumbnail">
@@ -107,7 +107,7 @@
                                     <span class="chat__message--author__badge"></span>
                                 </div>
                                 <div class="chat__message--author__text">
-                                    <h3 class="chat__message--author__title">{{ $acceptedUsers->find($mentorId)->name }} </h3>
+                                    <h3 class="chat__message--author__title">{{ $acceptedUsers->find(decrypt($mentorId))->name }} </h3>
                                     <span class="chat__message--author__subtitle">Online</span>
                                 </div>
                             </div>
