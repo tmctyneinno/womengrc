@@ -32,3 +32,23 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+
+// window.Echo.private("new-message").listen("MessageSent",(e)=>{
+//     console.log(e);
+// })
+
+import Pusher from 'pusher-js';
+
+Pusher.logToConsole = true;
+
+const pusher = new Pusher('e57bdb12111c25d5a77f', {
+  cluster: 'mt1',
+  forceTLS: true
+});
+
+const channel = pusher.subscribe('your-channel-name');
+channel.bind('your-event-name', function(data) {
+  console.log(data);
+});
+

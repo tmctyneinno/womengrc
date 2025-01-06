@@ -45,6 +45,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        // 'password' => 'hashed',
     ];
  
     public function mentors(): BelongsToMany
@@ -66,5 +67,22 @@ class User extends Authenticatable
     {
         return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
     }
-
+    public function messages()
+    {
+        return $this->hasmany(Message::class);
+    }
+    
+    protected static function booted()
+    {
+        static::updating(function ($user) {
+            // Update last_login_at when the user is being updated (e.g., during login)
+            if ($user->isDirty('password')) {
+                $user->last_login_at = now(); // Set current time as last login time
+            }
+        });
+    }
+    public function getLastLoginAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->diffForHumans();
+    }
 }

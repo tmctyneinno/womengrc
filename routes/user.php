@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Livewire\ChatComponent;
+use App\Http\Controllers\User\ChatController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MembershipController;
-use App\Http\Controllers\User\ChatController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\MentorController;
 
@@ -32,7 +33,12 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
 
     Route::resource('profile', MentorController::class);
 
-    Route::get('/chat/index', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index'); 
+    Route::get('/chat/{mentorId}', [ChatController::class, 'show'])->name('chat.show');
+   
+    // Route::get('/chat/index', [ChatController::class, 'index'])->name('chat.index');
+
+    // Route::get('/chat/{mentorId}', [ChatController::class, 'index'])->name('chat.chat');
 
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

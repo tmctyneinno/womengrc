@@ -73,11 +73,27 @@
                         </div> --}} 
                         <div class="side-item">
                             <div class="nav-add-btn">
-                                <a href="{{ route('home.login')}}" class="default-btn border-radius">
-                                    Login/Register
-                                </a>
+                                @guest
+                                    <a href="{{ route('home.login') }}" class="default-btn border-radius">
+                                        Login/Register
+                                    </a>
+                                @else
+                                <div class="d-flex">
+                                    <a href="{{ route('user.dashboard') }}" class="default-btn border-radius">
+                                        My Account
+                                    </a>
+                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="default-btn border-radius">
+                                            Logout
+                                        </button>
+                                    </form>
+                                </div>
+                                @endguest
                             </div>
                         </div>
+
+                        
                     </div>
                 </div>
 

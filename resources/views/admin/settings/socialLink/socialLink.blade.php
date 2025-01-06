@@ -9,7 +9,7 @@
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
                     </div>
-                @endif
+                @endif 
                 @if(session('error'))
                     <div id="success-danger" class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('error') }}
@@ -56,7 +56,7 @@
                         </div>
                         <div class="mb-3 col-md-10">
                             <label class="form-label">Instagram Link </label>
-                            <input type="text" class="form-control" placeholder="Title" name="instagram" value=" {{ isset($sociallink) ? $sociallink->instagram : '' }}" >
+                            <input type="text" class="form-control" placeholder="Instagram" name="instagram" value=" {{ isset($sociallink) ? $sociallink->instagram : '' }}" >
                         </div>
                         <div class="mb-3 col-md-10">
                             <label class="form-label"> Linkedin Link </label>
