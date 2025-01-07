@@ -9,11 +9,11 @@
         <!-- row -->
         <div class="container-fluid">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card"> 
                     <div class="card-header">
-                        <h4 class="card-title"> Settings</h4>
+                        <h4 class="card-title"> Membership  </h4>
                     </div>
-                    <div class="card-body"> 
+                    <div class="card-body">
                         <div class="row">
                             @if(session('success'))
                                 <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -34,22 +34,24 @@
                                     </ul>
                                 </div>
                             @endif
-                            <div class="col-sm-2">
+                            <div class="col-sm-2"> 
                                 <div class="nav flex-column nav-pills mb-3" role="tablist">
-                                    <a href="{{ route('admin.visionMission.index') }}" class="nav-link active">Vision/Mission</a>
-                                    <a href="{{ route('admin.coreValue.index') }}" class="nav-link ">Core Value</a>
-                                    <a href="{{ route('admin.settings.aboutUs') }}"  class="nav-link " >About us</a>
-                                    <a href="{{ route('admin.settings.contactUs') }}"  class="nav-link" >Contact us</a>
-                                    <a href="{{ route('admin.termsCondition.index') }}"  class="nav-link" >Terms Condition</a>
-                                    <a href="{{ route('admin.privacyPolicy.index') }}"  class="nav-link" >Privacy Policy</a>
-                                    <a href="{{ route('admin.socialLink.index') }}"  class="nav-link" >Social Link</a>
-                                    <a href="{{ route('admin.officeHours.index') }}"  class="nav-link " >Office Hours </a>
-                                </div>
+                                    <a href="{{ route('admin.membership.index') }}" class="nav-link ">Membership content</a>
+                                    <a href="{{ route('admin.mentorship.index') }}" class="nav-link active">Mentorship content</a>
+                                    <a href="{{ route('admin.facilitator.index') }}" class="nav-link ">Facilitators content</a>
+
+                                   {{-- <a href="{{ route('admin.members.membersProgramme') }}" class="nav-link ">Mentorship Programme</a>
+                                    <a href="{{ route('admin.members.membersSubscriptionFees') }}" class="nav-link ">Membership Subscription Fees</a>
+                                    <a href="{{ route('admin.members.membershipTiers') }}" class="nav-link ">Membership Tiers</a>
+                                    <a href="{{ route('admin.members.membershipApplication') }}" class="nav-link ">Membership Application</a> --}}
+
+                                </div> 
                             </div>
                             <div class="col-sm-10">
                                 <div class="tab-content">
-                                    <div id="v-pills-home" class="tab-pane fade show active " role="tabpanel">
-                                        @include('admin.settings.visionMission.index')
+                                    
+                                    <div  class="tab-pane fade show active" role="tabpanel">
+                                        @include('admin.mentorship.create')
                                     </div>
                                    
                                   

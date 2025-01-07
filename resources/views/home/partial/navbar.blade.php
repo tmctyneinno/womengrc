@@ -27,13 +27,10 @@
         <div class="container-fluid">
             <nav class="container-max navbar navbar-expand-md navbar-light ">
                 <a class="navbar-brand" href="#" style="background-color: #fff; padding-left:8px; padding-right:8px">
-                    {{-- <img src="assets/img/logo/logo1.png" alt="Logo"> --}}
-                    
                     <img 
                     style="max-width: 100%; max-height:100%; object-fit:cover; 
                     width:90px;"
                     src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
- 
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">

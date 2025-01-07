@@ -5,12 +5,12 @@
 @section('content')
 
  <!-- Inner Banner -->
- <div class="inner-banner inner-bg4">
+ <div class="inner-banner" style="background-image: url({{ asset('assets/images/event/event_bg.jpg') }});">
     <div class="container">
         <div class="inner-banner-title text-center">
             <h3>{!! Str::limit($eventItem->title, 30, '...') !!}</h3>
             <p>Empowering Women, Transforming Leadership, Driving Innovation</p>
-        </div>
+        </div> 
         
         <div class="banner-list">
             <div class="row align-items-center justify-content-center">
@@ -26,7 +26,7 @@
                         <li>
                             <i class='bx bx-chevron-right'></i>
                         </li>
-                        <li class="active">Blog Details</li>
+                        <li class="active">Event Details</li>
                     </ul>
                 </div>
 

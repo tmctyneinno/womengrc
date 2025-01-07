@@ -1,43 +1,40 @@
 @extends('layouts.app')
 
+
+
 @section('content')
 
-
-<div class="inner-banner inner-bg7">
+<div class="inner-banner" style="background-image: url({{ asset($facilitatorContent->image) }});">
     <div class="container">
         <div class="inner-title text-center">
-            <h3>Mentorship</h3>
+            <h3>Facilitators</h3>
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('home')}}">Home</a>
                 </li>
-                <li>
+                <li> 
                     <i class="bx bx-chevron-right"></i>
                 </li>
                 <li>Pages</li>
                 <li>
                     <i class="bx bx-chevron-right"></i>
                 </li>
-                <li>Mentorship</li>
+                <li>Facilitators</li>
             </ul>
         </div>
     </div>
 </div>
-
-<div class="privacy-policy-area ptb-100">
+ 
+<div class="terms-conditions-area ptb-100">
     <div class="container">
         <div class="single-content">
-            <h3 class="text-center">Welcome to Mentorship</h3>
-           
-
+            <h3 class="text-center">{{ $facilitatorContent->title }}</h3>
             <p>
-                Coming soon
+                {!! $facilitatorContent->content !!}
             </p>
         </div>
-
-        
     </div>
 </div>
-       
+
     
 @endsection

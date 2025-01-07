@@ -4,10 +4,10 @@
 
 @section('content')
 
-<div class="inner-banner" style="background-image: url({{ asset($membershipContent->image) }});">
+<div class="inner-banner" style="background-image: url({{ asset($mentorshipContent->image) }});">
     <div class="container">
         <div class="inner-title text-center">
-            <h3>Membership</h3>
+            <h3>Mentorship</h3>
             <ul>
                 <li>
                     <a href="{{ route('home')}}">Home</a>
@@ -19,20 +19,18 @@
                 <li>
                     <i class="bx bx-chevron-right"></i>
                 </li>
-                <li>Membership</li>
+                <li>Mentorship</li>
             </ul>
         </div>
     </div>
 </div>
-
+ 
 <div class="terms-conditions-area ptb-100">
     <div class="container">
-       
-
         <div class="single-content">
-            <h3 class="text-center">{{ $membershipContent->title }}</h3>
+            <h3 class="text-center">{{ $mentorshipContent->title }}</h3>
             <p>
-                {!! $membershipContent->content !!}
+                {!! $mentorshipContent->content !!}
             </p>
         </div>
     </div>

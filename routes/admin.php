@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\LivestreamController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MembersController;
+use App\Http\Controllers\Admin\FacilitatorController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ConsultantController;
 use App\Http\Controllers\Admin\CoreActivitiesController; 
@@ -20,6 +21,8 @@ use App\Http\Controllers\Admin\CoreValueController;
 use App\Http\Controllers\Admin\VisionMissionController;
 use App\Http\Controllers\Admin\SociallinkController; 
 use App\Http\Controllers\Admin\TestimonialsController;
+use App\Http\Controllers\Admin\MembershipController;
+use App\Http\Controllers\Admin\MentorshipController;
 use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\ContactFormController;
@@ -100,16 +103,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/advisory-board-member/delete/{id}', [AdvisoryBoardMemberController::class, 'destroy'])->name('admin.advisoryBoardMember.destroy');
 
         // members
-        Route::get('/members', [MembersController::class, 'index'])->name('admin.members');
+        // Route::get('/members', [MembersController::class, 'index'])->name('admin.members');
        
         Route::get('/members-benefit', [MembersController::class, 'membersBenefit'])->name('admin.members.membersBenefit');
         Route::post('/members-benefit/post', [MembersController::class, 'membersBenefitStore'])->name('admin.membersBenefit.store');
         Route::put('/members-benefit/update/{id}', [MembersController::class, 'membersBenefitUpate'])->name('admin.membersBenefit.update');
 
-        Route::get('/membership-overview', [MembersController::class, 'membersOverview'])->name('admin.members.membersOverview');
-        Route::post('/membership-overview/post', [MembersController::class, 'membersOverviewStore'])->name('admin.membersOverview.store');
-        Route::put('/membership-overview/update/{id}', [MembersController::class, 'membersOverviewUpate'])->name('admin.membersOverview.update');
-
+      
         Route::get('/membership-subscription-fees', [MembersController::class, 'membersSubscriptionFees'])->name('admin.members.membersSubscriptionFees');
         Route::post('/membership-subscription-fees/post', [MembersController::class, 'membersSubscriptionFeesStore'])->name('admin.membersSubscriptionFees.store');
         Route::put('/membership-subscription-fees/update/{id}', [MembersController::class, 'membersSubscriptionFeesUpate'])->name('admin.membersSubscriptionFees.update');
@@ -149,7 +149,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/settings/office/hours/index', [SettingsController::class, 'indexOfficeHours'])->name('admin.officeHours.index');
         Route::post('/settings/store/office-hours', [SettingsController::class, 'storeOfficeHours'])->name('admin.office-hours.store');
         Route::put('/settings/update/office-hours/{id}', [SettingsController::class, 'updatestoreOfficeHours'])->name('admin.office-hours.update');
-         
+          
         //Contact Us 
         Route::get('/settings/contact-us', [SettingsController::class, 'getcontactUs'])->name('admin.settings.contactUs');
         Route::post('/settings/store/contact-us', [SettingsController::class, 'storeContactUs'])->name('admin.settings.storeContactUs');
@@ -158,6 +158,22 @@ Route::prefix('admin')->group(function () {
         Route::get('/sociallinks/index', [SociallinkController::class, 'index'])->name('admin.socialLink.index');
         Route::post('/settings/store/social-links', [SociallinkController::class, 'storeSocialLinks'])->name('admin.settings.storeSocialLinks');
         Route::put('/settings/update/social-links/{id}', [SociallinkController::class, 'updateSocialLinks'])->name('admin.settings.updateSocialLinks');
+       
+        //Membership Controller
+        Route::get('/membership/index', [MembershipController::class, 'index'])->name('admin.membership.index');
+        Route::post('/membership/store', [MembershipController::class, 'store'])->name('admin.membership.store');
+        Route::put('/membership/update/{id}', [MembershipController::class, 'update'])->name('admin.membership.update');
+        
+        //Mentorship Controller
+        Route::get('/mentorship/index', [MentorshipController::class, 'index'])->name('admin.mentorship.index');
+        Route::post('/mentorship/store', [MentorshipController::class, 'store'])->name('admin.mentorship.store');
+        Route::put('/mentorship/update/{id}', [MentorshipController::class, 'update'])->name('admin.mentorship.update');
+        
+        //Facilitator Controller
+        Route::get('/facilitator/index', [FacilitatorController::class, 'index'])->name('admin.facilitator.index');
+        Route::post('/facilitator/store', [FacilitatorController::class, 'store'])->name('admin.facilitator.store');
+        Route::put('/facilitator/update/{id}', [FacilitatorController::class, 'update'])->name('admin.facilitator.update');
+        
        
         //Careers 
         Route::get('career/index', [CareerController::class, 'index'])->name('admin.career.index');

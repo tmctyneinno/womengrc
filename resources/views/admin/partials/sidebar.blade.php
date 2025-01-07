@@ -58,16 +58,16 @@
                         <a  href="{{route('admin.testimonials.index')}}" aria-expanded="false">Testimonials</a>
                     </li>
                     <li> 
-                        <a  href="{{ route('admin.members') }}" aria-expanded="false">
-                            Membership
+                        <a  href="{{ route('admin.membership.index') }}" aria-expanded="false">
+                            Membership & Mentorship content
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a  href="{{route('admin.livestream.index')}}" aria-expanded="false">Livestream</a>
-                    </li>
-                    <li>
+                    </li> --}}
+                    {{-- <li>
                         <a  href="{{route('admin.coreActivities.index')}}" aria-expanded="false">Core activities</a>
-                    </li>
+                    </li> --}}
                    
                     <li>
                         <a  href="{{route('admin.faq.index')}}" aria-expanded="false">FAQs</a>
@@ -90,7 +90,7 @@
     
         <div class="copyright">
             <p><strong> </strong> ©  <span id="current-year"></span> All Rights Reserved</p>
-            <p>by IFPN</p>
+            <p>by Women in GRC</p>
         </div>
     </div>
 </div>

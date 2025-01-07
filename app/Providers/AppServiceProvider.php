@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Auth;
 use App\Models\Recognition;
+use App\Models\MentorshipContent;
+use App\Models\FacilitatorContent;
+use App\Models\MembershipContent;
 use App\Models\TermsConditions;
 use App\Models\PrivacyPolicy;
 use App\Models\Notification;
@@ -58,6 +61,10 @@ class AppServiceProvider extends ServiceProvider
         View::share('recentEvent', Event::inRandomOrder()->take(6)->get());
         View::share('policies', PrivacyPolicy::first()); 
         View::share('termsCondition', TermsConditions::first());
+
+        View::share('membershipContent', MembershipContent::first());
+        View::share('mentorshipContent', MentorshipContent::first());
+        View::share('facilitatorContent', FacilitatorContent::first());
 
         View::composer('*', function ($view) {
             if (Auth::check()) {

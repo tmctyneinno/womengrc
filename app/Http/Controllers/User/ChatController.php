@@ -26,7 +26,6 @@ class ChatController extends Controller
             return redirect()->back();
         }
        
-        
         $mentor = User::findOrFail(($mentorId));
         if (!$mentor) {
             session()->flash('error', 'The specified mentor does not exist.');

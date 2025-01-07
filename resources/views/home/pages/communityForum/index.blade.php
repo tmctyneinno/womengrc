@@ -3,9 +3,9 @@
 
 
 @section('content')
-
+ 
  <!-- Inner Banner -->
- <div class="inner-banner inner-bg5">
+ <div class="inner-banner" style="background-image: url({{ asset('assets/images/event/event_bg.jpg') }});">
     <div class="container">
         <div class="inner-banner-title text-center">
             <h3>Community Forum</h3>

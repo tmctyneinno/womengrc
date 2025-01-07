@@ -7,7 +7,7 @@ template.
  
 This files table contents are outlined below>>>>>
 
-
+ 
 *******************************************
 *******************************************
 ** - Default Btn Style 
@@ -272,7 +272,7 @@ Navbar Area
   height: auto;
 }
 .main-nav nav .navbar-nav .nav-item:hover a, .main-nav nav .navbar-nav .nav-item .active {
-  color: var(--mainColor) !important;
+  color: #B03436 !important;
 }
 .main-nav nav .navbar-nav .nav-item a {
   text-transform: capitalize;

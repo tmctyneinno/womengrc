@@ -38,14 +38,14 @@
                             <input autocomplete="off" type="email" class="form-control" placeholder="Second Email" name="second_email" value=" {{ isset($contactUs) ? $contactUs->second_email : '' }}" >
                         </div>
                         <div class="mb-3 col-md-10">
-                            <label class="form-label">First Address </label>
-                            <textarea  class="form-control" placeholder="First Address" name="first_address" rows="3" spellcheck="false" required> {{ isset($contactUs) ? $contactUs->first_address : '' }}</textarea>
+                            <label class="form-label">First Address</label>
+                            <textarea id="ckeditor" name="first_address" class="form-control" placeholder="Content" rows="8" spellcheck="false" required> {{ isset($contactUs) ? $contactUs->first_address : '' }}</textarea>
                         </div>
+                        
                         <div class="mb-3 col-md-10">
-                            <label class="form-label">Second Address </label>
-                            <textarea  class="form-control" placeholder="Second Address" name="second_address" rows="3" spellcheck="false" > {{ isset($contactUs) ? $contactUs->second_address : '' }}</textarea>
+                            <label class="form-label">Second Address</label>
+                            <textarea  name="second_address" class="form-control" placeholder="Content" rows="8" spellcheck="false" required> {{ isset($contactUs) ? $contactUs->second_address : '' }}</textarea>
                         </div>
-                       
                         <div class="mb-3 col-md-10">
                             <label class="form-label"> Header Logo </label>
                             <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="site_logo"  onchange="previewImage(event)">

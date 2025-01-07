@@ -13,7 +13,7 @@
                             src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
                         </a> 
                         <p>
-                            {{ $contactUs ? ($contactUs->first_address) : '' }}
+                            {!! $contactUs ? ($contactUs->first_address) : '' !!}
                         </p>
                         <p>
                             {{ $contactUs ? ($contactUs->second_address) : '' }}
