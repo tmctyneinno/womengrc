@@ -3,8 +3,8 @@
         <h1 class="main__logo--title">
             <a class="main__logo--link" href="{{ route('user.dashboard') }}">
                 <img class="main__logo--img desktop light__logo" style="max-height: 100%; max-width:100%; width:100px; height:30px;  object-fit: contain;" src="{{ asset( $contactUs->site_logo )}}" alt="logo-img">
-                <img class="main__logo--img desktop dark__logo" src="{{ asset('assets/admin/img/logo/nav-log-white.jpg')}}" alt="logo-img" style="max-height: 100%; max-width:100%; width:171px; height:38px;  object-fit: cover;" >
-                <img class="main__logo--img mobile" src="{{ asset('assets/admin/img/logo/logo-mobilee.jpg')}}" alt="logo-img" style="max-height: 100%; max-width:100%; width:49; height:34px;  object-fit: cover;" >
+                <img class="main__logo--img desktop dark__logo" src="{{ asset( $contactUs->site_logo )}}" alt="logo-img" style="max-height: 100%; max-width:100%; width:171px; height:38px;  object-fit: cover;" >
+                <img class="main__logo--img mobile" src="{{ asset( $contactUs->site_logo )}}" alt="logo-img" style="max-height: 100%; max-width:100%; width:49; height:34px;  object-fit: cover;" >
             </a>
         </h1>
     </div>
