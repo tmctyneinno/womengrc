@@ -18,7 +18,7 @@ use App\Http\Controllers\Auth\VerificationController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/ 
+*/  
 require __DIR__.'/admin.php';
 require __DIR__.'/user.php';
  
@@ -36,6 +36,7 @@ Route::get('event/{id}/details', [EventController::class, 'show'])->name('events
 
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');  
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq'); 
+Route::post('/faq/store', [FrontendController::class, 'faqStore'])->name('faq.submit'); 
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact'); 
 Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacyPolicy'); 
 Route::get('/terms-condition', [FrontendController::class, 'termsCondition'])->name('termsCondition'); 

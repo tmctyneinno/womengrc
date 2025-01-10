@@ -26,31 +26,26 @@
 </div>
 <!-- Inner Banner End -->
 
-<div class="contact-area">
-    <div class="container">
-        @include('home.pages.social-media')
 
-    </div>
-</div>
 
 <!-- Contact Area -->
 <div class="contact-area">
     <div class="container">
         <div class="contact-max">
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="contact-card">
                         <i class="flaticon-position"></i>
                         <h3>
-                            {{ $contactUs ? ($contactUs->first_address) : '' }}
+                            {!! $contactUs ? ($contactUs->first_address) : '' !!}
                         </h3>
                         <h3>
-                            {{ $contactUs ? ($contactUs->second_address) : '' }}
+                            {!! $contactUs ? ($contactUs->second_address) : '' !!}
                         </h3>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="contact-card">
                         <i class="flaticon-email"></i>
                         <h3>
@@ -60,13 +55,16 @@
                     </div>
                 </div>
 
+                {{-- 
                 <div class="col-lg-4 col-md-6  ">
-                    {{-- <div class="contact-card">
+                    <div class="contact-card">
                         <i class="flaticon-to-do-list"></i>
                         <h3><a href="tel:{{ $contactUs ? ($contactUs->first_phone) : '' }}">
                             {{ $contactUs ? ($contactUs->first_phone) : '' }}</a></h3>
-                    </div> --}}
-                </div>
+                    </div>
+                </div> 
+                --}}
+
             </div>
         </div>
     </div>
@@ -142,5 +140,10 @@
     </div>
 </div>
 <!-- Map Area Two End -->
+<div class="contact-area">
+    <div class="container">
+        @include('home.pages.social-media')
 
+    </div>
+</div>
 @endsection

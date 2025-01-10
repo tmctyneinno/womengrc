@@ -6,13 +6,14 @@
 
 
         <!-- Inner Banner -->
-        <div class="inner-banner inner-bg6">
+        <div class="inner-banner" style="background-image: url({{ asset('assets/images/faq/faq.jpg') }});">
+   
             <div class="container">
                 <div class="inner-title text-center">
                     <h3>Frequently Asked Questions</h3>
                     <ul>
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="{{ route('home')}}">Home</a>
                         </li>
                         <li>
                             <i class='bx bx-chevron-right'></i>
@@ -46,33 +47,49 @@
                             </div>
                         </div>
                     @empty
-                        <p>No data found</p>
-                    @endforelse
-
-                    <div class="pagination-area text-center pt-45">
-                        {{ $faqs->links() }}
-                    </div>
-
-                    {{-- <div class="col-lg-12 col-md-12">
-                        <div class="pagination-area text-center">
-                            <a href="#" class="prev page-numbers">
-								<i class="bx bx-chevron-left"></i>
-							</a>
-							
-                            <span class="page-numbers current" aria-current="page">1</span>
-                            <a href="#" class="page-numbers">2</a>
-                            <a href="#" class="page-numbers">3</a>
-							<a href="#" class="page-numbers">4</a>
-							
-                            <a href="#" class="next page-numbers">
-								<i class="bx bx-chevron-right"></i>
-							</a>
+                        <div class="col-12">
+                            <p class="text-center">No FAQs available at the moment.</p>
                         </div>
-                    </div> --}}
-                    
+                    @endforelse
                 </div>
+                @if ($faqs->hasPages())
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="pagination-area text-center">
+                                @if ($faqs->onFirstPage())
+                                    <span class="prev page-numbers disabled">
+                                        <i class="bx bx-chevron-left"></i>
+                                    </span>
+                                @else
+                                    <a href="{{ $faqs->previousPageUrl() }}" class="prev page-numbers">
+                                        <i class="bx bx-chevron-left"></i>
+                                    </a>
+                                @endif
+        
+                                @foreach ($faqs->links()->elements[0] as $page => $url)
+                                    @if ($page == $faqs->currentPage())
+                                        <span class="page-numbers current" aria-current="page">{{ $page }}</span>
+                                    @else
+                                        <a href="{{ $url }}" class="page-numbers">{{ $page }}</a>
+                                    @endif
+                                @endforeach
+        
+                                @if ($faqs->hasMorePages())
+                                    <a href="{{ $faqs->nextPageUrl() }}" class="next page-numbers">
+                                        <i class="bx bx-chevron-right"></i>
+                                    </a>
+                                @else
+                                    <span class="next page-numbers disabled">
+                                        <i class="bx bx-chevron-right"></i>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
+        
 
 
         <div class="faq-section pt-100 pb-70">
@@ -83,23 +100,35 @@
                             <div class="col-lg-12 col-md-6">
                                 <div class="contact-card">
                                     <i class="flaticon-position"></i>
-                                    <h3>2nd Floor, 1 Adeola Adeoye Street, Toyin Street, Ikeja, Lagos, Nigeria.</h3>
+                                    <p>
+                                        {!! $contactUs ? ($contactUs->first_address) : '' !!}
+                                    </p>
+                                    <p>
+                                        {{ $contactUs ? ($contactUs->second_address) : '' }}
+                                    </p>
                                 </div>
                             </div> 
 
                             <div class="col-lg-12 col-md-6">
                                 <div class="contact-card">
                                     <i class="flaticon-email"></i>
-                                    <h3><a href="mailto:info@womeningrc.com">Email:info@womeningrc.com</a></h3>
+                                    <p>
+                                    <b>Email :</b> 
+                                    <a > 
+                                        {{ $contactUs ? ($contactUs->first_email) : '' }}
+                                        {{ $contactUs ? ($contactUs->second_email) : '' }}
+                                    </a>
+                                    </p>
+                                    {{-- <p><a href="mailto:info@womeningrc.com">Email:info@womeningrc.com</a></p> --}}
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 col-md-6  ">
+                            {{-- <div class="col-lg-12 col-md-6  ">
                                 <div class="contact-card">
                                     <i class="flaticon-to-do-list"></i>
                                     <h3><a href="tel:+234 (0) 915-341-4314">+234 (0) 915-341-4314</a></h3>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -108,7 +137,8 @@
                             <div class="contact-form">
                                 <span>FAQ</span>
                                 <h2>Drop A Questions</h2>
-                                <form id="contactForm" novalidate="true">
+                                <form  action="{{ route('faq.submit') }}" method="POST">
+                                    @csrf
                                     <div class="row justify-content-center">
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="form-group">
@@ -134,10 +164,16 @@
                                             </div>
                                         </div>
         
+                                      
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="form-group">
                                                 <i class="bx bx-file"></i>
-                                                <input type="text" name="msg_subject" id="msg_subject" class="form-control" required="" data-error="Please enter your subject" placeholder="Your Subject">
+                                                <select name="msg_subject" id="msg_subject" class="form-control" required data-error="Please select a subject">
+                                                    <option value="" disabled selected>Select a Subject*</option>
+                                                    @foreach ($faqs as $faq)
+                                                        <option value="{{ $faq->id }}">{{ $faq->question }}</option>
+                                                    @endforeach
+                                                </select>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>

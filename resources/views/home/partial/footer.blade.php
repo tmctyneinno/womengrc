@@ -38,7 +38,10 @@
                         <h3>SUPPORT</h3>
                         <ul class="footer-list">
                             <li>
-                                 <a href="login-register.html">My Account</a>
+                                <a href="f{{ route('home.pages','blog')}}">Blog</a>
+                            </li>
+                            <li>
+                                <a href="f{{ route('home.pages','facilitators')}}">Facilitators</a>
                             </li>
                             <li>
                                 <a href="f{{ route('home.pages','mentorship')}}">Mentorship</a>
@@ -47,7 +50,7 @@
                                 <a href="f{{ route('home.pages','membership')}}">Membership</a>
                             </li>
                             <li>
-                                <a href="{{ route('register')}}">Register</a>
+                                <a href="{{ route('login')}}">Register</a>
                             </li>
                         </ul>
                     </div>
@@ -61,13 +64,13 @@
                                 <a href="{{ route('home.pages','about') }}">About Us</a>
                             </li>
                             <li>
-                                <a href="{{ route('home.pages','event') }}">FAQ's</a>
+                                <a href="{{ route('home.pages','faqs') }}">FAQ's</a>
                             </li>
                             <li>
                                 <a href="{{ route('home.pages','contact') }}">Contact Us</a>
                             </li>
                             <li>
-                                <a href="{{ route('register') }}">Register</a>
+                                <a href="{{ route('login') }}">Login</a>
                             </li>
                             
                         </ul>
