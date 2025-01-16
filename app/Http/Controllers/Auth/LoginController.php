@@ -49,16 +49,24 @@ class LoginController extends Controller
         // Attempt to log in with credentials
         if (Auth::attempt($credentials)) {
             if (Auth::user()->hasVerifiedEmail()) {
+                // dd(Auth::user()->role);
+                if (Auth::user()->role === 'facilitator') {
+                    return redirect()->route('facilitator.dashboard'); 
+                }
                 return redirect()->route('user.dashboard');
             }
+
+            // Logout if email is not verified
             Auth::logout();
             return $this->sendFailedLoginResponse($request);
         }
 
+        // Handle failed login attempt
         return back()->withErrors([
             'email' => 'Invalid email or password.',
         ])->onlyInput('email'); 
     }
+
 
     
     protected function sendFailedLoginResponse(Request $request)

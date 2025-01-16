@@ -21,26 +21,22 @@ use App\Http\Controllers\Auth\VerificationController;
 */  
 require __DIR__.'/admin.php';
 require __DIR__.'/user.php';
+require __DIR__.'/facilitator.php';
  
 Route::get('/', [FrontendController::class, 'index'])->name('home'); 
 Route::get('/{page}', [PagesController::class, 'index'])->name('home.pages');
-
-
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/vision', [FrontendController::class, 'vision'])->name('vision');
 Route::get('/purpose', [FrontendController::class, 'purpose'])->name('purpose');
 Route::get('/mission', [FrontendController::class, 'mission'])->name('mission');
 Route::get('/events', [FrontendController::class, 'event'])->name('event');
 Route::get('event/{id}/details', [EventController::class, 'show'])->name('events.show');
-
-
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');  
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq'); 
 Route::post('/faq/store', [FrontendController::class, 'faqStore'])->name('faq.submit'); 
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact'); 
 Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacyPolicy'); 
 Route::get('/terms-condition', [FrontendController::class, 'termsCondition'])->name('termsCondition'); 
-
 Route::get('blog/{id}/details', [BlogController::class, 'detail'])->name('blog.detail');
 Route::post('/post/comment', [BlogController::class, 'storeComment'])->name('comments.store');
 

@@ -43,6 +43,7 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     
- 
+    Route::get('/facilitator/dashboard', [FacilitatorDashboardController::class, 'index'])->name('facilitator.dashboard');
+
 }); 
 

@@ -3,6 +3,9 @@
     .navbar-custom{
         background-color: #2a2a2a !important;
     }
+    .form-group select {
+        padding-top: 50px !important;
+    }
 </style>
 @section('content')
 
@@ -59,10 +62,10 @@
                                                                        required 
                                                                        autocomplete="email" 
                                                                        autofocus>
-                                                                      
                                                             </div>
-                                                           
                                                         </div>
+
+                                                       
                                                 
                                                         <!-- Password Input -->
                                                         <div class="col-12">
@@ -112,8 +115,6 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                
-                                                
                                             </div>
                                         </div>
                                     </div>
@@ -137,6 +138,15 @@
                                                                 <i class="flaticon-email-2"></i>
                                                                 <input type="email" name="email" id="email" class="form-control" required="" data-error="Please enter email" placeholder="Email">
                                                             </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12 form-group">
+                                                            <select name="role"  class="form-control" aria-label="Default select example" required>
+                                                                <option selected >Select Role</option>
+                                                                <option value="facilitator">Facilitator</option>
+                                                                <option value="mentor">Mentor</option>
+                                                                <option value="mentee">Mentee</option>
+                                                            </select>
                                                         </div>
 
                                                         <div class="col-12">

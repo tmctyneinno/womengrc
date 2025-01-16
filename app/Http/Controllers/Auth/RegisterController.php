@@ -31,6 +31,7 @@ class RegisterController extends Controller
         return  $request->validate([
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
+            'role' => 'required',
             'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
         ]);
     } 
@@ -51,6 +52,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required|string|max:50|unique:users',
             'email' => 'required|string|email|max:50|unique:users',
+            'role' => 'required',
             'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
             // 'password' => 'required|string|min:8|confirmed',
         ]);
@@ -59,10 +61,11 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
             'profile_picture' => null,
         ]);
-
+ 
         // Send verification email
         Mail::to($user->email)->send(new VerificationEmail($user));
 

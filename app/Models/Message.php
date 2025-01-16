@@ -9,7 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Message extends Model
 {
     use HasFactory;
-    protected $fillable=['message','user_id', 'receiver_id'];
+    protected $fillable=[
+        'message',
+        'user_id', 
+        'receiver_id',
+        'file_path',
+    ];
 
     public function user(): BelongsTo
     {

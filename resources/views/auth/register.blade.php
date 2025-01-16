@@ -59,6 +59,15 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="col-lg-12 form-group">
+                                                            <select name="role" class="form-control" aria-label="Default select example" >
+                                                                <option selected >Select Role</option>
+                                                                <option value="facilitator">Facilitator</option>
+                                                                <option value="mentor">Mentor</option>
+                                                                <option value="mentee">Mentee</option>
+                                                            </select>
+                                                        </div>
+
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <i class="bx bx-lock-alt"></i>

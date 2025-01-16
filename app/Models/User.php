@@ -25,7 +25,7 @@ class User extends Authenticatable
         'profile_picture',
         'role',
         'phone',
-        // 'mentor'
+        
     ];
 
     /**
@@ -70,7 +70,7 @@ class User extends Authenticatable
     public function messages()
     {
         return $this->hasmany(Message::class);
-    }
+    } 
     
     protected static function booted()
     {

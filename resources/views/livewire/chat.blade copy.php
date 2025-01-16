@@ -1,4 +1,18 @@
+<style>
+    .uploaded-file-image {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
 
+    .uploaded-file-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: #007bff;
+        text-decoration: underline;
+    }
+
+</style>
 <div>
     
     <div class="page__body--wrapper" id="dashbody__page--body__wrapper">
@@ -84,10 +98,15 @@
                                                 </div>
                                             </li>
                                         @endforelse
+
+                                       
+                                       
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        
+                        
                     </div>
                 </div>
                 @if($mentorId)
@@ -129,31 +148,26 @@
                         </div>
                         <div class="chat__message--wrapper">
                             <div>
+                                {{-- {{ Auth::user()->id }} --}}
                                 @foreach($messages as $message)
                                     @if($message->user_id !=Auth::user()->id)
+                                        {{-- <p>{{ $message->message }}</p> --}}
                                         <div class="chat__message--list message__out">
                                             <div class="chat__message--list__inner">
                                                 <div class="message__out--content">
                                                     <div class="message__out--text">
                                                         @if($message->message)
-                                                            <p>{{ $message->message }}</p>
+                                                            <p  class="chatting__message--desc">{{ $message->message }}</p>
                                                         @endif
-                                                        <!-- Display file if available -->
+                                                        <br>
                                                         @if($message->file_path)
-                                                            @php
-                                                                $isImage = str_starts_with($message->file_type, 'image/');
-                                                            @endphp
-
-                                                            @if(!$isImage)
-                                                                <!-- Display image -->
-                                                                <img src="{{ asset('storage/uploads/' . basename($message->file_path)) }}" alt="Uploaded Image" class="uploaded-file-image" />
+                                                            @if (str_starts_with($message->file_type, 'image/'))
+                                                                <img src="{{ $message->file_path }}" alt="Uploaded Image" style="max-width: 100px;">
                                                             @else
-                                                                <!-- Display document link -->
-                                                                <a href="{{ asset('storage/uploads/' . basename($message->file_path)) }}" target="_blank" class="uploaded-file-image">
-                                                                    View Document
-                                                                </a>
+                                                                <a href="{{ $message->file_path }}" target="_blank">Download File</a>
                                                             @endif
                                                         @endif
+                                                    
                                                     </div>
                                                     <span class="message__out--author">Sent by <span>{{$message->user->name}}</span></span>
                                                     <span class="chatting__message--date">{{ $message->created_at->format('D h:i A') }}</span>
@@ -182,40 +196,39 @@
                                                 <div class="chatting__message--content">
                                                     <div class="chatting__message--text">
                                                         @if($message->message)
-                                                            <p>{{ $message->message }}</p>
+                                                            <p  class="chatting__message--desc">{{ $message->message }}</p>
                                                         @endif
+                                                        <br>
                                                         <!-- Display file if available -->
                                                         @if($message->file_path)
-                                                            @php
-                                                                $isImage = str_starts_with($message->file_type, 'image/');
-                                                            @endphp
-
-                                                            @if($isImage)
-                                                                <!-- Display image -->
-                                                                <img src="{{ asset('storage/uploads/' . basename($message->file_path)) }}" alt="Uploaded Image" class="uploaded-file-image" />
+                                                            @if (str_starts_with($message->file_type, 'image/'))
+                                                                <img src="{{ $message->file_path }}" alt="Uploaded Image" style="max-width: 100px;">
                                                             @else
-                                                                <!-- Display document link -->
-                                                                <a href="{{ asset('storage/uploads/' . basename($message->file_path)) }}" target="_blank" class="uploaded-file-link">
-                                                                    View Document
-                                                                </a>
+                                                                <a href="{{ $message->file_path }}" target="_blank">Download File</a>
                                                             @endif
                                                         @endif
-
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
+
+                                    
                                 @endforeach
                             </div>
 
                         </div>
                         <div class="chat__message--footer">
-                            <form class="chat__message--form"  wire:submit.prevent="sendMessage" enctype="multipart/form-data">
-                                <input class="chat__message--input__field" type="text" 
-                                wire:model.defer="message"  placeholder="Type your message..." required>
-                
-                                 <!-- File Upload Button -->
+                            <form class="chat__message--form" wire:submit.prevent="sendMessage">
+                                <input 
+                                    class="chat__message--input__field" 
+                                    type="text" 
+                                    wire:model.defer="message" 
+                                    placeholder="Type your message..."
+                                >
+                            
+                                <!-- File Upload Button -->
                                 <button type="button" class="chat__message--btn__option two" aria-label="upload button">
                                     <label for="file-upload" style="cursor: pointer;">
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -228,9 +241,11 @@
                                     </label>
                                     <input id="file-upload" type="file" wire:model="uploadedFile" style="display: none;" />
                                 </button>
+                            
+                                <!-- Submit Button -->
                                 <button class="chat__message--btn__option three" type="submit">Send</button>
-                                
                             </form>
+                            
                         </div>
                     </div>
                 @endif
