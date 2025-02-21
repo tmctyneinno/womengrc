@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Auth;
 use App\Models\Recognition;
+use App\Models\Advisory;
 use App\Models\MentorshipContent;
 use App\Models\FacilitatorContent;
 use App\Models\MembershipContent;
@@ -50,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('contactUs', ContactUs::first());
         View::share('sliders', Slider::all());
         View::share('recognitions', Recognition::all());
+        View::share('advisory', Advisory::all());
         View::share('aboutUs', About::first());
         View::share('sociallink', Sociallink::first());
         View::share('visionMission', VisionMission::first()); 

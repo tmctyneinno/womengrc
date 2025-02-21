@@ -29,6 +29,7 @@ class PagesController extends Controller
             'community-forum' => 'home.pages.communityForum.index',
             'blog' => 'home.pages.blog.index', 
             'recognition' => 'home.pages.recognition',
+            'advisory-board' => 'home.pages.advisoryBoard',
             'contact' => 'home.pages.contact',
             'faqs' => 'home.pages.faq',
             'login' => 'auth.login',

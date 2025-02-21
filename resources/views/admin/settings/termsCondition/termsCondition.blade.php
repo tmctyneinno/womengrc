@@ -9,7 +9,7 @@
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
                     </div>
-                @endif
+                @endif 
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>

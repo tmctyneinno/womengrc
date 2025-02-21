@@ -19,7 +19,7 @@ class SettingsController extends Controller
     use SettingsTrait;
     public function WhyChooseUs(){ 
         return view('admin.settings.index');
-    }
+    } 
 
     public function storeWhyChooseUs(Request $request)
     {

@@ -25,6 +25,13 @@
                 <span class="nav-text">Recognition</span>
                 </a>
             </li> 
+            <li> 
+                <a class="has-arrow ai-icon" href="{{ route('admin.advisory.index') }}" aria-expanded="false">
+                <i class="flaticon-381-layer-1"></i>
+                <span class="nav-text">Advisory Board</span>
+                </a>
+            </li> 
+            
             
             <li>
                 <a class="has-arrow ai-icon" href="{{ route('admin.contactForm.index') }}"  aria-expanded="false">
@@ -75,7 +82,7 @@
                     <li>
                         <a  href="{{route('admin.menu.index')}}" aria-expanded="false"> Manage Menu</a>
                     </li>
-                    <li>
+                    <li> 
                         <a  href="{{route('admin.slider.index')}}" aria-expanded="false"> slider</a>
                     </li>
                     <li>

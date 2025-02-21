@@ -33,9 +33,9 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                            @endif
+                            @endif 
                             <div class="col-sm-2">
-                                <div class="nav flex-column nav-pills mb-3" role="tablist">
+                                <div class="nav flex-column nav-pills mb-3" role="tablist"> 
                                     <a href="{{ route('admin.visionMission.index') }}" class="nav-link active">Vision/Mission</a>
                                     <a href="{{ route('admin.coreValue.index') }}" class="nav-link ">Core Value</a>
                                     <a href="{{ route('admin.settings.aboutUs') }}"  class="nav-link " >About us</a>
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon offcanvas__header--menu__open--svg" viewBox="0 0 512 512"><path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 160h352M80 256h352M80 352h352"/></svg>
                     <span class="visually-hidden">Offcanvas Menu Open</span>
                 </a>
-            </div>
+            </div> 
             <div class="search__box">
                 <form class="search__box--form laptop__hidden" action="#">
                     <input class="search__box--input__field" placeholder="Search for ...." type="text">

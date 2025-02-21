@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\GoogleCalendarController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\RecognitionController;
+use App\Http\Controllers\Admin\AdvisoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\LivestreamController;
 use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\MembersController;
+use App\Http\Controllers\Admin\MembersController; 
 use App\Http\Controllers\Admin\FacilitatorController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ConsultantController;
@@ -73,6 +74,9 @@ Route::prefix('admin')->group(function () {
         });
         Route::name('admin.')->group(function () {
             Route::resource('recognition', RecognitionController::class);
+        });
+        Route::name('admin.')->group(function () {
+            Route::resource('advisory', AdvisoryController::class);
         });
         
        

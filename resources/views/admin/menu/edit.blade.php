@@ -90,7 +90,7 @@
                                     function removeDropdownItem(button) {
                                         const divToRemove = button.parentNode;
                                         divToRemove.parentNode.removeChild(divToRemove);
-                                    }
+                                    } 
                                 </script>
                             </div>
                             

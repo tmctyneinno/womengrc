@@ -12,7 +12,7 @@
                 <div class="me-auto d-lg-block d-block">
                     <h2 class="text-black font-w600">Menu</h2>
                     <p class="mb-0">Welcome to  Archway Home backend</p>
-                </div>
+                </div> 
                 <a href="{{route('admin.menu.index')}}" class="btn btn-primary rounded light">View Menu</a>
             </div>
             <div class="row justify-content-center">
@@ -28,7 +28,7 @@
                                         {{ session('success') }}
                                     </div>
                                 @endif
-                                
+                                 
                                 <form method="POST" action="{{ route('admin.menu.store') }}">
                                     @csrf
                                     <div class="mb-3 row align-items-center">
@@ -72,6 +72,7 @@
                                         input.type = 'text';
                                         input.name = 'dropdown_items[]';
                                         input.className = 'form-control';
+                                        input.required = true;
 
                                         // Create the remove button
                                         const buttonDiv = document.createElement('div');
