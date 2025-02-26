@@ -109,13 +109,13 @@
 <!-- Copy Right -->
 <div class="copy-right-area">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-8">
+        <div class="row ">
+            <div class="col-lg-6 col-md-6">
                 <div class="copy-right-text">
-                    <p>© {{ date('Y') }} WomeninGRC is Proudly Owned by <a href="https://morgansconsulting.ng/" target="_blank">Morgans Consulting</a></p>
+                    <p>© {{ date('Y') }} WGRCFP by <a href="https://morgansconsulting.ng/" target="_blank" style="text-decoration: none">THE MORGANS CONSORTIUM. </a> Designed by  <a href="https://tynesideinnovation.com/" style="text-decoration: none" target="_blank">Tyneside Innovation</a> </p>
                 </div>
             </div> 
-
+            <div class="col-lg-2 col-md-2"></div>
             <div class="col-lg-4 col-md-4">
                 <div class="copy-right-list">
                     <ul>
