@@ -1,20 +1,9 @@
-
- {{-- <div class="preloader">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="spinner"></div>
-        </div>
-    </div>
-</div> --}}
-
- 
 <!-- Start Navbar Area -->
 <div class="navbar-area ">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
         <a href="#" class="logo" style="background-color: #fff; padding:8px">
-            {{-- <img src="assets/img/logo/logo1.png" alt="Logo"> --}}
-            <img  
+           <img  
             style="max-width: 100%; max-height:100%; object-fit:cover; 
             width:20px; height:20px "
             src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
@@ -61,13 +50,7 @@
                     </ul>
                 
                     <div class="side-nav d-in-line align-items-center">
-                        {{-- <div class="side-item">
-                            <div class="cart-btn">
-                                <a href="{{ route('login')}}" style="color: #fff">
-                                    Login/Register
-                                </a>
-                            </div>
-                        </div> --}} 
+                       
                         <div class="side-item">
                             <div class="nav-add-btn">
                                 @guest

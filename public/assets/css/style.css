@@ -6,7 +6,7 @@ is the file you need to edit to change the look of the
 template.
  
 This files table contents are outlined below>>>>>
-
+ 
  
 *******************************************
 *******************************************
@@ -276,7 +276,7 @@ Navbar Area
 }
 .main-nav nav .navbar-nav .nav-item a {
   text-transform: capitalize;
-  color: var(--whiteColor);
+  color: #283566;
   font-weight: 400;
   margin-left: 12px;
   margin-right: 12px;

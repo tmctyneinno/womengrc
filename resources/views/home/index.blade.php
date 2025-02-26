@@ -8,7 +8,7 @@
 <!-- Slider Area -->
 <div class="slider-area owl-carousel owl-theme">
     @foreach ($sliders as $slider)
-        <div class="slider-item" style="background-image: url({{ asset($slider->image) }})">
+        <div class="slider-item" style="background-image: url({{ asset($slider->image) }}?v={{ time() }})">
             <div class="d-table">
                 <div class="d-table-cell">
                     <div class="container">

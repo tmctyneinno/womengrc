@@ -65,6 +65,8 @@
                                                                 <option value="facilitator">Facilitator</option>
                                                                 <option value="mentor">Mentor</option>
                                                                 <option value="mentee">Mentee</option>
+                                                                <option value="advisory">Advisory Board Members</option>
+                                                                <option value="guests">Guests</option>
                                                             </select>
                                                         </div>
 
