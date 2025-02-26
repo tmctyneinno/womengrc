@@ -53,6 +53,12 @@ class LoginController extends Controller
                 if (Auth::user()->role === 'facilitator') {
                     return redirect()->route('facilitator.dashboard'); 
                 }
+                if (Auth::user()->role === 'advisory') {
+                    return redirect()->route('facilitator.dashboard'); 
+                }
+                if (Auth::user()->role === 'guests') {
+                    return redirect()->route('facilitator.dashboard'); 
+                }
                 return redirect()->route('user.dashboard');
             }
 
