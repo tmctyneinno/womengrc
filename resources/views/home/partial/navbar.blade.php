@@ -18,7 +18,7 @@
                 <a class="navbar-brand" href="#" style="background-color: #fff; padding-left:8px; padding-right:8px">
                     <img 
                     style="max-width: 100%; max-height:100%; object-fit:cover; 
-                    width:90px;"
+                    width:70px;"
                     src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
                 </a>
 
