@@ -1,18 +1,18 @@
  <!-- Footer Area -->
- <footer class="footer-area footer-bg2">
+ <footer class="footer-area footer-bg2" style="color: #000">
     <div class="footer-middle pt-100 pb-70">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
-                        <a href="index-4.html" class="logo" style="background-color: #fff; padding:5px;">
+                        <a href="{{ route('home')}}" class="logo" style="background-color: #fff; color:#000; padding:5px;">
                             <img 
                             style="max-width: 100%; max-height:100%; object-fit:cover; 
                             width:210px; height:100px "
                      
                             src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
                         </a> 
-                        <p>
+                        <p style="color: #000">
                             {!! $contactUs ? ($contactUs->first_address) : '' !!}
                         </p>
                         <p>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\ChatController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MembershipController;
+use App\Http\Controllers\Advisory\AdvisoryDashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\MentorController;
 
@@ -42,8 +43,9 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
 
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    
+     
     Route::get('/facilitator/dashboard', [FacilitatorDashboardController::class, 'index'])->name('facilitator.dashboard');
+    Route::get('/advisory/dashboard', [AdvisoryDashboardController::class, 'index'])->name('advisory.dashboard');
 
 }); 
 

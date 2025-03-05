@@ -1620,7 +1620,7 @@ Team Area
 .team-card {
   background-color: var(--whiteColor);
   box-shadow: 0 0 15px rgba(102, 102, 102, 0.1);
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   transition: 0.7s;
 }
 .team-card {
@@ -1634,7 +1634,7 @@ Team Area
   border-radius: 5px 5px 0 0;
 }
 .team-card .content {
-  padding: 30px 25px;
+  padding: 5px 25px;
   position: relative;
 }
 .team-card .content::before {
@@ -5833,7 +5833,8 @@ Footer Area
 }
 
 .footer-bg2 {
-  background-color: #283566;
+  background-color: #fff;
+  color: #000 !important;
 }
 
 .footer-top {
@@ -5899,7 +5900,7 @@ Footer Area
 }
 .footer-widget p {
   margin-bottom: 15px;
-  color: #a6a6a6;
+  color: #283566;
   max-width: 290px;
   font-weight: 500;
 }
@@ -5921,14 +5922,14 @@ Footer Area
   display: block;
   font-size: 15px;
   margin-top: 5px;
-  color: #a6a6a6;
+  color: #283566;
 }
 .footer-widget .footer-contact-list li span {
-  color: #a6a6a6;
+  color: #283566;
   font-weight: 500;
 }
 .footer-widget .footer-contact-list li a {
-  color: #a6a6a6;
+  color: #283566;
 }
 .footer-widget .social-link {
   margin: 20px 0 0 0;
@@ -6006,7 +6007,7 @@ Footer Area
 .footer-widget .footer-news li .content h4 {
   display: block;
   font-size: 14px;
-  color: #d7d7d7;
+  color: #283566;
   position: relative;
   margin-left: 30px;
   font-weight: 500;
@@ -6023,11 +6024,11 @@ Footer Area
 .footer-widget .footer-news li .content span {
   display: block;
   font-size: 15px;
-  color: #d7d7d7;
+  color: #283566;
 }
 .footer-widget .footer-news li .content span a {
   display: block;
-  color: #d7d7d7;
+  color: #283566;
 }
 .footer-widget .footer-news li .content span:hover a {
   color: var(--mainColor);
@@ -6045,7 +6046,7 @@ Footer Area
   margin-bottom: 0;
 }
 .footer-widget .footer-list li a {
-  color: #bdcbd5;
+  color: #283566;
 }
 .footer-widget .footer-list li:hover a {
   color: #B03436;
@@ -6084,7 +6085,7 @@ Footer Area
   padding: 0;
   margin: 0;
   font-size: 15px;
-  color: #a6a6a6;
+  color: #283566;
 }
 .copy-right-text p a {
   color: var(--whiteColor);
@@ -6283,7 +6284,7 @@ Contact Area
   background-color: #ffffff;
   border-radius: 0;
   font-size: 14px;
-  padding: 10px 20px 10px 40px;
+  padding: 25px 20px 10px 40px;
   width: 100%;
 }
 .contact-form .form-group .form-control:focus {

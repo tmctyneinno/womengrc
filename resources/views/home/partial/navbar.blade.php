@@ -20,7 +20,7 @@
                     style="max-width: 100%; max-height:100%; object-fit:cover; 
                     width:70px;"
                     src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
-                </a>
+                </a> 
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
@@ -59,7 +59,7 @@
                                     </a>
                                 @else
                                 <div class="d-flex">
-                                    <a href="{{ route('user.dashboard') }}" class="default-btn border-radius">
+                                    <a href="{{ route('user.dashboard')}}" class="default-btn border-radius ">
                                         My Account
                                     </a>
                                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">

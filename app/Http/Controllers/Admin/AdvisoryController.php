@@ -91,7 +91,7 @@ class AdvisoryController extends Controller
             $advisoryData['image'] = 'advisorys/' . $imageName;
         }
 
-        $advisory->update($advisorynData);
+        $advisory->update($advisoryData);
 
         return redirect()->route('admin.advisory.index')
                         ->with('success', 'Advisory updated successfully.');

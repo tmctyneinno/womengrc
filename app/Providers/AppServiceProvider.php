@@ -51,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('contactUs', ContactUs::first());
         View::share('sliders', Slider::all()->shuffle());
         View::share('recognitions', Recognition::all()->shuffle());
-        View::share('advisory', Advisory::all()->shuffle());
+        View::share('advisory', Advisory::all());
         View::share('aboutUs', About::first());
         View::share('sociallink', Sociallink::first());
         View::share('visionMission', VisionMission::first()); 

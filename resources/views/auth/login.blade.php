@@ -140,13 +140,13 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-12 form-group">
+                                                        <div class="col-lg-12 form-group pt-2">
                                                             <select name="role"  class="form-control" aria-label="Default select example" required>
                                                                 <option selected >Select Role</option>
+                                                                <option value="advisory">Advisory Board Members</option>
                                                                 <option value="facilitator">Facilitator</option>
                                                                 <option value="mentor">Mentor</option>
                                                                 <option value="mentee">Mentee</option>
-                                                                <option value="advisory">Advisory Board Members</option>
                                                                 <option value="guests">Guests</option>
                                                             </select>
                                                         </div>
