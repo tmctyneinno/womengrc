@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\ChatController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MembershipController;
+use App\Http\Controllers\Facilitator\FacilitatorDashboardController;
 use App\Http\Controllers\Advisory\AdvisoryDashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\MentorController;
