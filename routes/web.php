@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Advisory\AdvisoryDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use App\Http\Controllers\Auth\VerificationController;
 require __DIR__.'/admin.php';
 require __DIR__.'/user.php';
 require __DIR__.'/facilitator.php';
+require __DIR__.'/advisory.php';
  
 Route::get('/', [FrontendController::class, 'index'])->name('home'); 
 Route::get('/{page}', [PagesController::class, 'index'])->name('home.pages');
@@ -51,3 +53,4 @@ Route::post('login', [LoginController::class, 'login'])->name('login.post');
 Route::get('/home/register', [RegisterController::class, 'showRegister'])->name('home.register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+

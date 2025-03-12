@@ -20,7 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'email', 
         'password',
         'profile_picture',
         'role',
@@ -84,5 +84,10 @@ class User extends Authenticatable
     public function getLastLoginAtAttribute($value)
     {
         return \Carbon\Carbon::parse($value)->diffForHumans();
+    }
+
+    public function advisoryProfile()
+    {
+        return $this->hasOne(AdvisoryProfile::class);
     }
 }

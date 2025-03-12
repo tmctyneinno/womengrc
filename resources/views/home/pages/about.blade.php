@@ -55,6 +55,41 @@
         </div>
         <!-- About Area End -->
 
+         <!-- Application Area -->
+         <div class="application-area-two">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="application-content">
+                            <div class="section-title">
+                                <span> Founder / President - WGRCFP</span>
+                                {{-- <h2>
+                                    Founder / President - WGRCFP
+                                </h2> --}}
+                                <p class="" style="text-align: justify">
+                                    <b>Dr. Foluso Amusa </b> a seasoned professional with over 27 years of experience in governance, risk, and compliance. He has developed strong expertise in managing complex projects and leading teams. He holds a PhD in Governance, Risk, Compliance, and Financial Crime Prevention from Atlantic International University, an MBA from Anglia Ruskin University, and a Postgraduate Diploma in Governance, Risk, and Compliance from the International Compliance Association.
+                                </p>
+                                <br>
+                                <p style="text-align: justify">
+                                    He is currently the Founder of THE MORGANS, a company that provides strategic consulting services to businesses and organizations. He also serves as a Non-Executive Director at The Marie Trust and as the Advisory Board Chair for Nigeria at the Association of Certified Financial Crime Specialists - ACFCS. His skills include project management, social networking, and analytical skills. He is passionate about helping organizations achieve their goals while ensuring ethical and compliant practices. 
+                                </p>
+                            </div>
+                            <div class="application-btn">
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="application-img-two">
+                            <img src="assets/img/mdd.png" alt="Images">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Application Area End -->
+        <br>
         <!-- Choose Area  -->
         <div class="choose-area">
             <div class="container">

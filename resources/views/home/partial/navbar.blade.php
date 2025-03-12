@@ -56,7 +56,7 @@
                                 @guest
                                     <a href="{{ route('home.login') }}" class="default-btn border-radius">
                                         Login/Register
-                                    </a>
+                                    </a> 
                                 @else
                                 <div class="d-flex">
                                     <a href="{{ route('user.dashboard')}}" class="default-btn border-radius ">
@@ -95,36 +95,21 @@
             <div class="container">
                 <div class="side-nav-inner">
                     <div class="side-nav justify-content-center  align-items-center">
-                        <div class="side-item">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-bags"></i>
-                                    <span>0</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="side-item">
-                            <div class="search-box">
-                                <i class="flaticon-loupe"></i>
-                            </div>
-                        </div>
-
-                        <div class="side-item">
-                            <div class="user-btn">
-                                <a href="login-register.html">
-                                    <i class="flaticon-contact"></i>
-                                </a>
-                            </div>
-                        </div>
-
+                       
                         <div class="side-item">
                             <div class="nav-add-btn">
-                                <a href="listing-details.html" class="default-btn border-radius">
-                                    Add Listing 
-                                    <i class='bx bx-plus'></i>
-                                </a>
+                                @guest
+                                    <a href="{{ route('home.login') }}" class="default-btn border-radius">
+                                        Login/Register
+                                    </a> 
+                                    
+                                @else
+                                    <a href="{{ route('user.dashboard')}}" class="default-btn border-radius">
+                                        My Account
+                                    </a>
+                                @endguest
                             </div>
+                            <br>
                         </div>
                     </div>
                 </div>

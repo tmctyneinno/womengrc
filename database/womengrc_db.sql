@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2024 at 09:36 AM
+-- Generation Time: Mar 12, 2025 at 03:46 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -71,6 +71,32 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `last_login`, `login_ip`, `otp`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin Admin', 'admin@gmail.com', NULL, '$2y$10$SDWpI4m9YUWunhV9hP/spuxDlU25RYtkN52ts4CzC5fZjnHxv.Zwq', '', '', '', '', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `advisories`
+--
+
+CREATE TABLE `advisories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `position` text DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `advisories`
+--
+
+INSERT INTO `advisories` (`id`, `name`, `position`, `content`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Elliott Prince', 'General Manager', '<p>Content</p>', 'advisorys/1740132387.png', '2025-02-21 09:06:27', '2025-02-21 09:06:27'),
+(2, 'Sold outtbjj', 'ADVISORY BOARD MEMBER', '<p>ADVISORY BOARD MEMBER</p>', 'advisorys/1741171210.png', '2025-03-05 09:35:59', '2025-03-05 09:40:10'),
+(3, 'Home', 'ADVISORY BOARD MEMBER', '<p>ADVISORY BOARD MEMBER</p>', 'advisorys/1741171007.png', '2025-03-05 09:36:47', '2025-03-05 09:36:47'),
+(4, 'Sold outtbjj', 'ADVISORY BOARD MEMBER', '<p>ADVISORY BOARD MEMBER</p>', 'advisorys/1741171032.png', '2025-03-05 09:37:12', '2025-03-05 09:37:12');
 
 -- --------------------------------------------------------
 
@@ -148,7 +174,7 @@ CREATE TABLE `contact_us` (
 --
 
 INSERT INTO `contact_us` (`id`, `company_name`, `first_phone`, `second_phone`, `first_email`, `second_email`, `first_address`, `second_address`, `website_link`, `site_logo`, `footer_logo`, `favicon`, `created_at`, `updated_at`) VALUES
-(1, 'Women in GRC', '+1 (687) 584-3691', NULL, 'duvonabexa@mailinator.com', 'nujy@mailinator.com', 'Ut id laboris nulla', 'Sint et enim labori', 'https://www.womengrc.com', 'assets/images/logo/675855851b27c.png', 'assets/images/logo/6758578f616c5.png', 'assets/images/logo/675856e35ea33.png', '2024-12-09 12:05:15', '2024-12-10 14:00:31');
+(1, 'Women in GRC', '+1 (687) 584-3691', NULL, 'duvonabexa@mailinator.com', 'nujy@mailinator.com', '<p><strong>EUROPE:&nbsp;</strong></p><p>International House 24 Holborn Viaduct London, EC1A 2BN, United Kingdom</p>', '21 Gillabbey Terrace, Gillabbey Street, Cork, T12 KPN4, Republic of Ireland', 'https://www.womengrc.com', 'assets/images/logo/6762d93338a73.jpg', 'assets/images/logo/67600b4798854.png', 'assets/images/logo/675856e35ea33.png', '2024-12-09 12:05:15', '2025-01-07 11:42:11');
 
 -- --------------------------------------------------------
 
@@ -173,10 +199,11 @@ INSERT INTO `dropdown_items` (`id`, `menu_item_id`, `name`, `slug`, `created_at`
 (1, 2, 'Vision', 'vision', '2024-12-10 01:55:46', '2024-12-10 01:55:46'),
 (2, 2, 'Purpose', 'purpose', '2024-12-10 01:55:46', '2024-12-10 01:55:46'),
 (3, 2, 'Mission', 'mission', '2024-12-10 01:55:46', '2024-12-10 01:55:46'),
-(7, 4, 'Event', 'event', '2024-12-10 02:50:08', '2024-12-10 02:50:08'),
-(8, 4, 'Mentorship', 'mentorship', '2024-12-10 02:50:08', '2024-12-10 02:50:08'),
-(9, 4, 'Community Forum', 'community-forum', '2024-12-10 02:50:08', '2024-12-10 02:50:08'),
-(10, 4, 'FAQs', 'faqs', '2024-12-10 02:50:08', '2024-12-10 02:50:08');
+(11, 4, 'Facilitators', 'facilitators', '2025-01-07 14:05:28', '2025-01-07 14:05:28'),
+(12, 4, 'Mentorship', 'mentorship', '2025-01-07 14:05:28', '2025-01-07 14:05:28'),
+(13, 4, 'Community Forum', 'community-forum', '2025-01-07 14:05:28', '2025-01-07 14:05:28'),
+(14, 4, 'Event', 'event', '2025-01-07 14:05:28', '2025-01-07 14:05:28'),
+(15, 4, 'FAQs', 'faqs', '2025-01-07 14:05:28', '2025-01-07 14:05:28');
 
 -- --------------------------------------------------------
 
@@ -201,6 +228,53 @@ CREATE TABLE `events` (
 INSERT INTO `events` (`id`, `title`, `slug`, `content`, `image`, `created_at`, `updated_at`) VALUES
 (1, 'Nomination/Voting Process', 'nominationvoting-process', '<p>Voting is open to the public. The participants with the highest number of votes in every category in various sectors will shortlisted.</p>', 'assets/images/event/1733839693.jpg', '2024-12-10 13:08:13', '2024-12-10 13:08:13'),
 (2, 'Shortlisting and Judging Process', 'shortlisting-and-judging-process', '<p>The Votes are counted inorder to shortlist top 3 nominees under every category. Afterwhich, further screening and examination is done by the Judges to select the winners.</p>', 'assets/images/event/1733839826.jpg', '2024-12-10 13:10:26', '2024-12-10 13:10:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `facilitator_contents`
+--
+
+CREATE TABLE `facilitator_contents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `facilitator_contents`
+--
+
+INSERT INTO `facilitator_contents` (`id`, `title`, `content`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Women in GRC and Financial Crime, Fraud Prevention Initiative', '<p><strong>Introduction</strong></p><p>The Event Facilitators Scheme is an integral part of the Women in Governance, Risk, Compliance (GRC), and Financial Crime, Fraud Prevention Initiative. This scheme is designed to empower members with opportunities to lead, organize, and facilitate impactful events that align with the initiative\'s mission of advancing gender diversity and professional<br>development within the industry.<br>&nbsp;</p><p><strong>Objectives of the Scheme</strong></p><ol><li>Leadership Development: Provide opportunities for members to develop and showcase their leadership and event management skills.</li><li>Community Engagement: Foster collaboration among members, industry stakeholders, and partners through dynamic events.&nbsp;</li><li>Advocacy and Awareness: Highlight key issues and advancements in GRC and<br>Financial Crime sectors.</li><li>Professional Networking: Create platforms for meaningful connections between<br>professionals, mentors, and emerging leaders.</li></ol>', 'assets/images/facilitator/1736263621.jpg', '2025-01-07 14:27:01', '2025-01-07 14:29:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `facilitator_events`
+--
+
+CREATE TABLE `facilitator_events` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `event_name` varchar(255) NOT NULL,
+  `event_description` text NOT NULL,
+  `event_type` varchar(255) NOT NULL,
+  `event_date_time` datetime NOT NULL,
+  `event_location` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `facilitator_events`
+--
+
+INSERT INTO `facilitator_events` (`id`, `event_name`, `event_description`, `event_type`, `event_date_time`, `event_location`, `created_at`, `updated_at`) VALUES
+(1, 'dd', 'd', 'Webinar', '2025-01-16 09:26:00', 'location', '2025-01-16 07:26:48', '2025-01-16 07:26:48'),
+(2, 'c', 'c', 'Conference/Summit', '2025-01-16 09:28:00', 'cc', '2025-01-16 07:28:10', '2025-01-16 07:28:10');
 
 -- --------------------------------------------------------
 
@@ -254,6 +328,117 @@ INSERT INTO `faqs` (`id`, `question`, `answer`, `created_at`, `updated_at`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faq_stores`
+--
+
+CREATE TABLE `faq_stores` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `faq_stores`
+--
+
+INSERT INTO `faq_stores` (`id`, `name`, `email`, `phone_number`, `subject`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Eshanokpe Daniel', 'eshanokpe@gmail.com', '08139267960', 'How is privacy and data security handled?', 'xxx', '2025-01-10 09:13:38', '2025-01-10 09:13:38'),
+(2, 'Eshanokpe Daniel', 'eshanokpe@gmail.com', '08139267960', 'How is privacy and data security handled?', 'xxx', '2025-01-10 09:13:54', '2025-01-10 09:13:54'),
+(3, 'Eshanokpe Daniel', 'eshanokpe@gmail.com', '08139267960', 'How is privacy and data security handled?', 'xxx', '2025-01-10 09:20:48', '2025-01-10 09:20:48'),
+(4, 'Eshanokpe Daniel', 'eshanokpe@gmail.com', '08139267960', 'How is privacy and data security handled?', 'xxx', '2025-01-10 09:23:23', '2025-01-10 09:23:23'),
+(5, 'Brynne Watkins', 'kyqip@mailinator.com', '+1 (413) 189', 'How is privacy and data security handled?', 'Quod nemo quo iure d', '2025-01-10 09:24:59', '2025-01-10 09:24:59'),
+(6, 'Brynne Watkins', 'kyqip@mailinator.com', '+1 (413) 189', 'How is privacy and data security handled?', 'Quod nemo quo iure d', '2025-01-10 09:26:21', '2025-01-10 09:26:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `membership_contents`
+--
+
+CREATE TABLE `membership_contents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `membership_contents`
+--
+
+INSERT INTO `membership_contents` (`id`, `title`, `content`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Membership Information', '<p>Women in GRC and Financial Crime, Fraud Prevention is a professional initiative dedicated to empowering women in Governance, Risk, Compliance (GRC), and Financial Crime &amp; Fraud Prevention sectors. Our mission is to provide members with resources, networks, and opportunities to advance their careers and foster innovation in the industry.</p><p><strong>Description of Membership</strong></p><p>Membership with Women in GRC and Financial Crime, Fraud Prevention provides access to:<br>&nbsp;</p><ol><li>A global network of professionals and leaders in the GRC and Financial Crime, Fraud across all sectors or Industries in the world</li><li>Exclusive training programs, certifications, and industry resources. Opportunities to participate in events, webinars, and thought leadership discussions.</li><li>Mentorship programs tailored to support career growth.</li><li>Advocacy and support for gender diversity and leadership opportunities.</li></ol><p>&nbsp;</p><p><strong>Organizational Structure</strong></p><ol><li>Executive Board: Responsible for overall strategy and governance of the initiative.</li><li>Advisory Committees: Focused on mentorship, events, professional development, and advocacy.</li><li>Regional Chapters: Local groups to facilitate networking and engagement in various geographies.Members:</li><li>Individuals and organizations actively contributing to and benefiting from the initiative.<br>&nbsp;</li></ol><p><strong>Membership Categories</strong></p><ol><li>Student Membership: For university students studying fields related to GRC, financial crime, and fraud prevention.</li><li>Individual Membership: For professionals in the industry seeking personal development and networking.</li><li>Corporate Membership: For organizations supporting the initiative\'s mission and providing their employees with access to resources.</li><li>Mentor Membership: For experienced professionals committed to guiding and mentoring others.</li><li>Affiliate Membership: For those in related industries who support the objectives of the initiative.<br>&nbsp;</li></ol><p><strong>Membership Registration Process Application:</strong></p><p>Membership Registration Process Application:<br><br>Visit our official website Fill out the online membership application form.<br><strong>Review</strong>:<br>Applications will be reviewed by the Membership Committee.<br>Applicants may be contacted for additional information if necessary.<br><br><strong>Approval</strong>:<br>Approved applicants will receive an official membership welcome email with further instructions.&nbsp;</p><p>Membership fees, if applicable, must be paid before activation.</p><p>&nbsp;</p><p><strong>Benefits by Membership Category</strong></p><p>Students: Scholarships, internships, and access to educational resources.<br>Individuals: Training discounts, career support, and professional networking.<br>Corporates: Branding opportunities, access to talent, and collaboration on industry initiatives.<br>Mentors: Recognition, exclusive networking, and opportunity to contribute to professional development.<br><br>Affiliates: Collaboration on events and advocacy initiatives.<br><br>Contact Us<br>For questions about membership or to begin your application, please contact:</p><p>Email: <a href=\"mailto:info@grcfp.org\">info@grcfp.org</a> Website: <a href=\"http://www.grcfp.org/\">www.grcfp.org</a></p>', 'assets/images/membership/1736257642.jpg', '2025-01-07 12:41:57', '2025-01-07 13:21:19'),
+(2, 'facilitator', '<p>facilitator</p>', 'assets/images/membership/1736263530.jpg', '2025-01-07 14:25:30', '2025-01-07 14:25:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mentorship_contents`
+--
+
+CREATE TABLE `mentorship_contents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `mentorship_contents`
+--
+
+INSERT INTO `mentorship_contents` (`id`, `title`, `content`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Women in GRC and Financial Crime, Fraud Prevention Mentorship Programme', '<p><strong>Introduction</strong><br>The Mentorship Programme under the Women in Governance, Risk, Compliance (GRC), and Financial Crime, Fraud Prevention Initiative is designed to empower, guide, and support women professionals. By fostering meaningful mentor-mentee relationships, the program aims to accelerate career growth, enhance skills, and create a collaborative community dedicated to advancing diversity and excellence in the industry.<br><br><strong>Programme Objectives</strong></p><ol><li><strong>Career Development:</strong> Provide guidance for professional advancement and leadership growth.</li><li><strong>Skill Enhancement:</strong> Support mentees in developing essential industry skills.</li><li><strong>Networking Opportunities</strong>: Facilitate connections with experienced professionals and industry leaders.</li><li><strong>Diversity Advocacy</strong>: Encourage gender equality and representation in senior roles across GRC and Financial Crime sectors.</li><li><strong>Knowledge Sharing:</strong> Promote the exchange of ideas, best practices, and industry insights.</li></ol><p><strong>Programme Structure</strong></p><ul><li>Eligibility:<br>Mentors: Experienced professionals with 8+ years in GRC, financial crime, or related industries.<br>Mentees: Women at any career stage, including students, entry-level professionals, and mid-level managers seeking growth.</li></ul><p><strong>Programme Duration:</strong></p><p>A structured 6- to 12-month engagement period, with an option to extend<br>based on mutual agreement.</p><p>&nbsp;</p><p><strong>Matching Process:</strong><br>Participants complete an application form highlighting their goals, expertise, and preferences.<br>The programme committee pairs mentors and mentees based on compatibility, goals, and areas of expertise.</p>', 'assets/images/mentorship/1736260922.jpg', '2025-01-07 13:42:02', '2025-01-07 14:02:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mentor_invitations`
+--
+
+CREATE TABLE `mentor_invitations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `mentor_id` bigint(20) UNSIGNED NOT NULL,
+  `status` enum('pending','accepted','declined') NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `mentor_invitations`
+--
+
+INSERT INTO `mentor_invitations` (`id`, `user_id`, `mentor_id`, `status`, `created_at`, `updated_at`) VALUES
+(19, 11, 10, 'accepted', '2024-12-30 09:54:35', '2024-12-30 10:01:36'),
+(20, 9, 10, 'accepted', '2025-01-06 09:25:01', '2025-01-06 09:25:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mentor_users`
+--
+
+CREATE TABLE `mentor_users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `mentor_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `menu_items`
 --
 
@@ -276,7 +461,41 @@ INSERT INTO `menu_items` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALU
 (4, 'Resource', 'resource', '2024-12-10 01:57:05', '2024-12-10 01:57:05'),
 (5, 'Blog', 'blog', '2024-12-10 01:57:14', '2024-12-10 01:57:14'),
 (6, 'Recognition', 'recognition', '2024-12-10 01:57:36', '2024-12-10 01:57:36'),
-(7, 'Contact', 'contact', '2024-12-10 01:57:46', '2024-12-10 01:57:46');
+(7, 'Advisory Board', 'advisory-board', '2024-12-10 01:57:46', '2025-02-21 08:30:18'),
+(8, 'Contact', 'contact', '2025-02-21 08:30:34', '2025-02-21 08:30:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `message` text DEFAULT NULL,
+  `file_path` varchar(255) DEFAULT NULL,
+  `file_type` varchar(255) DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `receiver_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `message`, `file_path`, `file_type`, `user_id`, `receiver_id`, `created_at`, `updated_at`) VALUES
+(40, 'How are you', NULL, NULL, 10, 9, '2025-01-06 10:07:15', '2025-01-06 10:07:15'),
+(41, 'Hop you day is going fine', NULL, NULL, 10, 9, '2025-01-06 10:08:07', '2025-01-06 10:08:07'),
+(42, 'ITs going well', NULL, NULL, 9, 10, '2025-01-06 10:08:28', '2025-01-06 10:08:28'),
+(44, '', 'http://127.0.0.1:8000/assets/uploads/1736735856_WhatsApp Image 2025-01-12 at 11.19.50.jpeg', NULL, 9, 10, '2025-01-13 01:37:36', '2025-01-13 01:37:36'),
+(45, '', 'http://127.0.0.1:8000/storage/uploads/1736736168_WhatsAppImage2025-01-12at11.19.50.jpeg', NULL, 9, 10, '2025-01-13 01:42:48', '2025-01-13 01:42:48'),
+(46, '   n', 'http://127.0.0.1:8000/app/public/uploads/1736736292_WhatsAppImage2025-01-12at11.19.50.jpeg', NULL, 9, 10, '2025-01-13 01:44:52', '2025-01-13 01:44:52'),
+(47, 'nm', 'http://127.0.0.1:8000/storage/uploads/1736736529_WhatsAppImage2025-01-12at11.19.50.jpeg', NULL, 9, 10, '2025-01-13 01:48:49', '2025-01-13 01:48:49'),
+(48, 'check', NULL, NULL, 9, 10, '2025-01-13 01:53:48', '2025-01-13 01:53:48'),
+(49, 'img', 'http://127.0.0.1:8000/storage/uploads/1736737065_WhatsAppImage2025-01-12at11.19.50.jpeg', NULL, 9, 10, '2025-01-13 01:57:45', '2025-01-13 01:57:45'),
+(50, 'cjec too', 'http://127.0.0.1:8000/storage/uploads/1736737244_product_ui.png', NULL, 10, 9, '2025-01-13 02:00:44', '2025-01-13 02:00:44');
 
 -- --------------------------------------------------------
 
@@ -315,7 +534,61 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2024_12_10_135231_create_events_table', 12),
 (19, '2024_12_10_194209_create_recognitions_table', 13),
 (20, '2024_12_11_081205_create_privacy_policies_table', 14),
-(21, '2024_12_11_081222_create_terms_conditions_table', 14);
+(21, '2024_12_11_081222_create_terms_conditions_table', 14),
+(22, '2024_12_20_120257_create_newsletters_table', 15),
+(23, '2024_12_27_124919_create_mentor_users_table', 16),
+(24, '2024_12_27_125218_create_mentor_invitations_table', 16),
+(25, '2024_12_27_133505_create_notifications_table', 17),
+(26, '2025_01_03_093415_create_messages_table', 18),
+(27, '2025_01_03_105723_create_messages_table', 19),
+(28, '2025_01_06_091858_add_last_login_at_to_users_table', 20),
+(29, '2025_01_07_133711_create_membership_contents_table', 21),
+(30, '2025_01_07_143726_create_mentorship_contents_table', 22),
+(31, '2025_01_07_151817_create_facilitator_contents_table', 23),
+(32, '2025_01_10_100221_create_faq_stores_table', 24),
+(33, '2025_01_13_013349_add_file_path_to_messages_table', 25),
+(34, '2025_01_16_082150_create_facilitator_events_table', 26),
+(35, '2025_02_21_091834_create_advisories_table', 27);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletters`
+--
+
+CREATE TABLE `newsletters` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` char(36) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `notifiable_type` varchar(255) NOT NULL,
+  `notifiable_id` bigint(20) UNSIGNED NOT NULL,
+  `data` text NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
+('55280096-ccf0-4a7a-b2f4-f4ffc3dc9817', 'App\\Notifications\\MentorInvitationSentNotification', 'App\\Models\\User', 9, '{\"message\":\"You have sent an invitation to Victor Lewis to become a mentor.\",\"url\":\"http:\\/\\/127.0.0.1:8000\\/user\\/dashboard\"}', NULL, '2025-01-06 09:24:59', '2025-01-06 09:24:59'),
+('73b3d82a-68c1-400d-aa5b-db3972e10ad6', 'App\\Notifications\\MentorInvitationNotification', 'App\\Models\\User', 10, '{\"message\":\"Victoria Wade has invited you to become a mentor.\",\"url\":\"http:\\/\\/127.0.0.1:8000\\/user\\/accept-mentor-invitation\\/eyJpdiI6ImVtQTl2VHJwR1VFYkxFTjJyUDQzbmc9PSIsInZhbHVlIjoiU29BTTdYc1JvU29uYVk2Tk0zUERuUT09IiwibWFjIjoiZjQ2ODQzNmRiYzllNTc3ODUyYmI2Yjk4MTc2YjZlOGZmNzE0ZDYyNTI1ZTcxZTE0MWZkNzg5NDg2ZmM4MzJlOCIsInRhZyI6IiJ9\"}', NULL, '2024-12-30 09:54:33', '2024-12-30 09:54:33'),
+('8bfd71f1-80de-407b-b458-a4be78dab8a9', 'App\\Notifications\\MentorInvitationNotification', 'App\\Models\\User', 10, '{\"message\":\"Jenette Chapman has invited you to become a mentor.\",\"url\":\"http:\\/\\/127.0.0.1:8000\\/user\\/accept-mentor-invitation\\/eyJpdiI6IkR1Qy9VMVZwMlkwemxZWW83TnFQdmc9PSIsInZhbHVlIjoieExUeEQ3bmE5N2xzVGQwUndOR2s5QT09IiwibWFjIjoiMzlhYmUxNDcxNjAxMjE1MDBlNmRlZDM2OGY2NWVmYzRmMjJlMTZjZmNiNWU4ZDI0ODM4OGQwMGMzZjY3NzU2OCIsInRhZyI6IiJ9\"}', NULL, '2025-01-06 09:24:59', '2025-01-06 09:24:59'),
+('b0b16d5e-40ed-4988-8b4a-0d88ff2130c5', 'App\\Notifications\\MentorInvitationSentNotification', 'App\\Models\\User', 11, '{\"message\":\"You have sent an invitation to Victor Lewis to become a mentor.\",\"url\":\"http:\\/\\/127.0.0.1:8000\\/user\\/dashboard\"}', NULL, '2024-12-30 09:54:33', '2024-12-30 09:54:33');
 
 -- --------------------------------------------------------
 
@@ -328,6 +601,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('nyty@mailinator.com', '$2y$10$c54uK0h8lO69Le4Y72gqTeCYUYkrBnRrTvSETukVCcrpdmLp5.6We', '2025-01-06 07:20:33');
 
 -- --------------------------------------------------------
 
@@ -414,7 +694,7 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `title`, `caption`, `image`, `created_at`, `updated_at`) VALUES
-(4, 'Empowering Women in GRC', 'Fostering Leadership and Innovation in Governance, Risk, and Compliance', 'assets/images/slider/1733742038.jpg', '2024-12-09 10:00:38', '2024-12-09 10:00:38'),
+(4, 'Empowering Women in GRC', 'Fostering Leadership and Innovation in Governance, Risk, and Compliance', 'assets/images/slider/1740414175-1StockCake-Corporate Presentation Engagement_1740413683.jpg', '2024-12-09 10:00:38', '2025-02-24 15:22:55'),
 (5, 'Breaking Barriers in Financial Crime Prevention', 'Shaping a Future of Diversity, Excellence, and Inclusion', 'assets/images/slider/1733742409.jpg', '2024-12-09 10:06:49', '2024-12-09 10:06:49'),
 (6, 'Collaborate. Lead. Inspire.', 'Building a Global Network for Women in Governance and Compliance', 'assets/images/slider/1733742542.jpg', '2024-12-09 10:09:02', '2024-12-09 10:09:02'),
 (7, 'Join the Movement', 'Creating Opportunities for Women in GRC and Financial Crime Prevention', 'assets/images/slider/1733742814.jpg', '2024-12-09 10:13:34', '2024-12-09 10:13:34');
@@ -509,9 +789,26 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
+  `role` text DEFAULT NULL,
+  `profile_picture` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `last_login_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `role`, `profile_picture`, `created_at`, `updated_at`, `last_login_at`) VALUES
+(9, 'Jenette Chapman', 'eshanokpe@gmail.com', '2024-12-30 08:06:39', '$2y$10$q8EFS/TAt4c5z07NnQpJtOobkcZYRI8JlqBYuDjOM3aqDt2oQC6ra', 'b4TtVYMMOeNytbMcqIK7tTCDwX7AdEYUXTofCA4evhWHEWzMD8VATEmlSHap', 'advisory', NULL, '2024-12-16 12:03:27', '2025-01-06 07:50:22', NULL),
+(10, 'Victor Lewis', 'nyty@mailinator.com', '2024-12-27 11:45:59', '$2y$10$Ak/4Wsp3FRhZCDPryu0qJujlJ81zZ4HEXBAaJyDfS/6XQIwjXTUs2', NULL, 'mentor', NULL, '2024-12-16 12:06:38', '2024-12-16 12:06:38', NULL),
+(11, 'Victoria Wade', 'raqoruw@mailinator.com', '2024-12-27 11:45:35', '$2y$10$Ak/4Wsp3FRhZCDPryu0qJujlJ81zZ4HEXBAaJyDfS/6XQIwjXTUs2', NULL, 'mentor', NULL, '2024-12-16 12:08:14', '2024-12-16 12:08:14', NULL),
+(12, 'Gloria Maynard', 'sirodav908@owube.com', '2024-12-16 13:05:01', '$2y$10$Ak/4Wsp3FRhZCDPryu0qJujlJ81zZ4HEXBAaJyDfS/6XQIwjXTUs2', NULL, 'mentor', NULL, '2024-12-16 12:31:32', '2024-12-16 13:05:01', NULL),
+(13, 'Castor Huffman', 'lebequ@mailinator.com', NULL, '$2y$10$8ZujqvTI.QPACXqeBphRCegkvekorCB4AO8VKUEojd1BHACoD.mra', NULL, NULL, NULL, '2025-01-09 13:01:37', '2025-01-09 13:01:37', NULL),
+(14, 'Edward Browning', 'qybaf@mailinator.com', NULL, '$2y$10$FPOCUQcMR9nzcvqdydnNNeMsDyBq2FLDqNBIaGrpO3WD8sCb8U/pW', NULL, NULL, NULL, '2025-01-09 13:03:59', '2025-01-09 13:03:59', NULL),
+(15, 'Mary Stanton', 'wehakuves@mailinator.com', NULL, '$2y$10$sCA8QO10jgJ5bGqMr4rCTOrYDxjO45xR8Llrv6sRyGrIMJRpyMmzW', NULL, NULL, NULL, '2025-01-09 13:18:40', '2025-01-09 13:18:40', NULL),
+(16, 'September Goodman', 'eshanokpe77@gmail.com', '2025-01-13 10:19:25', '$2y$10$jWZ3ez2mTnAAiAVDjZAdoeET6Fx7rf8Bj7t5B5rA6X88iv680PLaO', NULL, 'advisory', NULL, '2025-01-09 13:22:09', '2025-01-09 13:22:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -556,6 +853,12 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
+-- Indexes for table `advisories`
+--
+ALTER TABLE `advisories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `blogs`
 --
 ALTER TABLE `blogs`
@@ -589,6 +892,18 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `facilitator_contents`
+--
+ALTER TABLE `facilitator_contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `facilitator_events`
+--
+ALTER TABLE `facilitator_events`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -602,9 +917,49 @@ ALTER TABLE `faqs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `faq_stores`
+--
+ALTER TABLE `faq_stores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `membership_contents`
+--
+ALTER TABLE `membership_contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mentorship_contents`
+--
+ALTER TABLE `mentorship_contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mentor_invitations`
+--
+ALTER TABLE `mentor_invitations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mentor_invitations_user_id_foreign` (`user_id`),
+  ADD KEY `mentor_invitations_mentor_id_foreign` (`mentor_id`);
+
+--
+-- Indexes for table `mentor_users`
+--
+ALTER TABLE `mentor_users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mentor_users_user_id_foreign` (`user_id`),
+  ADD KEY `mentor_users_mentor_id_foreign` (`mentor_id`);
+
+--
 -- Indexes for table `menu_items`
 --
 ALTER TABLE `menu_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -612,6 +967,19 @@ ALTER TABLE `menu_items`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `newsletters`
+--
+ALTER TABLE `newsletters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -693,6 +1061,12 @@ ALTER TABLE `admins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `advisories`
+--
+ALTER TABLE `advisories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
@@ -714,12 +1088,24 @@ ALTER TABLE `contact_us`
 -- AUTO_INCREMENT for table `dropdown_items`
 --
 ALTER TABLE `dropdown_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `facilitator_contents`
+--
+ALTER TABLE `facilitator_contents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `facilitator_events`
+--
+ALTER TABLE `facilitator_events`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -735,16 +1121,58 @@ ALTER TABLE `faqs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `faq_stores`
+--
+ALTER TABLE `faq_stores`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `membership_contents`
+--
+ALTER TABLE `membership_contents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `mentorship_contents`
+--
+ALTER TABLE `mentorship_contents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `mentor_invitations`
+--
+ALTER TABLE `mentor_invitations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `mentor_users`
+--
+ALTER TABLE `mentor_users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `newsletters`
+--
+ALTER TABLE `newsletters`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -792,7 +1220,7 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vision_missions`
@@ -816,6 +1244,20 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `dropdown_items`
   ADD CONSTRAINT `dropdown_items_menu_item_id_foreign` FOREIGN KEY (`menu_item_id`) REFERENCES `menu_items` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `mentor_invitations`
+--
+ALTER TABLE `mentor_invitations`
+  ADD CONSTRAINT `mentor_invitations_mentor_id_foreign` FOREIGN KEY (`mentor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `mentor_invitations_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `mentor_users`
+--
+ALTER TABLE `mentor_users`
+  ADD CONSTRAINT `mentor_users_mentor_id_foreign` FOREIGN KEY (`mentor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `mentor_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

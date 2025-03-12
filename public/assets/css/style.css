@@ -6040,7 +6040,7 @@ Footer Area
 }
 .footer-widget .footer-list li {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 5px; 
 }
 .footer-widget .footer-list li:last-child {
   margin-bottom: 0;

@@ -18,6 +18,7 @@
                                         <path d="M10 13.3334V6.66675" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </button>
+                                    SAHREEN SIDDIQUI
                                 </div>
                                 <div class="chat__inbox--search">
                                     <label for="searchMentor" class="form-label">Search Mentor</label>

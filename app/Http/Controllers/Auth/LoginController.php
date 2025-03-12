@@ -40,38 +40,50 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
+    
     public function login(Request $request)
     {
-        $this->validateLogin($request);
-
-        $credentials = $this->credentials($request);
-
-        // Attempt to log in with credentials
+        // Validate the request
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+    
+        // Extract credentials
+        $credentials = $request->only('email', 'password');
+    
+        // Attempt authentication
         if (Auth::attempt($credentials)) {
+            // Check if email is verified
             if (Auth::user()->hasVerifiedEmail()) {
-                // dd(Auth::user()->role);
-                if (Auth::user()->role === 'facilitator') {
-                    return redirect()->route('facilitator.dashboard'); 
-                }
-                if (Auth::user()->role === 'advisory') {
-                    return redirect()->route('advisory.dashboard'); 
+                // Redirect based on user role
+                switch (Auth::user()->role) {
+                    case 'facilitator':
+                        return redirect()->route('facilitator.dashboard');
+                    case 'advisory':
+                        return redirect()->route('advisory.dashboard');
+                    case 'guests':
+                        return redirect()->route('guests.dashboard');
+                    default:
+                        return redirect()->route('user.dashboard');
                 } 
-                if (Auth::user()->role === 'guests') { 
-                    return redirect()->route('guests.dashboard'); 
-                }
-                return redirect()->route('user.dashboard');
+            } else {
+                // Logout if email is not verified
+                Auth::logout();
+                return $this->sendFailedLoginResponse($request, 'Please verify your email address.');
             }
-
-            // Logout if email is not verified
-            Auth::logout();
-            return $this->sendFailedLoginResponse($request);
         }
-
+    
         // Handle failed login attempt
-        return back()->withErrors([
-            'email' => 'Invalid email or password.',
-        ])->onlyInput('email'); 
+        return $this->sendFailedLoginResponse($request, 'Invalid credentials.');
     }
+    
+    // protected function sendFailedLoginResponse(Request $request, $message = 'Login failed.')
+    // {
+    //     return redirect()->back()
+    //         ->withInput($request->only('email', 'remember'))
+    //         ->withErrors(['email' => $message]);
+    // }
 
 
     
