@@ -36,6 +36,7 @@ class PagesController extends Controller
 
  
             'careers' => 'home.pages.careers',
+            'resource'=> 'home.pages.resource',
             'appointment' => 'home.pages.appointment',
             'testimonials' => 'home.pages.testimonials',
             'terms-condition' => 'home.pages.terms-condition',

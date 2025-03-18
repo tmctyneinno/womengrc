@@ -19,7 +19,7 @@
                 <div class="user-section text-center">
                     <div class="user-conten ">
                         <img src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}" alt="">
-                        <h2>Welcome <b>To Women GRC</b></h2>
+                        <h2>Welcome To <b>Women GRC & Financial Crime Prevention</b> (WGRCFP)</h2> 
                     </div>
                     <div class="tab user-tab">
                         <div class="row justify-content-center">

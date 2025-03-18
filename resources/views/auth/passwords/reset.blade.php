@@ -22,7 +22,7 @@
                         style="max-width: 100%; max-height:100%; object-fit:cover; 
                             width:100px; height:70px "
                         src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}" alt="">
-                        <h2>Welcome <b>To Women GRC</b></h2> 
+                        <h2>Welcome To <b>Women GRC & Financial Crime Prevention</b> (WGRCFP)</h2> 
                     </div> 
                     <div class="tab user-tab">
                         <div class="row justify-content-center">

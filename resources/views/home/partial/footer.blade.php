@@ -1,4 +1,23 @@
- <!-- Footer Area -->
+ 
+ 
+<style>
+    .footer-bg2 {
+    position: relative; /* Ensure the pseudo-element is positioned correctly */
+    padding-top: 20px; /* Add some padding at the top to make space for the border */
+}
+
+.footer-bg2::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px; /* Height of the border */
+    background: linear-gradient(90deg, #B03436, #B03436); /* Gradient border effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
+}
+</style>
+<!-- Footer Area -->
  <footer class="footer-area footer-bg2" style="color: #000">
     <div class="footer-middle pt-100 pb-70">
         <div class="container">

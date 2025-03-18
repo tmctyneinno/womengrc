@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Auth;
+use App\Models\Resource;
 use App\Models\Recognition;
 use App\Models\Advisory;
 use App\Models\MentorshipContent;
@@ -50,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('testimonials', Testimonial::latest()->get());
         View::share('contactUs', ContactUs::first());
         View::share('sliders', Slider::all()->shuffle());
+        View::share('resource', Resource::all()->shuffle());
         View::share('recognitions', Recognition::all()->shuffle());
         View::share('advisory', Advisory::all());
         View::share('aboutUs', About::first());

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\LivestreamController;
+use App\Http\Controllers\Admin\ResourceController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MembersController; 
 use App\Http\Controllers\Admin\FacilitatorController;
@@ -196,12 +197,12 @@ Route::prefix('admin')->group(function () {
         Route::put('/terms/conditions/update/{id}', [TermsConditionController::class, 'update'])->name('admin.termsCondition.update');
           
         //Events
-        Route::get('events/index', [EventController::class, 'index'])->name('admin.events.index');
-        Route::get('events/create', [EventController::class, 'create'])->name('admin.events.create');
-        Route::post('events/store', [EventController::class, 'store'])->name('admin.events.store');
-        Route::get('/events/{id}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
-        Route::put('/events/{id}', [EventController::class, 'update'])->name('admin.events.update');
-        Route::get('/events/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
+        Route::get('events/index', [EventController::class, 'index'])->name('admin.event.index');
+        Route::get('events/create', [EventController::class, 'create'])->name('admin.event.create');
+        Route::post('events/store', [EventController::class, 'store'])->name('admin.event.store');
+        Route::get('/events/{id}/edit', [EventController::class, 'edit'])->name('admin.event.edit');
+        Route::put('/events/{id}', [EventController::class, 'update'])->name('admin.event.update');
+        Route::get('/events/{id}', [EventController::class, 'destroy'])->name('admin.event.destroy');
 
         //Livestream
         Route::get('livestream/index', [LivestreamController::class, 'index'])->name('admin.livestream.index');
@@ -220,14 +221,14 @@ Route::prefix('admin')->group(function () {
         Route::put('blog/{id}', [BlogController::class, 'update'])->name('admin.blog.update');
         Route::get('blog/{id}', [BlogController::class, 'destroy'])->name('admin.blog.destroy');
         
-        //Event
-        Route::get('event/index', [EventController::class, 'index'])->name('admin.event.index');
-        Route::get('event/create', [EventController::class, 'create'])->name('admin.event.create');
-        Route::post('post/event', [EventController::class, 'store'])->name('admin.event.store');
-        Route::get('event/{id}/edit', [EventController::class, 'edit'])->name('admin.event.edit');
-        Route::put('event/{id}', [EventController::class, 'update'])->name('admin.event.update');
-        Route::get('event/{id}', [EventController::class, 'destroy'])->name('admin.event.destroy');
-        Route::get('event/{id}/details', [EventController::class, 'details'])->name('event.details');
+        //Resource
+        Route::get('resource/index', [ResourceController::class, 'index'])->name('admin.resource.index');
+        Route::get('resource/create', [ResourceController::class, 'create'])->name('admin.resource.create');
+        Route::post('post/resource', [ResourceController::class, 'store'])->name('admin.resource.store');
+        Route::get('resource/{id}/edit', [ResourceController::class, 'edit'])->name('admin.resource.edit');
+        Route::put('resource/{id}', [ResourceController::class, 'update'])->name('admin.resource.update');
+        Route::get('resource/{id}', [ResourceController::class, 'destroy'])->name('admin.resource.destroy');
+        Route::get('resource/{id}/details', [ResourceController::class, 'details'])->name('resource.details');
        
         
        //CoreActivitiesController

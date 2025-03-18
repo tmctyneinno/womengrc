@@ -12,7 +12,7 @@
                 <i class="flaticon-381-layer-1"></i>
                 <span class="nav-text">Users</span>
                 </a>
-            </li>  
+            </li>   
             <li>
                 <a class="has-arrow ai-icon" href="{{ route('admin.application.index') }}" aria-expanded="false">
                 <i class="flaticon-381-layer-1"></i>
@@ -49,6 +49,12 @@
                 <a class="has-arrow ai-icon" href="{{ route('admin.event.index') }}" aria-expanded="false">
                     <i class="flaticon-381-layer-1"></i>
                     <span class="nav-text">Event</span>
+                </a>
+            </li>
+            <li>
+                <a class="has-arrow ai-icon" href="{{ route('admin.resource.index') }}" aria-expanded="false">
+                    <i class="flaticon-381-layer-1"></i>
+                    <span class="nav-text">Resource</span>
                 </a>
             </li>
            
