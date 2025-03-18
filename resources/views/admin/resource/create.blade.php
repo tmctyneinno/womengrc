@@ -11,7 +11,7 @@
             <div class="form-head d-md-flex mb-sm-4 mb-3 align-items-start">
                 <div class="me-auto d-lg-block d-block">
                     <h2 class="text-black font-w600">Resource</h2>
-                    <p class="mb-0">Welcome to Archway Home backend</p>
+                    <p class="mb-0">Welcome to Women in GRC backend</p>
                 </div>
                 <a href="{{route('admin.resource.index')}}" class="btn btn-primary rounded light">View Resource</a>
             </div>
