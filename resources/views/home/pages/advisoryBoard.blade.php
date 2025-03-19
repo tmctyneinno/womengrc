@@ -27,9 +27,9 @@
             </div>
             <div class="row pt-45">
                 @forelse ($advisory as $advisory)
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6 mb-1">
                         <div class="team-card" style="box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); overflow: hidden;">
-                            <img src="{{ asset($advisory->image) }}" alt="Team Images" class="img-fluid" style="width: 300px; height: 300px; object-fit: fill;">
+                            <img src="{{ asset($advisory->image) }}" alt="Team Images" class="img-fluid" style="width: 300px; height: 280px; object-fit: fill;">
                             <div class="content">
                                 <h3>{{ $advisory->name }}</h3>
                                 <span>{{ $advisory->position }}</span>

@@ -36,7 +36,7 @@
         <div class="row pt-45">
             <div class="row pt-45">
                 @forelse ($resource as $resource)
-                <div class="col-lg-12 col-md-12">
+                <div class="col-lg-6 col-md-6">
                     <div class="city-item">
                         <a href="#" class="city-img">
                             <img src="{{ asset($resource->image) }}" alt="Images">
