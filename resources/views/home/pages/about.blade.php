@@ -66,13 +66,31 @@
                                 {{-- <h2>
                                     Founder / President - WGRCFP
                                 </h2> --}}
-                                <p class="" style="text-align: justify">
-                                    <b>Dr. Foluso Amusa </b> a seasoned professional with over 27 years of experience in governance, risk, and compliance. He has developed strong expertise in managing complex projects and leading teams. He holds a PhD in Governance, Risk, Compliance, and Financial Crime Prevention from Atlantic International University, an MBA from Anglia Ruskin University, and a Postgraduate Diploma in Governance, Risk, and Compliance from the International Compliance Association.
+                                <p class="mb-2" style="text-align: justify">
+                                    Founder, Women in Governance, Risk, Compliance & Financial Crime Prevention (WGRCFP)
+
+                                    <b>Dr. Foluso Amusa</b> is a distinguished leader, seasoned entrepreneur, and globally recognized expert in Governance, Risk Management, Compliance (GRC), 
+                                    and Financial Crime Prevention. With over two decades of professional experience, he has played a pivotal role in shaping regulatory excellence, corporate governance frameworks, and financial crime prevention strategies across key industries, including banking, insurance, fintech, healthcare, aviation, and oil & gas.
+
+                                    As the Founder of WGRCFP, <b>Dr. Amusa</b> is committed to fostering gender diversity and empowering women professionals in the GRC and financial crime prevention sectors. Through mentorship, thought leadership, and strategic networking, he has built a platform that supports professional development and inclusivity in these critical fields.
+
+                                    Dr. Amusa is also the visionary behind THE MORGANS Consortium (established in 2014), a leading firm specializing in risk, compliance, and financial crime advisory services. His strategic initiatives include:
+                                </p>
+                                  
+                                    <p>•⁠  ⁠The GRC & Financial Crime Prevention Awards & Summit – Africa & Europe</p>
+                                    <p>•⁠  ⁠Women in GRC & Financial Crime Prevention (WGRCFP), a platform advocating for gender diversity and leadership.</p>
+                                    <p>•⁠  ⁠The Institute of Financial Crime and Fraud Prevention of Nigeria (IFPN), a premier institution dedicated to advancing compliance, financial crime prevention, and professional education in Nigeria.</p>
+                                    <p>•⁠  ⁠GRC and Financial Crime Today Magazine, a leading publication providing insights into global regulatory and compliance trends.</p>
+                                    <p>•⁠  ⁠GRC and Financial Crime Today TV , a digital platform...</p>
+                              
+                                <p class="mt-4">
+                                    A sought-after speaker, thought leader, and consultant, Dr. Amusa continues to shape regulatory policies, corporate best practices, and financial crime prevention strategies globally. His mission is to elevate industry standards, drive innovation, and support the professional growth of practitioners in the GRC & Financial Crime Preventionecosystem.
+                                </p>
+                                <p>
+                                    For more about his work and contributions, visit WGRCFP Website.
                                 </p>
                                 <br>
-                                <p style="text-align: justify">
-                                    He is currently the Founder of THE MORGANS, a company that provides strategic consulting services to businesses and organizations. He also serves as a Non-Executive Director at The Marie Trust and as the Advisory Board Chair for Nigeria at the Association of Certified Financial Crime Specialists - ACFCS. His skills include project management, social networking, and analytical skills. He is passionate about helping organizations achieve their goals while ensuring ethical and compliant practices. 
-                                </p>
+                                
                             </div>
                             <div class="application-btn">
                             
