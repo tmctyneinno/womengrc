@@ -100,7 +100,7 @@
 
                     <div class="col-lg-5">
                         <div class="application-img-two">
-                            <img src="assets/img/mdd.png" alt="Images">
+                            <img src="{{ asset('assets/img/MD_img.png')}}" alt="Images">
                         </div>
                     </div>
                 </div>
