@@ -6372,8 +6372,9 @@ User Area
   padding: 35px 50px !important;
 }
 .user-section .user-all-form .contact-form .agree-label {
-  margin-top: 30px;
-  float: left;
+  /* margin-top: 30px; */
+  margin-bottom: 20px;
+  float: left; 
 }
 .user-section .user-all-form .contact-form .agree-label label {
   font-weight: 400;

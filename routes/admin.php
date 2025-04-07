@@ -42,7 +42,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/manage/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
     Route::post('/manage/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
      
-    Route::middleware('auth.admin')->group(function () {
+    Route::middleware(['auth.admin'])->group(function () {
         Route::post('/settings/update-password', [AdminLoginController::class, 'updatePassword'])->name('admin.password.update');
         Route::get('/settings/show-password', [AdminLoginController::class, 'showChangePasswordForm'])->name('admin.show.password');
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
@@ -68,7 +68,10 @@ Route::prefix('admin')->group(function () {
         //User
         Route::name('admin.')->group(function () {
             Route::resource('users', UserController::class);
-        }); 
+            Route::delete('users/{user}', [UserController::class, 'destroy'])
+            ->name('users.destroy');
+        });
+       
         //Application
         Route::name('admin.')->group(function () {
             Route::resource('application', ApplicationController::class);

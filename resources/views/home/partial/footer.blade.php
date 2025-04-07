@@ -19,7 +19,7 @@
 </style>
 <!-- Footer Area -->
  <footer class="footer-area footer-bg2" style="color: #000">
-    <div class="footer-middle pt-100 pb-70">
+    <div class="footer-middle pt-45 pb-70">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6">
@@ -209,3 +209,13 @@
         @endforeach
     @endif
 </script>
+ <!-- Include Google reCAPTCHA -->
+ <script src="https://www.google.com/recaptcha/api.js"></script>
+ <!-- JavaScript for toastr messages -->
+ @if (session('recaptcha_error'))
+ <script>
+     $(document).ready(function() {
+         toastr.error("{{ session('recaptcha_error') }}");
+     });
+ </script>
+ @endif

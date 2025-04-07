@@ -48,6 +48,22 @@ class RegisterController extends Controller
     
     public function register(Request $request)
     {
+        
+        // Validate reCAPTCHA
+        $request->validate([
+            'g-recaptcha-response' => 'required'
+        ]);
+
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip()
+        ]);
+
+        if (!$response->json()['success']) {
+            return redirect()->back()->with('error', 'reCAPTCHA verification failed.');
+        }
+
         // Validate the input
         $request->validate([
             'name' => 'required|string|max:50|unique:users',
@@ -56,7 +72,7 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
             // 'password' => 'required|string|min:8|confirmed',
         ]);
-
+ 
         // Create the user
         $user = User::create([
             'name' => $request->name,

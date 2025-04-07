@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Resource;
 use App\Models\Recognition;
 use App\Models\Advisory;
@@ -20,6 +21,7 @@ use App\Models\Event;
 use App\Models\VisionMission;
 use App\Models\Testimonial;
 use App\Models\Sociallink;
+use App\Models\Contact;
 use App\Models\ContactUs;
 use App\Models\About;
 use App\Models\Slider;
@@ -43,7 +45,13 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    { 
+    {  
+        
+        if ($this->databaseExists()) {
+            $contact = Contact::latest()->paginate(20);
+            View::share('contacts', $contact);
+        }
+
         View::share('menuItems', MenuItem::with('dropdownItems')->get());
         $randomMenuItems = MenuItem::with('dropdownItems')->get()->random(5);
         View::share('randomMenuItems', $randomMenuItems);
@@ -84,29 +92,7 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        // View::composer('*', function ($view) {
-        //     if (Auth::check()) {
-        //         $user = Auth::user();
-        //         $userId = (string) $user->id; 
-        //         $recipientId = $user->recipient_id;
-
-                
-         
-        //         // $sender = $user->notifications()->whereJsonContains('data->recipient_id', $recipientId)->first();
-                
-        //         // $sender_id = $sender ? $sender->data['sender_id'] : null;
         
-        //         // $notifications = $user->notifications()
-        //         //     ->where('notifiable_id', $sender_id)  
-        //         //     ->orWhereJsonContains('data->recipient_id', $recipientId) 
-        //         //     ->take(4) 
-        //         //     ->get();
-        
-        //         $view->with('notificationsBar', $notifications);
-        //     } else {
-        //         $view->with('notificationsBar', 0);
-        //     }
-        // });
 
         View::composer('*', function ($view) {
             if (Auth::check()) {
@@ -121,13 +107,16 @@ class AppServiceProvider extends ServiceProvider
             }
         });
        
-
-
         
-        
-       
+    }
 
-
-        
+    private function databaseExists(): bool
+    {
+        try {
+            DB::connection()->getPdo();
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

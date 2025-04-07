@@ -5,10 +5,10 @@
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Students</a></li>
+                <li class="breadcrumb-item">Dashboard / </li>
+                <li class="-item "><a href="javascript:void(0)">Students</a></li>
                 
-            </ol>
+            </ol> 
         </div>
         <!-- row -->
  
@@ -35,7 +35,7 @@
 
                     <div class="card-header border-0 pb-0">
                         <div class="clearfix"> 
-                            <h3 class="card-title">Student List</h3>
+                            <h3 class="card-title">User List</h3>
                         </div>
                         {{-- <div class="clearfix text-center">
                             <a href="{{route('admin.user.create')}}" class="btn btn-primary">Add Post</a>
@@ -49,8 +49,9 @@
                                 <thead>
                                     <tr>
                                         <th class="width80">#</th>
-                                        <th>Title</th>
-                                        <th>Content</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
                                         <th>DATE   </th>
                                         <th>ACTION</th>
                                     </tr>
@@ -62,12 +63,40 @@
                                             <td>{{ $data->name }}</td>
                                             <td>{{ $data->email }}</td>
                                             
-                                            <td>{{ $data->created_at->format('d F Y') }}</td>
                                             <td>
+                                                @switch($data->role)
+                                                    @case('advisory')
+                                                        <span class="badge bg-primary">Advisory</span>
+                                                        @break
+                                                    @case('facilitator')
+                                                        <span class="badge bg-success">Facilitator</span>
+                                                        @break
+                                                    @case('guests')
+                                                        <span class="badge bg-warning text-dark">Guest</span>
+                                                        @break
+                                                    @case('admin')
+                                                        <span class="badge bg-danger">Admin</span>
+                                                        @break
+                                                    @default
+                                                        <span class="badge bg-secondary">{{ $data->role }}</span>
+                                                @endswitch
+                                            </td>
+                                            
+                                            <td>{{ $data->created_at->format('d F Y') }}</td>
+                                            {{-- <td>
                                                 <div class="d-flex">
-                                                    {{-- <a class="btn btn-primary " style="margin-right: 5px;" href="{{ route('admin.users.edit',  encrypt($data->id) ) }}">Edit</a> --}}
-                                                    <a class="btn btn-danger" href="{{ route('admin.users.destroy', encrypt($data->id) )  }}" onclick="return confirm('Are you sure you want to delete this User?');">Delete</a>
+                                                     <a class="btn btn-danger" href="{{ route('admin.users.destroy', encrypt($data->id) )  }}" onclick="return confirm('Are you sure you want to delete this User?');">Delete</a>
                                                 </div>
+                                            </td> --}}
+                                            <td>
+                                                <form action="{{ route('admin.users.destroy', $data->id ) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" 
+                                                            onclick="return confirm('Are you sure you want to delete this user?')">
+                                                        Delete
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @empty

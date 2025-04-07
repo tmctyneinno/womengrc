@@ -9,7 +9,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     /** 
-     * Display a listing of the resource.
+     * Display a listing of the resource. 
      *
      * @return \Illuminate\Http\Response
      */
@@ -80,15 +80,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    // app/Http/Controllers/Admin/UserController.php
+    public function destroy(User $user)
     {
-    
-        $user = User::findOrFail(decrypt($id));
-        if(!$user){
-            return view('home.errors.404'); 
-        }
-        $user->delete();
-        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
+        try {
+            // Prevent deleting yourself
+            if ($user->id === auth()->id()) {
+                return redirect()->back()
+                    ->with('error', 'You cannot delete your own account!');
+            }
 
+            $user->delete();
+            
+            return redirect()->route('admin.users.index')
+                ->with('success', 'User deleted successfully.');
+                
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Error deleting user: '.$e->getMessage());
+        }
     }
 }

@@ -66,7 +66,7 @@ class LoginController extends Controller
                         return redirect()->route('guests.dashboard');
                     default:
                         return redirect()->route('user.dashboard');
-                } 
+                }  
             } else {
                 // Logout if email is not verified
                 Auth::logout();
@@ -78,12 +78,7 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request, 'Invalid credentials.');
     }
     
-    // protected function sendFailedLoginResponse(Request $request, $message = 'Login failed.')
-    // {
-    //     return redirect()->back()
-    //         ->withInput($request->only('email', 'remember'))
-    //         ->withErrors(['email' => $message]);
-    // }
+    
 
 
     

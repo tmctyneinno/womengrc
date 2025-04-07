@@ -42,8 +42,8 @@ Route::get('/terms-condition', [FrontendController::class, 'termsCondition'])->n
 Route::get('blog/{id}/details', [BlogController::class, 'detail'])->name('blog.detail');
 Route::post('/post/comment', [BlogController::class, 'storeComment'])->name('comments.store');
 
+Route::post('/contact', [FrontendController::class, 'submitContact'])->name('contact.submit');
 
-Auth::routes();
 
 Route::get('/home/login', [LoginController::class, 'showLoginForm'])->name('home.login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
