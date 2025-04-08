@@ -30,7 +30,7 @@ class AdminController extends Controller
  
     public function index()
     {  
-        $data = [
+        $data = [ 
             'guests' => User::where('role', 'guests')->count(),
             'advisory' => User::where('role', 'advisory')->count(),
             'facilitator' => User::where('role', 'facilitator')->count(),
