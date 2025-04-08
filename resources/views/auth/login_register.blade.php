@@ -2,7 +2,7 @@
 <div class="col-lg-12 col-md-12">
     <div class="tab_content current active">
         @include('auth.login_form')
-        @include('auth.register_form')
+        {{-- @include('auth.register_form') --}}
     </div>
 </div>
 
