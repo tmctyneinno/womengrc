@@ -11,6 +11,7 @@ use App\Models\Recognition;
 use App\Models\Advisory;
 use App\Models\MentorshipContent;
 use App\Models\FacilitatorContent;
+use App\Models\MembershipCriteria;
 use App\Models\MembershipContent;
 use App\Models\TermsConditions;
 use App\Models\PrivacyPolicy;
@@ -50,6 +51,8 @@ class AppServiceProvider extends ServiceProvider
         if ($this->databaseExists()) {
             $contact = Contact::latest()->paginate(20);
             View::share('contacts', $contact);
+            View::share('membershipCriteria', MembershipCriteria::first());
+
         }
 
         View::share('menuItems', MenuItem::with('dropdownItems')->get());

@@ -16,7 +16,7 @@
                                    value="{{ old('email') }}" 
                                    autocomplete="email" 
                                    autofocus>
-                            <small class="text-start error-message text-danger" id="login-email-error"></small>
+                            <small style="font-size: 11px" class="text-start error-message text-danger" id="login-email-error"></small>
                         </div>
                     </div>
 
@@ -30,9 +30,12 @@
                                    class="form-control @error('password') is-invalid @enderror" 
                                    placeholder="Password" 
                                    autocomplete="current-password">
-                            <small class="text-start error-message text-danger" id="login-password-error"></small>
+                            <small style="font-size: 11px" class="text-start error-message text-danger" id="login-password-error"></small>
                         </div>
                     </div>
+                    @if ($errors->has('captcha'))
+                        <div class="text-danger">{{ $errors->first('captcha') }}</div>
+                    @endif
 
                     <!-- Login Button -->
                     <div class="col-lg-12 col-md-12 text-center">

@@ -37,10 +37,9 @@
                             <div class="col-sm-2"> 
                                 <div class="nav flex-column nav-pills mb-3" role="tablist">
                                     <a href="{{ route('admin.membership.index') }}" class="nav-link ">Membership content</a>
-                                    <a href="{{ route('admin.membershipCriteria.index') }}" class="nav-link">Membership Criteria</a>
-
+                                    <a href="{{ route('admin.membershipCriteria.index') }}" class="nav-link active">Membership Criteria</a>
                                     <a href="{{ route('admin.mentorship.index') }}" class="nav-link ">Mentorship content</a>
-                                    <a href="{{ route('admin.facilitator.index') }}" class="nav-link active">Facilitators content</a>
+                                    <a href="{{ route('admin.facilitator.index') }}" class="nav-link ">Facilitators content</a>
                                     {{-- <a href="{{ route('admin.members.membersSubscriptionFees') }}" class="nav-link ">Membership Subscription Fees</a>
                                     <a href="{{ route('admin.members.membershipTiers') }}" class="nav-link ">Membership Tiers</a>
                                     <a href="{{ route('admin.members.membershipApplication') }}" class="nav-link ">Membership Application</a> --}}
@@ -51,7 +50,7 @@
                                 <div class="tab-content">
                                     
                                     <div  class="tab-pane fade show active" role="tabpanel">
-                                        @include('admin.facilitator.create')
+                                        @include('admin.membership.criteria.create')
                                     </div>
                                    
                                   

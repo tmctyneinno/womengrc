@@ -32,13 +32,15 @@
     <link href="{{ asset ('backend/vendor/datatables/responsive/responsive.css')}}" rel="stylesheet">
     <link href="{{ asset ('backend/vendor/dropzone/dist/dropzone.css')}}" rel="stylesheet">
     <link href="{{ asset ('backend/vendor/nestable2/css/jquery.nestable.min.css')}}" rel="stylesheet">
-    <!-- Toastr CSS -->
+    <link href="{{ asset ('backend/vendor/ckeditor/ckeditor.js')}}" rel="stylesheet">
+    <!-- Toastr CSS --> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
      
 </head>
-
+ 
 <body>
 
     @include('admin/partials.navbar');
@@ -53,7 +55,7 @@
     <!--**********************************
         Main wrapper end
     ***********************************-->
-    
+     
     <!--**********************************
         Footer start
     ***********************************-->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Notifications\UserRoleUpdated;
 use App\Models\User;
 
 class UserController extends Controller
@@ -14,9 +15,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $data = User::all();
-        return view('admin.users.index',['data' => $data]);
+    { 
+        $users = User::latest()->paginate(20);
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -59,7 +60,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail(decrypt($id));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -69,9 +71,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'role' => 'required|in:advisory_member,guests,mentor,mentee',
+        ]);
+
+        $user->role = $request->role;
+        $user->save();
+        
+        $user->notify(new UserRoleUpdated($user));
+
+        return redirect()->route('admin.users.edit', encrypt($user->id) )->with('success', 'User role updated successfully.');
     }
 
     /**
@@ -84,12 +96,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         try {
-            // Prevent deleting yourself
-            if ($user->id === auth()->id()) {
-                return redirect()->back()
-                    ->with('error', 'You cannot delete your own account!');
-            }
-
             $user->delete();
             
             return redirect()->route('admin.users.index')
@@ -98,6 +104,29 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Error deleting user: '.$e->getMessage());
+        }
+    }
+
+    public function multiDelete(Request $request)
+    {
+        // Prevent deleting yourself
+        if ($user->id === auth()->id()) {
+            return redirect()->back()
+                ->with('error', 'You cannot delete your own account!');
+        }
+        if(empty($request->selected_ids)) {
+            return back()->with('error', 'No users selected');
+        }
+        $request->validate([
+            'selected_ids' => 'required|array',
+            'selected_ids.*' => 'exists:users,id'
+        ]);
+
+        try {
+            User::whereIn('id', $request->selected_ids)->delete();
+            return back()->with('success', 'Selected users deleted successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error deleting users: ' . $e->getMessage());
         }
     }
 }

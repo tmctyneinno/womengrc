@@ -42,22 +42,13 @@ class PagesController extends Controller
             'terms-condition' => 'home.pages.terms-condition',
             'privacy-policy' => 'home.pages.privacy-policy',
             'governance-board' => 'home.pages.governance-board',
-            'membership' => 'home.pages.membership.index',
-            'membership-overview' => 'home.pages.membership.membership-overview',
-            'membership-subscription-fees' => 'home.pages.membership.membership-subscription-fees',
-            'membership-tiers' => 'home.pages.membership.membership-tiers',
-            'membership-login' => 'home.pages.membership.membership-login',
-            'membership-signup' => 'home.pages.membership.membership-signup',
-            'membership-application' => 'home.pages.membership.membership-application',
+            'criteria-for-membership' => 'home.pages.membership.criteria-for-membership',
+
 
             'programmes-and-examinations' => 'home.pages.certification.programmes-and-examinations',
             'exam-requirement' => 'home.pages.certification.exam-requirement',
 
-            'livestream' => 'home.pages.livestream',
-            'partners-and-affiliates' => 'home.pages.partnersAffiliates',
-
-            'membership-logout' => 'home.pages.membership.membership-login',
-
+            
             'legislative-recommendations' => 'home.pages.advocacyPolicy.legislative-recommendations',
             'government-ngo-partnerships' => 'home.pages.advocacyPolicy.government-ngo-partnerships',
             'position-papers-policy-briefs' => 'home.pages.advocacyPolicy.position-papers-policy-briefs',
@@ -76,10 +67,7 @@ class PagesController extends Controller
         return view('home.errors.404');
     }
 
-    public function membershipLogin(){
-        return view('home.pages.membership.membership-login'); 
-    }
-    
+   
    
   
 

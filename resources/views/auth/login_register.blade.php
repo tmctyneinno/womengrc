@@ -2,12 +2,14 @@
 <div class="col-lg-12 col-md-12">
     <div class="tab_content current active">
         @include('auth.login_form')
-        {{-- @include('auth.register_form') --}}
+        @include('auth.register_form')
     </div>
 </div>
 
 @push('scripts')
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
+
+    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
     <script src="{{ asset('js/auth.js') }}"></script>
 @endpush
 
@@ -176,12 +178,22 @@ function initRegisterForm() {
                 return true;
             }
         },
-        role: {
-            element: document.getElementById('register-role'),
-            error: document.getElementById('register-role-error'),
+
+        linkedIn: {
+            element: document.getElementById('linkedIn'),
+            error: document.getElementById('linkedIn-error'),
             validate: function() {
-                if (this.element.value === "") {
-                    this.error.textContent = 'Please select a role';
+                const value = this.element.value.trim();
+                const linkedInRegex = /^https?:\/\/(www\.)?linkedin\.com\/(in|pub)\/[a-zA-Z0-9_-]+\/?$/;
+
+                if (value.length < 3) {
+                    this.error.textContent = 'LinkedIn Profile must be at least 3 characters';
+                    this.element.classList.add('is-invalid');
+                    this.error.style.display = 'block';
+                    return false;
+                }
+                if (!linkedInRegex.test(value)) {
+                    this.error.textContent = 'Please enter a valid LinkedIn profile URL (e.g. https://www.linkedin.com/in/yourname)';
                     this.element.classList.add('is-invalid');
                     this.error.style.display = 'block';
                     return false;
@@ -191,6 +203,7 @@ function initRegisterForm() {
                 return true;
             }
         },
+       
         password: {
             element: document.getElementById('register-password'),
             error: document.getElementById('register-password-error'),
@@ -287,6 +300,9 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
     };
 
     form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default for manual handling
+        event.stopPropagation();
+
         let isValid = true;
         Object.keys(fields).forEach(field => {
             if (!fields[field].validate()) {
@@ -295,9 +311,26 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
         });
         
         if (!isValid) {
-            event.preventDefault();
-            event.stopPropagation();
+            const firstInvalidField = Object.values(fields).find(field =>
+                field.element.classList.contains('is-invalid')
+            );
+            if (firstInvalidField) {
+                firstInvalidField.element.focus();
+            }
+            return;
         }
+
+        // If all fields are valid, trigger reCAPTCHA v3
+        grecaptcha.ready(function() {
+            grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'register'})
+                .then(function(token) {
+                    // Set the token in the hidden input
+                    document.getElementById('g-recaptcha-response').value = token;
+
+                    // Now call the final submit logic (includes re-validation)
+                    window[onSubmitFunctionName](token);
+                });
+        });
     });
 }
 </script>

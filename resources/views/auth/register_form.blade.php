@@ -4,14 +4,16 @@
             <form method="POST" action="{{ route('register.post') }}" id="signUpForm" novalidate>
                 @csrf
                 <div class="row justify-content-center">
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
                     <!-- Username Field -->
                     <div class="col-lg-12">
-                        <div class="form-group">
+                        <div class="form-group"> 
                             <i class="bx bx-user"></i>
                             <input type="text" name="name" id="register-name" class="form-control" 
                                    pattern=".{3,}" title="Username must be at least 3 characters"
-                                   placeholder="Username" autocomplete="off">
-                            <small class="text-start error-message text-danger" id="register-name-error"></small>
+                                   placeholder="Full name" autocomplete="off">
+                            <small style="font-size: 11px" class="text-start error-message text-danger" id="register-name-error"></small>
                         </div>
                     </div>
 
@@ -20,12 +22,23 @@
                         <div class="form-group">
                             <i class="flaticon-email-2"></i>
                             <input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
-                            <small class="text-start error-message text-danger" id="register-email-error"></small>
+                            <small style="font-size: 11px" class="text-start error-message text-danger" id="register-email-error"></small>
+                        </div>
+                    </div>
+
+                    <!-- Linkedin Field -->
+                    <div class="col-lg-12">
+                        <div class="form-group"> 
+                            <i class="bx bx-user"></i>
+                            <input type="text" name="linkedin" id="linkedIn" class="form-control" 
+                                   pattern=".{3,}" title="LinkedIn must be at least 3 characters"
+                                   placeholder="Enter LinkedIn Profile url" autocomplete="off">
+                            <small style="font-size: 11px" class="text-start error-message text-danger" id="linkedIn-error"></small>
                         </div>
                     </div>
 
                     <!-- Role Selection -->
-                    <div class="col-lg-12 form-group pt-2">
+                    {{-- <div class="col-lg-12 form-group pt-2">
                         <select name="role" id="register-role" class="form-control" aria-label="Default select example">
                             <option value="" selected disabled>Select Role</option>
                             <option value="advisory">Advisory Board Members</option>
@@ -35,7 +48,7 @@
                             <option value="guests">Guests</option>
                         </select>
                         <small class="text-start error-message text-danger" id="register-role-error"></small>
-                    </div>
+                    </div> --}}
 
                     <!-- Password Field -->
                     <div class="col-12">
@@ -45,7 +58,7 @@
                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                                    title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 characters"
                                    placeholder="Password">
-                            <small class="text-start error-message text-danger" id="register-password-error"></small>
+                            <small style="font-size: 11px" class="text-start error-message text-danger" id="register-password-error"></small>
                         </div>
                     </div>
 
@@ -69,6 +82,10 @@
                             </label>
                         </div>
                     </div>
+                    @if ($errors->has('captcha'))
+                        <div class="text-danger">{{ $errors->first('captcha') }}</div>
+                    @endif
+
                     <small class="text-start error-message text-danger" id="register-agreed-error"></small>
 
 

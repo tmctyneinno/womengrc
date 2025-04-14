@@ -37,6 +37,8 @@
                             <div class="col-sm-2"> 
                                 <div class="nav flex-column nav-pills mb-3" role="tablist">
                                     <a href="{{ route('admin.membership.index') }}" class="nav-link ">Membership content</a>
+                                    <a href="{{ route('admin.membershipCriteria.index') }}" class="nav-link">Membership Criteria</a>
+
                                     <a href="{{ route('admin.mentorship.index') }}" class="nav-link active">Mentorship content</a>
                                     <a href="{{ route('admin.facilitator.index') }}" class="nav-link ">Facilitators content</a>
 

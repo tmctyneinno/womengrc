@@ -1,3 +1,4 @@
+
 <?php 
 
 use Illuminate\Support\Facades\Route;
@@ -64,13 +65,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/settings/content', [SettingsController::class, 'WhyChooseUs'])->name('admin.settings.content');
         Route::post('/settings/store/why-choose-us', [SettingsController::class, 'storeWhyChooseUs'])->name('admin.settings.store_why_choose_us');
         Route::put('/settings/update/why-choose-us/{id}', [SettingsController::class, 'updateWhyChooseUs'])->name('admin.settings.update_why_choose_us');
-         
+          
         //User
         Route::name('admin.')->group(function () {
             Route::resource('users', UserController::class);
-            Route::delete('users/{user}', [UserController::class, 'destroy'])
-            ->name('users.destroy');
-        });
+            Route::post('/users/multi-delete', [UserController::class, 'multiDelete'])
+            ->name('users.multi-delete');
+            // Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+            // Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+
+        }); 
        
         //Application
         Route::name('admin.')->group(function () {
@@ -86,16 +90,11 @@ Route::prefix('admin')->group(function () {
        
         //About us
         Route::get('/settings/about-us', [SettingsController::class, 'getAboutUs'])->name('admin.settings.aboutUs');
-       
-        // Governance-board
         Route::get('/about-us', [AboutUsController::class, 'index'])->name('admin.about-us');
         Route::post('/about-us/store', [AboutUsController::class, 'store'])->name('admin.aboutus.store');
         Route::put('/update/about-us/{id}', [AboutUsController::class, 'update'])->name('admin.aboutus.update');
        
-        Route::get('/governance-board', [AboutUsController::class, 'governanceBoard'])->name('admin.governanceBoard');
-        Route::post('/governance-board/store', [AboutUsController::class, 'governanceBoardStore'])->name('admin.governanceBoard.store');
-        Route::put('/governance-board/update/about-us/{id}', [AboutUsController::class, 'governanceBoardUpdate'])->name('admin.governanceBoard.update');
-        
+       
         // AdovacyPolicy
         Route::get('/advocacyPolicy', [AdovacyPolicyController::class, 'index'])->name('admin.advocacyPolicy');
         // Route::get('/members-benefit', [AdovacyPolicyController::class, 'membersBenefit'])->name('admin.members.membersBenefit');
@@ -110,40 +109,8 @@ Route::prefix('admin')->group(function () {
         Route::put('/advisory-board-member/update/{id}', [AdvisoryBoardMemberController::class, 'update'])->name('admin.advisoryBoardMember.update');
         Route::get('/advisory-board-member/delete/{id}', [AdvisoryBoardMemberController::class, 'destroy'])->name('admin.advisoryBoardMember.destroy');
 
-        // members
-        // Route::get('/members', [MembersController::class, 'index'])->name('admin.members');
        
-        Route::get('/members-benefit', [MembersController::class, 'membersBenefit'])->name('admin.members.membersBenefit');
-        Route::post('/members-benefit/post', [MembersController::class, 'membersBenefitStore'])->name('admin.membersBenefit.store');
-        Route::put('/members-benefit/update/{id}', [MembersController::class, 'membersBenefitUpate'])->name('admin.membersBenefit.update');
-
-      
-        Route::get('/membership-subscription-fees', [MembersController::class, 'membersSubscriptionFees'])->name('admin.members.membersSubscriptionFees');
-        Route::post('/membership-subscription-fees/post', [MembersController::class, 'membersSubscriptionFeesStore'])->name('admin.membersSubscriptionFees.store');
-        Route::put('/membership-subscription-fees/update/{id}', [MembersController::class, 'membersSubscriptionFeesUpate'])->name('admin.membersSubscriptionFees.update');
         
-        Route::get('/membership-tiers', [MembersController::class, 'membershipTiers'])->name('admin.members.membershipTiers');
-        Route::post('/membership-tiers/post', [MembersController::class, 'membershipTiersStore'])->name('admin.membershipTiers.store');
-        Route::put('/membership-tiers/update/{id}', [MembersController::class, 'membershipTiersUpate'])->name('admin.membershipTiers.update');
-        
-        Route::get('/membership-programme', [MembersController::class, 'membersProgramme'])->name('admin.members.membersProgramme');
-        Route::post('/membership-programme/post', [MembersController::class, 'membersProgrammeStore'])->name('admin.membersProgramme.store');
-        Route::put('/membership-programme/update/{id}', [MembersController::class, 'membersProgrammeUpate'])->name('admin.membersProgramme.update');
-        
-        Route::get('/membership-application', [MembersController::class, 'membershipApplication'])->name('admin.members.membershipApplication');
-        Route::post('/membership-application/post', [MembersController::class, 'membershipApplicationStore'])->name('admin.membershipApplication.store');
-        Route::put('/membership-application/update/{id}', [MembersController::class, 'membershipApplicationUpate'])->name('admin.membershipApplication.update');
-       
-        // certification
-        Route::get('/certification', [CertificationController::class, 'index'])->name('admin.certification');
-        Route::get('/programme-examination', [CertificationController::class, 'programmeExamination'])->name('admin.certification.programmeExamination');
-        Route::post('/programme-examination/post', [CertificationController::class, 'programmeExaminationStore'])->name('admin.programmeExamination.store');
-        Route::put('/programme-examination/update/{id}', [CertificationController::class, 'programmeExaminationUpate'])->name('admin.programmeExamination.update');
-        
-        Route::get('/exam-requirement', [CertificationController::class, 'examRequirement'])->name('admin.certification.examRequirement');
-        Route::post('/exam-requirement/post', [CertificationController::class, 'examRequirementStore'])->name('admin.examRequirement.store');
-        Route::put('/exam-requirement/update/{id}', [CertificationController::class, 'examRequirementUpate'])->name('admin.examRequirement.update');
-       
         //Core Value 
         Route::get('/settings/core-value', [CoreValueController::class, 'index'])->name('admin.coreValue.index');
         Route::post('/settings/store/core-value', [CoreValueController::class, 'store'])->name('admin.coreValue.store');
@@ -172,6 +139,10 @@ Route::prefix('admin')->group(function () {
         Route::post('/membership/store', [MembershipController::class, 'store'])->name('admin.membership.store');
         Route::put('/membership/update/{id}', [MembershipController::class, 'update'])->name('admin.membership.update');
         
+        Route::get('/membership/criteria/index', [MembershipController::class, 'indexCriteria'])->name('admin.membershipCriteria.index');
+        Route::post('/membership/criteria/store', [MembershipController::class, 'storeCriteria'])->name('admin.membershipCriteria.store');
+        Route::put('/membership/criteria/update/{id}', [MembershipController::class, 'updateCriteria'])->name('admin.membershipCriteria.update');
+        
         //Mentorship Controller
         Route::get('/mentorship/index', [MentorshipController::class, 'index'])->name('admin.mentorship.index');
         Route::post('/mentorship/store', [MentorshipController::class, 'store'])->name('admin.mentorship.store');
@@ -183,12 +154,7 @@ Route::prefix('admin')->group(function () {
         Route::put('/facilitator/update/{id}', [FacilitatorController::class, 'update'])->name('admin.facilitator.update');
         
        
-        //Careers 
-        Route::get('career/index', [CareerController::class, 'index'])->name('admin.career.index');
-        Route::post('career/store/', [CareerController::class, 'store'])->name('admin.career.store');
-        Route::put('career/update/{id}', [CareerController::class, 'update'])->name('admin.career.update');
        
-
         //  Privacy
         Route::get('/index/privacypolicy', [PrivacyController::class, 'index'])->name('admin.privacyPolicy.index');
         Route::post('/store/privacypolicy', [PrivacyController::class, 'store'])->name('admin.privacy.store');
