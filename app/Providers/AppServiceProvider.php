@@ -51,8 +51,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->databaseExists()) {
             $contact = Contact::latest()->paginate(20);
             View::share('contacts', $contact);
-            View::share('membershipCriteria', MembershipCriteria::first());
-
+            // View::share('membershipCriteria', MembershipCriteria::first());
         }
 
         View::share('menuItems', MenuItem::with('dropdownItems')->get());
