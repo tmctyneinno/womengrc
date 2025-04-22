@@ -6,7 +6,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Dashboard /</li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Users</a></li>
+                <li class="breadcrumb"><a href="javascript:void(0)"> Users</a></li>
             </ol>
         </div>
 
