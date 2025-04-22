@@ -11,13 +11,21 @@
             <div class="form-head d-md-flex mb-sm-4 mb-3 align-items-start">
                 <div class="me-auto d-lg-block d-block">
                     <h2 class="text-black font-w600">Menu</h2>
+<<<<<<< HEAD
                     <p class="mb-0">Welcome to {{ $contactUs ? $contactUs->company_name : ''}} backend</p>
+=======
+                    <p class="mb-0">Welcome to Company Name backend</p>
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
                 </div>
                 <a href="{{route('admin.menu.index')}}" class="btn btn-primary rounded light">View Menu</a>
             </div>
             <div class="row justify-content-center">
+<<<<<<< HEAD
                 {{-- Increased width to accommodate potentially complex structure --}}
                 <div class="col-xl-8 col-lg-12 align-center">
+=======
+                <div class="col-xl-6 col-lg-12 align-center">
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Edit Menu</h4>
@@ -25,7 +33,11 @@
                         <div class="card-body">
                             <div class="basic-form">
                                 @if(session('success'))
+<<<<<<< HEAD
                                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+=======
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
                                         {{ session('success') }}
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
@@ -131,6 +143,7 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
     </div>
 </div>
@@ -243,3 +256,11 @@
 </script>
 @endpush
 @endsection
+=======
+           
+
+        </div>
+    </div>
+</div>
+@endsection
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9

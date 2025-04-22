@@ -36,7 +36,6 @@
                         </div>
                     </div>
 
-
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-responsive-md">
@@ -86,7 +85,6 @@
                                             <td colspan="5" class="text-center">No menu items found.</td>
                                         </tr>
                                     @endforelse
-
                                 </tbody>
                             </table>
                         </div>

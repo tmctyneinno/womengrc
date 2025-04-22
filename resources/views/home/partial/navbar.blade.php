@@ -60,18 +60,31 @@
                             </div>
                         </div>
 
+<<<<<<< HEAD
                     </div>
                 </div>
 
 
+=======
+                        
+                    </div>
+                </div>
+
+                
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
             </nav>
         </div>
     </div>
 
+<<<<<<< HEAD
     {{-- Responsive Side Navigation (Appears on smaller screens triggered by dot-menu) --}}
     <div class="side-nav-responsive">
         <div class="container">
             {{-- This button likely triggers the display of the .side-nav-inner below --}}
+=======
+    <div class="side-nav-responsive">
+        <div class="container">
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
             <div class="dot-menu">
                 <div class="circle-inner">
                     <div class="circle circle-one"></div>
@@ -79,17 +92,26 @@
                     <div class="circle circle-three"></div>
                 </div>
             </div>
+<<<<<<< HEAD
 
             <div class="container">
                 <div class="side-nav-inner">
                     {{-- Content shown when the responsive side nav is open --}}
                     <div class="side-nav justify-content-center align-items-center">
 
+=======
+            
+            <div class="container">
+                <div class="side-nav-inner">
+                    <div class="side-nav justify-content-center  align-items-center">
+                       
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
                         <div class="side-item">
                             <div class="nav-add-btn">
                                 @guest
                                     <a href="{{ route('home.login') }}" class="default-btn border-radius">
                                         Login/Register
+<<<<<<< HEAD
                                     </a>
                                 @else
                                     {{-- Consider adding logout here as well for consistency --}}
@@ -106,6 +128,17 @@
                                 @endguest
                             </div>
                             <br> {{-- Consider using margin/padding instead of <br> --}}
+=======
+                                    </a> 
+                                    
+                                @else
+                                    <a href="{{ route('user.dashboard')}}" class="default-btn border-radius">
+                                        My Account
+                                    </a>
+                                @endguest
+                            </div>
+                            <br>
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
                         </div>
                     </div>
                 </div>

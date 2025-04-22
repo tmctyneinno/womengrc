@@ -30,13 +30,17 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
+<<<<<<< HEAD
             \App\Http\Middleware\ShareWalletBalance::class,
+=======
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+<<<<<<< HEAD
         ], 
 
         'api' => [
@@ -44,6 +48,16 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+=======
+        ],
+
+        'api' => [
+            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+       
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
     ];
 
     /**
@@ -54,7 +68,10 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+<<<<<<< HEAD
         'transaction.pin' => \App\Http\Middleware\CheckTransactionPin::class,
+=======
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
         'auth.admin' => \App\Http\Middleware\AdminAuthenticate::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
@@ -66,5 +83,9 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+<<<<<<< HEAD
+=======
+        'role' => \App\Http\Middleware\RoleMiddleware::class,
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
     ];
 }

@@ -29,7 +29,11 @@ class AdminLoginController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 7024077c20591e5e55fcbd48ce6f04afa2b8a5a9
         if (Auth::guard('admin')->attempt($credentials)) {
             // return redirect()->route('admin.index');
             return redirect()->intended(route('admin.index'));

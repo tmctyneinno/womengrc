@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://dohmayn.com/'],
+    'allowed_origins' => ['https://www.wgrcfp.org'],
 
     'allowed_origins_patterns' => [],
 
