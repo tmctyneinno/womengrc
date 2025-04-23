@@ -37,7 +37,7 @@
                 @forelse ($recognitions as $recognition)
                     <div class="col-lg-3 col-md-6 mb-1">
                         <div class="team-card" style="box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); overflow: hidden;">
-                            <img src="{{ asset($recognition->image) }}" alt="Team Images" class="img-fluid" style="width: 300px; height: 250px; object-fit: fill;">
+                            <img src="{{ asset($recognition->image) }}" alt="Team Images" class="img-fluid" style="width: 300px; height: 270px; object-fit: fill;">
                             <div class="content">
                                 <h3>{{ $recognition->name }}</h3>
                                 <span>{{ \Illuminate\Support\Str::limit($recognition->position, 45) }}</span>
