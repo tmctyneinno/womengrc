@@ -55,7 +55,6 @@ class AppServiceProvider extends ServiceProvider
         }
 
         
-        View::share('randomMenuItems', $randomMenuItems);
 
         View::share('testimonials', Testimonial::latest()->get());
         View::share('contactUs', ContactUs::first());
