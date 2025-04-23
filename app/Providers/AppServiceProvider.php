@@ -55,7 +55,6 @@ class AppServiceProvider extends ServiceProvider
         }
 
         
-        $randomMenuItems = MenuItem::with('dropdownItems')->get()->random(5);
         View::share('randomMenuItems', $randomMenuItems);
 
         View::share('testimonials', Testimonial::latest()->get());
