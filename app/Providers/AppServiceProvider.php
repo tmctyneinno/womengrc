@@ -54,7 +54,7 @@ class AppServiceProvider extends ServiceProvider
             View::share('membershipCriteria', MembershipCriteria::first());
         }
 
-        View::share('menuItems', MenuItem::with('dropdownItems.allChildren')->get());
+        // View::share('menuItems', MenuItem::with('dropdownItems.allChildren')->get());
 
         $randomMenuItems = MenuItem::with('dropdownItems')->get()->random(5);
         View::share('randomMenuItems', $randomMenuItems);
