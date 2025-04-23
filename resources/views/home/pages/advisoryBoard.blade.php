@@ -15,7 +15,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> 
     <!-- Inner Banner End -->
 
     <!-- Team Area -->
@@ -32,7 +32,8 @@
                             <img src="{{ asset($advisory->image) }}" alt="Team Images" class="img-fluid" style="width: 300px; height: 280px; object-fit: fill;">
                             <div class="content">
                                 <h3>{{ $advisory->name }}</h3>
-                                <span>{{ $advisory->position }}</span>
+                                <span>{{ \Illuminate\Support\Str::limit($advisory->position, 45) }}</span>
+                               
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalManagement" data-name="{{ $advisory->name }}" data-position="{{ $advisory->position }}" data-content="{{ $advisory->content }}" class="read-more pt-1" style="color: #B03436;">
                                     Read more
                                 </a>
