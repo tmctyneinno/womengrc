@@ -58,7 +58,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
+                                </div> 
                             
                                <div class="form-group mb-3 mb-sm-4">
                                     <label class="form-label" for="password">Password</label>
@@ -76,17 +76,7 @@
                                     @enderror
                                 </div>
                             
-                                {{-- <div class="form-row d-flex flex-wrap justify-content-between align-items-baseline mb-2">
-                                    <div class="form-group mb-sm-4 mb-1">
-                                        <div class="form-check custom-checkbox ms-1">
-                                            <input type="checkbox" class="form-check-input" id="basic_checkbox_1" name="remember"> {{-- Added name attribute if you uncomment --}}
-                                            {{-- <label class="form-check-label" for="basic_checkbox_1">Remember my preference</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ms-2">
-                                        <a href="#">Forgot Password?</a> {{-- Consider using a route helper if you implement this --}}
-                                    {{-- </div>
-                                </div> --}}
+                               
                             
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary btn-block">Sign In</button>

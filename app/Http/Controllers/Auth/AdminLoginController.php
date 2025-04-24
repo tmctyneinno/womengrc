@@ -27,12 +27,13 @@ class AdminLoginController extends Controller
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
-
+ 
         $credentials = $request->only('email', 'password');
  
         if (Auth::guard('admin')->attempt($credentials)) {
+            dd($credentials);
             // return redirect()->route('admin.index');
-            return redirect()->intended(route('admin.index'));
+            // return redirect()->intended(route('admin.index'));
         }
 
         return redirect()->back()->withInput($request->only('email'))->withErrors([
