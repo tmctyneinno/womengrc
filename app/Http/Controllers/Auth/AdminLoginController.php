@@ -23,6 +23,7 @@ class AdminLoginController extends Controller
 
     public function login(Request $request)
     {
+        dd($request);
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
@@ -33,7 +34,7 @@ class AdminLoginController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             dd($credentials);
             // return redirect()->route('admin.index');
-            // return redirect()->intended(route('admin.index'));
+            return redirect()->intended(route('admin.index'));
         }
 
         return redirect()->back()->withInput($request->only('email'))->withErrors([
