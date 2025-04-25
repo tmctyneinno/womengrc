@@ -30,9 +30,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        // Validate all input including reCAPTCHA
         $request->validate([
-            'g-recaptcha-response' => 'required',
         'name' => [
             'required',
             'string',
@@ -51,20 +49,7 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
         ]);
     
-        // Verify reCAPTCHA
-        $recaptchaResponse = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('services.recaptcha.secret'),
-            'response' => $request->input('g-recaptcha-response'),
-            'remoteip' => $request->ip()
-        ]);
-    
-        $recaptchaBody = $recaptchaResponse->json();
-    //  dd($recaptchaBody['score']);
-    
-        if (!($recaptchaBody['success'] ?? false) || ($recaptchaBody['score'] ?? 0) < 0.5) {
-            return back()->withErrors(['captcha' => 'reCAPTCHA verification failed.'])->withInput();
-        }
-    
+
         // Create the user
         $user = User::create([
             'name' => $request->name,
