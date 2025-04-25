@@ -209,6 +209,15 @@
         @endforeach
     @endif
 </script>
-
- 
+ <!-- Include Google reCAPTCHA -->
+ <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
+ {{-- <script src="https://www.google.com/recaptcha/api.js"></script> --}}
+ <script src="{{ asset('js/auth.js') }}"></script>
+ <!-- JavaScript for toastr messages -->
+ @if (session('recaptcha_error')) 
+ <script>
+     $(document).ready(function() {
+         toastr.error("{{ session('recaptcha_error') }}");
+     });
+ </script>
  @endif

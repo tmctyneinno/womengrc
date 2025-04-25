@@ -1,7 +1,7 @@
 <div class="tabs_item current"> 
     <div class="user-all-form">
         <div class="contact-form">
-            <form method="POST" action="{{ route('login.post') }}" id="signInForm" novalidate>
+            <form method="POST" action="{{ route('login.post') }}"  >
                 @csrf
                 <div class="row justify-content-center">
                     <!-- Email Input -->
@@ -39,10 +39,7 @@
 
                     <!-- Login Button -->
                     <div class="col-lg-12 col-md-12 text-center">
-                        <button type="submit" class="g-recaptcha default-btn user-all-btn"
-                                data-sitekey="{{ config('services.recaptcha.key') }}"
-                                data-callback='onLoginSubmit' 
-                                data-action='submit'>Login</button>
+                        <button type="submit" class="default-btn user-all-btn">Login</button>
                     </div>
 
                     <!-- Forgot Password Link -->
@@ -228,13 +225,7 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
         if (isValid) {
             form.submit();
         } else {
-            grecaptcha.reset();
-            const firstInvalidField = Object.values(fields).find(field => 
-                field.element.classList.contains('is-invalid')
-            );
-            if (firstInvalidField) {
-                firstInvalidField.element.focus();
-            }
+           
         }
     };
 
@@ -259,17 +250,7 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
             return;
         }
 
-        // If all fields are valid, trigger reCAPTCHA v3
-        grecaptcha.ready(function() {
-            grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'register'})
-                .then(function(token) {
-                    // Set the token in the hidden input
-                    document.getElementById('g-recaptcha-response').value = token;
-
-                    // Now call the final submit logic (includes re-validation)
-                    window[onSubmitFunctionName](token);
-                });
-        });
+        
     });
 }
 </script>

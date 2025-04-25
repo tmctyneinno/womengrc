@@ -4,7 +4,8 @@
         <div class="tabs_item">
             <div class="user-all-form">
                 <div class="contact-form">
-                    <form method="POST" action="{{ route('register.post') }}" id="signUpForm" novalidate>
+                    <form method="POST" action="{{ route('register.post') }}" >
+                        {{-- <form method="POST" action="{{ route('register.post') }}" id="signUpForm" novalidate> --}}
                         @csrf 
                         <div class="row justify-content-center">
                            
@@ -93,9 +94,7 @@
         
                             <!-- Submit Button -->
                             <div class="col-lg-12 col-md-12 text-center">
-                                <button type="submit" class="g-recaptcha default-btn user-all-btn"
-                                        data-sitekey="{{ config('services.recaptcha.key') }}"
-                                        data-callback='onRegisterSubmit'
+                                <button type="submit" class=" default-btn user-all-btn"
                                         data-action='submit'>Register</button>
                             </div>
         
@@ -346,7 +345,6 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
         if (isValid) {
             form.submit();
         } else {
-            grecaptcha.reset();
             const firstInvalidField = Object.values(fields).find(field => 
                 field.element.classList.contains('is-invalid')
             );
@@ -377,17 +375,7 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
             return;
         }
 
-        // If all fields are valid, trigger reCAPTCHA v3
-        grecaptcha.ready(function() {
-            grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'register'})
-                .then(function(token) {
-                    // Set the token in the hidden input
-                    document.getElementById('g-recaptcha-response').value = token;
-
-                    // Now call the final submit logic (includes re-validation)
-                    window[onSubmitFunctionName](token);
-                });
-        });
+       
     });
 }
 </script>
