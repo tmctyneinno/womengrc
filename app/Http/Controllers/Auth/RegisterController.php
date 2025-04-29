@@ -34,7 +34,7 @@ class RegisterController extends Controller
         Log::info('Registration attempt started.', ['email' => $request->input('email'), 'ip' => $request->ip()]);
 
         $validatedData = $request->validate([
-            'g-recaptcha-response' => 'required',
+            // 'g-recaptcha-response' => 'required',
             'name' => [
                 'required',
                 'string',
@@ -59,22 +59,22 @@ class RegisterController extends Controller
         // Verify reCAPTCHA
         Log::info('Verifying reCAPTCHA.', ['email' => $validatedData['email']]);
     
-        $recaptchaResponse = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('services.recaptcha.secret'),
-            'response' => $request->input('g-recaptcha-response'),
-            'remoteip' => $request->ip()
-        ]);
+        // $recaptchaResponse = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+        //     'secret' => config('services.recaptcha.secret'),
+        //     'response' => $request->input('g-recaptcha-response'),
+        //     'remoteip' => $request->ip()
+        // ]);
     
-        $recaptchaBody = $recaptchaResponse->json();
+        // $recaptchaBody = $recaptchaResponse->json();
 
-        if (!($recaptchaBody['success'] ?? false) || ($recaptchaBody['score'] ?? 0) < 0.5) {
-            Log::warning('reCAPTCHA verification failed.', [
-                'email' => $validatedData['email'],
-                'recaptcha_response' => $recaptchaBody,
-                'ip' => $request->ip()
-            ]);
-            return back()->withErrors(['captcha' => 'reCAPTCHA verification failed.'])->withInput();
-        }
+        // if (!($recaptchaBody['success'] ?? false) || ($recaptchaBody['score'] ?? 0) < 0.5) {
+        //     Log::warning('reCAPTCHA verification failed.', [
+        //         'email' => $validatedData['email'],
+        //         'recaptcha_response' => $recaptchaBody,
+        //         'ip' => $request->ip()
+        //     ]);
+        //     return back()->withErrors(['captcha' => 'reCAPTCHA verification failed.'])->withInput();
+        // }
         Log::info('reCAPTCHA verification successful.', ['email' => $validatedData['email'], 'score' => $recaptchaBody['score'] ?? 'N/A']);
 
     try{
