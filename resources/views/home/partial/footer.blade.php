@@ -1,5 +1,3 @@
- 
- 
 <style>
     .footer-bg2 {
     position: relative; /* Ensure the pseudo-element is positioned correctly */
@@ -25,12 +23,12 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <a href="{{ route('home')}}" class="logo" style="background-color: #fff; color:#000; padding:5px;">
-                            <img 
-                            style="max-width: 100%; max-height:100%; object-fit:cover; 
+                            <img
+                            style="max-width: 100%; max-height:100%; object-fit:cover;
                             width:210px; height:100px "
-                     
+
                             src="{{ $contactUs ? asset($contactUs->footer_logo) : '' }}" alt="Logo">
-                        </a> 
+                        </a>
                         <p style="color: #000">
                             {!! $contactUs ? ($contactUs->first_address) : '' !!}
                         </p>
@@ -42,10 +40,10 @@
                                 <span>Phone :</span> <a href="tel:+234 (0) 915-341-4314"> +234 (0) 915-341-4314</a>
                             </li>  --}}
                             <li>
-                                <span>Email :</span> <a href="{{ $contactUs ? ($contactUs->first_email) : '' }}"> 
+                                <span>Email :</span> <a href="{{ $contactUs ? ($contactUs->first_email) : '' }}">
                                     {{ $contactUs ? ($contactUs->first_email) : '' }}
                                 </a>
-                            </li> 
+                            </li>
                         </ul>
 
                         @include('home.pages.social_link')
@@ -91,7 +89,7 @@
                             <li>
                                 <a href="{{ route('login') }}">Login</a>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -132,8 +130,8 @@
             <div class="col-lg-6 col-md-6">
                 <div class="copy-right-text">
                     <p><snap style="color: #B03436">© {{ date('Y') }} WGRCFP by </snap><a href="https://morgansconsulting.ng/" target="_blank" style="text-decoration: none">THE MORGANS CONSORTIUM. </a><span style="color: #B03436"> Designed by </span> <a href="https://tynesideinnovation.com/" style="text-decoration: none" target="_blank">Tyneside Innovation</a> </p>
-                </div> 
-            </div> 
+                </div>
+            </div>
             <div class="col-lg-2 col-md-2"></div>
             <div class="col-lg-4 col-md-4">
                 <div class="copy-right-list">
@@ -142,17 +140,17 @@
                             <a href="{{ route('termsCondition') }}" >
                                 Terms of Use
                             </a>
-                        </li> 
+                        </li>
                         <li>
                             <a href="{{ route('privacyPolicy') }}">
                                 Privacy Policy
                             </a>
-                        </li> 
+                        </li>
                         <li>
                             <a href="{{'blog'}}">
                                 Blog
                             </a>
-                        </li> 
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -214,7 +212,7 @@
 
  <script src="{{ asset('js/auth.js') }}"></script>
 
- @if (session('recaptcha_error')) 
+ @if (session('recaptcha_error'))
     <script>
         $(document).ready(function() {
             toastr.error("{{ session('recaptcha_error') }}");
