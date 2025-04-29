@@ -6,7 +6,7 @@
                     <i class="flaticon-dashboard-1"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
-            </li>
+            </li> 
             <li>
                 <a class="has-arrow ai-icon" href="{{ route('admin.users.index') }}" aria-expanded="false">
                     <i class="flaticon-381-user-7"></i>

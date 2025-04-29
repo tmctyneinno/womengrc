@@ -220,4 +220,4 @@
          toastr.error("{{ session('recaptcha_error') }}");
      });
  </script>
- @endif
+
