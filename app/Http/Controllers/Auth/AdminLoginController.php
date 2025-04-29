@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
  
 
 class AdminLoginController extends Controller
@@ -23,19 +24,25 @@ class AdminLoginController extends Controller
 
     public function login(Request $request)
     {
-        dd($request);
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
  
         $credentials = $request->only('email', 'password');
+        $email = $credentials['email']; 
+
+        Log::channel('admin_auth')->info('Admin login attempt started.', ['email' => $email]); 
+
  
         if (Auth::guard('admin')->attempt($credentials)) {
-            dd($credentials);
+            $admin = Auth::guard('admin')->user(); 
+            Log::channel('admin_auth')->info('Admin login successful.', ['admin_id' => $admin->id, 'email' => $email]);
+            
             // return redirect()->route('admin.index');
             return redirect()->intended(route('admin.index'));
         }
+        Log::channel('admin_auth')->warning('Admin login failed: Invalid credentials.', ['email' => $email]);
 
         return redirect()->back()->withInput($request->only('email'))->withErrors([
             'email' => 'These credentials do not match our records.',
