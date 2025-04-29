@@ -9,8 +9,8 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
-{
-    /*
+{ 
+    /*    
     |--------------------------------------------------------------------------
     | Login Controller
     |--------------------------------------------------------------------------
