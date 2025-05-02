@@ -52,15 +52,13 @@ class LoginController extends Controller
     
         // Extract credentials
         $credentials = $request->only('email', 'password');
-        Log::info('Login attempt started.', ['email' => $email]);
 
         // Attempt authentication
         if (Auth::attempt($credentials)) {
             $user = Auth::user(); 
             // Check if email is verified
             if ($user->hasVerifiedEmail()) {
-                Log::info('Login successful and email verified.', ['user_id' => $user->id, 'email' => $email, 'role' => $user->role]);
-
+               
                 // Redirect based on user role
                 switch ($user->role) {
                     case 'facilitator':
@@ -80,8 +78,8 @@ class LoginController extends Controller
                 // Logout if email is not verified
                 $userId = $user->id;
                 Auth::logout();
-                Log::warning('Login successful but email not verified. User logged out.', ['user_id' => $userId, 'email' => $email]);
-                Log::warning('Login failed: Invalid credentials.', ['email' => $email]);
+                // Log::warning('Login successful but email not verified. User logged out.', ['user_id' => $userId, 'email' => $email]);
+                // Log::warning('Login failed: Invalid credentials.', ['email' => $email]);
         
                 Auth::logout();
                 return $this->sendFailedLoginResponse($request, 'Please verify your email address.');
