@@ -110,10 +110,7 @@ class UserController extends Controller
     public function multiDelete(Request $request)
     {
         // Prevent deleting yourself
-        if ($user->id === auth()->id()) {
-            return redirect()->back()
-                ->with('error', 'You cannot delete your own account!');
-        }
+        
         if(empty($request->selected_ids)) {
             return back()->with('error', 'No users selected');
         }
