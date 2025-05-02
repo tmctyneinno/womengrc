@@ -6,6 +6,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Advisory\AdvisoryDashboardController;
@@ -43,13 +45,17 @@ Route::get('blog/{id}/details', [BlogController::class, 'detail'])->name('blog.d
 Route::post('/post/comment', [BlogController::class, 'storeComment'])->name('comments.store');
 
 Route::post('/contact', [FrontendController::class, 'submitContact'])->name('contact.submit');
-
+// Or specifically for password reset (if not using Auth::routes() or a starter kit)
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 Route::get('/home/login', [LoginController::class, 'showLoginForm'])->name('home.login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
 Route::post('login', [LoginController::class, 'login'])->name('login.post');
-
+ 
 Route::get('/home/register', [RegisterController::class, 'showRegister'])->name('home.register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
