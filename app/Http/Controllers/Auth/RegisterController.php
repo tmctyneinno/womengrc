@@ -89,7 +89,6 @@ class RegisterController extends Controller
         ]);
         Log::info('User created successfully.', ['user_id' => $user->id, 'email' => $user->email]);
 
-    
         // Send verification email
         Mail::to($user->email)->send(new VerificationEmail($user));
         Log::info('Verification email sent.', ['user_id' => $user->id, 'email' => $user->email]);
