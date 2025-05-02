@@ -39,7 +39,7 @@
                                     <input type="url" name="linkedin" id="linkedIn" class="form-control" {{-- Changed type to url --}}
                                            pattern="https?://(www\.)?linkedin\.com/(in|pub)/.+" {{-- Simplified pattern --}}
                                            title="Please enter a valid LinkedIn profile URL"
-                                           placeholder="Enter LinkedIn Profile URL (e.g., https://linkedin.com/in/yourname)" autocomplete="off" required> {{-- Added required --}}
+                                           placeholder="Enter LinkedIn Profile URL" autocomplete="off" required> {{-- Added required --}}
                                     <small style="font-size: 11px" class="text-start error-message text-danger" id="linkedIn-error"></small>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@ function initRegisterForm() {
                 // Simpler check for a valid URL containing linkedin.com
                 const linkedInRegex = /^https?:\/\/(?:www\.)?linkedin\.com\/.+/;
                 const isValid = value === '' || linkedInRegex.test(value); // Allow empty or valid URL
-                this.error.textContent = isValid ? '' : 'Please enter a valid LinkedIn profile URL (e.g., https://linkedin.com/in/yourname)';
+                this.error.textContent = isValid ? '' : 'Please enter a valid LinkedIn profile URL ';
                 this.element.classList.toggle('is-invalid', !isValid && value !== ''); // Only invalid if not empty and doesn't match
                 this.error.style.display = isValid || value === '' ? 'none' : 'block';
                 // If you want LinkedIn to be mandatory, change the logic:
