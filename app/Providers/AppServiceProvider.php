@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use Auth;
+use Auth;  
 use Illuminate\Support\Facades\DB;
 use App\Models\Resource;
 use App\Models\Recognition;
