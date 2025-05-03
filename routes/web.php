@@ -51,12 +51,12 @@ Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::get('/home/login', [LoginController::class, 'showLoginForm'])->name('home.login');
+Route::get('/myaccount/login', [LoginController::class, 'showLoginForm'])->name('home.login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
 Route::post('login', [LoginController::class, 'login'])->name('login.post');
  
-Route::get('/home/register', [RegisterController::class, 'showRegister'])->name('home.register');
+Route::get('/myaccount/register', [RegisterController::class, 'showRegister'])->name('home.register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 

@@ -51,14 +51,14 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-card">
                         <a href="{{ route('blog.detail', $blog->slug) }}">
-                            <img src="{{ asset($blog->image) }}" alt="Images">
+                            <img src="{{ asset($blog->image) }}" alt="Images" style="object-fit: cover; max-width:100%; max-height:400px;">
                         </a> 
                         <div class="content" >
                             <span>{{ $blog->created_at->format('F d, Y') }}</a></span>
                             <h3 >
-                                <a href="{{ route('blog.detail', $blog->slug) }}">{{ $blog->title }}</a>
+                                <a href="{{ route('blog.detail', $blog->slug) }}">{!! Str::limit( $blog->title , 60) !!}</a>
                             </h3>  
-                            <p>{!! Str::limit($blog->content, 100) !!}</p>
+                            <p>{!! Str::limit($blog->content, 150) !!}</p>
                             <a href="{{ route('blog.detail', $blog->slug) }}" class="read-more">Read More</a>
                         </div>
                     </div>
