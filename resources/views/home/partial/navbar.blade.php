@@ -1,5 +1,3 @@
-{{-- /Users/infosert/Documents/laravel_projects/Women_GRC/women-in-grc/resources/views/home/partial/navbar.blade.php --}}
-<!-- Start Navbar Area -->
 <div class="navbar-area">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
@@ -25,6 +23,7 @@
                     width:70px;"
                     src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
                 </a>
+                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
@@ -109,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </div>

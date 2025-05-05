@@ -75,7 +75,7 @@
             <div class="contact-form">
                 <span>SEND MESSAGE</span>
                 <h2>Contact With Us</h2>
-                <form id="contactForm">
+                <form id="contactForm" method="POST" action="{{ route('contact.submit') }}">
                     @csrf
                     <input type="hidden" name="recaptcha_token" id="recaptcha_token">
 
@@ -116,13 +116,10 @@
                         </div>
 
                         <div class="col-lg-12 col-md-12">
-                            <button id="submitBtn" type="submit" class="default-btn border-radius g-recaptcha"
-                                    data-sitekey="{{ config('services.recaptcha.key') }}"
-                                    data-callback='onSubmit'
-                                    data-action='submit'>
+                            <button id="submitBtn" type="submit" class="default-btn border-radius">
                                 Send Message <i class='bx bx-plus'></i>
                             </button>
-                            <div id="msgSubmit" class="h3 text-center hidden mt-3"></div>
+                            {{-- Success/Error messages will be shown via Toastr after redirect --}}
                         </div>
                     </div>
                 </form>
@@ -131,44 +128,31 @@
                     document.addEventListener('DOMContentLoaded', function () {
                         const contactForm = document.getElementById('contactForm');
                         const submitBtn = document.getElementById('submitBtn');
-                        const msgSubmit = document.getElementById('msgSubmit');
+                        // const msgSubmit = document.getElementById('msgSubmit'); // No longer needed for inline messages
 
-                        if (!contactForm || !submitBtn || !msgSubmit) return;
+                        if (!contactForm || !submitBtn) return;
 
                         contactForm.addEventListener('submit', function (e) {
-                            e.preventDefault();
-                            alert('ok');
-                            submitBtn.disabled = true;
+                            e.preventDefault(); // Prevent default submission to run reCAPTCHA first
+                            submitBtn.disabled = true; // Disable button during processing
                             submitBtn.innerHTML = 'Sending... <i class="bx bx-loader bx-spin"></i>';
-
+ 
                             grecaptcha.ready(function () {
                                 grecaptcha.execute('{{ config("services.recaptcha.key") }}', { action: 'submit' }).then(function (token) {
                                     document.getElementById('recaptcha_token').value = token;
 
                                     const formData = new FormData(contactForm);
-                                    $.ajax({
-                                        url: "{{ route('contact.submit') }}",
-                                        type: 'POST',
-                                        data: formData,
-                                        processData: false,
-                                        contentType: false,
-                                        headers: {
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        success: function (data) {
-                                            msgSubmit.className = 'h3 text-center text-success';
-                                            msgSubmit.innerHTML = data.message;
-                                            contactForm.reset();
-                                        },
-                                        error: function (xhr) {
-                                            msgSubmit.className = 'h3 text-center text-danger';
-                                            msgSubmit.innerHTML = xhr.responseJSON?.message || 'An error occurred. Please try again.';
-                                        },
-                                        complete: function () {
-                                            submitBtn.disabled = false;
-                                            submitBtn.innerHTML = 'Send Message <i class="bx bx-plus"></i>';
-                                        }
-                                    });
+
+                                    // Submit the form using standard browser submission
+                                    contactForm.submit();
+
+                                }).catch(function (error) {
+                                    // Handle potential errors during reCAPTCHA execution
+                                    console.error('reCAPTCHA execution failed:', error);
+                                    toastr.error('reCAPTCHA verification failed. Please try again.'); // Use Toastr for errors
+                                    // Re-enable the button if reCAPTCHA fails before submission
+                                    submitBtn.disabled = false;
+                                    submitBtn.innerHTML = 'Send Message <i class="bx bx-plus"></i>';
                                 });
                             });
                         });

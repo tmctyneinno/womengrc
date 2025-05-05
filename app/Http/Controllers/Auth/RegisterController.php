@@ -99,7 +99,7 @@ class RegisterController extends Controller
             Log::error('Error during user creation or email sending.', [
                 'email' => $validatedData['email'],
                 'error_message' => $e->getMessage(),
-                'trace' => $e->getTraceAsString() // Optional: for detailed debugging
+                'trace' => $e->getTraceAsString()
             ]);
             // Provide a generic error message to the user
             return back()->withErrors(['error' => 'An unexpected error occurred during registration. Please try again.'])->withInput();

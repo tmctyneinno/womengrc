@@ -22,6 +22,7 @@ use App\Models\Event;
 use App\Models\VisionMission;
 use App\Models\Testimonial;
 use App\Models\Sociallink;
+use App\Models\ContactForm;
 use App\Models\Contact;
 use App\Models\ContactUs;
 use App\Models\About;

@@ -5,7 +5,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <!-- Required Meta Tags -->
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap css --> 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
@@ -35,7 +35,7 @@
     {{-- @viteReactRefresh  
     @vite('resources/js/app.jsx') --}}
 
-    <!-- Add Toastr CSS -->
+    <!-- Add Toastr CSS --> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -52,9 +52,6 @@
             background-color: #fff !important;
         }
     </style>
-   
-
- 
 </head>
 <body>
 

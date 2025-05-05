@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use Illuminate\Http\Request;
 use App\Models\Faq;
 use Mail;
 use App\Models\FaqStore;
 use Illuminate\Support\Facades\Http;
+use App\Models\ContactForm;
 use App\Models\Contact;
 
 class FrontendController extends Controller
@@ -97,40 +98,38 @@ class FrontendController extends Controller
 
 
 
-public function submitContact(Request $request)
-{
-    // Validate form data
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-        'phone_number' => 'required|string|max:20',
-        'msg_subject' => 'required|string|max:255',
-        'message' => 'required|string',
-        'recaptcha_token' => 'required'
-    ]);
+    public function submitContact(Request $request)
+    { 
+        // Validate form data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone_number' => 'required|string|max:20',
+            'msg_subject' => 'required|string|max:255',
+            'message' => 'required|string',
+            'recaptcha_token' => 'required'
+        ]);
 
-    // Verify reCAPTCHA
-    $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-        'secret' => env('RECAPTCHA_SECRET_KEY'),
-        'response' => $request->recaptcha_token,
-        'remoteip' => $request->ip()
-    ]);
+        // Verify reCAPTCHA
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => env('RECAPTCHA_SECRET_KEY'),
+            'response' => $request->recaptcha_token,
+            'remoteip' => $request->ip()
+        ]);
 
-    $responseData = $response->json();
+        $responseData = $response->json();
 
-    if (!$responseData['success'] || $responseData['score'] < 0.5) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Failed reCAPTCHA verification. Please try again.'
-        ], 400);
+        if (!$responseData['success'] || $responseData['score'] < 0.5) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed reCAPTCHA verification. Please try again.'
+            ], 400);
+        }
+
+        // Save contact form data
+        ContactForm::create($validated);
+
+        return back()->with('success', 'Your message has been sent successfully!');
     }
 
-    // Save contact form data
-    Contact::create($validated);
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Your message has been sent successfully!'
-    ]);
-}
 }
