@@ -34,16 +34,16 @@
                         @endforelse
                     </ul>
                     {{-- Right Side Navigation (Login/Register/Account) --}}
-                    <div class="side-nav d-inline-flex align-items-center"> {{-- Changed d-in-line to d-inline-flex for better alignment --}}
+                    <div class="side-nav  "> {{-- Changed d-in-line to d-inline-flex for better alignment --}}
 
                         <div class="side-item">
                             <div class="nav-add-btn">
                                 @guest
-                                    <a href="{{ route('home.login') }}" class="default-btn border-radius">
+                                    <a href="{{ route('home.login') }}" class="default-btn border-radius text-left">
                                         Login/Register
                                     </a>
                                 @else
-                                <div class="d-flex align-items-center"> {{-- Wrap in flex for alignment --}}
+                                <div class="d-flex "> {{-- Wrap in flex for alignment --}}
                                     <a href="{{ route('user.dashboard')}}" class="default-btn border-radius me-2"> {{-- Added margin --}}
                                         My Account
                                     </a>

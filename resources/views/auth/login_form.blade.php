@@ -53,8 +53,11 @@
                             </a>
                         {{-- @endif --}} 
                     </div>
-                    <div class="col-lg-12 col-sm-6">
-                        <a class="forget" href="{{ route('home.register') }}">Don't have an account Sign up</a>
+                   
+                    <div class="col-lg-12 col-sm-6 text-center">
+                        <br/>
+                        <br/>
+                        <a style="color: #dc3545"  href="{{ route('home.register') }}">Don't have an account Sign up</a>
                     </div>
                 </div>
                 
