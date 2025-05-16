@@ -43,8 +43,8 @@
                                         Login/Register
                                     </a>
                                 @else
-                                <div class="d-flex "> {{-- Wrap in flex for alignment --}}
-                                    <a href="{{ route('user.dashboard')}}" class="default-btn border-radius me-2"> {{-- Added margin --}}
+                                <div class="d-flex "> 
+                                    <a href="{{ route('user.dashboard')}}" class="default-btn border-radius me-1"> {{-- Added margin --}}
                                         My Account
                                     </a>
                                     {{-- Logout Form --}}

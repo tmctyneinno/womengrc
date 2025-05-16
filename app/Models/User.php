@@ -48,16 +48,11 @@ class User extends Authenticatable
         // 'password' => 'hashed',
     ];
 
-    /**
-     * Get the user's full name.
-     *
-     * @return string
-     */
-    public function getNameAttribute()
+    public function hasRole(string $role): bool
     {
-        return "{$this->firstname} {$this->lastname}";
+        return $this->role === $role;
     }
- 
+   
     public function mentors(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'mentor_invitations', 'user_id', 'mentor_id');

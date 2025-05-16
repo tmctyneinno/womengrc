@@ -18,14 +18,14 @@ class AdvisoryDashboardController extends Controller
         $user = Auth::user();
         // Check if the user has an advisory profile
         if (!$user->advisoryProfile) {
-            return redirect()->route('profile.edit')->with('warning', 'Please complete your profile to access the dashboard.');
+            return redirect()->route('advisory.profile.edit')->with('warning', 'Please complete your profile to access the dashboard.');
         }
 
         // Check if required fields are filled
         $requiredFields = ['linkedin_profile', 'bio', 'expertise', 'years_of_experience'];
         foreach ($requiredFields as $field) {
             if (empty($user->advisoryProfile->$field)) {
-                return redirect()->route('profile.edit')->with('warning', 'Please complete your profile to access the dashboard.');
+                return redirect()->route('advisory.profile.edit')->with('warning', 'Please complete your profile to access the dashboard.');
             }
         }
         // If the profile is complete, show the dashboard

@@ -85,7 +85,7 @@
                                                             id="email" 
                                                             placeholder="Role" 
                                                             type="name" 
-                                                            value="{{ Auth::user()->role }}">
+                                                            value="{{ Auth::user()->role == 'advisory_member' ? 'Advisory' : 'User' }}">
                                                         @error('email')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>

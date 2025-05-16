@@ -29,20 +29,15 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validate the request
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-        // Extract credentials
         $credentials = $request->only('email', 'password');
 
-        // Attempt authentication
         if (Auth::validate($credentials)) {
             $user = User::where('email', $credentials['email'])->first();
             
-            // Check if email is verified
             if (!$user->hasVerifiedEmail()) {
                 return $this->sendFailedLoginResponse($request, 'Please verify your email address first.');
             }
@@ -62,7 +57,7 @@ class LoginController extends Controller
             );
 
             // Store user ID in session
-            session(['otp_user_id' => $user->id]); // <-- THIS IS THE CRUCIAL MISSING LINE
+            session(['otp_user_id' => $user->id]);
 
             // Send OTP email
             try {
@@ -117,11 +112,11 @@ class LoginController extends Controller
         session()->forget('otp_user_id');
 
         // Log and redirect based on user role
-        switch ($user->role) {
+        switch ($user->role) { 
             case 'facilitator':
                 Log::info('Redirecting to facilitator dashboard.', ['user_id' => $user->id]);
                 return redirect()->route('facilitator.dashboard');
-            case 'advisory':
+            case 'advisory_member':
                 Log::info('Redirecting to advisory dashboard.', ['user_id' => $user->id]);
                 return redirect()->route('advisory.dashboard');
             case 'guests':
