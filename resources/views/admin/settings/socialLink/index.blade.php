@@ -24,7 +24,10 @@
                                     <a href="{{ route('admin.settings.contactUs') }}"  class="nav-link" >Contact us</a>
                                     <a href="{{ route('admin.termsCondition.index') }}"  class="nav-link" >Terms Condition</a>
                                     <a href="{{ route('admin.privacyPolicy.index') }}"  class="nav-link" >Privacy Policy</a>
+                                    <a href="{{ route('admin.consent.index') }}"  class="nav-link" >Consent Notice</a>
                                     <a href="{{ route('admin.socialLink.index') }}"  class="nav-link active" >Social Link</a>
+                                    <a href="{{ route('admin.quicklink.index') }}"  class="nav-link active" >Quick Link</a>
+                                    <a href="{{ route('admin.officeHours.index') }}"  class="nav-link " >Office Hours </a>
                                 </div>
                             </div>
                             <div class="col-sm-10">

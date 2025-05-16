@@ -26,8 +26,6 @@
                     </div> 
                     <div class="tab user-tab">
                         <div class="row justify-content-center">
-                           
-                             
                             <div class="col-lg-12 col-md-12">
                                 <div class="tab_content current active">
                                     @include('auth.login_form')

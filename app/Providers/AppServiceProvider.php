@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Auth;  
+use App\Models\User;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use App\Models\Resource;
 use App\Models\Recognition;
@@ -15,6 +17,7 @@ use App\Models\MembershipCriteria;
 use App\Models\MembershipContent;
 use App\Models\TermsConditions;
 use App\Models\PrivacyPolicy;
+use App\Models\ConsentNote;
 use App\Models\Notification;
 use App\Models\MenuItem;
 use App\Models\Blog;  
@@ -53,6 +56,11 @@ class AppServiceProvider extends ServiceProvider
             $contact = Contact::latest()->paginate(20);
             View::share('contacts', $contact);
             View::share('membershipCriteria', MembershipCriteria::first());
+        }
+        if ($this->databaseExists()) {
+            if (Schema::hasTable('consent_notes')) {
+                View::share('consentNote', ConsentNote::first());
+            }
         }
 
         View::share('menuItems', MenuItem::with('dropdownItems.allChildren')->get());

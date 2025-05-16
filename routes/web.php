@@ -40,6 +40,7 @@ Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::post('/faq/store', [FrontendController::class, 'faqStore'])->name('faq.submit'); 
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact'); 
 Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacyPolicy'); 
+Route::get('/consent', [FrontendController::class, 'consent'])->name('consent');  
 Route::get('/terms-condition', [FrontendController::class, 'termsCondition'])->name('termsCondition'); 
 Route::get('blog/{id}/details', [BlogController::class, 'detail'])->name('blog.detail');
 Route::post('/post/comment', [BlogController::class, 'storeComment'])->name('comments.store');
@@ -53,8 +54,11 @@ Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('
 
 Route::get('/myaccount/login', [LoginController::class, 'showLoginForm'])->name('home.login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-
 Route::post('login', [LoginController::class, 'login'])->name('login.post');
+
+Route::get('/otp/verify', [LoginController::class, 'showOtpForm'])->name('otp.verify');
+Route::post('/otp/verify', [LoginController::class, 'verifyOtp'])->name('otp.verify.post');
+Route::post('/login/resend-otp', [LoginController::class, 'resendOtp'])->name('login.resend.otp');
  
 Route::get('/myaccount/register', [RegisterController::class, 'showRegister'])->name('home.register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');

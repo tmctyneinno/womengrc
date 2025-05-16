@@ -17,8 +17,17 @@
                                    autocomplete="email" 
                                    autofocus>
                             <small style="font-size: 11px" class="text-start error-message text-danger" id="login-email-error"></small>
+                            <div class="text-end p-1">
+                                @if (Route::has('password.request'))
+                                    <a style="color: #dc3545" class="" href="{{ route('password.request') }}">
+                                        Forgot Your Password?
+                                    </a>
+                                @endif  
+                            </div>
                         </div>
+                       
                     </div>
+                    
 
                     <!-- Password Input -->
                     <div class="col-12">
@@ -36,9 +45,23 @@
                     @if ($errors->has('captcha'))
                         <div class="text-danger">{{ $errors->first('captcha') }}</div>
                     @endif
+                    <!-- Checkbox -->
+                    <div class="col-lg-12 col-sm-6 ">
+                        <div class="form-group">
+                            <div class="agree-label ">
+                               <input type="checkbox" name="agree_terms" id="chb1" required>
+                            <label for="chb1">
+                                I agree to all 
+                                <a href="{{ route('consent') }} " target="_blank"><span style="color: #dc3545; text-transform:capitalize" >Consent Notice</span></a> and 
+                                <a href="{{ route('privacyPolicy') }}" target="_blank"><span style="color: #dc3545; text-transform:capitalize" > Privacy Policy </span></a>
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                    <small style="font-size: 11px" class="text-start error-message text-danger" id="login-agree-terms-error"></small>
 
                     <!-- Login Button -->
-                    <div class="col-lg-12 col-md-12 text-center">
+                    <div class="col-lg-12 col-md-12 text-center mt-3">
                         <button type="submit" class="g-recaptcha default-btn user-all-btn"
                                 data-sitekey="{{ config('services.recaptcha.key') }}"
                                 data-callback='onLoginSubmit' 
@@ -46,14 +69,9 @@
                     </div>
 
                     <!-- Forgot Password Link -->
-                    <div class="col-lg-12 col-sm-6 ">
-                        {{-- @if (Route::has('password.request')) --}}
-                            <a class="forget" href="{{ route('password.request') }}">
-                                Forgot Your Password?
-                            </a>
-                        {{-- @endif --}} 
-                    </div>
                    
+                    
+                    
                     <div class="col-lg-12 col-sm-6 text-center">
                         <br/>
                         <br/>
@@ -188,6 +206,21 @@ function initLoginForm() {
                 this.error.style.display = 'none';
                 return true;
             }
+        },
+        agree_terms: {
+            element: document.getElementById('chb1'),
+            error: document.getElementById('login-agree-terms-error'),
+            validate: function() {
+                if (!this.element.checked) {
+                    this.error.textContent = 'You must agree to the terms and policy';
+                    this.element.classList.add('is-invalid'); // You might want a different class or style for checkbox errors
+                    this.error.style.display = 'block';
+                    return false;
+                }
+                this.element.classList.remove('is-invalid');
+                this.error.style.display = 'none';
+                return true;
+            }
         }
     };
 
@@ -276,4 +309,3 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
     });
 }
 </script>
-

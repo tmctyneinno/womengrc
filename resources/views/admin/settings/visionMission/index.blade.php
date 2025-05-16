@@ -42,6 +42,8 @@
                                     <a href="{{ route('admin.settings.contactUs') }}"  class="nav-link " >Contact us</a>
                                     <a href="{{ route('admin.termsCondition.index') }}"  class="nav-link" >Terms Condition</a>
                                     <a href="{{ route('admin.privacyPolicy.index') }}"  class="nav-link" >Privacy Policy</a>
+                                    <a href="{{ route('admin.consent.index') }}"  class="nav-link" >Consent Notice</a>
+                                    
                                     <a href="{{ route('admin.socialLink.index') }}"  class="nav-link " >Social Link</a>
                                 </div> 
                             </div>

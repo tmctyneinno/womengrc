@@ -10,5 +10,5 @@
     </li> 
     {{-- <li>
         <a href="{{ $sociallink->youtube }}" target="_blank"><i class='bx bxl-youtube'></i></a>
-    </li>  --}}
+    </li>  --}} 
 </ul>

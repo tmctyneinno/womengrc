@@ -41,6 +41,7 @@ class PagesController extends Controller
             'appointment' => 'home.pages.appointment',
             'testimonials' => 'home.pages.testimonials',
             'terms-condition' => 'home.pages.terms-condition',
+            'consent' => 'home.pages.consent',
             'privacy-policy' => 'home.pages.privacy-policy',
             'governance-board' => 'home.pages.governance-board',
             'criteria-for-membership' => 'home.pages.membership.criteria-for-membership',

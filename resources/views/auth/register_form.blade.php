@@ -13,13 +13,22 @@
                         <div class="row justify-content-center">
 
                             <!-- Username Field -->
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <i class="bx bx-user"></i>
-                                    <input type="text" name="name" id="register-name" class="form-control"
-                                           pattern=".{3,}" title="Username must be at least 3 characters"
-                                           placeholder="Full name" autocomplete="off" required> {{-- Added required for better semantics --}}
-                                    <small style="font-size: 11px" class="text-start error-message text-danger" id="register-name-error"></small>
+                                    <input type="text" name="firstname" id="register-firstname" class="form-control"
+                                           pattern=".{3,}" title="First name must be at least 3 characters"
+                                           placeholder="First name" autocomplete="off" required> {{-- Added required for better semantics --}}
+                                    <small style="font-size: 11px" class="text-start error-message text-danger" id="register-firstname-error"></small>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <i class="bx bx-user"></i> 
+                                    <input type="text" name="lastname" id="register-lastname" class="form-control"
+                                           pattern=".{3,}" title="Last name must be at least 3 characters"
+                                           placeholder="Last name" autocomplete="off" required> {{-- Added required for better semantics --}}
+                                    <small style="font-size: 11px" class="text-start error-message text-danger" id="register-lastname-error"></small>
                                 </div>
                             </div>
 
@@ -74,8 +83,10 @@
                                 <div class="agree-label">
                                     <input type="checkbox" name="agreed" id="register-agreed" required> {{-- Added required --}}
                                     <label for="register-agreed">
-                                        I Agree to the <a href="{{ route('termsCondition') }}" target="_blank">Terms of Use</a> and {{-- Added target="_blank" --}}
-                                        <a href="{{ route('privacyPolicy') }}" target="_blank">Privacy Policy</a> {{-- Added target="_blank" --}}
+                                        I Agree to the <a href="{{ route('consent') }}" target="_blank"> 
+                                            <span style="color: #dc3545; text-transform:capitalize">Consent Notice</span></a> 
+                                        and
+                                        <a href="{{ route('privacyPolicy') }}" target="_blank"> <span style="color: #dc3545; text-transform:capitalize">Privacy Policy </span></a> 
                                     </label>
                                 </div>
                                 {{-- Moved error message closer to the checkbox --}}
@@ -175,12 +186,23 @@ function initRegisterForm() {
 
     // --- Field Definitions with Validation Logic ---
     const fields = {
-        name: {
-            element: document.getElementById('register-name'),
-            error: document.getElementById('register-name-error'),
+        firstname: { // Changed from 'name' to 'firstname' for clarity
+            element: document.getElementById('register-firstname'),
+            error: document.getElementById('register-firstname-error'),
             validate: function() {
                 const isValid = this.element.value.trim().length >= 3;
-                this.error.textContent = isValid ? '' : 'Full name must be at least 3 characters';
+                this.error.textContent = isValid ? '' : 'First name must be at least 3 characters';
+                this.element.classList.toggle('is-invalid', !isValid);
+                this.error.style.display = isValid ? 'none' : 'block';
+                return isValid;
+            }
+        },
+        lastname: { // Added new field definition for lastname
+            element: document.getElementById('register-lastname'),
+            error: document.getElementById('register-lastname-error'),
+            validate: function() {
+                const isValid = this.element.value.trim().length >= 3;
+                this.error.textContent = isValid ? '' : 'Last name must be at least 3 characters';
                 this.element.classList.toggle('is-invalid', !isValid);
                 this.error.style.display = isValid ? 'none' : 'block';
                 return isValid;
@@ -209,11 +231,6 @@ function initRegisterForm() {
                 this.error.textContent = isValid ? '' : 'Please enter a valid LinkedIn profile URL ';
                 this.element.classList.toggle('is-invalid', !isValid && value !== ''); // Only invalid if not empty and doesn't match
                 this.error.style.display = isValid || value === '' ? 'none' : 'block';
-                // If you want LinkedIn to be mandatory, change the logic:
-                // const isValid = linkedInRegex.test(value);
-                // this.error.textContent = isValid ? '' : 'Please enter a valid LinkedIn profile URL';
-                // this.element.classList.toggle('is-invalid', !isValid);
-                // this.error.style.display = isValid ? 'none' : 'block';
                 return isValid; // Or return isValid if mandatory
             }
         },
@@ -237,7 +254,6 @@ function initRegisterForm() {
                 const password = document.getElementById('register-password').value;
                 const isValid = this.element.value === password && this.element.value !== '';
                 this.error.textContent = isValid ? '' : 'Passwords do not match';
-                // Also mark invalid if password field itself is invalid but this one has content
                 const passwordFieldValid = fields.password.validate(); // Re-validate password field
                 const isInvalid = (!isValid || !passwordFieldValid) && this.element.value !== '';
 

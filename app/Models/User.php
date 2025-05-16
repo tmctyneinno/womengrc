@@ -18,9 +18,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+    protected $fillable = [ 
         'name',
-        'email', 
+        'email',
         'linkedin',
         'password',
         'profile_picture',
@@ -37,7 +37,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    
     /**
      * The attributes that should be cast.
      *
@@ -47,6 +47,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         // 'password' => 'hashed',
     ];
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
  
     public function mentors(): BelongsToMany
     {

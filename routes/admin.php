@@ -160,6 +160,12 @@ Route::prefix('admin')->group(function () {
         Route::post('/store/privacypolicy', [PrivacyController::class, 'store'])->name('admin.privacy.store');
         Route::put('/update/privacypolicy/{id}', [PrivacyController::class, 'update'])->name('admin.privacy.update');
         
+        //consent
+        Route::get('/index/consent', [PrivacyController::class, 'consentIndex'])->name('admin.consent.index');
+        Route::post('/store/consent', [PrivacyController::class, 'consentStore'])->name('admin.consent.store');
+        Route::put('/update/consent/{id}', [PrivacyController::class, 'consentUpdate'])->name('admin.consent.update');
+        //Career
+
         //Terms Conditions
         Route::get('/terms/conditions', [TermsConditionController::class, 'index'])->name('admin.termsCondition.index');
         Route::post('/terms/conditions/store/', [TermsConditionController::class, 'store'])->name('admin.termsCondition.store');

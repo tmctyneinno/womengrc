@@ -91,6 +91,8 @@ class FrontendController extends Controller
     public function privacyPolicy(){
         return view('home.pages.privacyPolicy'); 
     }
+ 
+    
 
     public function termsCondition(){
         return view('home.pages.termsCondition'); 
