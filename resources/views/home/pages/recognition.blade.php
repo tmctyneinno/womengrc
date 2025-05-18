@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Inner Banner -->
-    <div class="inner-banner" style="background-image: url({{ asset('assets/images/banner/recognition.jpg') }});">
+    <div class="inner-banner" style="background-image: url({{ asset($aboutUs->banner_one) }});">
         <div class="container">
             <div class="inner-title text-center"> 
                 <h3>Recognition </h3>
@@ -33,14 +33,14 @@
                 <span>Recognition </span>
                 <h2>Women in GRC and FinCrime Prevention</h2>
             </div>
-            <div class="row pt-45">
-                @forelse ($recognitions as $recognition)
-                    <div class="col-lg-3 col-md-6 mb-1">
+            <div class="row pt-45"> 
+                @forelse ($recognitions as $recognition) 
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-1">
                         <div class="team-card" style="box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); overflow: hidden;">
-                            <img src="{{ asset($recognition->image) }}" alt="Team Images" class="img-fluid" style="width: 300px; height: 270px; object-fit: fill;">
-                            <div class="content">
-                                <h3>{{ $recognition->name }}</h3>
-                                <span>{{ \Illuminate\Support\Str::limit($recognition->position, 45) }}</span>
+                            <img src="{{ asset($recognition->image) }}" alt="Team Images" style="display: block; width: 100%; height: 150px; object-fit:contain;">
+                            <div class="content" style="padding: 5px 10px;">
+                                <p style="font-size: 14px; padding: 0px; font-weight: 500; color: #000;">{{ $recognition->name }}</p>
+                                <span style="padding: 0px 0px; text-transform:capitalize">{{ \Illuminate\Support\Str::limit($recognition->position, 30) }}</span>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalManagement" data-name="{{ $recognition->name }}" data-position="{{ $recognition->position }}" data-content="{{ $recognition->content }}" class="read-more pt-1" style="color: #B03436;">
                                     Read more
                                 </a>

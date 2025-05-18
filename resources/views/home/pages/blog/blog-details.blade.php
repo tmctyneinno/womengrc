@@ -216,8 +216,8 @@
                         <h3 class="title">Related Posts</h3>
                         <div class="widget-popular-post">
                             @forelse ($relatedPost as $relatedPost)
-                                <article class="item">
-                                    <a href="{{ route('blog.detail', ['slug' => $relatedPost->slug] ) }}" class="thumb">
+                                <article class="item"> 
+                                    <a href="{{ route('blog.detail', $relatedPost->slug ) }}" class="thumb">
                                         <span 
                                         style="background-image: url({{ asset($relatedPost->image)}});"
                                         class="full-image cover" role="img"></span>

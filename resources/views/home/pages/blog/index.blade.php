@@ -48,17 +48,18 @@
          </div>
         <div class="row pt-45">
             @forelse ($blogs as $blog)
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="blog-card">
                         <a href="{{ route('blog.detail', $blog->slug) }}">
-                            <img src="{{ asset($blog->image) }}" alt="Images" style="object-fit: cover; max-width:100%; max-height:400px;">
+                            <img src="{{ asset($blog->image) }}" alt="Team Images" style="display: block; width: 100%; height: 150px; object-fit:contain;">
+                            {{-- <img src="{{ asset($blog->image) }}" alt="Images" style="object-fit: contain; max-width:100%; height:400px;"> --}}
                         </a> 
                         <div class="content" >
                             <span>{{ $blog->created_at->format('F d, Y') }}</a></span>
                             <h3 >
-                                <a href="{{ route('blog.detail', $blog->slug) }}">{!! Str::limit( $blog->title , 60) !!}</a>
+                                <a href="{{ route('blog.detail', $blog->slug) }}">{!! Str::limit( $blog->title , 40) !!}</a>
                             </h3>  
-                            <p>{!! Str::limit($blog->content, 150) !!}</p>
+                            <p>{!! Str::limit($blog->content, 100) !!}</p>
                             <a href="{{ route('blog.detail', $blog->slug) }}" class="read-more">Read More</a>
                         </div>
                     </div>

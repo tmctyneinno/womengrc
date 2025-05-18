@@ -44,6 +44,7 @@ trait SettingsTrait
     
             // Update the new image path
             $aboutUs->image = 'assets/images/about/' . $imageName;
+
             $aboutUs->save();
         }
     
@@ -59,6 +60,48 @@ trait SettingsTrait
     
             // Update the new header image path
             $aboutUs->header_image = 'assets/images/about/' . $imageName;
+            $aboutUs->save();
+        }
+        if ($request->hasFile('banner_one')) {
+            $image = $request->file('banner_one');
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('assets/images/about'), $imageName);
+    
+            // Check if old banner image exists before deleting
+            if ($aboutUs->banner_one && file_exists(public_path($aboutUs->banner_one))) {
+                unlink(public_path($aboutUs->banner_one));
+            }
+    
+            // Update the new banner image path
+            $aboutUs->banner_one = 'assets/images/about/' . $imageName;
+            $aboutUs->save();
+        }
+        if ($request->hasFile('banner_two')) {
+            $image = $request->file('banner_two');
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('assets/images/about'), $imageName);
+    
+            // Check if old banner image exists before deleting
+            if ($aboutUs->banner_two && file_exists(public_path($aboutUs->banner_two))) {
+                unlink(public_path($aboutUs->banner_two));
+            }
+    
+            // Update the new banner image path
+            $aboutUs->banner_two = 'assets/images/about/' . $imageName;
+            $aboutUs->save();
+        }
+        if ($request->hasFile('banner_three')) {
+            $image = $request->file('banner_three');
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('assets/images/about'), $imageName);
+    
+            // Check if old banner image exists before deleting
+            if ($aboutUs->banner_three && file_exists(public_path($aboutUs->banner_three))) {
+                unlink(public_path($aboutUs->banner_three));
+            }
+    
+            // Update the new banner image path
+            $aboutUs->banner_three = 'assets/images/about/' . $imageName;
             $aboutUs->save();
         }
     }

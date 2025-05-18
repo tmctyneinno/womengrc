@@ -77,6 +77,15 @@
                     <div class="footer-widget pl-5">
                         <h3>QUICK LINKS</h3>
                         <ul class="footer-list">
+                             <li>
+                                <a href="{{ route('home.pages','terms-of-reference') }}">Terms of Reference</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('home.pages','code-of-conduct') }}">Code of Conduct</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('home.pages','road-map') }}">Road Map</a>
+                            </li>
                             <li>
                                 <a href="{{ route('home.pages','about') }}">About Us</a>
                             </li>

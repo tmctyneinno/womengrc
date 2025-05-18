@@ -30,7 +30,7 @@
        
 
         <div class="single-content">
-            <h3 class="text-center">{{ $membershipCriteria->title }}</h3>
+            <h3 class="text-center">{{ $membershipCriteria->title ?? '' }}</h3>
             <p>
                 {!! $membershipCriteria->content !!}
             </p>

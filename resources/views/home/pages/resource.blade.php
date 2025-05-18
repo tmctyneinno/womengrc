@@ -5,7 +5,7 @@
 @section('content')
 
 
-<div class="inner-banner" style="background-image: url({{ asset('assets/images/banner/recognition.jpg') }});">
+<div class="inner-banner" style="background-image: url({{ asset($aboutUs->banner_one) }});">
     <div class="container">
         <div class="inner-title text-center">
             <h3>Resource </h3>

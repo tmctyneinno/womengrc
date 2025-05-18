@@ -19,10 +19,14 @@ class PagesController extends Controller
     {
         $pages = [
             'home' => 'home.index',
-            'about' => 'home.pages.about',
-            'vision' => 'home.pages.vision',
-            'mission' => 'home.pages.mission',
-            'purpose' => 'home.pages.purpose',
+            'about' => 'home.pages.about.about',
+            'vision' => 'home.pages.about.vision',
+            'mission' => 'home.pages.about.mission',
+            'purpose' => 'home.pages.about.purpose',
+            'road-map' => 'home.pages.about.roadMap',
+            'code-of-conduct' => 'home.pages.about.codeOfConduct',
+            'terms-of-reference' => 'home.pages.about.termsOfReference',
+
             'event' => 'home.pages.event.index',
             'facilitators' => 'home.pages.facilitators.index',
             'mentorship' => 'home.pages.mentorship.index',
@@ -33,6 +37,7 @@ class PagesController extends Controller
             'contact' => 'home.pages.contact',
             'faqs' => 'home.pages.faq',
             'login' => 'auth.login',
+
 
  
             'careers' => 'home.pages.careers',
@@ -45,6 +50,8 @@ class PagesController extends Controller
             'privacy-policy' => 'home.pages.privacy-policy',
             'governance-board' => 'home.pages.governance-board',
             'criteria-for-membership' => 'home.pages.membership.criteria-for-membership',
+            'membership' => 'home.pages.membership.index',
+            
 
 
             'programmes-and-examinations' => 'home.pages.certification.programmes-and-examinations',
@@ -57,11 +64,13 @@ class PagesController extends Controller
             'advisory-board-members' => 'home.pages.advocacyPolicy.advisory-board-members',
             'policies-governance-framework' => 'home.pages.advocacyPolicy.policies-governance-framework',
             
+            'initiatives' => 'home.pages.resource.initiatives.index',
             'mentorship-sponsorship-program' => 'home.pages.resource.initiatives.mentorship-sponsorship-program',
             'training-certification' => 'home.pages.resource.initiatives.training-certification',
             'annual-summit-conferences' => 'home.pages.resource.initiatives.annual-summit-conferences',
             'advocacy-policy-influence' => 'home.pages.resource.initiatives.advocacy-policy-influence',
             'scholarships-grants' => 'home.pages.resource.initiatives.scholarships-grants',
+
             
 
         ];
