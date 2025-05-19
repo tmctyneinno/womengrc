@@ -12,13 +12,13 @@
                             <div class="chat__inbox--content">
                                 <div class="mb-3 chat__inbox--header d-flex align-items-center justify-content-between">
                                     <h2 class="chat__inbox--header__title">Add Mentor</h2>
-                                    <button class="chat__inbox--popup__btn" data-bs-toggle="modal" data-bs-target="#modaladdcontact" aria-label="popup button"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    {{-- <button class="chat__inbox--popup__btn" data-bs-toggle="modal" data-bs-target="#modaladdcontact" aria-label="popup button"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.99984 18.3334C14.5832 18.3334 18.3332 14.5834 18.3332 10.0001C18.3332 5.41675 14.5832 1.66675 9.99984 1.66675C5.4165 1.66675 1.6665 5.41675 1.6665 10.0001C1.6665 14.5834 5.4165 18.3334 9.99984 18.3334Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M6.6665 10H13.3332" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M10 13.3334V6.66675" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
-                                    </button>
-                                    SAHREEN SIDDIQUI
+                                    </button> --}}
+                                 
                                 </div>
                                 <div class="chat__inbox--search">
                                     <label for="searchMentor" class="form-label">Search Mentor</label>

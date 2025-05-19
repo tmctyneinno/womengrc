@@ -63,7 +63,7 @@
                                                 <option value="guests" {{ $user->role == 'guests' ? 'selected' : '' }}>Guest</option>
                                                 <option value="mentor" {{ $user->role == 'mentor' ? 'selected' : '' }}>Mentor</option>
                                                 <option value="mentee" {{ $user->role == 'mentee' ? 'selected' : '' }}>Mentee</option>
-                                            </select>
+                                            </select> 
                                         </div>
                                     </div>
                                     

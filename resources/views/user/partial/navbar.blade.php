@@ -217,7 +217,7 @@
         <nav class="offcanvas__menu">
             <ul class="offcanvas__menu_ul">
                 <li class="offcanvas__menu_li">
-                    <a class="offcanvas__menu_item" href="">Dashboard</a>
+                    <a class="offcanvas__menu_item" href="{{ route('user.dashboard')}}">Dashboard</a>
                    
                 </li>
                 <li class="offcanvas__menu_li">
@@ -229,7 +229,7 @@
                 </li>
                
             </ul>
-        </nav>
+        </nav> 
         <div class="side__menu--footer mobile__menu--footer">
             <div class="side__menu--info">
                 <div class="side__menu--info__list">

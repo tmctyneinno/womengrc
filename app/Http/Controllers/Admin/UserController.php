@@ -77,9 +77,9 @@ class UserController extends Controller
         $request->validate([
             'role' => 'required|in:advisory_member,guests,mentor,mentee',
         ]);
-
+        
         $user->role = $request->role;
-        $user->save();
+        $user->save(); 
         
         $user->notify(new UserRoleUpdated($user));
 

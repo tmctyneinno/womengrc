@@ -80,7 +80,7 @@ class RegisterController extends Controller
                 'name' => $request->firstname . ' ' . $request->lastname,
                 'email' => $request->email,
                 'linkedin' => $request->linkedin,
-                'role' =>  'Not assigned',
+                'role' =>  'guests',
                 'password' => Hash::make($request->password),
                 'profile_picture' => null,
             ]);

@@ -1,7 +1,7 @@
     <!-- Start footer section -->
     <footer class="footer footer__section">
         <div class="dashboard__footer--inner text-center">
-            <p class="copyright__content mb-0">© {{ date('Y') }} WomeninGRC is Proudly Owned by <a href="https://morgansconsulting.ng/" target="_blank">Morgans Consulting</a></p>
+            <p class="copyright__content mb-0">© {{ date('Y') }} WGRCFP is an initiative of <a href="https://morgansconsulting.ng/" target="_blank">THE MORGANS CONSORTIUM.</a> Designed by <a href="https://tynesideinnovation.com/" target="_blank">Tyneside Innovations</a></p>
 
         </div>
     </footer>
