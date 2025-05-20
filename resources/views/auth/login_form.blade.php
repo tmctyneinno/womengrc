@@ -66,7 +66,7 @@
                                 data-sitekey="{{ config('services.recaptcha.key') }}"
                                 data-callback='onLoginSubmit' 
                                 data-action='submit'>Login</button>
-                    </div>
+                    </div> 
 
                     <!-- Forgot Password Link -->
                    

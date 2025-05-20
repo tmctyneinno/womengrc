@@ -26,7 +26,7 @@ require __DIR__.'/admin.php';
 require __DIR__.'/user.php';
 require __DIR__.'/facilitator.php';
 require __DIR__.'/advisory.php';
-  
+   
 Route::get('/', [FrontendController::class, 'index'])->name('home'); 
 Route::get('/{page}', [PagesController::class, 'index'])->name('home.pages');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
@@ -64,3 +64,4 @@ Route::get('/myaccount/register', [RegisterController::class, 'showRegister'])->
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

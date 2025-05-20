@@ -26,6 +26,7 @@ class User extends Authenticatable
         'profile_picture',
         'role',
         'phone',
+        'upload_cv'
     ];
  
     /**

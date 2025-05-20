@@ -121,7 +121,7 @@ class LoginController extends Controller
                 return redirect()->route('advisory.dashboard');
             case 'guests':
                 Log::info('Redirecting to guests dashboard.', ['user_id' => $user->id]);
-                return redirect()->route('guests.dashboard');
+                return redirect()->route('guests.dashboard'); 
             default:
                 Log::info('Redirecting to default user dashboard.', ['user_id' => $user->id]);
                 return redirect()->route('user.dashboard');

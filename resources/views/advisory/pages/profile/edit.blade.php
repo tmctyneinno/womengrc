@@ -76,8 +76,8 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                     <!-- Email Input -->
-                                                     <div class="add__listing--input__box mb-20">
+                                                    <!-- Role Input -->
+                                                    <div class="add__listing--input__box mb-20">
                                                         <label class="add__listing--input__label" for="email">Role </label>
                                                         <input 
                                                             disabled 
@@ -87,6 +87,33 @@
                                                             type="name" 
                                                             value="{{ Auth::user()->role == 'advisory_member' ? 'Advisory' : 'User' }}">
                                                         @error('email')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <!-- Upload CV Input -->
+                                                    <div class="add__listing--input__box mb-20">
+                                                        <label class="add__listing--input__label" for="cv">Upload CV </label>
+                                                        <input 
+                                                            class="add__listing--input__field" 
+                                                            id="cv" 
+                                                            name="upload_cv" 
+                                                            placeholder="cv" 
+                                                            type="file" 
+                                                            accept=".pdf,.doc,.docx"> {{-- Optional: Specify accepted file types --}}
+                                                        
+                                                        @if(Auth::user()->upload_cv)
+                                                            <div class="mt-2">
+                                                                <p class="text-muted mb-0">Current CV: 
+                                                                    <a href="{{ asset(Auth::user()->upload_cv) }}" target="_blank">
+                                                                        {{ basename(Auth::user()->upload_cv) }}
+                                                                    </a>
+                                                                </p>
+                                                            </div>
+                                                        @endif
+                                                        @error('upload_cv')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
@@ -236,6 +263,3 @@
         
        
 @endsection
-
-
-

@@ -40,7 +40,7 @@
                             <div class="nav-add-btn">
                                 @guest
                                     <a href="{{ route('home.login') }}" class="default-btn border-radius text-left">
-                                        Login/Register
+                                        Login/Register 
                                     </a>
                                 @else
                                 <div class="d-flex "> 

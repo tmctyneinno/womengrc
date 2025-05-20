@@ -24,10 +24,10 @@ Route::middleware(['auth', 'verified', 'role:advisory_member'])
     ->prefix('advisory')
     ->name('advisory.')
     ->group(function () {
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); // Will become advisory.logout
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); 
  
-    Route::get('/dashboard', [AdvisoryDashboardController::class, 'index'])->name('dashboard'); // Will become advisory.dashboard
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit'); // Will become advisory.profile.edit
-    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update'); // Will become advisory.profile.update
+    Route::get('/dashboard', [AdvisoryDashboardController::class, 'index'])->name('dashboard'); 
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit'); 
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update'); 
 
 });

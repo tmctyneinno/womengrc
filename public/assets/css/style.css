@@ -148,7 +148,7 @@ img {
 Default Btn Style 
 ===================================*/
 .default-btn {
-  padding: 5px 18px;
+  padding: 8px 18px;
   color: var(--whiteColor);
   text-align: center;
   position: relative;

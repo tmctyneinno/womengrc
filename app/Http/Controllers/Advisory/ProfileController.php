@@ -19,7 +19,7 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         // Ensure only advisory members can update their profile
-        if ($user->role !== 'advisory') {
+        if ($user->role !== 'advisory_member') {
             abort(403, 'Only advisory members can update this profile.');
         }
 
@@ -33,6 +33,7 @@ class ProfileController extends Controller
             'expertise' => 'required|string|max:255',
             'years_of_experience' => 'required|integer|min:0',
             'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image upload
+            'upload_cv' => 'nullable|file|mimes:pdf,doc,docx|max:5120', // Max 5MB for CV
         ]);
         $user->name = $request->input('name');
         $user->save(); 
@@ -41,7 +42,7 @@ class ProfileController extends Controller
         if ($request->hasFile('profile_image')) {
             $image = $request->file('profile_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension(); // Use getClientOriginalExtension() for accuracy
-            $destinationPath = public_path('assets/profile/');
+            $destinationPath = public_path('assets/advisoryProfile/');
 
             // Ensure the directory exists
             if (!file_exists($destinationPath)) {
@@ -52,7 +53,25 @@ class ProfileController extends Controller
             $image->move($destinationPath, $imageName);
 
             // Save the image path to the user's profile
-            $user->profile_image = 'assets/profile/' . $imageName;
+            $user->profile_image = 'assets/advisoryProfile/' . $imageName;
+            $user->save(); // Save the user model to update the profile_image field
+        }
+
+        if ($request->hasFile('upload_cv')) {
+            $image = $request->file('upload_cv');
+            $imageName = time() . '.' . $image->getClientOriginalExtension(); // Use getClientOriginalExtension() for accuracy
+            $destinationPath = public_path('assets/advisoryProfile/');
+
+            // Ensure the directory exists
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Move the uploaded image to the destination path
+            $image->move($destinationPath, $imageName);
+
+            // Save the image path to the user's profile
+            $user->upload_cv = 'assets/advisoryProfile/' . $imageName;
             $user->save(); // Save the user model to update the profile_image field
         }
 
@@ -70,7 +89,7 @@ class ProfileController extends Controller
         );
 
         // Redirect back with a success message
-        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully!');
+        return redirect()->route('advisory.profile.edit')->with('success', 'Profile updated successfully!');
     }
 
 }
