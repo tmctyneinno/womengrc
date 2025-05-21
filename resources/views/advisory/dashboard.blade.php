@@ -11,7 +11,7 @@
                     <div class="welcome__section align-items-center">
                        
                         {{-- <h2 class="welcome__content--title">Welcome {{ Auth::user()->name}}</h2> --}}
-                        <h2 class="welcome__content--title text-center">Welcome to Women in GRCFP </h2>
+                        <h2 class="welcome__content--title text-center">Welcome to Women in GRC & Financial Crime Prevention (WGRCFP) </h2>
                         <p class="welcome__content--desc">
                             We are a community dedicated to empowering women in Governance, Risk, Compliance, Financial Crime, and Fraud Prevention.
                             Join us to connect with mentors, access resources, and drive positive change. Together, we are shaping a more ethical and inclusive future.

@@ -6,7 +6,7 @@
                 <div class="row justify-content-center">
                     <!-- Email Input -->
                     <div class="col-lg-12">
-                        <div class="form-group"> 
+                        <div class="form-group "> 
                             <i class="bx bx-user"></i>
                             <input type="email" 
                                    name="email" 
@@ -17,9 +17,9 @@
                                    autocomplete="email" 
                                    autofocus>
                             <small style="font-size: 11px" class="text-start error-message text-danger" id="login-email-error"></small>
-                            <div class="text-end p-1">
+                            <div class="d-flex justify-content-end">
                                 @if (Route::has('password.request'))
-                                    <a style="color: #dc3545" class="" href="{{ route('password.request') }}">
+                                    <a style="color: #dc3545" class="text-end p-1" href="{{ route('password.request') }}">
                                         Forgot Your Password?
                                     </a>
                                 @endif  
@@ -46,15 +46,15 @@
                         <div class="text-danger">{{ $errors->first('captcha') }}</div>
                     @endif
                     <!-- Checkbox -->
-                    <div class="col-lg-12 col-sm-6 ">
-                        <div class="form-group">
-                            <div class="agree-label ">
+                    <div class="col-lg-12 col-sm-12 ">
+                        <div class="form-group ">
+                            <div class="agree-label d-flex justify-content-start align-items-start">
                                <input type="checkbox" name="agree_terms" id="chb1" required>
-                            <label for="chb1">
-                                I agree to all 
-                                <a href="{{ route('consent') }} " target="_blank"><span style="color: #dc3545; text-transform:capitalize" >Consent Notice</span></a> and 
-                                <a href="{{ route('privacyPolicy') }}" target="_blank"><span style="color: #dc3545; text-transform:capitalize" > Privacy Policy </span></a>
-                            </label>
+                                <label for="chb1">
+                                    I agree to all 
+                                    <a href="{{ route('consent') }} " target="_blank"><span style="color: #dc3545; text-transform:capitalize" >Consent Notice</span></a> and 
+                                    <a href="{{ route('privacyPolicy') }}" target="_blank"><span style="color: #dc3545; text-transform:capitalize" > Privacy Policy </span></a>
+                                </label>
                             </div>
                         </div>
                     </div>

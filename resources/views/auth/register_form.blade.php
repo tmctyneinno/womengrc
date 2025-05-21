@@ -79,8 +79,9 @@
                             </div>
 
                             <!-- Terms Agreement -->
-                            <div class="col-lg-12 col-sm-6">
-                                <div class="agree-label">
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="agree-label d-flex justify-content-start align-items-start">
+                                    {{-- Added d-flex and align-items-center for better alignment --}}
                                     <input type="checkbox" name="agreed" id="register-agreed" required> {{-- Added required --}}
                                     <label for="register-agreed">
                                         I Agree to the <a href="{{ route('consent') }}" target="_blank"> 

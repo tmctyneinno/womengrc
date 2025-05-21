@@ -13,7 +13,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
+    /** 
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -26,7 +26,8 @@ class User extends Authenticatable
         'profile_picture',
         'role',
         'phone',
-        'upload_cv'
+        'upload_cv',
+        'is_admin'
     ];
  
     /**
@@ -95,5 +96,10 @@ class User extends Authenticatable
     public function advisoryProfile()
     {
         return $this->hasOne(AdvisoryProfile::class);
+    }
+
+    public function guest()
+    {
+        return $this->hasOne(GuestModel::class);
     }
 }

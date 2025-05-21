@@ -26,6 +26,7 @@ require __DIR__.'/admin.php';
 require __DIR__.'/user.php';
 require __DIR__.'/facilitator.php';
 require __DIR__.'/advisory.php';
+require __DIR__.'/guests.php';
    
 Route::get('/', [FrontendController::class, 'index'])->name('home'); 
 Route::get('/{page}', [PagesController::class, 'index'])->name('home.pages');

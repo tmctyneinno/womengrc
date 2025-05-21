@@ -239,7 +239,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/contact-form/show/{id}', [ContactFormController::class, 'show'])->name('admin.contactForm.show');
         Route::get('/contact-form/destroy/{id}', [ContactFormController::class, 'destroy'])->name('admin.contactForm.destroy');
        
-    
+       
+
+        
+
         
     });  
 });
+Route::get('/role-update/respond/{token}', [UserController::class, 'showResponseForm'])->name('admin.role-update.response-form');
+Route::post('/role-update/respond/{token}', [UserController::class, 'processResponse'])
+            ->name('admin.role-update.process-response');

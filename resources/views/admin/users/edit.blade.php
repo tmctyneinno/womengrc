@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="mb-3 row align-items-center">
                                         <label class="col-sm-3 col-form-label form-label"> Role</label>
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-9"> 
                                             <select name="role" id="role" class="form-control">
                                                 <option value="" selected>--Select --</option>
                                                 <option value="advisory_member" {{ $user->role == 'advisory_member' ? 'selected' : '' }}>Advisory Member</option>

@@ -31,8 +31,8 @@ class DashboardController extends Controller
                 return redirect()->route('advisory.dashboard');
             case 'guests':
                 Log::info('User is guest, redirecting from user.dashboard to guests.dashboard.', ['user_id' => $user->id]);
-                // <!-- return redirect()->route('guests.dashboard'); -->
-                return redirect()->route('advisory.dashboard');
+                return redirect()->route('guests.dashboard');
+                // return redirect()->route('advisory.dashboard');
 
             default:
                 Log::info('User role is default or user-specific, showing user.dashboard.', ['user_id' => $user->id, 'role' => $user->role]);

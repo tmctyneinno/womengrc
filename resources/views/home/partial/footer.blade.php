@@ -55,16 +55,16 @@
                         <h3>SUPPORT</h3>
                         <ul class="footer-list">
                             <li>
-                                <a href="f{{ route('home.pages','blog')}}">Blog</a>
+                                <a href="{{ route('home.pages','blog')}}">Blog</a>
                             </li>
                             <li>
-                                <a href="f{{ route('home.pages','facilitators')}}">Facilitators</a>
+                                <a href="{{ route('home.pages','facilitators')}}">Facilitators</a>
                             </li>
                             <li>
-                                <a href="f{{ route('home.pages','mentorship')}}">Mentorship</a>
+                                <a href="{{ route('home.pages','mentorship')}}">Mentorship</a>
                             </li>
                             <li>
-                                <a href="f{{ route('home.pages','membership')}}">Membership</a>
+                                <a href="{{ route('home.pages','membership')}}">Membership</a>
                             </li>
                             <li>
                                 <a href="{{ route('login')}}">Register</a>
@@ -131,7 +131,7 @@
     </div>
 </footer>
 <!-- Footer Area End -->
-
+ 
 <!-- Copy Right -->
 <div class="copy-right-area">
     <div class="container">
