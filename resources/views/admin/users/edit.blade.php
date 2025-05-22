@@ -65,6 +65,18 @@
                                                 <option value="mentee" {{ $user->role == 'mentee' ? 'selected' : '' }}>Mentee</option>
                                             </select> 
                                         </div>
+                                    </div> 
+                                    <div class="mb-3 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label"> LinkedIn Profile</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" disabled placeholder="Enter Email" name="email" id="name" value="{{ $user->linkedin_profile }}" required>
+                                        </div>
+                                    </div>
+                                     <div class="mb-3 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label"> Twitter Profile</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" disabled placeholder="Enter Email" name="email" id="name" value="{{ $user->twitter_profile }}" required>
+                                        </div>
                                     </div>
                                     
                                    
