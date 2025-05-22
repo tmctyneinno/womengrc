@@ -17,6 +17,8 @@ class GuestModel extends Model
         'bio',
         'expertise',
         'years_of_experience',
+        'upload_cv',
+        'profile_image',
     ];
 
     public function user()

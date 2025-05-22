@@ -1,10 +1,10 @@
-@extends('layouts.advisoryDashboard')
+@extends('layouts.guestDashboard')
 
 @section('content')
 <div class="dashboard__page--wrapper">
     <!-- Dashboard sidebar .\ -->
     <div class="page__body--wrapper" id="dashbody__page--body__wrapper">
-        
+         
         <main class="main__content_wrapper">
             <!-- dashboard container -->
             <div class="dashboard__container setting__container">
@@ -17,7 +17,7 @@
                         <div class="row">
                             <div class="setting__profile edit-profile">
                         
-                                <form action="{{ route('advisory.profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('guests.profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
@@ -85,7 +85,7 @@
                                                             id="email" 
                                                             placeholder="Role" 
                                                             type="name" 
-                                                            value="{{ Auth::user()->role == 'advisory_member' ? 'Advisory' : 'User' }}">
+                                                            value="{{ Auth::user()->role == 'guests' ? 'Guest' : (Auth::user()->role == 'advisory_member' ? 'Advisory' : 'User') }}">
                                                         @error('email')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>

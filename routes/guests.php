@@ -21,7 +21,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 
 Route::middleware(['auth', 'verified', 'role:guests'])
-    ->prefix('guests')
+    ->prefix('guest')
     ->name('guests.')
     ->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); 
