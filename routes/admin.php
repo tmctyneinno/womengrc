@@ -141,6 +141,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/membership/index', [MembershipController::class, 'index'])->name('admin.membership.index');
         Route::post('/membership/store', [MembershipController::class, 'store'])->name('admin.membership.store');
         Route::put('/membership/update/{id}', [MembershipController::class, 'update'])->name('admin.membership.update');
+
+        Route::get('/membership/plan/index', [MembershipController::class, 'plans'])->name('admin.membership.plan.index');
+
         
         Route::get('/membership/criteria/index', [MembershipController::class, 'indexCriteria'])->name('admin.membershipCriteria.index');
         Route::post('/membership/criteria/store', [MembershipController::class, 'storeCriteria'])->name('admin.membershipCriteria.store');

@@ -53,7 +53,7 @@
                     </svg>
                     <span class="sidebar__menu--text">Membership Plans</span>
                 </a>
-            </li>
+            </li> 
             
             
 

@@ -6,7 +6,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li > / <b>Menu</b></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Membership Plan</a></li>
             </ol>
         </div>
         <!-- row -->

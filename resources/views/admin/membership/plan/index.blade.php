@@ -6,7 +6,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li > / <b>Menu</b></li>
+                <li > / <b>Membership Plans</b></li>
             </ol>
         </div>
         <!-- row -->
@@ -49,22 +49,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($menuItems as $index => $menuItem)
+                                    @forelse ($membershipPlan as $index => $membershipPlan)
                                         <tr>
                                             <td><strong>{{ $loop->iteration }}</strong></td> {{-- Use $loop->iteration --}}
                                             <td>{{ $menuItem->name }}</td>
                                             <td>
-                                                {{-- Check if there are any top-level dropdown items --}}
-                                                @if ($menuItem->dropdownItems && $menuItem->dropdownItems->isNotEmpty())
-                                                    <ul class="list-unstyled mb-0"> {{-- Use <ul> for semantic list --}}
-                                                        {{-- Loop through top-level items and include the partial --}}
-                                                        @foreach ($menuItem->dropdownItems as $dropdownItem)
-                                                            @include('admin.menu._dropdown_item', ['item' => $dropdownItem])
-                                                        @endforeach
-                                                    </ul>
-                                                @else
-                                                    <span class="text-muted">None</span> {{-- Indicate no dropdowns --}}
-                                                @endif
+                                                {{ $membershipPlan->name }} 
                                             </td>
                                             <td>{{ $menuItem->created_at->format('d M Y') }}</td> {{-- Short month format --}}
                                             <td>

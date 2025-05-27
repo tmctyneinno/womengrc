@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\MembershipCriteria; 
 use App\Models\MembershipContent; 
+use App\Models\MembershipPlan; 
 use Illuminate\Http\Request;
 
 class MembershipController extends Controller
@@ -162,6 +163,11 @@ class MembershipController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An unexpected error occurred. Please try again later.'. $e->getMessage())->withInput();
         }
+    }
+
+    public function plans(){
+        $membershipPlan = MembershipPlan::latest()->get();
+        return view('admin.membership.plan.index', compact('membershipPlan'));
     }
 
 

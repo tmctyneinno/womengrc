@@ -69,6 +69,7 @@
                     <li><a href="{{ route('admin.settings.content') }}"> Contents</a></li>
                     <li><a href="{{ route('admin.testimonials.index') }}">Testimonials</a></li>
                     <li><a href="{{ route('admin.membership.index') }}"> Membership & Mentorship content</a></li>
+                    <li><a href="{{ route('admin.membership.plan.index') }}"> Membership Plan</a></li>
                     <li><a href="{{ route('admin.show.password') }}">Reset Password</a></li>
 
                 </ul>
