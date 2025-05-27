@@ -32,7 +32,7 @@
                             <h3 class="card-title">Menu List</h3>
                         </div>
                         <div class="clearfix text-center"> {{-- Consider text-end for alignment --}}
-                            <a href="{{route('admin.menu.create')}}" class="btn btn-primary">Add Menu</a>
+                            <a href="{{route('admin.membership.plan.create')}}" class="btn btn-primary">Add Membership Plan</a>
                         </div>
                     </div>
 
@@ -42,27 +42,33 @@
                                 <thead>
                                     <tr>
                                         <th class="width80">#</th>
-                                        <th>Menu items</th>
-                                        <th>Dropdown Items & Sub-items</th> {{-- Updated Header --}}
-                                        <th>Date</th>
-                                        <th>Action</th>
+                                        <th> Name</th>
+                                        <th> Description</th>
+                                        <th> Amount</th> 
+                                        <th> Date</th>
+                                        <th> Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($membershipPlan as $index => $membershipPlan)
                                         <tr>
                                             <td><strong>{{ $loop->iteration }}</strong></td> {{-- Use $loop->iteration --}}
-                                            <td>{{ $menuItem->name }}</td>
                                             <td>
                                                 {{ $membershipPlan->name }} 
                                             </td>
-                                            <td>{{ $menuItem->created_at->format('d M Y') }}</td> {{-- Short month format --}}
+                                            <td>
+                                                {{ $membershipPlan->description }} 
+                                            </td>
+                                            <td>
+                                                {{ number_format($membershipPlan->price) }} 
+                                            </td>
+                                            <td>{{ $membershipPlan->created_at->format('d M Y') }}</td> {{-- Short month format --}}
                                             <td>
                                                 <div class="d-flex">
                                                     {{-- Use encrypt helper if your route expects encrypted ID --}}
-                                                    <a class="btn btn-primary btn-sm me-2" href="{{ route('admin.menu.edit', encrypt($menuItem->id)) }}">Edit</a>
+                                                    <a class="btn btn-primary btn-sm me-2" href="{{ route('admin.membership.plan.edit', encrypt($membershipPlan->id)) }}">Edit</a>
                                                     {{-- Add form for DELETE method --}}
-                                                    <form action="{{ route('admin.menu.destroy', encrypt($menuItem->id)) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this Menu and all its items?');">
+                                                    <form action="{{ route('admin.membership.plan.destroy', encrypt($membershipPlan->id)) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this Plan?');">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

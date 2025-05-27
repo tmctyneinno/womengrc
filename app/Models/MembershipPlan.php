@@ -36,17 +36,29 @@ class MembershipPlan extends Model
      */
     public function createAsStripePlan()
     {
-        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
-        
+        $stripeSecret = config('services.stripe.secret');
+
+        if (!is_string($stripeSecret) || empty($stripeSecret)) {
+            \Log::error('Stripe secret key is not configured or is not a string.');
+            // Optionally, throw an exception or return an error response
+            // For example: throw new \Exception('Stripe secret key is not configured properly.');
+            return null; 
+        }
+
+        $stripe = new \Stripe\StripeClient($stripeSecret);
+
         $product = $stripe->products->create([
             'name' => $this->name,
             'description' => $this->description,
         ]);
 
+        // Map your billing_period to Stripe's expected interval values
+        $stripeInterval = strtolower(rtrim($this->billing_period, 'ly')); // "monthly" -> "month", "yearly" -> "year"
+
         $plan = $stripe->plans->create([
             'amount' => $this->price * 100,
             'currency' => 'usd',
-            'interval' => $this->billing_period,
+            'interval' => $stripeInterval,
             'product' => $product->id,
         ]);
 

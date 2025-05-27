@@ -165,9 +165,38 @@ class MembershipController extends Controller
         }
     }
 
-    public function plans(){
+    public function plan(){
         $membershipPlan = MembershipPlan::latest()->get();
         return view('admin.membership.plan.index', compact('membershipPlan'));
+    }
+
+    public function createPlan()
+    {
+        return view('admin.membership.plan.create');
+    }
+
+    public function storePlan(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|min:0',
+            'billing_period' => 'required|string|in:monthly,yearly',
+            'benefits' => 'nullable|array',
+        ]);
+
+        $plan = MembershipPlan::create($request->all());
+
+        // Optionally create the Stripe plan
+        $plan->createAsStripePlan();
+
+        return redirect()->route('admin.membership.plan.index')->with('success', 'Membership plan created successfully.');
+    }
+    public function editPlan($id)
+    {
+        $plan = MembershipPlan::findOrFail($id);
+        return view('admin.membership.plan.edit', compact('plan'));
     }
 
 

@@ -30,13 +30,13 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="plan__benefits--title">Benefits:</h4>
-                                    <ul class="plan__benefits--list">
+                                    {{-- <ul class="plan__benefits--list">
                                         @foreach(json_decode($plan->benefits) as $benefit)
                                         <li class="plan__benefit--item">
                                             <i class="fas fa-check-circle text-success"></i> {{ $benefit }}
                                         </li>
                                         @endforeach
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                                 <div class="card-footer bg-transparent">
                                     @if(auth()->user()->hasActiveSubscription() && auth()->user()->activeSubscription()->membership_plan_id == $plan->id)
@@ -44,6 +44,7 @@
                                             Current Plan
                                         </button>
                                     @else
+                                        {{-- <a href="{{ route('checkout', $plan->id) }}" class="welcome__content--btn solid__btn"> --}}
                                         <a href="{{ route('checkout', $plan->id) }}" class="welcome__content--btn solid__btn">
                                             Choose Plan
                                         </a>

@@ -142,7 +142,12 @@ Route::prefix('admin')->group(function () {
         Route::post('/membership/store', [MembershipController::class, 'store'])->name('admin.membership.store');
         Route::put('/membership/update/{id}', [MembershipController::class, 'update'])->name('admin.membership.update');
 
-        Route::get('/membership/plan/index', [MembershipController::class, 'plans'])->name('admin.membership.plan.index');
+        Route::get('/membership/plan/index', [MembershipController::class, 'plan'])->name('admin.membership.plan.index');
+        Route::get('/membership/plan/create', [MembershipController::class, 'createPlan'])->name('admin.membership.plan.create');
+        Route::post('/membership/plan/store', [MembershipController::class, 'storePlan'])->name('admin.membership.plan.store');
+        Route::post('/membership/plan/edit/{id}', [MembershipController::class, 'editPlan'])->name('admin.membership.plan.edit');
+        Route::put('/membership/plan/update/{id}', [MembershipController::class, 'updatePlan'])->name('admin.membership.plan.update');
+        Route::get('/membership/plan/destroy/{id}', [MembershipController::class, 'destroyPlan'])->name('admin.membership.plan.destroy');
 
         
         Route::get('/membership/criteria/index', [MembershipController::class, 'indexCriteria'])->name('admin.membershipCriteria.index');
