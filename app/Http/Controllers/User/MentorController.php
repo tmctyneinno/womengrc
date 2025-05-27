@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
+
 use App\Notifications\MentorInvitationSentNotification;
 use App\Notifications\MentorInvitationNotification;
 use App\Http\Controllers\Controller;

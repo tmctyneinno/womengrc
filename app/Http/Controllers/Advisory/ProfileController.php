@@ -26,7 +26,7 @@ class ProfileController extends Controller
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
-            'linkedin_profile' => 'required|url',
+            'linkedin' => 'required|url',
             'twitter_profile' => 'required|url',
             'facebook_profile' => 'required|url',
             'bio' => 'required|string|max:1000',
@@ -76,10 +76,10 @@ class ProfileController extends Controller
         }
 
         // Update or create the advisory profile
-        $user->advisoryProfile()->updateOrCreate(
-            ['user_id' => $user->id],
+        $user->updateOrCreate(
+            ['id' => $user->id],
             $request->only([
-                'linkedin_profile',
+                'linkedin',
                 'twitter_profile',
                 'facebook_profile',
                 'bio',

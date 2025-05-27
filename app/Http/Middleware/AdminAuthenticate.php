@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Closure;
@@ -10,12 +9,18 @@ use Closure;
 
 class AdminAuthenticate
 {
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('admin')->check()) {
-            return $next($request);
-        } 
+    
+        // Check if user is authenticated with the 'admin' guard
+        // and if that authenticated admin user has the 'is_admin' property.
+        if (!Auth::guard('admin')->check() ) {
+            return redirect()->route('admin.login')->with('error', 'You need admin access');
+        }
+        // if (!Auth::guard('admin')->user()->is_admin) {
+        //     return redirect()->route('admin.login')->with('error', 'You need admin access');
+        // }
 
-        return redirect()->route('admin.login');
+        return $next($request);
     }
 }

@@ -63,6 +63,7 @@
                                             <th>Email</th>
                                             <th>Role</th>
                                             <th>LinkedIn</th> 
+                                            {{-- <th>Admin access</th>  --}}
                                             <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
@@ -74,7 +75,7 @@
                                                 <td><strong>{{ $users->firstItem() + $index }}</strong></td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>
+                                                <td> 
                                                     @switch($user->role)
                                                         @case('advisory_member') <span class="badge bg-primary">Advisory Member</span> @break
                                                         @case('facilitator') <span class="badge bg-success">Facilitator</span> @break
@@ -93,7 +94,13 @@
                                                         <span class="text-muted">N/A</span>
                                                     @endif
                                                 </td>
-                                
+                                                {{-- <td>
+                                                    @if(!$user->is_admin)
+                                                        <a href="#" class="btn btn-sm btn-success">Make Admin</a>
+                                                    @else
+                                                        <a href="#" class="btn btn-sm btn-danger">Remove Admin</a>
+                                                    @endif
+                                                </td> --}}
                                                 <td>{{ $user->created_at->format('d F Y') }}</td>
                                                 <td>
                                                     <div class="d-flex gap-2">

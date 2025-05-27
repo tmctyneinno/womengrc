@@ -37,7 +37,7 @@ use App\Http\Controllers\Admin\PrivacyController;
 use App\Http\Controllers\Admin\TermsConditionController;
 
 
-
+ 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminLoginController::class, 'showLogin'])->name('admin.login');
     Route::post('/manage/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
@@ -47,6 +47,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/settings/update-password', [AdminLoginController::class, 'updatePassword'])->name('admin.password.update');
         Route::get('/settings/show-password', [AdminLoginController::class, 'showChangePasswordForm'])->name('admin.show.password');
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.index');
+       
         // Menu
         Route::get('/menu/create', [MenuController::class, 'creatMenu'])->name('admin.menu.create');
         Route::get('/manage/menu/index', [MenuController::class, 'indexMenu'])->name('admin.menu.index');
@@ -73,6 +74,8 @@ Route::prefix('admin')->group(function () {
             ->name('users.multi-delete');
             // Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
             // Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+            Route::post('/users/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('users.make-admin');
+            Route::post('/users/{user}/remove-admin', [UserController::class, 'removeAdmin'])->name('users.remove-admin');
 
         }); 
        

@@ -236,4 +236,26 @@ class UserController extends Controller
             $admin->notify(new RoleChangeRejectedAdminNotification($updateRequest));
         }
     }
+
+      public function makeAdmin(User $user)
+    {
+        // Prevent modifying yourself if needed
+        if ($user->id === auth()->id()) {
+            return back()->with('error', 'You cannot modify your own admin status');
+        }
+
+        $user->update(['is_admin' => true]);
+        return back()->with('success', "$user->name has been granted admin rights");
+    }
+    
+    public function removeAdmin(User $user)
+    {
+        // Prevent modifying yourself if needed
+        if ($user->id === auth()->id()) {
+            return back()->with('error', 'You cannot remove your own admin rights');
+        }
+
+        $user->update(['is_admin' => false]);
+        return back()->with('success', "Admin rights removed from $user->name");
+    }
 }

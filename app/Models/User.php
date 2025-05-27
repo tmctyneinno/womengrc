@@ -17,17 +17,24 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
-     */
+     */ 
     protected $fillable = [ 
         'name',
         'email',
-        'linkedin',
+        'linkedin', 
+        'twitter_profile',
+        'facebook_profile',
+        'bio',
+        'expertise',
+        'years_of_experience',
+        'last_login_at',
+        'email_verified_at',
         'password',
-        'profile_picture',
+        'profile_image', 
         'role',
         'phone',
         'upload_cv',
-        'is_admin'
+        'is_admin' 
     ];
  
     /**
@@ -101,5 +108,42 @@ class User extends Authenticatable
     public function guest()
     {
         return $this->hasOne(GuestModel::class);
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function hasActiveSubscription()
+    {
+        return $this->subscriptions()
+            ->where('status', 'active')
+            ->where(function($query) {
+                $query->whereNull('ends_at')
+                      ->orWhere('ends_at', '>', now());
+            })
+            ->exists();
+    }
+    
+    public function activeSubscription()
+    {
+        return $this->subscriptions()
+            ->where('status', 'active')
+            ->where(function($query) {
+                $query->whereNull('ends_at')
+                      ->orWhere('ends_at', '>', now());
+            })
+            ->first();
+    }
+
+    public function canAccessBenefit($benefit)
+    {
+        if (!$this->hasActiveSubscription()) return false;
+        
+        $plan = $this->activeSubscription()->membershipPlan;
+        $benefits = json_decode($plan->benefits, true) ?? [];
+        
+        return in_array($benefit, $benefits);
     }
 }

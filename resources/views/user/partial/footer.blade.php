@@ -17,6 +17,35 @@
  <script src="{{ asset('assets/admin/js/plugins/glightbox.min.js')}}"></script>
   
   <!-- Customscript js -->  
+  <style>
+    /* Styles to make the footer fixed at the bottom */
+    .footer.footer__section {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff; /* Adjust to your theme's footer background color */
+        z-index: 1000; /* Ensures footer is above most other content */
+        /* border-top: 1px solid #e0e0e0; */ /* Optional: adds a separator line */
+        /* You may want to add some padding within the footer itself */
+        /* padding-top: 15px; */
+        /* padding-bottom: 15px; */
+    }
+
+    /*
+       IMPORTANT: Prevent content overlap!
+       Add bottom padding to your main content wrapper. This value should be
+       at least the height of your footer.
+       You'll need to add this style to your global CSS file or in a <style>
+       tag in your main layout file (e.g., layouts/dashboard.blade.php).
+
+       Based on your `user/dashboard.blade.php`, the main content wrapper might be '.page__body--wrapper'.
+       Example:
+       .page__body--wrapper {
+           padding-bottom: 70px; /* Adjust this value to your footer's actual height */
+       }
+    */
+  </style>
   <script src="{{ asset('assets/admin/js/script.js')}}"></script>
 
   <!-- Dark to light js -->

@@ -30,18 +30,9 @@
                     <!-- Currency section -->
                     <div class="currency__section mb-30">
                         <div class="currency__column4 swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="currency__card">
-                                        <h3 class="currency__card--title">
-                                            Number of Mentor</h3>
-                                        <span class="currency__card--amount">{{$mentorCount}}</span>
-                                        <div class="currency__card--footer">
-                                            <a class="currency__withdrawal" href="{{ route('user.chat.index')}}">Click here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
+                            <div class="row">
+                                
+                                <div class="col-md-6">
                                     <div class="currency__card">
                                         <h3 class="currency__card--title"> Number of Mentees</h3>
                                         <span class="currency__card--amount">{{ $menteeCount }}</span>
@@ -50,7 +41,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
+                                <div class="col-md-6">
                                     <div class="currency__card">
                                         <h3 class="currency__card--title">
                                             Recent Activity

@@ -17,8 +17,8 @@
                         <div class="row">
                             <div class="setting__profile edit-profile">
                         
-                                <form action="{{ route('advisory.profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
+                                <form action="{{ route('user.profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                                    @csrf 
                                     @method('PUT')
                                     <div class="row">
                                         <!-- Left Column -->
