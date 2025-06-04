@@ -91,7 +91,7 @@
                             </h3>
                         </a> 
                         <p>
-                            {!! Str::limit($event->content, 60) !!}
+                            {{-- {!! Str::limit($event->content, 60) !!} --}}
                         </p>
 
                     </div>
@@ -153,7 +153,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-card">
                         <a href="{{ route('blog.detail', $blog->slug) }}">
-                            <img src="{{ asset($blog->image) }}" alt="Images">
+                            <img src="{{ asset($blog->image) }}" alt="Images" style="object-fit: contain; max-width:100%; max-height:100% height:auto; width:300px">
                         </a> 
                         <div class="content" >
                             <span>{{ $blog->created_at->format('F d, Y') }}</a></span>
