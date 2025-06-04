@@ -66,3 +66,4 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+

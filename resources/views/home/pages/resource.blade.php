@@ -1,56 +1,85 @@
 @extends('layouts.app')
 
-
-
 @section('content')
 
+@php
+    // Cache translations for the inner banner and resource section
+    $resourcePageTitle = cache()->remember('resource_page_title_'.app()->getLocale(), 86400, function() {
+        return GoogleTranslate::trans('Resource', app()->getLocale()) ?: 'Resource';
+    });
+    $homeText = cache()->remember('breadcrumb_home_text_'.app()->getLocale(), 86400, function() {
+        return GoogleTranslate::trans('Home', app()->getLocale()) ?: 'Home';
+    });
+    $pagesText = cache()->remember('breadcrumb_pages_text_'.app()->getLocale(), 86400, function() {
+        return GoogleTranslate::trans('Pages', app()->getLocale()) ?: 'Pages';
+    });
+    $resourcesSectionSubtitle = cache()->remember('resources_section_subtitle_'.app()->getLocale(), 86400, function() {
+        return GoogleTranslate::trans('Resources', app()->getLocale()) ?: 'Resources';
+    });
+    $resourcesSectionTitle = cache()->remember('resources_section_title_'.app()->getLocale(), 86400, function() {
+        return GoogleTranslate::trans('Women in GRC & Financial Crime Prevention', app()->getLocale()) ?: 'Women in GRC & Financial Crime Prevention'; // Corrected "Women in Women"
+    });
+    $noDataFoundText = cache()->remember('no_data_found_text_'.app()->getLocale(), 86400, function() {
+        return GoogleTranslate::trans('No resources found at the moment.', app()->getLocale()) ?: 'No resources found at the moment.'; // More descriptive
+    });
+    $closeButtonArialLabel = cache()->remember('modal_close_button_aria_label_'.app()->getLocale(), 86400, function() {
+        return GoogleTranslate::trans('Close', app()->getLocale()) ?: 'Close';
+    });
 
-<div class="inner-banner" style="background-image: url({{ asset($aboutUs->banner_one) }});">
+    // Handle header image with fallback
+    $headerImageUrl = (isset($aboutUs) && !empty($aboutUs->banner_one)) ? asset($aboutUs->banner_one) : asset('images/default-header-placeholder.jpg'); // Fallback header image
+@endphp
+
+<div class="inner-banner" style="background-image: url({{ $headerImageUrl }});">
     <div class="container">
         <div class="inner-title text-center">
-            <h3>Resource </h3>
+            <h3>{{ $resourcePageTitle }}</h3>
             <ul>
                 <li>
-                    <a href="{{ route('home')}}">Home</a>
+                    <a href="{{ route('home')}}">{{ $homeText }}</a>
                 </li>
                 <li>
                     <i class="bx bx-chevron-right"></i>
                 </li>
-                <li>Pages</li>
+                <li>{{ $pagesText }}</li>
                 <li>
                     <i class="bx bx-chevron-right"></i>
                 </li>
-                <li>Resource</li>
+                <li>{{ $resourcePageTitle }}</li>
             </ul>
         </div>
     </div>
 </div>
  
  <!-- Team Area -->
- <div class="team-area pt-100 pb-70">
+ <div class="team-area pt-100 pb-70"> {{-- Consider renaming class if not displaying a "team" --}}
     <div class="container">
         <div class="section-title text-center">
-            <span>Resources</span>
-            <h2>Women in Women GRC & Financial Crime Prevention </h2>
+            <span>{{ $resourcesSectionSubtitle }}</span>
+            <h2>{{ $resourcesSectionTitle }}</h2>
         </div>
         <div class="row pt-45">
-            <div class="row pt-45">
-                @forelse ($resource as $resource)
+            {{-- Removed redundant inner row div --}}
+            @forelse ($resource as $item) {{-- Changed variable name to $item to avoid conflict with outer $resource --}}
                 <div class="col-lg-6 col-md-6">
                     <div class="city-item">
                         <a href="#" class="city-img">
-                            <img src="{{ asset($resource->image) }}" alt="Images">
+                            @php
+                                $resourceImageAlt = cache()->remember('resource_item_alt_'.$item->id.'_'.app()->getLocale(), 86400, function() use ($item, $resourcesSectionSubtitle) {
+                                    // Attempt to use a title or name field from $item for better alt text, otherwise fallback
+                                    $altBase = $item->title ?? $item->name ?? $resourcesSectionSubtitle;
+                                    return GoogleTranslate::trans($altBase, app()->getLocale()) ?: $altBase;
+                                });
+                            @endphp
+                            <img src="{{ asset($item->image) }}" alt="{{ $resourceImageAlt }}">
                         </a>
-                        
                     </div>
                 </div>
-                @empty
-                    <p>No data found(s)</p>
-                @endforelse
-
-            </div>
-          
-
+            @empty
+                <div class="col-12">
+                    <p class="text-center">{{ $noDataFoundText }}</p>
+                </div>
+            @endforelse
         </div>
     </div> 
 </div>
@@ -61,7 +90,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitle"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ $closeButtonArialLabel }}"></button>
             </div>
             <div class="modal-body">
                 <h6 id="modalPosition"></h6>

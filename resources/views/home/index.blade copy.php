@@ -78,7 +78,7 @@
                         <div class="place-tag"> 
                             <h3 class="title">
                                 <a href="{{ route('events.show', $event->slug) }}">
-                                   {{-- $event->title --}}
+                                   $event->title
                                 </a>
                             </h3>
                         </div>
@@ -91,7 +91,7 @@
                             </h3>
                         </a> 
                         <p>
-                            {!! Str::limit($event->content, 60) !!}
+                            {{ Str::limit($event->content, 60) }}
                         </p>
 
                     </div>

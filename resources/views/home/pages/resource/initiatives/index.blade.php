@@ -6,104 +6,126 @@
 
  
         <!-- Inner Banner -->
-        <div class="inner-banner"  style="background-image: url({{ asset($aboutUs->header_image) }});">
+        @php
+            // Cache translations for the inner banner and initiatives section
+            $initiativesPageTitle = cache()->remember('initiatives_page_title_'.app()->getLocale(), 86400, function() {
+                return GoogleTranslate::trans('Initiatives', app()->getLocale()) ?: 'Initiatives';
+            });
+            $homeText = cache()->remember('breadcrumb_home_text_'.app()->getLocale(), 86400, function() {
+                return GoogleTranslate::trans('Home', app()->getLocale()) ?: 'Home';
+            });
+            $pagesText = cache()->remember('breadcrumb_pages_text_'.app()->getLocale(), 86400, function() {
+                return GoogleTranslate::trans('Pages', app()->getLocale()) ?: 'Pages';
+            });
+            $keyInitiativesSubtitle = cache()->remember('key_initiatives_subtitle_'.app()->getLocale(), 86400, function() {
+                return GoogleTranslate::trans('Key Initiatives', app()->getLocale()) ?: 'Key Initiatives';
+            });
+
+            // Handle header image with fallback
+            $headerImageUrl = (isset($aboutUs) && !empty($aboutUs->header_image)) ? asset($aboutUs->header_image) : asset('images/default-header-placeholder.jpg'); // Fallback header image
+
+            // Define initiative items
+            $initiativeItems = [
+                [
+                    'route_param' => 'mentorship-sponsorship-program',
+                    'image_src' => 'assets/images/initialtive1.png',
+                    'alt_key' => 'mentorship_alt',
+                    'alt_default' => 'Mentorship Sponsorship Program',
+                    'title_key' => 'mentorship_title',
+                    'title_default' => 'Mentorship Sponsorship Program',
+                ],
+                [
+                    'route_param' => 'training-certification',
+                    'image_src' => 'assets/images/initialtive2.png',
+                    'alt_key' => 'training_alt',
+                    'alt_default' => 'Training Certification Program', // Made slightly more descriptive
+                    'title_key' => 'training_title',
+                    'title_default' => 'Training Certification',
+                ],
+                [
+                    'route_param' => 'annual-summit-conferences',
+                    'image_src' => 'assets/images/initialtive3.png',
+                    'alt_key' => 'summit_alt',
+                    'alt_default' => 'Annual Summit Conferences',
+                    'title_key' => 'summit_title',
+                    'title_default' => 'Annual Summit Conferences',
+                ],
+                [
+                    'route_param' => 'advocacy-policy-influence',
+                    'image_src' => 'assets/images/initialtive4.png',
+                    'alt_key' => 'advocacy_alt',
+                    'alt_default' => 'Advocacy Policy Influence',
+                    'title_key' => 'advocacy_title',
+                    'title_default' => 'Advocacy Policy Influence',
+                ],
+                [
+                    'route_param' => 'scholarships-grants',
+                    'image_src' => 'assets/images/initialtive5.png',
+                    'alt_key' => 'scholarships_alt',
+                    'alt_default' => 'Scholarships Grants',
+                    'title_key' => 'scholarships_title',
+                    'title_default' => 'Scholarships Grants',
+                ],
+            ];
+
+            // Translate initiative items
+            foreach ($initiativeItems as &$item) { // Use reference to modify array directly
+                $item['translated_alt'] = cache()->remember('initiative_item_alt_'.$item['alt_key'].'_'.app()->getLocale(), 86400, function() use ($item) {
+                    return GoogleTranslate::trans($item['alt_default'], app()->getLocale()) ?: $item['alt_default'];
+                });
+                $item['translated_title'] = cache()->remember('initiative_item_title_'.$item['title_key'].'_'.app()->getLocale(), 86400, function() use ($item) {
+                    return GoogleTranslate::trans($item['title_default'], app()->getLocale()) ?: $item['title_default'];
+                });
+            }
+            unset($item); // Unset reference to last item
+
+        @endphp
+        <div class="inner-banner"  style="background-image: url({{ $headerImageUrl }});">
             <div class="container">
                 <div class="inner-title text-center">
-                    <h3>Initiatives</h3>
+                    <h3>{{ $initiativesPageTitle }}</h3>
                     <ul>
                         <li>
-                            <a href="{{ route('home') }}">Home</a>
+                            <a href="{{ route('home') }}">{{ $homeText }}</a>
                         </li>
                         <li>
                             <i class='bx bx-chevron-right'></i>
                         </li>
-                        <li>Pages</li>
+                        <li>{{ $pagesText }}</li>
                         <li>
                             <i class='bx bx-chevron-right'></i>
                         </li>
-                        <li> Initiatives</li>
+                        <li>{{ $initiativesPageTitle }}</li>
                     </ul>
                 </div>
             </div>
         </div>
         <!-- Inner Banner End -->
-
         <!-- Category Area -->
         <section class="category-area pt-100 pb-70">
             <div class="container">
                 <div class="section-title ">
-                    <span>Key Initiatives</span>
+                    <span>{{ $keyInitiativesSubtitle }}</span>
                 </div>
                 
                 <div class="row pt-45">
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="category-box">
-                            <a href="{{ route('home','mentorship-sponsorship-program') }}">
-                                <img src="{{ asset('assets/images/initialtive1.png') }}" alt="Mentorship Sponsorship Program" style="width: 100px; height: 100px;">
-                            </a>
-                            
-                            <a href="{{ route('home.pages','mentorship-sponsorship-program') }}">
-                                <h3>Mentorship Sponsorship Program</h3>
-                            </a>
+                    @foreach ($initiativeItems as $item)
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="category-box">
+                                {{-- Assuming the first link is for the image itself or a direct page, and the second for the text link --}}
+                                {{-- You might want to consolidate these if they point to the same place --}}
+                                <a href="{{ route('home.pages', $item['route_param']) }}"> {{-- Changed route to home.pages for consistency --}}
+                                    <img src="{{ asset($item['image_src']) }}" alt="{{ $item['translated_alt'] }}" style="width: 100px; height: 100px;">
+                                </a>
+                                
+                                <a href="{{ route('home.pages', $item['route_param']) }}">
+                                    <h3>{{ $item['translated_title'] }}</h3>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="category-box">
-                            <a href="{{ route('home','training-certification') }}">
-                                <img src="{{ asset('assets/images/initialtive2.png') }}" alt="Mentorship Sponsorship Program" style="width: 100px; height: 100px;">
-                            </a>
-                            <a href="{{ route('home.pages','training-certification') }}">
-                                <h3>Training Certification</h3>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="category-box">
-                            <a href="{{ route('home','annual-summit-conferences') }}">
-                                <img src="{{ asset('assets/images/initialtive3.png') }}" alt="Annual Summit Conferences" style="width: 100px; height: 100px;">
-                            </a>
-                            <a href="{{ route('home.pages','annual-summit-conferences') }}">
-                                <h3>Annual Summit Conferences</h3>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="category-box">
-                            <a href="{{ route('home','advocacy-policy-influence') }}">
-                                <img src="{{ asset('assets/images/initialtive4.png') }}" alt="Advocacy Policy Influence" style="width: 100px; height: 100px;">
-                            </a>
-                            <a href="{{ route('home.pages','advocacy-policy-influence') }}">
-                                <h3>Advocacy Policy Influence</h3>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="category-box">
-                            <a href="{{ route('home','scholarships-grants') }}">
-                                <img src="{{ asset('assets/images/initialtive5.png') }}" alt="Scholarships Grants" style="width: 100px; height: 100px;">
-                            </a>
-                            <a href="{{ route('home.pages','scholarships-grants') }}">
-                                <h3>Scholarships Grants</h3>
-                            </a>
-                        </div>
-                    </div>
-
-                   
+                    @endforeach
                 </div>
             </div>
         </section>
         <!-- Category Area End -->
-
-       
-      
-
-    
-
-
-       
-     
 @endsection

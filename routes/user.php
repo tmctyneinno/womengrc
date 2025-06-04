@@ -55,6 +55,7 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
     Route::get('/subscription/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
     Route::post('/stripe/webhook', [SubscriptionController::class, 'webhook'])->name('stripe.webhook');
 
+    
 
 }); 
 

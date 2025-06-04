@@ -6,7 +6,8 @@
 
 <li class="nav-item {{ $hasChildren ? 'dropdown' : '' }}">
     <a href="{{ $link }}" class="nav-link {{ $hasChildren ? 'dropdown-toggle' : '' }}">
-        {{ $navItem->name }}
+        {{ GoogleTranslate::trans($navItem->name, app()->getLocale()) }}
+
         @if($hasChildren)
             {{-- <i class='bx bx-chevron-down'></i> --}}
             {{-- <i class='bx bx-plus'></i> --}}

@@ -1,3 +1,5 @@
+
+
 <div class="navbar-area">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
@@ -23,7 +25,7 @@
                     width:70px;"
                     src="{{ $contactUs ? asset($contactUs->site_logo) : '' }}"  alt="Logo">
                 </a>
-                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
@@ -32,7 +34,7 @@
                         @empty
                             <li class="nav-item"><span class="nav-link text-muted">No menu items found</span></li>
                         @endforelse
-                    </ul>
+                    </ul> 
                     {{-- Right Side Navigation (Login/Register/Account) --}}
                     <div class="side-nav  "> {{-- Changed d-in-line to d-inline-flex for better alignment --}}
 
@@ -40,13 +42,13 @@
                             <div class="nav-add-btn">
                                 @guest
                                     <a href="{{ route('home.login') }}" class="default-btn border-radius text-left">
-                                        Login/Register 
+                                       Login/Register
                                     </a>
                                 @else
                                 <div class="d-flex "> 
                                     <a href="{{ route('user.dashboard')}}" class="default-btn border-radius me-1"> {{-- Added margin --}}
                                         My Account
-                                    </a>
+                                    </a> 
                                     {{-- Logout Form --}}
                                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                         @csrf
