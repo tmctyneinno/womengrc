@@ -240,7 +240,7 @@ class UserController extends Controller
       public function makeAdmin(User $user)
     {
         // Prevent modifying yourself if needed
-        if ($user->id === auth()->id()) {
+        if ($user->id === auth('admin')->id()) {
             return back()->with('error', 'You cannot modify your own admin status');
         }
 
