@@ -7,20 +7,8 @@
 
     <!-- Inner Banner -->
     @php
-        // Cache translations for the inner banner and vision section
-        $visionTitle = cache()->remember('vision_page_title_'.app()->getLocale(), 86400, function() {
-            return GoogleTranslate::trans('Vision', app()->getLocale()) ?: 'Vision';
-        });
-        $homeText = cache()->remember('breadcrumb_home_text_'.app()->getLocale(), 86400, function() {
-            return GoogleTranslate::trans('Home', app()->getLocale()) ?: 'Home';
-        });
-        $pagesText = cache()->remember('breadcrumb_pages_text_'.app()->getLocale(), 86400, function() {
-            return GoogleTranslate::trans('Pages', app()->getLocale()) ?: 'Pages';
-        });
-        $visionStatementTitle = cache()->remember('vision_statement_title_'.app()->getLocale(), 86400, function() {
-            return GoogleTranslate::trans('Vision statement', app()->getLocale()) ?: 'Vision statement';
-        });
-
+       
+        
         // Handle dynamic content and image with fallbacks and translation
         $headerImageUrl = (isset($aboutUs) && !empty($aboutUs->header_image)) ? asset($aboutUs->header_image) : asset('images/default-header-placeholder.jpg'); // Fallback header image
         $visionContent = '';
@@ -28,33 +16,29 @@
         $visionImageAlt = $visionStatementTitle; 
 
         if (isset($visionMission) && $visionMission) {
-             $visionContent = cache()->remember('vision_mission_vision_content_'.($visionMission->id ?? 'static').'_'.app()->getLocale(), 86400, function() use ($visionMission) {
-                return GoogleTranslate::trans(strip_tags($visionMission->vision ?? ''), app()->getLocale()) ?: ($visionMission->vision ?? ''); // Strip tags before translating and displaying
-            });
+             $visionContent = strip_tags($visionMission->vision ?? '');
             if (!empty($visionMission->vision_img)) {
                 $visionImageUrl = asset($visionMission->vision_img);
             }
-             $visionImageAlt = cache()->remember('vision_mission_image_alt_'.($visionMission->id ?? 'static').'_'.app()->getLocale(), 86400, function() use ($visionStatementTitle) {
-                return GoogleTranslate::trans($visionStatementTitle.' image', app()->getLocale()) ?: $visionStatementTitle.' image'; // Alt text based on title
-            });
+             $visionImageAlt = $visionStatementTitle;
         }
     @endphp
     <div class="inner-banner " style="background-image: url({{ $headerImageUrl }});">
         <div class="container">
             <div class="inner-title text-center">
-                <h3>{{ $visionTitle }}</h3>
+                <h3>Vision statement</h3>
                 <ul>
                     <li>
-                        <a href="{{ url('/') }}">{{ $homeText }}</a> {{-- Use url('/') for home link --}}
+                        <a href="{{ url('/') }}">Home</a> {{-- Use url('/') for home link --}}
                     </li>
                     <li>
                         <i class='bx bx-chevron-right'></i>
                     </li>
-                    <li>{{ $pagesText }}</li>
+                    <li>Pages</li>
                     <li>
                         <i class='bx bx-chevron-right'></i>
                     </li>
-                    <li>{{ $visionTitle }}</li>
+                    <li>Home</li>
                 </ul>
             </div>
         </div>
@@ -69,7 +53,7 @@
                     <div class="application-content">
                         <div class="section-title" style="text-align: justify">
                             {{-- <span>Vision statement</span> --}}
-                            <h2>{{ $visionStatementTitle }}</h2>
+                            <h2>Vision statement</h2>
                             <p>
                                 {!! $visionContent !!} {{-- Output translated/cached content --}}
                             </p>

@@ -29,12 +29,8 @@
 
     // Translate and cache each item
     foreach ($counterItems as &$item) { // Use reference to modify array directly
-        $item['translated_number'] = cache()->remember('counter_'.$item['key_number'].'_'.app()->getLocale(), 86400, function() use ($item) {
-            return GoogleTranslate::trans($item['default_number'], app()->getLocale()) ?: $item['default_number'];
-        });
-        $item['translated_text'] = cache()->remember('counter_'.$item['key_text'].'_'.app()->getLocale(), 86400, function() use ($item) {
-            return GoogleTranslate::trans($item['default_text'], app()->getLocale()) ?: $item['default_text'];
-        });
+        $item['translated_number'] = $item['default_number'];
+        $item['translated_text'] = $item['default_text'];
     }
     unset($item); // Unset reference to last item
 @endphp
@@ -42,11 +38,11 @@
     <div class="container">
         <div class="counter-bg">
             <div class="row justify-content-center">
-                @foreach ($counterItems as $counter)
+                @foreach ($counterItems as $item)
                     <div class="col-lg-3 col-sm-6 col-md-3">
                         <div class="single-counter">
-                            <h3>{{ $counter['translated_number'] }}</h3>
-                            <span>{{ $counter['translated_text'] }}</span>
+                            <h3>{{ $item['default_number'] }}</h3>
+                            <span>{{ $item['default_text'] }}</span>
                         </div>
                     </div>
                 @endforeach

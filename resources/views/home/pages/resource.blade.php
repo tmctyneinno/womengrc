@@ -4,27 +4,14 @@
 
 @php
     // Cache translations for the inner banner and resource section
-    $resourcePageTitle = cache()->remember('resource_page_title_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('Resource', app()->getLocale()) ?: 'Resource';
+    $resourcePageTitle =  'Resource';
     });
-    $homeText = cache()->remember('breadcrumb_home_text_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('Home', app()->getLocale()) ?: 'Home';
-    });
-    $pagesText = cache()->remember('breadcrumb_pages_text_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('Pages', app()->getLocale()) ?: 'Pages';
-    });
-    $resourcesSectionSubtitle = cache()->remember('resources_section_subtitle_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('Resources', app()->getLocale()) ?: 'Resources';
-    });
-    $resourcesSectionTitle = cache()->remember('resources_section_title_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('Women in GRC & Financial Crime Prevention', app()->getLocale()) ?: 'Women in GRC & Financial Crime Prevention'; // Corrected "Women in Women"
-    });
-    $noDataFoundText = cache()->remember('no_data_found_text_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('No resources found at the moment.', app()->getLocale()) ?: 'No resources found at the moment.'; // More descriptive
-    });
-    $closeButtonArialLabel = cache()->remember('modal_close_button_aria_label_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('Close', app()->getLocale()) ?: 'Close';
-    });
+    $homeText = 'Home';
+    $pagesText = 'Pages';
+    $resourcesSectionSubtitle = 'Resources';
+    $resourcesSectionTitle = 'Women in GRC & Financial Crime Prevention';
+    $noDataFoundText = 'No resources found at the moment.';
+    $closeButtonArialLabel = 'Close';
 
     // Handle header image with fallback
     $headerImageUrl = (isset($aboutUs) && !empty($aboutUs->banner_one)) ? asset($aboutUs->banner_one) : asset('images/default-header-placeholder.jpg'); // Fallback header image
@@ -68,7 +55,7 @@
                                 $resourceImageAlt = cache()->remember('resource_item_alt_'.$item->id.'_'.app()->getLocale(), 86400, function() use ($item, $resourcesSectionSubtitle) {
                                     // Attempt to use a title or name field from $item for better alt text, otherwise fallback
                                     $altBase = $item->title ?? $item->name ?? $resourcesSectionSubtitle;
-                                    return GoogleTranslate::trans($altBase, app()->getLocale()) ?: $altBase;
+                                    return $altBase;
                                 });
                             @endphp
                             <img src="{{ asset($item->image) }}" alt="{{ $resourceImageAlt }}">

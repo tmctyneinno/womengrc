@@ -8,21 +8,11 @@
         <!-- Inner Banner -->
         @php
             // Cache translations for the inner banner and purpose section
-            $purposeTitle = cache()->remember('purpose_page_title_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Purpose', app()->getLocale()) ?: 'Purpose';
-            });
-            $homeText = cache()->remember('breadcrumb_home_text_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Home', app()->getLocale()) ?: 'Home';
-            });
-            $pagesText = cache()->remember('breadcrumb_pages_text_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Pages', app()->getLocale()) ?: 'Pages';
-            });
-            $purposeSectionSubtitle = cache()->remember('purpose_section_subtitle_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Advancing Women in Leadership', app()->getLocale()) ?: 'Advancing Women in Leadership';
-            });
-            $purposeStatementTitle = cache()->remember('purpose_statement_title_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Purpose statement', app()->getLocale()) ?: 'Purpose statement';
-            });
+            $purposeTitle = 'Purpose';
+            $homeText = 'Home';
+            $pagesText = 'Pages';
+            $purposeSectionSubtitle = 'Advancing Women in Leadership';
+            $purposeStatementTitle = 'Purpose statement';
 
             // Handle dynamic content and image with fallbacks and translation
             $headerImageUrl = (isset($aboutUs) && !empty($aboutUs->header_image)) ? asset($aboutUs->header_image) : asset('images/default-header-placeholder.jpg'); // Fallback header image
@@ -31,15 +21,12 @@
             $purposeImageAlt = $purposeStatementTitle; // Default alt text
 
             if (isset($visionMission) && $visionMission) {
-                $purposeContent = cache()->remember('vision_mission_purpose_content_'.($visionMission->id ?? 'static').'_'.app()->getLocale(), 86400, function() use ($visionMission) {
-                    return GoogleTranslate::trans(strip_tags($visionMission->purpose ?? ''), app()->getLocale()) ?: ($visionMission->purpose ?? ''); // Strip tags before translating
-                });
+                $purposeContent = $visionMission->purpose;
+
                 if (!empty($visionMission->purpose_img)) {
                     $purposeImageUrl = asset($visionMission->purpose_img);
                 }
-                $purposeImageAlt = cache()->remember('vision_mission_purpose_image_alt_'.($visionMission->id ?? 'static').'_'.app()->getLocale(), 86400, function() use ($purposeStatementTitle) {
-                    return GoogleTranslate::trans($purposeStatementTitle.' image', app()->getLocale()) ?: $purposeStatementTitle.' image';
-                });
+                $purposeImageAlt = $purposeStatementTitle;
             }
         @endphp
         <div class="inner-banner " style="background-image: url({{ $headerImageUrl }});">

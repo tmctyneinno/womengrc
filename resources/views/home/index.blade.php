@@ -151,7 +151,7 @@
         <div class="row pt-45">
             @forelse ($recentBlog as $blog)
                 <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
+                    <div class="blog-card"> 
                         <a href="{{ route('blog.detail', $blog->slug) }}">
                             <img src="{{ asset($blog->image) }}" alt="Images" style="object-fit: contain; max-width:100%; max-height:100%; height:300px; width:300px">
                         </a> 

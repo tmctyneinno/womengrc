@@ -8,18 +8,10 @@
         <!-- Inner Banner -->
         @php
             // Cache translations for the inner banner and initiatives section
-            $initiativesPageTitle = cache()->remember('initiatives_page_title_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Initiatives', app()->getLocale()) ?: 'Initiatives';
-            });
-            $homeText = cache()->remember('breadcrumb_home_text_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Home', app()->getLocale()) ?: 'Home';
-            });
-            $pagesText = cache()->remember('breadcrumb_pages_text_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Pages', app()->getLocale()) ?: 'Pages';
-            });
-            $keyInitiativesSubtitle = cache()->remember('key_initiatives_subtitle_'.app()->getLocale(), 86400, function() {
-                return GoogleTranslate::trans('Key Initiatives', app()->getLocale()) ?: 'Key Initiatives';
-            });
+            $initiativesPageTitle = 'Initiatives';
+            $homeText = 'Home';
+            $pagesText = 'Pages';
+            $keyInitiativesSubtitle = 'Key Initiatives';
 
             // Handle header image with fallback
             $headerImageUrl = (isset($aboutUs) && !empty($aboutUs->header_image)) ? asset($aboutUs->header_image) : asset('images/default-header-placeholder.jpg'); // Fallback header image
@@ -70,12 +62,8 @@
 
             // Translate initiative items
             foreach ($initiativeItems as &$item) { // Use reference to modify array directly
-                $item['translated_alt'] = cache()->remember('initiative_item_alt_'.$item['alt_key'].'_'.app()->getLocale(), 86400, function() use ($item) {
-                    return GoogleTranslate::trans($item['alt_default'], app()->getLocale()) ?: $item['alt_default'];
-                });
-                $item['translated_title'] = cache()->remember('initiative_item_title_'.$item['title_key'].'_'.app()->getLocale(), 86400, function() use ($item) {
-                    return GoogleTranslate::trans($item['title_default'], app()->getLocale()) ?: $item['title_default'];
-                });
+                $item['translated_alt'] = $item['alt_default'];
+                $item['translated_title'] = $item['title_default'];
             }
             unset($item); // Unset reference to last item
 
