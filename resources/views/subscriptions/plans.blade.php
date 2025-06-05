@@ -30,13 +30,15 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="plan__benefits--title">Benefits:</h4>
-                                    {{-- <ul class="plan__benefits--list">
-                                        @foreach(json_decode($plan->benefits) as $benefit)
-                                        <li class="plan__benefit--item">
-                                            <i class="fas fa-check-circle text-success"></i> {{ $benefit }}
-                                        </li>
-                                        @endforeach
-                                    </ul> --}}
+                                    @if($plan->benefits)
+                                        <ul class="plan__benefits--list">
+                                            @foreach(json_decode($plan->benefits) as $benefit)
+                                                <li class="plan__benefit--item">
+                                                    <i class="fas fa-check-circle text-success"></i> {{ $benefit ?? ''}}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </div>
                                 <div class="card-footer bg-transparent">
                                     @if(auth()->user()->hasActiveSubscription() && auth()->user()->activeSubscription()->membership_plan_id == $plan->id)
