@@ -42,11 +42,11 @@
                                     @if(auth()->user()->hasActiveSubscription() && auth()->user()->activeSubscription()->membership_plan_id == $plan->id)
                                         <button class="welcome__content--btn solid__btn" disabled>
                                             Current Plan
-                                        </button>
+                                        </button> 
                                     @else
                                         {{-- <a href="{{ route('checkout', $plan->id) }}" class="welcome__content--btn solid__btn"> --}}
                                         <a href="{{ route('user.checkout', $plan->id) }}" class="welcome__content--btn solid__btn">
-                                            Choose Plan
+                                            Choose Plan 
                                         </a>
                                     @endif
                                 </div>

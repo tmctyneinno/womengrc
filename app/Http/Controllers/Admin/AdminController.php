@@ -32,7 +32,7 @@ class AdminController extends Controller
     {  
         $data = [ 
             'guests' => User::where('role', 'guests')->count(),
-            'advisory' => User::where('role', 'advisory')->count(),
+            'advisory' => User::where('role', 'advisory_member')->count(),
             'facilitator' => User::where('role', 'facilitator')->count(),
             'users' => User::count(),
             'recognitions' => Recognition::count(), 
@@ -44,7 +44,7 @@ class AdminController extends Controller
             'membershipContent' => MembershipContent::count(), 
             'mentorshipContent' => MentorshipContent::count(), 
             'facilitatorContent' => FacilitatorContent::count(), 
-        ];
+        ]; 
         return view('admin.index', $data); 
     }
 
