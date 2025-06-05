@@ -45,7 +45,7 @@
                                         </button>
                                     @else
                                         {{-- <a href="{{ route('checkout', $plan->id) }}" class="welcome__content--btn solid__btn"> --}}
-                                        <a href="{{ route('checkout', $plan->id) }}" class="welcome__content--btn solid__btn">
+                                        <a href="{{ route('user.checkout', $plan->id) }}" class="welcome__content--btn solid__btn">
                                             Choose Plan
                                         </a>
                                     @endif
