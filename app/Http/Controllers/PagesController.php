@@ -49,8 +49,10 @@ class PagesController extends Controller
             'consent' => 'home.pages.consent',
             'privacy-policy' => 'home.pages.privacy-policy',
             'governance-board' => 'home.pages.governance-board',
+
             'criteria-for-membership' => 'home.pages.membership.criteria-for-membership',
             'membership' => 'home.pages.membership.index',
+            'membership-plans'=>'home.pages.membership.membershipPlan',
             
 
 
