@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Livewire\ChatComponent;
+use App\Http\Controllers\Facilitator\FacilitatorDashboardController;
 use App\Http\Controllers\User\ChatController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\DashboardController;

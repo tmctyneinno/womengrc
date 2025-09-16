@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Log; 
  
 
 class AdminLoginController extends Controller
@@ -34,7 +34,6 @@ class AdminLoginController extends Controller
 
         Log::channel('admin_auth')->info('Admin login attempt started.', ['email' => $email]); 
 
- 
         if (Auth::guard('admin')->attempt($credentials)) {
             $admin = Auth::guard('admin')->user(); 
             Log::channel('admin_auth')->info('Admin login successful.', ['admin_id' => $admin->id, 'email' => $email]);
