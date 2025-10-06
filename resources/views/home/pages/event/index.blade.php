@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-
-
 @section('content')
 
  <!-- Inner Banner -->
@@ -35,11 +32,11 @@
                         <li>
                             <i class='bx bx-chevron-right'></i>
                         </li>
-                        <li>{{ $pagesText }}</li>
+                        <li>Resource</li>
                         <li>
                             <i class='bx bx-chevron-right'></i>
                         </li>
-                        <li class="active">Pages</li>
+                        <li class="active">Events</li>
                     </ul>
                 </div>
 

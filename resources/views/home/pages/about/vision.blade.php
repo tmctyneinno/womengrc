@@ -1,13 +1,9 @@
 @extends('layouts.app')
-
-
-
 @section('content')
-
-
     <!-- Inner Banner -->
     @php
-       
+        // Define the title variable first
+        $visionStatementTitle = 'Vision Statement';
         
         // Handle dynamic content and image with fallbacks and translation
         $headerImageUrl = (isset($aboutUs) && !empty($aboutUs->header_image)) ? asset($aboutUs->header_image) : asset('images/default-header-placeholder.jpg'); // Fallback header image
@@ -34,11 +30,11 @@
                     <li>
                         <i class='bx bx-chevron-right'></i>
                     </li>
-                    <li>Pages</li>
+                    <li>About</li>
                     <li>
                         <i class='bx bx-chevron-right'></i>
                     </li>
-                    <li>Home</li>
+                    <li>Vision</li>
                 </ul>
             </div>
         </div>

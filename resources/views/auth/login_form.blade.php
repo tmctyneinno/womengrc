@@ -3,6 +3,9 @@
         <div class="contact-form">
             <form method="POST" action="{{ route('login.post') }}" id="signInForm" novalidate>
                 @csrf
+                <!-- Hidden field for reCAPTCHA token -->
+                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                
                 <div class="row justify-content-center">
                     <!-- Email Input -->
                     <div class="col-lg-12">
@@ -62,10 +65,7 @@
 
                     <!-- Login Button -->
                     <div class="col-lg-12 col-md-12 text-center mt-3">
-                        <button type="submit" class="g-recaptcha default-btn user-all-btn"
-                                data-sitekey="{{ config('services.recaptcha.key') }}"
-                                data-callback='onLoginSubmit' 
-                                data-action='submit'>Login</button>
+                        <button type="submit" class="default-btn user-all-btn">Login</button>
                     </div> 
 
                     <!-- Forgot Password Link -->
@@ -262,9 +262,13 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
         });
 
         if (isValid) {
+            // Set the reCAPTCHA token
+            document.getElementById('g-recaptcha-response').value = token;
             form.submit();
         } else {
-            grecaptcha.reset();
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset();
+            }
             const firstInvalidField = Object.values(fields).find(field => 
                 field.element.classList.contains('is-invalid')
             );
@@ -296,16 +300,25 @@ function setupFormValidation(form, fields, onSubmitFunctionName) {
         }
 
         // If all fields are valid, trigger reCAPTCHA v3
-        grecaptcha.ready(function() {
-            grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'register'})
-                .then(function(token) {
-                    // Set the token in the hidden input
-                    document.getElementById('g-recaptcha-response').value = token;
-
-                    // Now call the final submit logic (includes re-validation)
-                    window[onSubmitFunctionName](token);
-                });
-        });
+        if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.ready(function() {
+                grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'login'})
+                    .then(function(token) {
+                        // Set the token in the hidden input
+                        document.getElementById('g-recaptcha-response').value = token;
+                        // Submit the form
+                        form.submit();
+                    })
+                    .catch(function(error) {
+                        console.log('reCAPTCHA error:', error);
+                        // Submit without reCAPTCHA if it fails
+                        form.submit();
+                    });
+            });
+        } else {
+            // Submit without reCAPTCHA if not available
+            form.submit();
+        }
     });
 }
 </script>

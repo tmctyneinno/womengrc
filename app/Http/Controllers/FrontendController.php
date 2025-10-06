@@ -21,7 +21,7 @@ class FrontendController extends Controller
     }
 
     public function vision(){
-        return view('home.pages.vision'); 
+        return view('home.pages.about.vision'); 
     }
 
     public function purpose(){
@@ -33,7 +33,7 @@ class FrontendController extends Controller
     }
  
     public function event(){
-        return view('home.pages.event'); 
+        return view('home.pages.event.index'); 
     }
 
     public function blog(){
