@@ -33,6 +33,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Google Translate Feature
+    |--------------------------------------------------------------------------
+    |
+    | This option controls whether Google Translate is enabled.
+    | Set to false to disable translation and use original content.
+    |
+    */
+
+    'enable_google_translate' => env('ENABLE_GOOGLE_TRANSLATE', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------
     |

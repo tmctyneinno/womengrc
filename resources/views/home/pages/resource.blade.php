@@ -5,7 +5,6 @@
 @php
     // Cache translations for the inner banner and resource section
     $resourcePageTitle =  'Resource';
-    });
     $homeText = 'Home';
     $pagesText = 'Pages';
     $resourcesSectionSubtitle = 'Resources';

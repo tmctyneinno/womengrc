@@ -3,17 +3,41 @@
 
  <!-- Inner Banner -->
  @php
-    // Cache translations for 24 hours
+    // Simple fallback approach - disable GoogleTranslate for production stability
+    $latestEventsSubtitle = 'Events';
+    $latestEventsTitle = 'Latest Events'; 
+    $noEventsText = 'No events available at the moment.';
     
-    $latestEventsSubtitle = cache()->remember('latest_events_subtitle_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('Events', app()->getLocale()) ?: 'Events'; // Same as page title, can be different if needed
-    });
-    $latestEventsTitle = cache()->remember('latest_events_title_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('Latest Events', app()->getLocale()) ?: 'Latest Events';
-    });
-    $noEventsText = cache()->remember('no_events_text_'.app()->getLocale(), 86400, function() {
-        return GoogleTranslate::trans('No events available at the moment.', app()->getLocale()) ?: 'No events available at the moment.';
-    });
+    // Only use GoogleTranslate if explicitly enabled and working
+    if (config('app.enable_google_translate', false) && class_exists('GoogleTranslate')) {
+        try {
+            $latestEventsSubtitle = cache()->remember('latest_events_subtitle_'.app()->getLocale(), 86400, function() {
+                try {
+                    return GoogleTranslate::trans('Events', app()->getLocale()) ?: 'Events';
+                } catch (\Exception $e) {
+                    return 'Events';
+                }
+            }) ?: 'Events';
+            
+            $latestEventsTitle = cache()->remember('latest_events_title_'.app()->getLocale(), 86400, function() {
+                try {
+                    return GoogleTranslate::trans('Latest Events', app()->getLocale()) ?: 'Latest Events';
+                } catch (\Exception $e) {
+                    return 'Latest Events';
+                }
+            }) ?: 'Latest Events';
+            
+            $noEventsText = cache()->remember('no_events_text_'.app()->getLocale(), 86400, function() {
+                try {
+                    return GoogleTranslate::trans('No events available at the moment.', app()->getLocale()) ?: 'No events available at the moment.';
+                } catch (\Exception $e) {
+                    return 'No events available at the moment.';
+                }
+            }) ?: 'No events available at the moment.';
+        } catch (\Exception $e) {
+            // Keep default values if anything fails
+        }
+    }
  @endphp
  <div class="inner-banner" style="background-image: url({{ asset('assets/images/event/event_bg.jpg') }});">
     <div class="container">
@@ -65,14 +89,35 @@
                     <div class="row pt-45 justify-content-center">
                         @forelse ($events as $event)
                             @php
-                                // Cache translations for each event item
-                                $eventTranslations = cache()->remember("event_item_{$event->id}_translations_".app()->getLocale(), 86400, function() use ($event) {
-                                    return [
-                                        'title' => GoogleTranslate::trans($event->title ?? '', app()->getLocale()) ?: ($event->title ?? ''),
-                                        'alt_text' => GoogleTranslate::trans($event->title ?? 'Event image', app()->getLocale()) ?: ($event->title ?? 'Event image'),
-                                        'content_snippet' => GoogleTranslate::trans(Str::limit(strip_tags($event->content ?? ''), 60), app()->getLocale()) ?: Str::limit(strip_tags($event->content ?? ''), 60),
-                                    ];
-                                });
+                                // Simple approach - use original content, optionally translate if enabled
+                                $eventTranslations = [
+                                    'title' => $event->title ?? '',
+                                    'alt_text' => $event->title ?? 'Event image',
+                                    'content_snippet' => Str::limit(strip_tags($event->content ?? ''), 60),
+                                ];
+                                
+                                // Only use GoogleTranslate if explicitly enabled and working
+                                if (config('app.enable_google_translate', false) && class_exists('GoogleTranslate')) {
+                                    try {
+                                        $cachedTranslations = cache()->remember("event_item_{$event->id}_translations_".app()->getLocale(), 86400, function() use ($event) {
+                                            try {
+                                                return [
+                                                    'title' => GoogleTranslate::trans($event->title ?? '', app()->getLocale()) ?: ($event->title ?? ''),
+                                                    'alt_text' => GoogleTranslate::trans($event->title ?? 'Event image', app()->getLocale()) ?: ($event->title ?? 'Event image'),
+                                                    'content_snippet' => GoogleTranslate::trans(Str::limit(strip_tags($event->content ?? ''), 60), app()->getLocale()) ?: Str::limit(strip_tags($event->content ?? ''), 60),
+                                                ];
+                                            } catch (\Exception $e) {
+                                                return null; // Return null to use fallback
+                                            }
+                                        });
+                                        
+                                        if ($cachedTranslations) {
+                                            $eventTranslations = $cachedTranslations;
+                                        }
+                                    } catch (\Exception $e) {
+                                        // Keep original values
+                                    }
+                                }
                             @endphp
                             <div class="col-lg-4 col-md-6">
                                 <div class="place-list-item">
