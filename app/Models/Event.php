@@ -60,11 +60,33 @@ class Event extends Model
     }
 
     /**
+     * Scope for past events with safe column checking
+     */
+    public function scopePast($query)
+    {
+        if (!Schema::hasColumn('events', 'end_time') || !Schema::hasColumn('events', 'status')) {
+            return $query->whereNull('id'); // Returns empty result if columns don't exist
+        }
+
+        return $query->where('end_time', '<', Carbon::now())
+                   ->where('status', 'published')
+                   ->orderBy('end_time', 'desc');
+    }
+
+    /**
      * Check if event is upcoming
      */
     public function isUpcoming()
     {
         return $this->start_time && $this->start_time > Carbon::now();
+    }
+
+    /**
+     * Check if event is past
+     */
+    public function isPast()
+    {
+        return $this->end_time && $this->end_time < Carbon::now();
     }
 
     /**

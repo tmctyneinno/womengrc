@@ -73,7 +73,97 @@
 </div>
 <!-- Inner Banner End -->
 
+<!-- Incoming Event Section -->
+<div class="listing-widget-section pt-100 pb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="listing-widget-into">
+                    <div class="section-title text-center">
+                        <span>upcoming Events</span>
+                        <h2>Our Upcoming Events</h2>
+                    </div>
 
+                    <div class="row pt-45 justify-content-center">
+                        @forelse ($upcomingEvents as $upcoming_event)
+                            @php
+                                // Simple approach - use original content, optionally translate if enabled
+                                $eventTranslations = [
+                                    'title' => $upcoming_event->title ?? '',
+                                    'alt_text' => $upcoming_event->title ?? 'Event image',
+                                    'content_snippet' => Str::limit(strip_tags($upcoming_event->content ?? ''), 60),
+                                ];
+                                
+                                // Only use GoogleTranslate if explicitly enabled and working
+                                if (config('app.enable_google_translate', false) && class_exists('GoogleTranslate')) {
+                                    try {
+                                        $cachedTranslations = cache()->remember("upcoming_event_item_{$upcoming_event->id}_translations_".app()->getLocale(), 86400, function() use ($upcoming_event) {
+                                            try {
+                                                return [
+                                                    'title' => GoogleTranslate::trans($upcoming_event->title ?? '', app()->getLocale()) ?: ($upcoming_event->title ?? ''),
+                                                    'alt_text' => GoogleTranslate::trans($upcoming_event->title ?? 'Event image', app()->getLocale()) ?: ($upcoming_event->title ?? 'Event image'),
+                                                    'content_snippet' => GoogleTranslate::trans(Str::limit(strip_tags($upcoming_event->content ?? ''), 60), app()->getLocale()) ?: Str::limit(strip_tags($upcoming_event->content ?? ''), 60),
+                                                ];
+                                            } catch (\Exception $e) {
+                                                return null; // Return null to use fallback
+                                            }
+                                        });
+                                        
+                                        if ($cachedTranslations) {
+                                            $eventTranslations = $cachedTranslations;
+                                        }
+                                    } catch (\Exception $e) {
+                                        // Keep original values
+                                    }
+                                }
+                            @endphp
+                            <div class="col-lg-4 col-md-6">
+                                <div class="place-list-item">
+                                    <div class="images">
+                                        <a href="{{ route('events.show', $upcoming_event->slug) }}" class="images-list">
+                                            <img src="{{ asset($upcoming_event->image) }}" alt="{{ $eventTranslations['alt_text'] }}">
+                                        </a>
+                                        
+                                        <div class="place-tag">
+
+                                            <h3 class="title"><a href="{{ route('events.show', $upcoming_event->slug) }}">{{ $eventTranslations['title'] }}</a></h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="content">
+                                        <a href="{{ route('events.show', $upcoming_event->slug) }}">
+                                            <h3>{{ $eventTranslations['title'] }}</h3>
+                                        </a> 
+                                        <p>
+                                            {!! $eventTranslations['content_snippet'] !!}
+                                        </p>
+
+                                        <ul class="place-rating">
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <div class="col-12"><p class="text-center">{{ $noEventsText }}</p></div>
+                        @endforelse
+
+                       
+
+
+                        {{-- <div class="col-lg-12 text-center"> 
+                            <a href="{{ route('home.pages', 'event') }}" class="default-btn border-radius">
+                                Load More  
+                                <i class='bx bx-plus'></i>
+                            </a>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Incoming Event Section End -->
 
 <!-- Listing Widget Section -->
 <div class="listing-widget-section pt-100 pb-70">

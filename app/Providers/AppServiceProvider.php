@@ -83,9 +83,11 @@ class AppServiceProvider extends ServiceProvider
         View::share('faqs', Faq::latest()->paginate(5));
         View::share('blogs', Blog::latest()->paginate(20));
         View::share('recentBlog', Blog::inRandomOrder()->take(6)->get());
-  
-        View::share('events', Event::latest()->paginate(20)); 
-        View::share('recentEvent', Event::inRandomOrder()->take(6)->get());
+
+        View::share('events', Event::where('status', 'published')->latest()->paginate(20));
+        View::share('upcomingEvents', Event::upcoming()->latest()->get());
+        View::share('pastEvents', Event::past()->latest()->get());
+        View::share('recentEvent', Event::latest()->take(6)->get());
         View::share('policies', PrivacyPolicy::first()); 
         View::share('termsCondition', TermsConditions::first());
 
@@ -117,11 +119,11 @@ class AppServiceProvider extends ServiceProvider
         });
         
         if ($this->databaseExists()) {
-            $upcomingEvents = Event::upcoming()->limit(3)->get();
-            if ($upcomingEvents->isEmpty()) {
-                $upcomingEvents = Event::latest()->limit(3)->get();
-            } 
-            View::share('upcomingEvents', $upcomingEvents);
+            // $upcomingEvents = Event::upcoming()->limit(3)->get();
+            // if ($upcomingEvents->isEmpty()) {
+            //     $upcomingEvents = Event::latest()->limit(3)->get();
+            // } 
+            // View::share('upcomingEvents', $upcomingEvents);
 
             $trainingCertifications = Certification::latest()->get();
             // dd($trainingCertifications);

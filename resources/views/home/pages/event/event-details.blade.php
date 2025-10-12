@@ -22,7 +22,7 @@
                         <li>
                             <i class='bx bx-chevron-right'></i>
                         </li>
-                        <li>Pages</li>
+                        <li>Resource</li>
                         <li>
                             <i class='bx bx-chevron-right'></i>
                         </li>
@@ -47,7 +47,7 @@
                 <div class="blog-article">
                     <div class="article-comment-area">
                         <div class="article-img">
-                            <img src="{{ asset($eventItem->image)}}" class="w-100" style="object-fit: cover; width: 100%; height: 600px;" alt="business-area">
+                            <img src="{{ asset($eventItem->image)}}" class="w-100" style="object-fit: cover; width: 100%;" alt="business-area">
 
                         </div>
 
@@ -78,15 +78,60 @@
                     <div class="article-content">
                         <h3>{{$eventItem->title }} </h3>
                        
+                        {{-- Event Details Section --}}
+                        @if($eventItem->start_time || $eventItem->location || $eventItem->is_online)
+                            <div class="event-details-info mb-4 p-3" style="background-color: #f1f3f4; border-left: 4px solid #B03436; border-radius: 4px;">
+                                <h6 class="mb-3" style="color: #B03436;"><i class="bx bx-info-circle"></i> Event Information</h6>
+                                <div class="row">
+                                    @if($eventItem->start_time)
+                                        <div class="col-md-6 mb-2">
+                                            <strong><i class="bx bx-calendar"></i> Start Date:</strong>
+                                            {{ \Carbon\Carbon::parse($eventItem->start_time)->format('F j, Y \a\t g:i A') }}
+                                        </div>
+                                    @endif
+                                    @if($eventItem->end_time)
+                                        <div class="col-md-6 mb-2">
+                                            <strong><i class="bx bx-calendar-x"></i> End Date:</strong>
+                                            {{ \Carbon\Carbon::parse($eventItem->end_time)->format('F j, Y \a\t g:i A') }}
+                                        </div>
+                                    @endif
+                                    @if($eventItem->location)
+                                        <div class="col-md-6 mb-2">
+                                            <strong><i class="bx bx-map"></i> Location:</strong>
+                                            {{ $eventItem->location }}
+                                        </div>
+                                    @endif
+                                    @if($eventItem->is_online)
+                                        <div class="col-md-6 mb-2">
+                                            <strong><i class="bx bx-laptop"></i> Format:</strong>
+                                            <span class="badge bg-info">Online Event</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="content-text">
                             {!! $eventItem->content !!} 
                         </div>
+
+                        @if($eventItem->registration_url)
+                            <div class="registration-section mt-4 p-4" style="background-color: #f8f9fa; border: 2px solid #B03436; border-radius: 8px;">
+                                <h5 class="mb-3" style="color: #B03436;">
+                                    <i class="bx bx-calendar-check"></i> Event Registration
+                                </h5>
+                                <p class="mb-3">Click the button below to register now!</p>
+                                <a href="{{ $eventItem->registration_url }}" 
+                                   target="_blank" 
+                                   class="default-btn">
+                                    <i class="bx bx-link-external"></i> Register Now
+                                </a>
+                                <p class="mt-2 text-muted small">
+                                    <i class="bx bx-info-circle"></i> You will be redirected to the registration page
+                                </p>
+                            </div>
+                        @endif
                     </div>
-
-                  
-
-     
-
                 </div>
             </div>
 

@@ -60,11 +60,11 @@
     <div class="container-fluid">
         <div class="section-title text-center">
             <span>
-                Events Lists
+                Events
             </span>
 
             <h2>
-                The Latest Events Added
+                our Recent Events
             </h2>
 
         </div>
@@ -73,7 +73,7 @@
                 <div class="col-lg-4 place-list-item">
                     <div class="images">
                         <a href="{{ route('events.show', $event->slug) }}" class="images-list">
-                            <img src="{{ asset($event->image) }}" alt="{{ $event->title }}">
+                            <img src="{{ asset($event->image) }}" alt="{{ $event->title }}" style="height: 410px;">
                         </a>
                         <div class="place-tag"> 
                             <h3 class="title">
@@ -81,6 +81,40 @@
                                    {{-- $event->title --}}
                                 </a>
                             </h3>
+                        </div>
+
+                        {{-- Status Badge --}}
+                        <div class="event-status-badge">
+                            @php
+                                $now = \Carbon\Carbon::now();
+                                $startTime = $event->start_time ? \Carbon\Carbon::parse($event->start_time) : null;
+                                $endTime = $event->end_time ? \Carbon\Carbon::parse($event->end_time) : null;
+                                
+                                if ($startTime && $endTime) {
+                                    if ($now->lt($startTime)) {
+                                        $status = 'upcoming';
+                                        $statusText = 'Upcoming';
+                                        $badgeClass = 'badge-upcoming';
+                                    } elseif ($now->between($startTime, $endTime)) {
+                                        $status = 'live';
+                                        $statusText = 'Live Now';
+                                        $badgeClass = 'badge-live';
+                                    } else {
+                                        $status = 'past';
+                                        $statusText = 'Past Event';
+                                        $badgeClass = 'badge-past';
+                                    }
+                                } else {
+                                    // $status = $event->status ?? 'published';
+                                    $status = 'Past';
+                                    $statusText = ucfirst($status);
+                                    $badgeClass = 'badge-published';
+                                }
+                            @endphp
+                            
+                            <span class="status-badge {{ $badgeClass }}">
+                                {{ $statusText }}
+                            </span>
                         </div>
                     </div>
 

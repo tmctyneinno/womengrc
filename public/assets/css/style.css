@@ -2085,7 +2085,7 @@ Place List Area
   transition: var(--transition);
 }
 .place-list-item .content p {
-  margin-left: 30px;
+  /* margin-left: 30px; */
   margin-bottom: 0;
   padding-bottom: 15px;
   border-bottom: 1px dashed #e8e8e8;
@@ -6924,6 +6924,74 @@ Buy Now Btn
 .buy-now-btn:hover {
   color: var(--whiteColor);
   background-color: #94be5d;
+}
+
+/*==============================
+Event Status Badge CSS
+=================================*/
+.event-status-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 20px;
+  color: var(--whiteColor);
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.badge-upcoming {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  animation: pulse-upcoming 2s infinite;
+}
+
+.badge-live {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  animation: pulse-live 1.5s infinite;
+}
+
+.badge-past {
+  background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.badge-published {
+  background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.badge-draft {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+}
+
+@keyframes pulse-upcoming {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-live {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.6);
+  }
 }
 
 /*==============================
